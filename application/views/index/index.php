@@ -3,7 +3,7 @@
     <div class="content bg-1">
         <div class="index-tit ta-c">推荐好友购买路虎.揽胜、揽胜运动版<br/>
             您和您的好友均可尊享万元推荐礼包</div>
-        <div class="index-btn auto"><a href="referee.html"><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+        <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>"><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
         <div class="index-btn auto progress"><a href="javascript:;"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
         <div class="rule-box">
             <a href="javascript:;">
