@@ -28,19 +28,18 @@ class Base extends Common
         parent::__construct();
         #载入后台权限操作相关(管理员 菜单 角色)
         $this->Users           = new \Xy\Application\Models\UserModel();
-
+        //set_cookie('openId', '');exit;
+        //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
         if(is_weixin()){
-            echo "这是微信内部浏览器";
+            $this->_data['browser'] = 1; //微信浏览器
         }else {
-            echo "这是微信外部浏览器";
+            $this->_data['browser'] = 2; //其他浏览器
         }
-        exit;
-	    //set_cookie('openId', '');exit;
-       // set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
+
+        /**
         //配置模板路径
         $this->_more_view_path = PROJECT_NAME;
         $controller = ucfirst($this->router->fetch_class());
-	    set_cookie('source', $source);
         if($controller != 'Publics' && $controller != 'Article') {
            $res = $this->isLogin();
         }
@@ -49,7 +48,7 @@ class Base extends Common
             if($res['status'] == '2') {
                 redirect(site_url('User', 'center'));
             }
-        }
+        }*/
 
     }
 
@@ -66,23 +65,6 @@ class Base extends Common
         return $res;
     }
 
-    /**
-     * 获取登录用户信息
-     *
-     * @return bool
-     */
-    protected function getUserInfoByLogin()
-    {
-        $session_info = $this->session->get_userdata();
-
-        $ret = array();
-
-        if ($session_info['id']) {
-            $ret = $this->DevUser->AdminUsers(array("id" => $session_info['id']));
-        }
-
-        return $ret ? ($ret + $session_info + array('is_login' => 1)) : array('is_login' => 0);
-    }
 
 
     /**
@@ -169,37 +151,6 @@ class Base extends Common
         }
     }
 
-    /**
-     * 手机短信验证
-     *
-     * @param $tel
-     * @param bool $check_code
-     * @return bool
-     */
-    public function phoneSmsCheck($tel, $check_code = false)
-    {
-        if (in_array(self::SMS_LOGIN, array(1, 2, 3))) {
-            if (verify_phone($tel)) {
-                if ($check_code) {
-                    $sms_str = $this->input->get_post('sms_code', true);
-                    //比对mem缓存 验证码
-                    $real_sms_str = $this->AdminUsers->getUserPhoneCode($tel);
-
-                    if ($sms_str == $real_sms_str && !empty($sms_str)) {
-                        return true;
-                    } else {
-                        return false;//短信验证码错误
-                    }
-                } else {
-                    return true;
-                }
-            } else {
-                return false;//手机号码格式错误，请联系管理员处理
-            }
-        } else {
-            return true;
-        }
-    }
 
     /**
      * ajax返回格式
@@ -220,7 +171,6 @@ class Base extends Common
     }
 
 
-
     /**
      *  获取用户openid，保存名片用
      * @param string $url
@@ -230,9 +180,9 @@ class Base extends Common
         $state = '222';
         $appid = APPID;
         if(empty($url)) {
-            $url = site_url('Publics', 'jump'); 
+            $url = site_url('Publics', 'jump');
         }
-	//echo $url;exit;
+	    //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_userinfo&state=$state#wechat_redirect";

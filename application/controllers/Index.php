@@ -16,10 +16,6 @@ class Index extends Base {
 	 */
 	public function index()
 	{
-
-        //if($a) {
-            //redirect(site_url('User', 'Center')); exit;
-        //}
         $this->displayMain();
 	}
 }
