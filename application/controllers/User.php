@@ -45,6 +45,10 @@ class User extends Base
             $this->Users->addUserOpenId($data);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
+            if($this->isLogin()) {
+                $url = site_url('User', 'center');
+                header('Location:'.$url);
+            }
             //$data = $this->Users->getUserInfoByOpId($this->_data['openId']);
             $this->displayMain();
         }
