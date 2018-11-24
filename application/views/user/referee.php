@@ -62,7 +62,6 @@
             var driver_number = $('#driver_number').val();
             var card_number = $('#card_number').val();
             var succ = $('.form-checkbox.active').text();
-            console.log(car_id, car_code, merchants);
             if(phone == '') {
                 alert('手机号不能为空'); return false;
             } else if(code == '') {
