@@ -28,6 +28,10 @@ class Invite extends Base {
         $info = $this->input->request(null, true);
         $data['invite_code'] = $info['invite_code'];
         if (is_ajax_post()) {
+            $masterUserInfo = $this->Users->getUserInviteCode($data['invite_code']);
+            if (empty($masterUserInfo)) {
+                $this->AjaxReturn('400','邀请人不存在');exit;
+            }
             $data['code'] = $info['code'];
             $data['phone'] = $info['phone'];
             $data['name'] = $info['name'];
@@ -37,6 +41,8 @@ class Invite extends Base {
             $this->Users->addUserInfo($data);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         }
+        $carInfo = new \Xy\Application\Models\CarInfoModel();
+        $data['car_record'] = $carInfo->getAllCarInfo();
         $this->displayMain($data);
 
     }

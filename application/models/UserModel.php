@@ -58,4 +58,11 @@ class UserModel extends BaseModel
         $ret = $this->getOne($where);
         return $ret;
     }
+
+    public function getUserInviteCode($inviteCode)
+    {
+        $where['invite_code'] = $inviteCode;
+        $ret = $this->getOne($where);
+        return $ret;
+    }
 }

@@ -21,15 +21,16 @@
                     <div class="form-box">
                         <input type="text" name="code" class="input-text">
                     </div>
-                    <input type="button" value="发送验证码" class="sendbtn">
+                    <input type="button" value="发送验证码" class="sendbtn _sms_verify">
                 </div>
                 <div class="form-list flex center opt">
                     <label>意向车型：</label>
                     <div class="form-box">
-                        <span></span>
+                        <span>请选择车型</span>
                         <select name="car_id">
-                            <option>意向车型</option>
-                            <option>意向车型12</option>
+                            <?php foreach ($car_record as $value) { ?>
+                                <option value="<?=$value['id'] ?>"><?=$value['name'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -53,6 +54,8 @@
         </div>
     </div>
 </div>
+
+<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script>
     $(function(){
         $('#sub').click(function(){
