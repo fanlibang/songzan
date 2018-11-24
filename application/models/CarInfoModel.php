@@ -23,4 +23,11 @@ class CarInfoModel extends BaseModel
         $ret = $this->getAll();
         return $ret;
     }
+
+    public function getCarInfoByid($id)
+    {
+        $where['id'] = $id;
+        $ret = $this->getOne($where);
+        return $ret;
+    }
 }
