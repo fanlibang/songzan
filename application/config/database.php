@@ -84,9 +84,12 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
 
     $database           = 'db_luhu';
 } else {
-    $myip               = 'rm-m5e82evpj4666mdq38o.mysql.rds.aliyuncs.com';
+    /*$myip               = 'rm-m5e82evpj4666mdq38o.mysql.rds.aliyuncs.com';
     $myuser             = 'root';
-    $mypassword         = 'ziyue2018ZIYUE';
+    $mypassword         = 'ziyue2018ZIYUE';*/
+    $myip               = '180.76.114.64';
+    $myuser             = 'root';
+    $mypassword         = '12345';
     //默认数据库操作
     $rand_num           = mt_rand(0, 1);
     $host               = $myip;//'192.168.11.7'
@@ -99,7 +102,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     $password_w         = $mypassword;
     $port_w             = '3306';
 
-    $database           = 'db_luhu';
+    $database           = 'ownerreferral';
 
 }
 
