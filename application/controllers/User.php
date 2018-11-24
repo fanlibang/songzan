@@ -28,7 +28,7 @@ class User extends Base
             }
             $res = $this->Users->getUserInfoByPhone($info['iphone']);
             if($res) {
-                $token = '';
+                $token = rand_str(32);
                 set_cookie('token', $token);
                 $url = site_url('User', 'center');#Todo
                 header('Location:'.$url);
@@ -40,6 +40,7 @@ class User extends Base
             $data['open_id'] = $open_id;
             $data['driver_number'] = $info['driver_number'];
             $data['card_number'] = $info['card_number'];
+            $data['card_number'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
