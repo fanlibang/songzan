@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="logo"><img src="images/logo.png" alt=""></div>
+    <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-1">
         <div class="index-tit ta-c">推荐好友购买路虎.揽胜、揽胜运动版<br/>
             您和您的好友均可尊享万元推荐礼包</div>
