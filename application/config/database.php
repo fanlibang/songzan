@@ -69,7 +69,7 @@ $dev_config_arr = array(
 
 if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     //默认数据库操作
-    $myip               = 'localhost';
+    $myip               = '180.76.114.64';
     $myuser             = 'root';
     $mypassword         = '123456';
     $host               = $myip;
@@ -82,7 +82,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     $password_w         = $mypassword;
     $port_w             = '3306';
 
-    $database           = 'db_luhu';
+    $database           = 'ownerreferral';
 } else {
     /*$myip               = 'rm-m5e82evpj4666mdq38o.mysql.rds.aliyuncs.com';
     $myuser             = 'root';
