@@ -1751,5 +1751,16 @@ function is_weixin(){
     }
     return false;
 }
-
+if (! function_exists('paserInviteCode')) {
+    /**
+     * 生成邀请码
+     * @param $userId
+     * @return string
+     */
+    function paserInviteCode($userId)
+    {
+        $baseStr = base_convert(100000000 + $userId, 10, 36);
+        return $baseStr;
+    }
+}
 

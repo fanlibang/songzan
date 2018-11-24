@@ -6,7 +6,9 @@
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
-                    <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i>完善信息</div>
+                    <?php if (empty($car_id)) { ?>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i>完善信息</div>
+                    <?php } ?>
                 </div>
                 <div class="form-list flex center">
                     <label>姓名：</label>
