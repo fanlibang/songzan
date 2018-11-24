@@ -23,8 +23,6 @@ class User extends Base
     public function referee(){
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
-            echo $info['code'];
-            echo get_cookie('code');
             if($info['code'] != get_cookie('code')) {
                 $this->AjaxReturn('202','验证码不正确');
             }
