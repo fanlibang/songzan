@@ -36,7 +36,7 @@ class User extends Base
             $openid = get_cookie('openId');
             $open_id = isset($openid) ? $openid : '';
             $data['name'] = $info['name'];
-            $data['iphone'] = $info['iphone'];
+            $data['phone'] = $info['phone'];
             $data['open_id'] = $open_id;
             $data['driver_number'] = $info['driver_number'];
             $data['card_number'] = $info['card_number'];
