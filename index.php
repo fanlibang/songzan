@@ -43,7 +43,7 @@ define('IS_DEBUG',          (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 
 
 define('OPEN_XHPROF',       function_exists('xhprof_enable') ? true : false);
 //静态文件地址
-define('STATIC_ASSETS',     '/2018/l462/songzan'. '/assets/');
+define('STATIC_ASSETS',     '/2018/l462/share'. '/assets/');
 
 //define('STATIC_DOMAIN',     'http://pic.xyzs.com/');
 
@@ -73,12 +73,6 @@ if( !defined('XY_ENVIRONMENT') ) {
     define( 'XY_ENVIRONMENT' , $enviroment);
     //define( 'ZEPPELIN_URL' , $ZEPPELIN_URL);
     unset($enviroment);
-}
-
-$redirect_uri = 'http://'.SERVER_NAME.'/dev/Publics/jump';
-if( !defined('REDIRECT_URL') ) {
-    define( 'REDIRECT_URL' , $redirect_uri);
-    unset($redirect_uri);
 }
 
 $uid = $ret = isset($_COOKIE['admin_user_id']) ? $_COOKIE['admin_user_id'] : null;;
