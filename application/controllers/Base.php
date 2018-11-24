@@ -28,12 +28,19 @@ class Base extends Common
         parent::__construct();
         #载入后台权限操作相关(管理员 菜单 角色)
         $this->Users           = new \Xy\Application\Models\UserModel();
-	//set_cookie('openId', '');exit;
+
+        if(is_weixin()){
+            echo "这是微信内部浏览器";
+        }else {
+            echo "这是微信外部浏览器";
+        }
+        exit;
+	    //set_cookie('openId', '');exit;
        // set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
         //配置模板路径
         $this->_more_view_path = PROJECT_NAME;
         $controller = ucfirst($this->router->fetch_class());
-	set_cookie('source', $source);
+	    set_cookie('source', $source);
         if($controller != 'Publics' && $controller != 'Article') {
            $res = $this->isLogin();
         }
