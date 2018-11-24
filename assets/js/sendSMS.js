@@ -23,7 +23,7 @@ function sms_times(){
 
 $(document).ready(function(){
     $('._sms_verify').click(function () {
-        var _iphone      = $.trim($('input[name=iphone]').val());
+        var _iphone      = $.trim($('input[name=phone]').val());
         if(_is_sms == true || _times == 60){
             _is_sms = true;
             var _data = {};
