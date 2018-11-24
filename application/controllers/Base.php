@@ -32,10 +32,13 @@ class Base extends Common
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
         if(is_weixin()){
             $this->_data['browser'] = 1; //微信浏览器
+            $controller = ucfirst($this->router->fetch_class());
+            if($controller != 'Publics') {
+                $this->isLogin();
+            }
         }else {
             $this->_data['browser'] = 2; //其他浏览器
         }
-
         /**
         //配置模板路径
         $this->_more_view_path = PROJECT_NAME;
@@ -59,7 +62,7 @@ class Base extends Common
     {
         $openid = get_cookie('openId');
         $res = $this->Users->getUserInfoByOpId($openid);
-        if(!$openid || !$res ) {
+        if($openid && $res) {
             $this->get_openid();
         }
         return $res;

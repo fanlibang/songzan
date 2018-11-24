@@ -23,9 +23,8 @@ class User extends Base
 
     public function referee(){
         $info = $this->input->request(null, true);
-        $uid = $info['uid'];
         if (is_ajax_post()) {
-            $data['username'] = $info['username'];
+            $data['name'] = $info['name'];
             $data['iphone'] = $info['iphone'];
             $data['sex'] = $info['sex'];
             $data['city'] = $info['city'];
