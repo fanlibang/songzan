@@ -102,10 +102,9 @@ class Invite extends Base
      */
     public function info()
     {
-
         $result = $this->isLogin();
         if (!$result) {
-            $url = site_url('invite', 'index');
+            $url = site_url('Invite', 'index');
             header('Location:' . $url);
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
