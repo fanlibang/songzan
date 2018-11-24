@@ -24,7 +24,7 @@ class User extends Base
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
             if($info['code'] != get_cookie('code')) {
-                $this->AjaxReturn('202','验证码不正确');
+                $this->AjaxReturn('202','验证码不正确'); exit;
             }
             $res = $this->Users->getUserInfoByPhone($info['iphone']);
             if($res) {
