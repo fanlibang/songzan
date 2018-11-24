@@ -21,7 +21,7 @@
                     <div class="form-box">
                         <input type="text" class="input-text">
                     </div>
-                    <input type="button" value="发送验证码" id="code" name="code" class="sendbtn _sms_verify">
+                    <input type="button" value="" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
                 <div class="form-list flex center ">
                     <label>行驶证：</label>
