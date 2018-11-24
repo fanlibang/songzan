@@ -30,7 +30,7 @@ class User extends Base
             $token = rand_str(32);
             if($res) {
                 set_cookie('token', $token);
-                $url = site_url('User', 'center');#Todo
+                $url = site_url('User', 'center');
                 header('Location:'.$url);
             }
             $openid = get_cookie('openId');
@@ -43,7 +43,6 @@ class User extends Base
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
-            echo 111;exit;
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
             //$data = $this->Users->getUserInfoByOpId($this->_data['openId']);
