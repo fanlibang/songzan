@@ -62,11 +62,18 @@ class Base extends Common
     public function isLogin()
     {
         $openid = get_cookie('openId');
-        $res = $this->UserWx->getUserInfoByOpId($openid);
-        if($openid && $res) {
-            $this->get_openid();
+
+        if(!$openid) {
+            $res = $this->UserWx->getWxInfoByOpId($openid);
+            if($openid) {
+                $openid = $res['open_id'];
+                set_cookie('openId', $openid);
+            } else {
+                $this->get_openid();
+            }
+
         }
-        return $res;
+        return true;
     }
 
 

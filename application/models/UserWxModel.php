@@ -18,44 +18,23 @@ class UserWxModel extends BaseModel
         $this->_db_obj          = new \Xy\Application\Models\DB\UserWxDB();
     }
 
-    public function getUserInfoByOpId($openId)
+    public function getWxInfoByOpId($openId)
     {
         $where['openId'] = $openId;
         $ret = $this->getOne($where);
         return $ret;
     }
 
-    public function getUserInfoByUid($uId)
-    {
-        $where['uid'] = $uId;
-        $ret = $this->getOne($where);
-        return $ret;
-    }
-
-    public function addUserOpenId($data)
+    public function addWxInfo($data)
     {
         $ret = $this->add($data);
         return $ret;
     }
 
-    public function editUserOpenId($openId, $data)
+    public function editWxInfo($openId, $data)
     {
         $where['openId'] = $openId;
         $ret = $this->edit($data, $where);
-        return $ret;
-    }
-
-    public function editUserUid($uid, $data)
-    {
-        $where['uid'] = $uid;
-        $ret = $this->edit($data, $where);
-        return $ret;
-    }
-
-    public function getUserInfoByPhone($phone)
-    {
-        $where['iphone'] = $phone;
-        $ret = $this->getOne($where);
         return $ret;
     }
 }
