@@ -187,7 +187,7 @@
             var code = $('select[name=dealer] option:selected').val()
             var name = $('select[name=dealer] option:selected').text()
 
-            alert('省份:' + pro + '，城市:' + city + '，名称:' + name + '，代码:' + code)
+            alert('省份:' + pro + '，城市:' + city + '，名称:' + name + '，代码:' + _sms_verify)
         })
     });
 
