@@ -40,7 +40,7 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><?=$invite_code; ?></span>
+                        <span><?=$from_invite_code; ?></span>
                     </div>
                 </div>
             </div>
