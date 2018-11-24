@@ -59,15 +59,11 @@ class User extends Base
     }
 
     public function center(){
-        $info = $this->input->request(null, true);
-
-        $data = $this->Users->getUserInfoByOpId($this->_data['openId']);
-        if($data['status'] == 1 || !$data) {
-            redirect(site_url('User', 'register', array('type'=> $info['type'])));
+        if(!$this->isLogin()) {
+            $url = site_url('User', 'referee');
+            header('Location:'.$url);
         }
-        $data['wx_info'] = json_decode($data['wx_info'],true);
-        $data['nickname'] = $data['wx_info']['nickname'];
-        $data['type'] = $info['type'];
+        $data = $this->isLogin();
         $this->displayMain($data);
     }
 }
