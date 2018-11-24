@@ -2,7 +2,7 @@
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 ">
         <div>
-            <div class="form-tit ta-c"><img src="<?= STATIC_ASSETS ?>images/tit-1.png" alt=""></div>
+            <div class="form-tit ta-c"><img src="<?= STATIC_ASSETS ?>images/tit-2.png" alt=""></div>
             <div class="form auto">
                 <div class="form-list flex center">
                     <label>*姓名：</label>
@@ -23,21 +23,21 @@
                     </div>
                     <input type="button" value="发送验证码" class="sendbtn">
                 </div>
-                <div class="form-list flex center ">
-                    <label>行驶证：</label>
+                <div class="form-list flex center opt">
+                    <label>意向车型：</label>
                     <div class="form-box">
                         <span></span>
-                        <input type="text" class="input-text">
+                        <select>
+                            <option>意向车型</option>
+                            <option>意向车型12</option>
+                        </select>
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""></i>
                 </div>
-                <div class="form-list flex center ">
-                    <label>身份证：</label>
+                <div class="form-list flex center disabled">
+                    <label>*推荐码：</label>
                     <div class="form-box">
-                        <span></span>
-                        <input type="text" class="input-text">
+                        <input type="text" name="invite_code" class="input-text ta-r" value="<?php echo $invite_code; ?>" disabled="disabled">
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="<?php $invite_code;?>"></i>
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox active">
