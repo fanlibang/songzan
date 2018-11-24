@@ -77,7 +77,7 @@
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
-                data:{name:name, iphone: iphone, code:code, driver_number:driver_number, card_number:card_number}
+                data:{name:name, iphone: iphone, code:code, driver_number:driver_number, card_number:card_number},
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
