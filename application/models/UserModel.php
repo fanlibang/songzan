@@ -25,9 +25,9 @@ class UserModel extends BaseModel
         return $ret;
     }
 
-    public function getUserInfoByUid($uId)
+    public function getUserInfoByid($id)
     {
-        $where['uid'] = $uId;
+        $where['id'] = $id;
         $ret = $this->getOne($where);
         return $ret;
     }
@@ -45,16 +45,16 @@ class UserModel extends BaseModel
         return $ret;
     }
 
-    public function editUserUid($uid, $data)
+    public function editUserUid($id, $data)
     {
-        $where['uid'] = $uid;
+        $where['id'] = $id;
         $ret = $this->edit($data, $where);
         return $ret;
     }
 
     public function getUserInfoByPhone($phone)
     {
-        $where['iphone'] = $phone;
+        $where['phone'] = $phone;
         $ret = $this->getOne($where);
         return $ret;
     }
