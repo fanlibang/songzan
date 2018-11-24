@@ -9,7 +9,7 @@ namespace Xy\Application\Models\DB;
 
 class UserDB extends BaseDB
 {
-    public $_table_obj = 'l462_18songzan_user';
+    public $_table_obj = 'ownerreferral_201812_user';
     /**
      * 初始化
      */
