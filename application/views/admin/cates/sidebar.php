@@ -1,0 +1,1 @@
+<?php echo cate_sidebar_show($cate_arr);

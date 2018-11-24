@@ -1,0 +1,41 @@
+﻿
+接口1
+
+请求url : http://d.kingnet.com/data/evaluate/get_no_evaluation_list
+接收参数说明
+
+字段					类型 					说明
+
+evaluation_id			varchar(50)					评测ID
+app_name 			varchar(50) 					游戏名称
+app_size 			int(11)                 			包体大小
+developers  			varchar(50)   					开发商
+game_cate			varchar(50)					游戏类型
+download_url			varchar(200)					下载地址
+
+返回例子:
+	{"status":1,"msg":"\u4f20\u5165\u53c2\u6570\u6709\u8bef!!","data":[]}
+
+	status等于0表示成功，非0表示失败
+	msg 返回的提示消息
+	data  封装的数据
+
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+请求url : http://dev2.xyzs.com/dev/app/getEvaluationList
+接收参数说明
+
+字段					类型 					说明
+
+evaluation_id			varchar(50)					评测ID
+level				char(5)						评级
+result_url			varchar(50)   					报告地址
+
+
+返回例子:
+	{"statusCode":300,"code":300,"msg":"\u8bf7\u6c42\u5931\u8d25","message":"\u8bf7\u6c42\u5931\u8d25","flag":null,"controller":"app","method":"getEvaluationList"}
+
+	statusCode等于200表示成功，非3000表示失败
+	msg 返回的提示消息
+	data  封装的数据
+
