@@ -15,7 +15,7 @@ class UserWxModel extends BaseModel
     public function __construct()
     {
         parent::__construct();
-        $this->_db_obj          = new \Xy\Application\Models\DB\UserDB();
+        $this->_db_obj          = new \Xy\Application\Models\DB\UserWxDB();
     }
 
     public function getUserInfoByOpId($openId)

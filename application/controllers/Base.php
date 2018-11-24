@@ -28,6 +28,7 @@ class Base extends Common
         parent::__construct();
         #载入后台权限操作相关(管理员 菜单 角色)
         $this->Users           = new \Xy\Application\Models\UserModel();
+        $this->UserWx          = new \Xy\Application\Models\UserWxModel();
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
         if(is_weixin()){
@@ -61,7 +62,7 @@ class Base extends Common
     public function isLogin()
     {
         $openid = get_cookie('openId');
-        $res = $this->Users->getUserInfoByOpId($openid);
+        $res = $this->UserWx->getUserInfoByOpId($openid);
         if($openid && $res) {
             $this->get_openid();
         }
