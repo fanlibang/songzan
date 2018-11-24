@@ -43,7 +43,7 @@ define('IS_DEBUG',          (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 
 
 define('OPEN_XHPROF',       function_exists('xhprof_enable') ? true : false);
 //静态文件地址
-define('STATIC_ASSETS',     '/2018/l462/share'. '/assets/');
+define('STATIC_ASSETS',     '/2018/l462/ownerreferral'. '/assets/');
 
 //define('STATIC_DOMAIN',     'http://pic.xyzs.com/');
 
