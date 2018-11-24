@@ -25,9 +25,9 @@ class Invite extends Base
      */
     public function index()
     {
-        $url = site_url('invite', 'info');
-        $result =$this->isLogin();
-        if ($result) header('Location:'.$url);
+        $url = site_url('Invite', 'info');
+        $result = $this->isLogin();
+        if ($result) header('Location:' . $url);
         $info = $this->input->request(null, true);
         $inviteCode = $info['invite_code'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
@@ -35,7 +35,8 @@ class Invite extends Base
             $code = $info['code'];
             $data['phone'] = $info['phone'];
             if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $data['phone'])) {
-                $this->AjaxReturn('403', '电话号码格式不正确');exit;
+                $this->AjaxReturn('403', '电话号码格式不正确');
+                exit;
             }
             $data['name'] = $info['name'];
             $data['from_invite_code'] = $info['invite_code'];
@@ -43,18 +44,25 @@ class Invite extends Base
             $data['created_at'] = NOW_DATE_TIME;
             $masterUserInfo = $this->Users->getUserInviteCode($inviteCode);
             if (empty($masterUserInfo)) {
-                $this->AjaxReturn('401', '邀请人不存在');exit;
+                $this->AjaxReturn('401', '邀请人不存在');
+                exit;
+            }
+            if ($code != get_cookie('code')) {
+                $this->AjaxReturn('202', '验证码不正确');
+                exit;
             }
             $data['master_uid'] = $masterUserInfo['id'];
 
             $havePhoneInfo = $this->Users->getUserInfoByPhone($data['phone']);
             if (!empty($havePhoneInfo)) {
                 set_cookie('token', $havePhoneInfo['token']);
-                $this->AjaxReturn('200', '成功', $url);exit;
+                $this->AjaxReturn('200', '成功', $url);
+                exit;
             }
             $ret = verify_count($data['name'], 10);
             if (!$ret) {
-                $this->AjaxReturn('202', '用户名长度应小于五');exit;
+                $this->AjaxReturn('202', '用户名长度应小于五');
+                exit;
             }
             $openId = get_cookie('openId');
             $data['open_id'] = isset($openId) ? $openId : '';
@@ -77,7 +85,8 @@ class Invite extends Base
             ];
             $push = new ReportModel();
             $push->reportOwner($tempData, $info['merchants']);
-            $this->AjaxReturn('200', '成功', $url);exit;
+            $this->AjaxReturn('200', '成功', $url);
+            exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();
         $data['invite_code'] = $inviteCode;
@@ -90,10 +99,10 @@ class Invite extends Base
     public function info()
     {
 
-        $result =$this->isLogin();
+        $result = $this->isLogin();
         if (!$result) {
             $url = site_url('invite', 'index');
-            header('Location:'.$url);
+            header('Location:' . $url);
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
