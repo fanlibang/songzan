@@ -31,14 +31,17 @@ class Base extends Common
         $this->UserWx          = new \Xy\Application\Models\UserWxModel();
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
-        if(is_weixin()){
-            $this->_data['browser'] = 1; //微信浏览器
-            $controller = ucfirst($this->router->fetch_class());
-            if($controller != 'Publics') {
-                $this->isLogin();
+
+        if(!$this->isLogin()) {
+            if(is_weixin()){
+                    $this->_data['browser'] = 1; //微信浏览器
+                    $controller = ucfirst($this->router->fetch_class());
+                    if($controller != 'Publics') {
+                        $this->isOpenid();
+                    }
+            }else {
+                $this->_data['browser'] = 2; //其他浏览器
             }
-        }else {
-            $this->_data['browser'] = 2; //其他浏览器
         }
         /**
         //配置模板路径
@@ -58,20 +61,32 @@ class Base extends Common
 
     /**
      * 判断是否在无权限访问
-     */
+    */
     public function isLogin()
     {
+        $token = get_cookie('token');
+        if(!$token) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 判断是否在无权限访问
+     */
+    public function isOpenid()
+    {
         $openid = get_cookie('openId');
-
         if(!$openid) {
-            $res = $this->UserWx->getWxInfoByOpId($openid);
-            if($openid) {
-                $openid = $res['open_id'];
-                set_cookie('openId', $openid);
-            } else {
-                $this->get_openid();
+            $this->get_openid();
+        } else {
+            $res = $this->Users->getUserInfoByOpId($openid);
+            if($res) {
+                $token = $res['token'];
+                set_cookie('token', $token);
+                $url = site_url('User', '');#Todo
+                header('Location:'.$url);
             }
-
         }
         return true;
     }

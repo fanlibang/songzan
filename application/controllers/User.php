@@ -24,9 +24,21 @@ class User extends Base
     public function referee(){
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
+            if($info['code'] != get_cookie('code')) {
+                $this->AjaxReturn('202','验证码不正确');
+            }
+            $res = $this->Users->getUserInfoByPhone($info['iphone']);
+            if($res) {
+                $token = '';
+                set_cookie('token', $token);
+                $url = site_url('User', '');#Todo
+                header('Location:'.$url);
+            }
+            $openid = get_cookie('openId');
+            $open_id = isset($openid) ? $openid : '';
             $data['name'] = $info['name'];
             $data['iphone'] = $info['iphone'];
-            $data['sex'] = $info['sex'];
+            $data['open_id'] = $open_id;
             $data['city'] = $info['city'];
             $data['opinion'] = $info['opinion'];
             $data['others'] = $info['others'];
@@ -61,11 +73,15 @@ class User extends Base
 
     public function feedback(){
         $info = $this->input->request(null, true);
-        $uid = $info['uid'];
         if (is_ajax_post()) {
-            $data['username'] = $info['username'];
+            $open_id =
+            $data['name'] = $info['name'];
+            $data['phone'] = $info['phone'];
+            $data['code'] = $info['code'];
+            $data['driver_number'] = $info['driver_number'];
             $data['iphone'] = $info['iphone'];
-            $data['sex'] = $info['sex'];
+            $data['iphone'] = $info['iphone'];
+            $data['open_id'] = $open_id;
             $data['city'] = $info['city'];
             $data['opinion'] = $info['opinion'];
             $data['others'] = $info['others'];

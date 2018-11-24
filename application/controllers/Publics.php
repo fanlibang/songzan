@@ -44,15 +44,19 @@ class Publics extends Base {
         $user_Info = json_encode($userInfo);
         //输出openid
         if (!empty($openid)) {
-            $url = site_url('Index', 'index');
-            set_cookie('openId', $openid);
-            $data = [
-                'open_id'   => $openid,
-                'nick_name' => $user_Info['nickname'],
-                'avatar'    => $userInfo['headimgurl'],
-                'create_dt' => NOW_DATE_TIME,
-            ];
-            $this->Users->addUserOpenId($data);
+            $res = $this->UserWx->getWxInfoByOpId($openid);
+            if($res) {
+                set_cookie('openId', $res['open_id']);
+            } else {
+                $url = site_url('Index', 'index');
+                $data = [
+                    'open_id'   => $openid,
+                    'nick_name' => $user_Info['nickname'],
+                    'avatar'    => $userInfo['headimgurl'],
+                    'create_dt' => NOW_DATE_TIME,
+                ];
+                $this->Users->addUserOpenId($data);
+            }
             header('Location:'.$url);
         }
     }

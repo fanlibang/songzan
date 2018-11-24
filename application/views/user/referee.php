@@ -35,7 +35,7 @@
                     <label>身份证：</label>
                     <div class="form-box">
                         <span></span>
-                        <input type="text" class="input-text">
+                        <input type="text" id="card_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="<?php $invite_code;?>"></i>
                 </div>
