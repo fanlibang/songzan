@@ -37,8 +37,8 @@ class User extends Base
             $this->feedBack->addUserInfo($data);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
-            $data = $this->Users->getUserInfoByOpId($this->_data['openId']);
-            $this->displayMain($data);
+            //$data = $this->Users->getUserInfoByOpId($this->_data['openId']);
+            $this->displayMain();
         }
     }
 
