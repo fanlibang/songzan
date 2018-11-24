@@ -48,12 +48,16 @@ class Invite extends Base
                 exit;
             }
             if ($code != get_cookie('code')) {
-                $this->AjaxReturn('202', '验证码不正确');
+                $this->AjaxReturn('402', '验证码不正确');
                 exit;
             }
             $data['master_uid'] = $masterUserInfo['id'];
 
             $havePhoneInfo = $this->Users->getUserInfoByPhone($data['phone']);
+            if ($havePhoneInfo['invite_code'] == $inviteCode) {
+                $this->AjaxReturn('403', '自己不能直接邀请自己');
+                exit;
+            }
             if (!empty($havePhoneInfo)) {
                 set_cookie('token', $havePhoneInfo['token']);
                 $this->AjaxReturn('200', '成功', $url);
