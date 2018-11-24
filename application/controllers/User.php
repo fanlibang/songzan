@@ -26,9 +26,9 @@ class User extends Base
             if($info['code'] != get_cookie('code')) {
                 $this->AjaxReturn('202','验证码不正确');
             }
-            $res = $this->Users->getUserInfoByPhone($info['iphone']);
+            $res = $this->Users->getUserInfoByPhone($info['phone']);
+            $token = rand_str(32);
             if($res) {
-                $token = rand_str(32);
                 set_cookie('token', $token);
                 $url = site_url('User', 'center');#Todo
                 header('Location:'.$url);

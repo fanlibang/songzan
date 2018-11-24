@@ -20,7 +20,7 @@ class UserModel extends BaseModel
 
     public function getUserInfoByOpId($openId)
     {
-        $where['openId'] = $openId;
+        $where['open_id'] = $openId;
         $ret = $this->getOne($where);
         return $ret;
     }
