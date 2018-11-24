@@ -11,19 +11,19 @@
                 <div class="form-list flex center">
                     <label>姓名：</label>
                     <div class="form-box">
-                        <div class="input-text" >Taylor Swift</div>
+                        <div class="input-text" ><?= $name; ?></div>
                     </div>
                 </div>
                 <div class="form-list flex center">
                     <label>手机号：</label>
                     <div class="form-box">
-                        <div class="input-text" >15021438537</div>
+                        <div class="input-text" ><?= $phone; ?></div>
                     </div>
                 </div>
                 <div class="form-list flex center opt no-border">
                     <label>意向车型：</label>
                     <div class="form-box">
-                        <span>车型111</span>
+                        <span><?=$car_info['name']; ?></span>
                     </div>
                 </div>
                 <div class="referee-tit flex center justify">
@@ -38,7 +38,7 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span>273385</span>
+                        <span><?=$invite_code; ?></span>
                     </div>
                 </div>
             </div>

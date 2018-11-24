@@ -25,8 +25,10 @@ class Invite extends Base
      */
     public function index()
     {
-        if ($this->isLogin()) {
-            # Todo 跳个人中心
+        $result =$this->isLogin();
+        if ($result) {
+            $url = site_url('invite', 'info');
+            header('Location:'.$url);
         }
         $info = $this->input->request(null, true);
         $data['invite_code'] = $info['invite_code'];
@@ -88,7 +90,6 @@ class Invite extends Base
         }
         $data['car_record'] = $carInfo->getAllCarInfo();
         $this->displayMain($data);
-
     }
 
     /**
@@ -96,6 +97,13 @@ class Invite extends Base
      */
     public function info()
     {
-        $this->displayMain();
+        $result =$this->isLogin();
+        if (!$result) {
+            $url = site_url('invite', 'index');
+            header('Location:'.$url);
+        }
+        $carInfo = new \Xy\Application\Models\CarInfoModel();
+        $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
+        $this->displayMain($result);
     }
 }
