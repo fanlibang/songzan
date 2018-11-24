@@ -40,7 +40,7 @@ class User extends Base
             $data['open_id'] = $open_id;
             $data['driver_number'] = $info['driver_number'];
             $data['card_number'] = $info['card_number'];
-            $data['create_dt'] = NOW_DATE_TIME;
+            $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
