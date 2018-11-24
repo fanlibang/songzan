@@ -65,10 +65,13 @@ class Base extends Common
     public function isLogin()
     {
         $token = get_cookie('token');
-        if(!$token) {
-            return false;
+        if($token) {
+            $userInfo = $this->Users->getUserToken($token);
+            if (!empty($userInfo)) {
+                return $userInfo;
+            }
         }
-        return true;
+        return false;
     }
 
     /**

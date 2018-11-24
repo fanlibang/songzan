@@ -40,7 +40,7 @@ class UserModel extends BaseModel
 
     public function editUserOpenId($openId, $data)
     {
-        $where['openId'] = $openId;
+        $where['open_id'] = $openId;
         $ret = $this->edit($data, $where);
         return $ret;
     }
@@ -62,6 +62,13 @@ class UserModel extends BaseModel
     public function getUserInviteCode($inviteCode)
     {
         $where['invite_code'] = $inviteCode;
+        $ret = $this->getOne($where);
+        return $ret;
+    }
+
+    public function getUserToken($token)
+    {
+        $where['token'] = $token;
         $ret = $this->getOne($where);
         return $ret;
     }
