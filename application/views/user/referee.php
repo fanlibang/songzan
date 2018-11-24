@@ -23,19 +23,19 @@
                     </div>
                     <input type="button" value="发送验证码" class="sendbtn">
                 </div>
-                <div class="form-list flex center file">
+                <div class="form-list flex center ">
                     <label>行驶证：</label>
                     <div class="form-box">
                         <span></span>
-                        <input type="file" class="input-text">
+                        <input type="text" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""></i>
                 </div>
-                <div class="form-list flex center file">
+                <div class="form-list flex center ">
                     <label>身份证：</label>
                     <div class="form-box">
                         <span></span>
-                        <input type="file" class="input-text">
+                        <input type="text" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""></i>
                 </div>
