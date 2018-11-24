@@ -48,12 +48,12 @@ class User extends Base
             $data['card_number'] = $info['card_number'];
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
-            $result = $this->Users->addUserOpenId($data);
-            $inviteCode = paserInviteCode($result['id']);
+            $uid = $this->Users->addUserOpenId($data);
+            $inviteCode = paserInviteCode($uid);
             $url = site_url('Invite', 'index', array('invite_code' => $inviteCode));
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.k780.com:88/?app=qr.get&data=$url";
-            $this->Users->editUserUid($result['id'], $update);
+            $this->Users->editUserUid($uid, $update);
             set_cookie('token', $token);
             $this->AjaxReturn('200', '成功', site_url('User', 'center'));
         } else {

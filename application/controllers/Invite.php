@@ -61,11 +61,11 @@ class Invite extends Base
             $token = rand_str(32);
             $data['token'] = $token;
             set_cookie('token', $token);
-            $result = $this->Users->addUserOpenId($data);
+            $uid = $this->Users->addUserOpenId($data);
 
             $carInfo = $carInfo->getCarInfoByid($data['car_id']);
             $tempData = [
-                'kmi_id'                => $result['id'],
+                'kmi_id'                => $uid,
                 'name'                  => $info['name'],
                 'mobile'                => $info['phone'],
                 'model_id'              => $carInfo['cid'],
