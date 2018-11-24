@@ -7,13 +7,13 @@
                 <div class="form-list flex center">
                     <label>*姓名：</label>
                     <div class="form-box">
-                        <input type="text" class="input-text">
+                        <input type="text" id="name" value="" class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">
                     <label>*手机号：</label>
                     <div class="form-box">
-                        <input type="tel" class="input-text">
+                        <input type="tel" name="phone" id="phone" value="" class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">
@@ -27,7 +27,7 @@
                     <label>行驶证：</label>
                     <div class="form-box">
                         <span></span>
-                        <input type="text" class="input-text">
+                        <input type="text" id="driver_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""></i>
                 </div>
@@ -46,10 +46,49 @@
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
-                    <input type="button" value="提     交" class="btn auto">
+                    <input type="button" value="提     交" class="btn auto" id="sub">
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#sub').click(function(){
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var code = $('#code').val();
+            var driver_number = $('#driver_number').val();
+            var card_number = $('#card_number').val();
+            var succ = $('.form-checkbox.active').text();
+            console.log(car_id, car_code, merchants);
+            if(phone == '') {
+                alert('手机号不能为空'); return false;
+            } else if(code == '') {
+                alert('验证码不能为空');
+                return false;
+            } else if(name == '') {
+                alert('用户名不能为空');
+                return false;
+            } else if(succ == '') {
+                alert('请选择隐私政策'); return false;
+            }
+            $.ajax({
+                type:'post',
+                url:'<?php echo site_url('User', 'referee'); ?>',
+                data:{name:name, iphone: iphone, code:code, driver_number:driver_number, card_number:card_number}
+                dataType:'json',
+                success:function(json){
+                    if(json.code == 200){
+                        alert(json.msg);
+                        window.location.href=json.forward;
+                    } else {
+                        alert(json.msg);
+                    }
+                },
+                error:function(){}
+            });
+        });
+    });
+</script>
