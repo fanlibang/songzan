@@ -45,6 +45,13 @@ class UserModel extends BaseModel
         return $ret;
     }
 
+    public function editUserId($id, $data)
+    {
+        $where['id'] = $id;
+        $ret = $this->edit($data, $where);
+        return $ret;
+    }
+
     public function editUserUid($id, $data)
     {
         $where['id'] = $id;

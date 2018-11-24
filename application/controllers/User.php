@@ -28,13 +28,16 @@ class User extends Base
             }
             $res = $this->Users->getUserInfoByPhone($info['phone']);
             $token = rand_str(32);
+            $openid = get_cookie('openId');
+            $open_id = isset($openid) ? $openid : '';
             if($res) {
+                if(is_weixin() && empty($res['open_id'])){
+                    $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
+                }
                 set_cookie('token', $token);
                 $url = site_url('User', 'center');
                 header('Location:'.$url);
             }
-            $openid = get_cookie('openId');
-            $open_id = isset($openid) ? $openid : '';
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
             $data['open_id'] = $open_id;
@@ -43,6 +46,7 @@ class User extends Base
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
+            set_cookie('token', $token);
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
             if($this->isLogin()) {
