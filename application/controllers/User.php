@@ -24,7 +24,7 @@ class User extends Base
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
             if($info['code'] != get_cookie('code')) {
-                $this->AjaxReturn('202','验证码不正确');
+                $this->AjaxReturn('202','验证码不正确'); exit;
             }
             $res = $this->Users->getUserInfoByPhone($info['phone']);
             $token = rand_str(32);
@@ -43,6 +43,7 @@ class User extends Base
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
+            echo 111;exit;
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
             //$data = $this->Users->getUserInfoByOpId($this->_data['openId']);
