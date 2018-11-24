@@ -44,6 +44,8 @@ class User extends Base
             $data['driver_number'] = $info['driver_number'];
             $data['card_number'] = $info['card_number'];
             $data['token'] = $token;
+            $url = site_url('Invite', 'index', array('invite_code' => 123123));
+            $data['qr_code_img'] = "http://api.k780.com:88/?app=qr.get&data=$url";
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
             set_cookie('token', $token);
