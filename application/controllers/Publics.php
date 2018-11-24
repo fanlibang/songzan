@@ -22,46 +22,37 @@ class Publics extends Base {
 
     public function jump()
     {
-	$appid  = APPID;
+	    $appid  = APPID;
         $secret = SECRET;
         $code = $_GET['code'];//获取code 
         $type = isset($_GET['type']) ? $_GET['type'] : false;//获取code
 	
-	//获取参数
+	    //获取参数
         $weixin = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code");
 
         //通过code换取网页授权access_token
         $jsondecode = json_decode($weixin);
         //对JSON格式的字符串进行编码
         $array = get_object_vars($jsondecode);
-	//var_dump($array);exit;
+	    //var_dump($array);exit;
 
-	$openid = $array['openid'];
-	$access_token = $array['access_token'];
+	    $openid = $array['openid'];
+	    $access_token = $array['access_token'];
 	
-	$get_user_info_url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$openid&lang=zh_CN";
+	    $get_user_info_url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$openid&lang=zh_CN";
         $userInfo = getJson($get_user_info_url);
         $user_Info = json_encode($userInfo);
         //输出openid
         if (!empty($openid)) {
             $url = site_url('Index', 'index');
             set_cookie('openId', $openid);
-            $res = $this->Users->getUserInfoByOpId($openid);
-            if(!$res) {
-                $data = [
-                    'openId' => $openid,
-                    'avatar' => $userInfo['headimgurl'],
-                    'wx_info' => $user_Info,
-                    'code' => rand_str(6),
-                    'create_dt' => NOW_DATE_TIME,
-                ];
-                $this->Users->addUserOpenId($data);
-            } elseif($res['status'] == 2) {
-                $url = site_url('User', 'center');
-            }
-            if($type) {
-                $url = site_url('Article', 'index', array('id' => $type));
-            }
+            $data = [
+                'open_id'   => $openid,
+                'nick_name' => $user_Info['nickname'],
+                'avatar'    => $userInfo['headimgurl'],
+                'create_dt' => NOW_DATE_TIME,
+            ];
+            $this->Users->addUserOpenId($data);
             header('Location:'.$url);
         }
     }
