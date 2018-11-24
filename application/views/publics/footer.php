@@ -1,4 +1,3 @@
-</html>
 </body>
 <script type="text/javascript">
     function cc(str){
@@ -9,3 +8,4 @@
 
     }
 </script>
+</html>
