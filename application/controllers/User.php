@@ -23,6 +23,7 @@ class User extends Base
 
     public function referee()
     {
+        $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
             if ($info['code'] != get_cookie('code')) {
@@ -38,8 +39,7 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
-                $url = site_url('User', 'center');
-                header('Location:' . $url);
+                $this->AjaxReturn('200', '成功', $url);exit;
             }
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
@@ -55,7 +55,7 @@ class User extends Base
             $update['qr_code_img'] = "http://api.k780.com:88/?app=qr.get&data=$url";
             $this->Users->editUserUid($uid, $update);
             set_cookie('token', $token);
-            $this->AjaxReturn('200', '成功', site_url('User', 'center'));
+            $this->AjaxReturn('200', '成功', $url);exit;
         } else {
             if ($this->isLogin()) {
                 $url = site_url('User', 'center');

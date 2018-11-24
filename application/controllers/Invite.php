@@ -32,6 +32,8 @@ class Invite extends Base
         $inviteCode = $info['invite_code'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         if (is_ajax_post()) {
+            $openId = get_cookie('openId');
+            $data['open_id'] = isset($openId) ? $openId : '';
             $code = $info['code'];
             $data['phone'] = $info['phone'];
             if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $data['phone'])) {
@@ -59,6 +61,9 @@ class Invite extends Base
                 exit;
             }
             if (!empty($havePhoneInfo)) {
+                if (is_weixin() && empty($havePhoneInfo['open_id']) && !empty($data['open_id'])) {
+                    $this->Users->editUserId($havePhoneInfo['id'], ['open_id' => $data['open_id']]);
+                }
                 set_cookie('token', $havePhoneInfo['token']);
                 $this->AjaxReturn('200', '成功', $url);
                 exit;
@@ -68,8 +73,6 @@ class Invite extends Base
                 $this->AjaxReturn('202', '用户名长度应小于五');
                 exit;
             }
-            $openId = get_cookie('openId');
-            $data['open_id'] = isset($openId) ? $openId : '';
             $token = rand_str(32);
             $data['token'] = $token;
             set_cookie('token', $token);
