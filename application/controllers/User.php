@@ -43,6 +43,7 @@ class User extends Base
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $this->Users->addUserOpenId($data);
+            echo 111;exit;
             $this->AjaxReturn('200','成功',site_url('User', 'center'));
         } else {
             //$data = $this->Users->getUserInfoByOpId($this->_data['openId']);
