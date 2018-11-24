@@ -21,10 +21,25 @@ class User extends Base
         $this->displayMain($data);
     }
 
-    public function activity(){
+    public function referee(){
         $info = $this->input->request(null, true);
-        $data['type'] = $info['type'];
-        $this->displayMain($data);
+        $uid = $info['uid'];
+        if (is_ajax_post()) {
+            $data['username'] = $info['username'];
+            $data['iphone'] = $info['iphone'];
+            $data['sex'] = $info['sex'];
+            $data['city'] = $info['city'];
+            $data['opinion'] = $info['opinion'];
+            $data['others'] = $info['others'];
+            $data['textare'] = $info['textare'];
+            $data['uid'] = $info['uid'];
+            $data['create_dt'] = NOW_DATE_TIME;
+            $this->feedBack->addUserInfo($data);
+            $this->AjaxReturn('200','成功',site_url('User', 'center'));
+        } else {
+            $data = $this->Users->getUserInfoByOpId($this->_data['openId']);
+            $this->displayMain($data);
+        }
     }
 
     public function center(){
