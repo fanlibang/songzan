@@ -19,7 +19,7 @@
                 <div class="form-list flex center">
                     <label>*验证码：</label>
                     <div class="form-box">
-                        <input type="text" class="input-text">
+                        <input type="text" value="" id="verify" class="input-text">
                     </div>
                     <input type="button" value="" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
@@ -58,7 +58,7 @@
         $('#sub').click(function(){
             var name = $('#name').val();
             var phone = $('#phone').val();
-            var code = $('#code').val();
+            var code = $('#verify').val();
             var driver_number = $('#driver_number').val();
             var card_number = $('#card_number').val();
             var succ = $('.form-checkbox.active').text();
