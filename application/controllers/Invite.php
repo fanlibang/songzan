@@ -129,13 +129,13 @@ class Invite extends Base
 
         imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
 
-        $savePath = STATIC_ASSETS . time() . '_' . $data['id'] . '_share.jpg';
+        $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
         imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
 
         imagedestroy($bigImg);
         imagedestroy($qCodeImg);
 
-        $data['img_url'] = $savePath;
+        $data['img_url'] = HTTP_HOST . $savePath;
         $this->displayMain($data);
     }
 }
