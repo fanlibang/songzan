@@ -89,7 +89,7 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('APPID', 'wxf1f0fdca621f9f38'); //上线修改
 define('SECRET', '26d9bbf8f79be12280cada00a1353505'); //上线修改
 
-define('UPLOAD_FILE', '/upfile/2018/l462/songzan/');
+define('UPLOAD_FILE', '/upfile/2018/crm/ownerreferral/');
 define('WX_FILE', '/assets/wx/');
 
 define('ACTIVITY_ID', 'L462_Songzan_H5_Test'); //上线修改
