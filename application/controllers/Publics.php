@@ -98,18 +98,18 @@ class Publics extends Base {
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
-        echo $url;
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
+        $image = file_get_contents($url);
         if($type == 1) {
             $options = array();
             $options["detect_direction"] = "true";
-            $info = $client->idcard($url, 'front', $options);
+            $info = $client->idcard($image, 'front', $options);
         } else {
             // 如果有可选参数
             $options = array();
             $options["detect_direction"] = "true";
             // 带参数调用行驶证识别
-            $info = $client->vehicleLicense($url, $options);
+            $info = $client->vehicleLicense($image, $options);
         }
         $info = json_encode($info);
         echo $info;
