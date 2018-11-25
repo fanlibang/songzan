@@ -45,7 +45,9 @@ class User extends Base
             $data['phone'] = $info['phone'];
             $data['open_id'] = $open_id;
             $data['driver_number'] = $info['driver_number'];
+            $data['driver_json'] = $info['driver_json'];
             $data['card_number'] = $info['card_number'];
+            $data['card_json'] = $info['card_json'];
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $uid = $this->Users->addUserOpenId($data);

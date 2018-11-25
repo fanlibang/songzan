@@ -27,6 +27,7 @@
                     <label>行驶证：</label>
                     <div class="form-box">
                         <input type="text" id="driver_number" value="" class="input-text">
+                        <input type="hidden" id="driver_json" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
                         <form id="driver_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="driver_target" enctype="multipart/form-data">
@@ -38,6 +39,7 @@
                     <label>身份证：</label>
                     <div class="form-box">
                         <input type="text" id="card_number" value="" class="input-text">
+                        <input type="hidden" id="card_json" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
                         <form id="card_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="card_target" enctype="multipart/form-data">
@@ -67,8 +69,8 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-            $("#card_number").value(data.words_result.['公民身份号码'].words);
-            $("#card_json").value(data.words_result);
+            $("#card_number").values(data.words_result.['公民身份号码'].words);
+            $("#card_json").values(data.words_result);
         }
     });
 
@@ -77,8 +79,8 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-            $("#driver_number").value(data.words_result.['公民身份号码'].words);
-            $("#card_json").value(data.words_result);
+            $("#driver_number").values(data.words_result.['发动机号码'].words);
+            $("#driver_json").values(data.words_result);
         }
     });
 
@@ -96,7 +98,9 @@ $(document).ready(function(){
             var phone = $('#phone').val();
             var code = $('#verify').val();
             var driver_number = $('#driver_number').val();
+            var driver_json = $('#driver_json').val();
             var card_number = $('#card_number').val();
+            var card_json = $('#card_json').val();
             var succ = $('.form-checkbox.active').text();
             if(phone == '') {
                 alert('手机号不能为空'); return false;
@@ -112,7 +116,7 @@ $(document).ready(function(){
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
-                data:{name:name, phone: phone, code:code, driver_number:driver_number, card_number:card_number},
+                data:{name:name, phone: phone, code:code, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json },
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
