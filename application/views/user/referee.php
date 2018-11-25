@@ -74,9 +74,11 @@ $(document).ready(function(){
         }
     });
     $("#card_file").change(function(){
+        alert(1);
         if($("#card_file").val() != '') $("#card_form").submit();
     });
     $("#driver_file").change(function(){
+        alert(2);
         if($("#driver_file").val() != '') $("#driver_form").submit();
     });
 
