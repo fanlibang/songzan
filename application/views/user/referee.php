@@ -66,23 +66,21 @@ $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
         console.log(data);
-        if(data.error_code != 0) {
-            alert(data.error_code);
-        } else {
-            alert(data.words_result['公民身份号码'].words);
+        if(data.image_status == 'normal') {
             $("#card_number").values(data.words_result['公民身份号码'].words);
             $("#card_json").values(data.words_result);
+        } else {
+            alert(data.error_code);
         }
     });
 
     $("#driver_target").load(function(){
         var data = $(window.frames['driver_target'].document.body).html();
-        if(data.error_code != 0) {
-            alert(data.error_code);
-        } else {
-            alert(data.words_result['发动机号码'].words);
+        if(data.msg == success) {
             $("#driver_number").values(data.words_result['发动机号码'].words);
             $("#driver_json").values(data.words_result);
+        } else {
+            alert(data.error_code);
         }
     });
 
