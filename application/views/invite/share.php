@@ -1,12 +1,7 @@
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-2 flex center jc">
-        <div style="background-image: <?=$img_url?>;position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                opacity: 0;
-                z-index: 20;">
+        <div style="background-image: <?=$img_url?>;">
             <div class="gift-tit ta-c">
                 <div><img" src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
