@@ -67,7 +67,8 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-
+            $("#card_number").value(data.words_result.['公民身份号码'].words);
+            $("#card_json").value(data.words_result);
         }
     });
 
@@ -76,7 +77,8 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-
+            $("#driver_number").value(data.words_result.['公民身份号码'].words);
+            $("#card_json").value(data.words_result);
         }
     });
 
