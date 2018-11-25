@@ -67,11 +67,14 @@ $(document).ready(function(){
         var data = $(window.frames['card_target'].document.body).html();
         console.log(data);
         if(data != null){
-            if(data.image_status == 'normal') {
-                $("#card_number").values(data.words_result['公民身份号码'].words);
-                $("#card_json").values(data.words_result);
+            var dataObj=eval("("+data+")");//转换为json对象
+            if(dataObj.image_status == 'normal') {
+                $("#card_number").values(dataObj.words_result['公民身份号码'].words);
+                $("#card_json").values(dataObj.words_result);
+            } else if (dataObj.image_status != 'normal'){
+                alert(dataObj.image_status);
             } else {
-                alert(data.error_code);
+                alert(dataObj['error_code']);
             }
         }
     });
@@ -84,7 +87,6 @@ $(document).ready(function(){
                 $("#driver_number").values(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").values(dataObj.words_result);
             } else {
-                alert(1);
                 alert(dataObj['error_code']);
             }
         }
