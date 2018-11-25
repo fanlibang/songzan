@@ -29,7 +29,7 @@
                     <div class="form-box">
                         <input type="tel" id="verify" value="" class="input-text">
                     </div>
-                    <input type="button" value="发送验证码" id="code" name="code" class="sendbtn">
+                    <input type="button" value="发送验证码" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
                 <div class="form-push">
                     <input type="button" value="提     交" class="btn auto">
