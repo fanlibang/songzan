@@ -29,7 +29,7 @@
                         <input type="text" id="driver_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
-                        <form id="driver_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="exec_target" enctype="multipart/form-data">
+                        <form id="driver_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="driver_target" enctype="multipart/form-data">
                             <input type="file" name="file" id="driver_file" >
                         </form>
                     </i>
@@ -40,7 +40,7 @@
                         <input type="text" id="card_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
-                        <form id="card_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="exec_target" enctype="multipart/form-data">
+                        <form id="card_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="card_target" enctype="multipart/form-data">
                             <input type="file" name="file" id="card_file" >
                         </form>
                     </i>
@@ -61,17 +61,16 @@
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#exec_target").load(function(){
-        var data = $(window.frames['exec_target'].document.body).html();
-        if(data != null){
-            if(data == 1) {
-                alert('图片大小不能大于10m'); return false;
-            } else if(data == 2) {
-                alert('图片类型不正确'); return false;
-            }
-            $("#feedback").append(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
-        }
+    $("#card_target").load(function(){
+        var data = $(window.frames['card_target'].document.body).html();
+        console.log(data);
     });
+
+    $("#driver_target").load(function(){
+        var data = $(window.frames['driver_target'].document.body).html();
+        console.log(data);
+    });
+
     $("#card_file").change(function(){
         if($("#card_file").val() != '') $("#card_form").submit();
     });
@@ -119,4 +118,3 @@ $(document).ready(function(){
 </script>
 
 <iframe id="exec_target" name="exec_target"></iframe>
-<div id="feedback"></div>
