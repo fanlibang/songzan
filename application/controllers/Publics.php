@@ -114,9 +114,9 @@ class Publics extends Base {
             $options = array();
             $options["detect_direction"] = "true";
             // 带参数调用行驶证识别
-            $res = $client->drivingLicense($url, $options);
+            $res = $client->vehicleLicense($url, $options);
             $info = json_decode($res,true);
-            $html =  $info['words_result']['证号']['words'];
+            $html =  $info['words_result']['发动机号码']['words'];
 
         }
         echo $html;
