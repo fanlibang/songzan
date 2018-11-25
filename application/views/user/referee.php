@@ -62,6 +62,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#exec_target").load(function(){
+        alert(1);
         var data = $(window.frames['exec_target'].document.body).html();
         if(data != null){
             if(data == 1) {
