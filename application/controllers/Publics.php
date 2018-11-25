@@ -98,10 +98,25 @@ class Publics extends Base {
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
-        $html = '123456';
+        $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         if($type == 1) {
-
+            $options = array();
+            $options["detect_direction"] = "true";
+            $res = $client->idcard($url, 'front', $options);
+            $info = json_decode($res, true);
+            if ($info['image_status'] != 'normal') {
+                $html =  $info['image_status'];
+            } else {
+                $html =  $info['words_result']['公民身份号码']['words'];
+            }
         } else {
+            // 如果有可选参数
+            $options = array();
+            $options["detect_direction"] = "true";
+            // 带参数调用行驶证识别
+            $res = $client->drivingLicense($url, $options);
+            $info = json_decode($res,true);
+            $html =  $info['words_result']['证号']['words'];
 
         }
         echo $html;
@@ -113,7 +128,7 @@ class Publics extends Base {
         if(!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'],iconv('utf-8','gb2312',$_FILES['upload_file']['name']));
         //输出图片文件<img>标签
         //echo "<textarea><img src='{$_FILES['upload_file']['name']}'/></textarea>";
-	if($_FILES["file"]["size"] > 10485760) {
+	    if($_FILES["file"]["size"] > 10485760) {
             echo 1;exit;
             //$this->ajaxReturn(self::AJ_RET_FAIL, '');
         }
