@@ -28,6 +28,10 @@ $(document).ready(function(){
             _is_sms = true;
             var _data = {};
             _data['iphone'] = _iphone;
+            if(_iphone == '') {
+                alert('手机号不能为空');
+                return false;
+            }
             sms_times();
             $.getJSON("/2018/l462/ownerreferral/index.php/Publics/phoneSmsSendByLogin", _data, function(json){
                 if(json.code == 1){
