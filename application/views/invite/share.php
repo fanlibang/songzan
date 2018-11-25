@@ -7,7 +7,7 @@
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code">
-                <div class="auto"><img width="144px" height="144px" src="<?= $qr_code_img ?>" alt=""></div>
+                <div class="auto"><img width="144px" height="144px" src="<?= $qr_code_img ?>" alt=""></div><?=$img_url?>
             </div>
         </div>
     </div>

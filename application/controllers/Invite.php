@@ -118,7 +118,6 @@ class Invite extends Base
     public function share()
     {
         $data = $this->Users->getUserInfoByPhone(18616930697);
-
         $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
 
         $bigImg = imagecreatefromstring(file_get_contents($imgPath));
@@ -130,13 +129,13 @@ class Invite extends Base
 
         imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
 
-        $savePath = ROOTPATH . '/assets/upload/'. time() . '_share.jpg';
-        imagejpeg($bigImg, $savePath);
+        $savePath = STATIC_ASSETS . time() . '_' . $data['id'] . '_share.jpg';
+        imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
 
         imagedestroy($bigImg);
         imagedestroy($qCodeImg);
 
-
-        //$this->displayMain($data);
+        $data['img_url'] = $savePath;
+        $this->displayMain($data);
     }
 }
