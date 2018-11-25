@@ -74,6 +74,10 @@ class User extends Base
             header('Location:' . $url);
         }
         $data = $this->isLogin();
+        if(!empty($res['from_invite_code'])) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+        }
         $this->displayMain($data);
     }
 
