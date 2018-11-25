@@ -110,6 +110,7 @@ class Publics extends Base {
             // 带参数调用行驶证识别
             $info = $client->vehicleLicense($url, $options);
         }
+        $info = json_encode($info);
         echo $info;
     }
 
