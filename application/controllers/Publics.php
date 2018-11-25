@@ -98,6 +98,7 @@ class Publics extends Base {
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
+        echo $url;
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         if($type == 1) {
             $options = array();

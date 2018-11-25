@@ -64,11 +64,20 @@ $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
         console.log(data);
+        if(data.error_code != 0) {
+            alert(data.error_code);
+        } else {
+
+        }
     });
 
     $("#driver_target").load(function(){
         var data = $(window.frames['driver_target'].document.body).html();
-        console.log(data);
+        if(data.error_code != 0) {
+            alert(data.error_code);
+        } else {
+
+        }
     });
 
     $("#card_file").change(function(){
