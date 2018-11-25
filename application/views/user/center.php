@@ -46,7 +46,7 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><?= $invite_code ?></span>
+                        <span><a href="<?=site_url('Invite', 'info')?>"><?= $invite_code ?></a></span>
                     </div>
                 </div>
             </div>

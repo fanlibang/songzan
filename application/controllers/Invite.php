@@ -117,7 +117,15 @@ class Invite extends Base
 
     public function share()
     {
-        $data = $this->Users->getUserInfoByPhone(18616930697);
+        $data = $this->isLogin();
+        if (!$data) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+        }
+        if ($data['master_uid'] > 0) {
+            $url = site_url('Invite', 'info');
+            header('Location:' . $url);
+        }
         $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
 
         $bigImg = imagecreatefromstring(file_get_contents($imgPath));
