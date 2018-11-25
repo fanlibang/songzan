@@ -12,7 +12,6 @@
         </div>
     </div>
 </div>
-<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <!--弹框-->
 <div class="bomb-wrapper flex jc hide">
     <div>
@@ -40,7 +39,7 @@
         </div>
     </div>
 </div>
-
+<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function(){
         $('#sub').click(function(){
