@@ -23,21 +23,19 @@
                     </div>
                     <input type="button" value="获取验证码" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
-                <div class="form-list flex center ">
+                <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <span></span>
                         <input type="text" id="driver_number" value="" class="input-text">
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""></i>
+                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""><input type="file"></i>
                 </div>
-                <div class="form-list flex center ">
+                <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
-                        <span></span>
                         <input type="text" id="card_number" value="" class="input-text">
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="<?php $invite_code;?>"></i>
+                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""><input type="file"></i>
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox active">
