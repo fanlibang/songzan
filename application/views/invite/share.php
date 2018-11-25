@@ -12,3 +12,69 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        wx.config({
+            debug: false,
+            appId: "<?= $wx['appId']; ?>",
+            timestamp: "<?= $wx['timestamp']; ?>",
+            nonceStr: "<?= $wx['nonceStr']; ?>",
+            signature: "<?= $wx['signature']; ?>",
+            jsApiList: [
+                "onMenuShareTimeline",
+                "onMenuShareAppMessage",
+                "onMenuShareQQ",
+                "onMenuShareWeibo",
+                "onMenuShareQZone"
+            ]
+        });
+
+        wx.ready(function () {
+            <!--通过ready接口处理成功验证-->
+            // 在这里调用 API
+            <!--通过checkJsApi判断当前客户端版本是否支持指定获取地理位置-->
+            wx.checkJsApi({
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage",
+                    "onMenuShareQQ",
+                    "onMenuShareWeibo",
+                    "onMenuShareQZone"
+                ],
+                success: function (res) {
+                    if (res.checkResult.getLocation == false) {
+                        alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+                        return;
+                    }
+                }
+            });
+
+
+
+            var data = {
+                title: '发现隐秘之门', // 分享标题
+                link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'share') . '?invite_code=' . $invite_code; ?>", // 分享链接
+                desc:'路虎发现与松赞文旅邀您角逐最具号召力体验官，获取神秘大礼。',
+                imgUrl: "<?= $qr_code_img ?>", // 分享图标
+                success: function () {
+                    //alert('操作成功');
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            };
+            //分享Demo
+            //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareTimeline(data);
+            //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareAppMessage(data);
+            //获取“分享到QQ”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareQQ(data);
+            //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareWeibo(data);
+            //获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareQZone(data);
+        });
+    });
+</script>
