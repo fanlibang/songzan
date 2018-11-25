@@ -81,7 +81,7 @@ $(document).ready(function(){
             $("#driver_json").values(data.words_result);
         } else {
             alert(1);
-            alert(data.error_code);
+            alert(data['error_code']);
         }
     });
 
