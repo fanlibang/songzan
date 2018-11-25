@@ -26,7 +26,7 @@ class User extends Base
         $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
-            if ($info['code'] != get_cookie('code')) {
+            if ($info['code'] != get_cookie($info['phone'])) {
                 $this->AjaxReturn('202', '验证码不正确');
                 exit;
             }
@@ -73,6 +73,31 @@ class User extends Base
         }
         $data = $this->isLogin();
         $this->displayMain($data);
+    }
+
+    public function login()
+    {
+        $url = site_url('User', 'center');
+        $info = $this->input->request(null, true);
+        if (is_ajax_post()) {
+            if ($info['code'] != get_cookie($info['phone'])) {
+                $this->AjaxReturn('202', '验证码不正确');
+                exit;
+            }
+            $res = $this->Users->getUserInfoByPhone($info['phone']);
+            if ($res) {
+                $token = rand_str(32);
+                $openid = get_cookie('openId');
+                $open_id = isset($openid) ? $openid : '';
+                if (is_weixin() && empty($res['open_id'])) {
+                    $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
+                }
+                set_cookie('token', $token);
+            } else {
+                $url = site_url('User', 'referee');
+            }
+            $this->AjaxReturn('200', '成功', $url);exit;
+        }
     }
 }
 

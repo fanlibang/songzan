@@ -12,6 +12,7 @@
         </div>
     </div>
 </div>
+<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <!--弹框-->
 <div class="bomb-wrapper flex jc hide">
     <div>
@@ -21,15 +22,15 @@
                 <div class="form-list flex center">
                     <label>手机号：</label>
                     <div class="form-box">
-                        <input type="tel" class="input-text">
+                        <input type="tel" name="" id="phone" value="" class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">
                     <label>验证码：</label>
                     <div class="form-box">
-                        <input type="tel" class="input-text">
+                        <input type="tel" id="verify" value="" class="input-text">
                     </div>
-                    <input type="button" value="发送验证码" class="sendbtn">
+                    <input type="button" value="发送验证码" id="code" name="code" class="sendbtn">
                 </div>
                 <div class="form-push">
                     <input type="button" value="提     交" class="btn auto">
@@ -39,3 +40,33 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function(){
+        $('#sub').click(function(){
+            var phone = $('#phone').val();
+            var code = $('#verify').val();
+            if(phone == '') {
+                alert('手机号不能为空'); return false;
+            } else if(code == '') {
+                alert('验证码不能为空');
+                return false;
+            }
+            $.ajax({
+                type:'post',
+                url:'<?php echo site_url('User', 'login'); ?>',
+                data:{name:name, phone: phone, code:code},
+                dataType:'json',
+                success:function(json){
+                    if(json.code == 200){
+                        alert(json.msg);
+                        window.location.href=json.forward;
+                    } else {
+                        alert(json.msg);
+                    }
+                },
+                error:function(){}
+            });
+        });
+    });
+</script>
