@@ -72,9 +72,9 @@ $(document).ready(function(){
                 $("#card_number").values(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").values(dataObj.words_result);
             } else if (dataObj.image_status != 'normal'){
-                alert(dataObj.image_status);
+                alert('上传出错:'+dataObj.image_status);
             } else {
-                alert(dataObj['error_code']);
+                alert('上传出错:'+dataObj['error_code']);
             }
         }
     });
@@ -87,7 +87,7 @@ $(document).ready(function(){
                 $("#driver_number").values(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").values(dataObj.words_result);
             } else {
-                alert(dataObj['error_code']);
+                alert('上传出错:'+dataObj['error_code']);
             }
         }
     });
