@@ -29,7 +29,7 @@
                         <input type="text" id="driver_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
-                        <form id="submit_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="exec_target" enctype="multipart/form-data">
+                        <form id="driver_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="exec_target" enctype="multipart/form-data">
                             <input type="file" name="file" id="driver_file" >
                         </form>
                     </i>
@@ -40,7 +40,7 @@
                         <input type="text" id="card_number" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
-                        <form id="submit_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="exec_target" enctype="multipart/form-data">
+                        <form id="card_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="exec_target" enctype="multipart/form-data">
                             <input type="file" name="file" id="card_file" >
                         </form>
                     </i>
@@ -62,7 +62,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#exec_target").load(function(){
-        alert(1);
         var data = $(window.frames['exec_target'].document.body).html();
         if(data != null){
             if(data == 1) {
@@ -74,11 +73,9 @@ $(document).ready(function(){
         }
     });
     $("#card_file").change(function(){
-        alert(1);
         if($("#card_file").val() != '') $("#card_form").submit();
     });
     $("#driver_file").change(function(){
-        alert(2);
         if($("#driver_file").val() != '') $("#driver_form").submit();
     });
 
