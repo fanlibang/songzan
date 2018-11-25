@@ -98,7 +98,7 @@ class Publics extends Base {
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
-        $html = '';
+        $html = '123456';
         if($type == 1) {
 
         } else {
