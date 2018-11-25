@@ -110,6 +110,10 @@ class Invite extends Base
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
         }
+        if ($result['master_uid'] == 0) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+        }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
         $this->displayMain($result);
