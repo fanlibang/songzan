@@ -190,7 +190,7 @@ $autoloader->addPsr4("Xy\\Application\\Models\\", APPPATH . 'models/');
 $autoloader->addPsr4("Xy\\Application\\Models\\DB\\", APPPATH . 'models/db/');
 $autoloader->addPsr4("Xy\\Application\\Models\\Memcached\\", APPPATH . 'models/memcached/');
 $autoloader->addPsr4("Xy\\Application\\Models\\Redis\\", APPPATH . 'models/redis/');
-
+$autoloader->addPsr4("", APPPATH . 'libraries/aip/');
 $autoloader->addPsr4("", APPPATH . 'libraries/');
 //系统异常处理
 if (IS_CLI === false) {
