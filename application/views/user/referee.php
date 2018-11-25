@@ -69,7 +69,7 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-            $("#card_number").values(data.words_result.['公民身份号码'].words);
+            $("#card_number").values(data.words_result['公民身份号码'].words);
             $("#card_json").values(data.words_result);
         }
     });
@@ -79,7 +79,7 @@ $(document).ready(function(){
         if(data.error_code != 0) {
             alert(data.error_code);
         } else {
-            $("#driver_number").values(data.words_result.['发动机号码'].words);
+            $("#driver_number").values(data.words_result['发动机号码'].words);
             $("#driver_json").values(data.words_result);
         }
     });
