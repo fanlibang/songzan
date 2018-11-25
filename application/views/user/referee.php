@@ -117,4 +117,5 @@ $(document).ready(function(){
     });
 </script>
 
-<iframe id="exec_target" name="exec_target"></iframe>
+<iframe id="driver_target" name="driver_target"></iframe>
+<iframe id="card_target" name="card_target"></iframe>
