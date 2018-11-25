@@ -69,7 +69,6 @@ $(document).ready(function(){
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
-                alert(dataObj.words_result['公民身份号码'].words);
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").val(dataObj.words_result);
             } else if (dataObj.image_status != 'normal'){
