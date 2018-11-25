@@ -32,7 +32,7 @@
                     <input type="button" value="发送验证码" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
                 <div class="form-push">
-                    <input type="button" value="提     交" class="btn auto">
+                    <input type="button" value="提     交" class="btn auto" id="sub">
                 </div>
             </div>
             <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
