@@ -93,6 +93,7 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
+                $this->Users->editUserUid($res['id'], ['token' => $token]);
             } else {
                 $url = site_url('User', 'referee');
             }

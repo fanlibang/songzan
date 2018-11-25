@@ -54,7 +54,7 @@
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'login'); ?>',
-                data:{name:name, phone: phone, code:code},
+                data:{phone: phone, code:code},
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
