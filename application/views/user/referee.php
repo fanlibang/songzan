@@ -79,12 +79,13 @@ $(document).ready(function(){
     $("#driver_target").load(function(){
         var data = $(window.frames['driver_target'].document.body).html();
         if(data != null){
-            if(data.msg == 'success') {
-                $("#driver_number").values(data.words_result['发动机号码'].words);
-                $("#driver_json").values(data.words_result);
+            var dataObj=eval("("+data+")");//转换为json对象
+            if(dataObj.msg == 'success') {
+                $("#driver_number").values(dataObj.words_result['发动机号码'].words);
+                $("#driver_json").values(dataObj.words_result);
             } else {
                 alert(1);
-                alert(data['error_code']);
+                alert(dataObj['error_code']);
             }
         }
     });
