@@ -80,6 +80,7 @@ $(document).ready(function(){
             $("#driver_number").values(data.words_result['发动机号码'].words);
             $("#driver_json").values(data.words_result);
         } else {
+            alert(1);
             alert(data.error_code);
         }
     });
