@@ -49,7 +49,7 @@ class Invite extends Base
                 $this->AjaxReturn('401', '邀请人不存在');
                 exit;
             }
-            if ($code != get_cookie('code')) {
+            if ($code != get_cookie($data['phone'])) {
                 $this->AjaxReturn('402', '验证码不正确');
                 exit;
             }
@@ -113,5 +113,30 @@ class Invite extends Base
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
         $this->displayMain($result);
+    }
+
+    public function share()
+    {
+        $data = $this->Users->getUserInfoByPhone(18616930697);
+
+        $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
+
+        $bigImg = imagecreatefromstring(file_get_contents($imgPath));
+        $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
+        list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
+        imagecopymerge($bigImg, $qCodeImg, 300, 950, 0, 0, $qCodeWidth, $qCodeHight, 100);
+        $white = imagecolorallocate($bigImg, 255, 255, 255);
+        $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
+
+        imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
+
+        $savePath = ROOTPATH . '/assets/upload/'. time() . '_share.jpg';
+        imagejpeg($bigImg, $savePath);
+
+        imagedestroy($bigImg);
+        imagedestroy($qCodeImg);
+
+
+        //$this->displayMain($data);
     }
 }
