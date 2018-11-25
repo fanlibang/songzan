@@ -93,6 +93,20 @@ class Publics extends Base {
         header('Location:'.$url);
     }
 
+    //获取上传图片信息
+    public function getImageInfo() {
+        $info = $this->input->request();
+        $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
+        $url = $this->imageUpload();
+        $html = '123456';
+        if($type == 1) {
+
+        } else {
+
+        }
+        echo $html;
+    }
+
     public function imageUpload()
     {
         //不存在当前上传文件则上传
@@ -115,12 +129,11 @@ class Publics extends Base {
         $this->load->library('upload', $config);
         $this->upload->set_allowed_types('*');
         $this->upload->initialize($config);
-        $html = '';
         if (!$this->upload->do_upload('file')) {
             $error = $this->upload->display_errors();
             $result['status'] = -1;
-            echo $result['mes'] = '上传失败~' . return_ip(false, true) . $error;
-            echo 2;
+            $result['mes'] = '上传失败~' . return_ip(false, true) . $error;
+            return false;
 		//$this->ajaxReturn(self::AJ_RET_FAIL, $result['mes']);
             //return $result;
         } else {
@@ -131,83 +144,8 @@ class Publics extends Base {
             $result['status']   = '1';
             $result['mes']      =  '上传成功~';
             $result['file']     = $file;
-
-            $html .= '<div class="picture auto flex jc">';
-            $html .= '<div class="photo">';
-            $html .= '<img class="photo_img" src="'.$file.'" alt="">';
-            $html .= '<div class="close-img"></div></div>';
-            $html .= '</div>';
-            $html .= '<div class="write-box auto">';
-            $html .= '<textarea autoHeight="true" placeholder="分享今天的发现吧" class="text-cont content"></textarea>';
-            $html .= '</div>';
-            $html .= '</div>';
-        }
-        echo $html;
-    }
-
-    public function pink(){
-        $info = $this->input->request(null, true);
-        if (is_ajax_post()) {
-            $option = new \Xy\Application\Models\UserOptionModel();
-            $diary  = new \Xy\Application\Models\UserDiaryModel();
-            if($info['pink'] == 2) {
-                $res = $option->addUserOption($this->_data['openId'], $info['item_id'], 2);
-                if($res) {
-                    $diary->updateLike($info['item_id'], $info['pink']);
-                }
-                $this->AjaxReturn('200','点赞成功');
-            } else {
-                $res = $option->delUserOption($this->_data['openId'], $info['item_id']);
-                if($res) {
-                    $diary->updateLike($info['item_id'], $info['pink']);
-                }
-                $this->AjaxReturn('200','取消成功');
-            }
+            return $file;
         }
     }
-	
-    public function getLocation()
-    {
-        $info = $this->input->request(null, true);
-        $lat = $info['lat'];
-        $lng = $info['lng'];
-        $url = "http://api.map.baidu.com/geocoder?output=json&location=$lat,$lng&key=0GqzSQ3xydw23V1uVNBazMwG6ql8iEr3";
-	$res = curl_request($url, '', 'get');
-        $res = json_decode($res,true);
-        if($res['status'] == 'OK') {
-            $res = $res['result']['addressComponent'];
-	    $rul  = "http://wthrcdn.etouch.cn/weather_mini?city=".$res['province'];
-            $contents = file_get_contents("compress.zlib://".$rul);
-            //转化为json
-            $datas = json_decode($contents,true);
-            $info  = $datas['data']['yesterday'];
-            $data['type'] = $info['type'];
 
-	    $data['province'] = '【'.$res['province'].'】';
-            //$data['province'] = $res['province'];
-            //$data['district'] = $res['district'];
-	    $data['district'] = $res['district'].$res['street'];
-            $this->AjaxReturn('200',$data);
-        } else {
-            $this->AjaxReturn('400','获取位置错误');
-        }
-    }
-	
-    public function button(){
-        $info = $this->input->request(null, true);
-        $url =  $info['url'];
-        $openId = $this->_data['openId'];
-        $res = false;
-        if($openId) {
-            $time = NOW_DATE_TIME;
-            $sql = "insert into l462_18songzan_button (url, openId, create_dt) values ('{$url}', '{$openId}', '{$time}');";
-            $res = $this->Users->execute($sql);
-        }
-        if($res) {
-            $this->AjaxReturn('200','成功');
-        } else {
-            $this->AjaxReturn('400','失败');
-        }
-        exit;
-    }	
 }

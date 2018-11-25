@@ -47,7 +47,6 @@
                     <form id="submit_form" method="post" action="<?php echo site_url('Publics', 'imageUpload'); ?>" target="exec_target" enctype="multipart/form-data">
                         <input type="file" name="file" id="file" class="file-btn">
                     </form>
-
                 </div>
                 <div class="mouldicon"></div>
             </div>
