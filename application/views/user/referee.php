@@ -28,14 +28,22 @@
                     <div class="form-box">
                         <input type="text" id="driver_number" value="" class="input-text">
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""><input type="file"></i>
+                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
+                        <form id="submit_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="exec_target" enctype="multipart/form-data">
+                            <input type="file" name="file" id="driver_file" >
+                        </form>
+                    </i>
                 </div>
                 <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
                         <input type="text" id="card_number" value="" class="input-text">
                     </div>
-                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt=""><input type="file"></i>
+                    <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
+                        <form id="submit_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="exec_target" enctype="multipart/form-data">
+                            <input type="file" name="file" id="card_file" >
+                        </form>
+                    </i>
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox active">
@@ -52,6 +60,26 @@
 </div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+    $("#exec_target").load(function(){
+        var data = $(window.frames['exec_target'].document.body).html();
+        if(data != null){
+            if(data == 1) {
+                alert('图片大小不能大于10m'); return false;
+            } else if(data == 2) {
+                alert('图片类型不正确'); return false;
+            }
+            $("#feedback").append(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+        }
+    });
+    $("#card_file").change(function(){
+        if($("#card_file").val() != '') $("#card_form").submit();
+    });
+    $("#driver_file").change(function(){
+        if($("#driver_file").val() != '') $("#driver_form").submit();
+    });
+
+});
     $(function(){
         $('#sub').click(function(){
             var name = $('#name').val();
@@ -89,3 +117,6 @@
         });
     });
 </script>
+
+<iframe id="exec_target" name="exec_target"></iframe>
+<div id="feedback"></div>
