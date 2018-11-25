@@ -102,24 +102,16 @@ class Publics extends Base {
         if($type == 1) {
             $options = array();
             $options["detect_direction"] = "true";
-            $res = $client->idcard($url, 'front', $options);
-            $info = json_decode($res, true);
-            if ($info['image_status'] != 'normal') {
-                $html =  $info['image_status'];
-            } else {
-                $html =  $info['words_result']['公民身份号码']['words'];
-            }
+            $info = $client->idcard($url, 'front', $options);
         } else {
             // 如果有可选参数
             $options = array();
             $options["detect_direction"] = "true";
             // 带参数调用行驶证识别
-            $res = $client->vehicleLicense($url, $options);
-            $info = json_decode($res,true);
-            $html =  $info['words_result']['发动机号码']['words'];
-
+            $info = $client->vehicleLicense($url, $options);
         }
-        echo $html;
+        $info = json_encode($info);
+        echo $info;
     }
 
     public function imageUpload()
