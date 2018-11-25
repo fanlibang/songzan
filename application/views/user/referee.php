@@ -76,7 +76,7 @@ $(document).ready(function(){
 
     $("#driver_target").load(function(){
         var data = $(window.frames['driver_target'].document.body).html();
-        if(data.msg == success) {
+        if(data.msg == 'success') {
             $("#driver_number").values(data.words_result['发动机号码'].words);
             $("#driver_json").values(data.words_result);
         } else {
