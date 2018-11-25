@@ -52,7 +52,7 @@ class User extends Base
             $inviteCode = paserInviteCode($uid);
             $url = site_url('Invite', 'index', array('invite_code' => $inviteCode));
             $update['invite_code'] = $inviteCode;
-            $update['qr_code_img'] = "http://api.k780.com:88/?app=qr.get&data=$url";
+            $update['qr_code_img'] = "https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=$url";
             $this->Users->editUserUid($uid, $update);
             set_cookie('token', $token);
             $this->AjaxReturn('200', '成功', $url);exit;
@@ -77,7 +77,7 @@ class User extends Base
 
     public function login()
     {
-        $url = site_url('User', 'center');
+
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
             if ($info['code'] != get_cookie($info['phone'])) {
@@ -93,6 +93,11 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
+                if(empty($res['from_invite_code'])) {
+                    $url = site_url('User', 'center');
+                } else {
+                    $url = site_url('Invite', 'index');
+                }
                 $this->Users->editUserUid($res['id'], ['token' => $token]);
             } else {
                 $url = site_url('User', 'referee');
