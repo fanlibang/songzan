@@ -39,7 +39,7 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
-                $this->AjaxReturn('200', '成功', $url);exit;
+                $this->AjaxReturn('200', '用户已注册跳转主页', $url);exit;
             }
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
@@ -64,6 +64,32 @@ class User extends Base
                 header('Location:' . $url);
             }
             $this->displayMain();
+        }
+    }
+
+    public function updateInfo()
+    {
+        $url = site_url('User', 'center');
+        $info = $this->input->request(null, true);
+        $id = $info['id'];
+        if (is_ajax_post()) {
+            $res = $this->Users->getUserInfoByid($id);
+            $openid = get_cookie('openId');
+            $open_id = isset($openid) ? $openid : '';
+            if ($res) {
+                if (is_weixin() && empty($res['open_id'])) {
+                    $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
+                }
+            }
+            $data['driver_number'] = $info['driver_number'];
+            $data['driver_json'] = $info['driver_json'];
+            $data['card_number'] = $info['card_number'];
+            $data['card_json'] = $info['card_json'];
+            $this->Users->editUserUid($id, $data);
+            $this->AjaxReturn('200', '成功', $url);exit;
+        } else {
+            $data = $this->Users->getUserInfoByid($id);
+            $this->displayMain($data);
         }
     }
 

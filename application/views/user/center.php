@@ -7,7 +7,7 @@
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
                     <?php if(empty($card_number) || empty($driver_number))  { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i>完善信息</div>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
                     <?php }?>
                 </div>
                 <div class="form-list flex center">
