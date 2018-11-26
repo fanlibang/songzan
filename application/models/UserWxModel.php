@@ -20,7 +20,7 @@ class UserWxModel extends BaseModel
 
     public function getWxInfoByOpId($openId)
     {
-        $where['openId'] = $openId;
+        $where['open_id'] = $openId;
         $ret = $this->getOne($where);
         return $ret;
     }
@@ -33,7 +33,7 @@ class UserWxModel extends BaseModel
 
     public function editWxInfo($openId, $data)
     {
-        $where['openId'] = $openId;
+        $where['open_id'] = $openId;
         $ret = $this->edit($data, $where);
         return $ret;
     }
