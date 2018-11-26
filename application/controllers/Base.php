@@ -169,9 +169,9 @@ class Base extends Common
             $iphone = $this->input->get('iphone', true);
             $sms_str = rand_str(6);
             $sms_notice_obj = new SendSms();
-            //$sms_ret = $sms_notice_obj->send($iphone, $sms_str);
-            if ($sms_ret['code'] = 200) {
-                set_cookie($iphone, '123456');
+            $sms_ret = $sms_notice_obj->send($iphone, $sms_str);
+            if ($sms_ret['code'] == 200) {
+                set_cookie($iphone, $sms_str);
                 $this->AjaxReturn(self::AJ_RET_SUCC, '获取短信成功,5分钟内有效#');
             } else {
                 $this->AjaxReturn(self::AJ_RET_FAIL, $sms_ret['msg']);
