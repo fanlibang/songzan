@@ -148,6 +148,7 @@ class Invite extends Base
         imagedestroy($qCodeImg);
 
         $data['img_url'] = HTTP_HOST . $savePath;
+        $this->Users->editUserId($data['id'], ['share_img' => $data['img_url']]);
         $this->displayMain($data);
     }
 }

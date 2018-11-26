@@ -54,7 +54,7 @@ class User extends Base
             $inviteCode = paserInviteCode($uid);
             $invite_url = site_url('Invite', 'index', array('invite_code' => $inviteCode));
             $update['invite_code'] = $inviteCode;
-            $update['qr_code_img'] = "https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=$invite_url";
+            $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=144x144&data=$invite_url";
             $this->Users->editUserUid($uid, $update);
             set_cookie('token', $token);
             $this->AjaxReturn('200', '成功', $url);exit;
