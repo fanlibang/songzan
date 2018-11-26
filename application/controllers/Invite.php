@@ -130,25 +130,28 @@ class Invite extends Base
             $url = site_url('Invite', 'info');
             header('Location:' . $url);
         }
-        $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
+        $shareImg = $data['share_img'];
+        if (empty($data['share_img'])) {
+            $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
+            $bigImg = imagecreatefromstring(file_get_contents($imgPath));
+            $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
+            list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
+            imagecopymerge($bigImg, $qCodeImg, 300, 950, 0, 0, $qCodeWidth, $qCodeHight, 100);
+            $white = imagecolorallocate($bigImg, 255, 255, 255);
+            $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
 
-        $bigImg = imagecreatefromstring(file_get_contents($imgPath));
-        $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
-        list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
-        imagecopymerge($bigImg, $qCodeImg, 300, 950, 0, 0, $qCodeWidth, $qCodeHight, 100);
-        $white = imagecolorallocate($bigImg, 255, 255, 255);
-        $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
+            imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
 
-        imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
+            $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
+            imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
 
-        $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
-        imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
+            imagedestroy($bigImg);
+            imagedestroy($qCodeImg);
 
-        imagedestroy($bigImg);
-        imagedestroy($qCodeImg);
-
-        $data['img_url'] = HTTP_HOST . $savePath;
-        $this->Users->editUserId($data['id'], ['share_img' => $data['img_url']]);
+            $shareImg = HTTP_HOST . $savePath;
+            $this->Users->editUserId($data['id'], ['share_img' => $shareImg]);
+        }
+        $data['img_url'] = $shareImg;
         $this->displayMain($data);
     }
 }
