@@ -1,3 +1,4 @@
+<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-1">
@@ -39,7 +40,6 @@
         </div>
     </div>
 </div>
-<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function(){
         $('#sub').click(function(){
@@ -53,7 +53,7 @@
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'login'); ?>',
+                url:'<?php echo site_url('Publics', 'login'); ?>',
                 data:{phone: phone, code:code},
                 dataType:'json',
                 success:function(json){
