@@ -34,7 +34,8 @@ class User extends Base
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
-            if(!validateIDCard($info['card_number'])) {
+
+            if(!empty($info['card_number']) && !validateIDCard($info['card_number'])) {
                 $this->AjaxReturn('202', '请填写正确身份证信息');
                 exit;
             }
