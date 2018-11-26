@@ -105,7 +105,6 @@ class User extends Base
             $this->displayMain($data);
         }
     }
-
     public function center()
     {
         if (!$this->isLogin()) {
