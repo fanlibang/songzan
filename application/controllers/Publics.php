@@ -48,10 +48,9 @@ class Publics extends Base
         //输出openid
         if (!empty($openid)) {
             $res = $this->UserWx->getWxInfoByOpId($openid);
-            if ($res) {
-                set_cookie('openId', $res['open_id']);
-            } else {
-                $url = site_url('Index', 'index');
+            set_cookie('openId', $res['open_id']);
+            $url = site_url('Index', 'index');
+            if (empty($res)) {
                 $data = [
                     'open_id'    => $openid,
                     'nick_name'  => $userInfo['nickname'],
