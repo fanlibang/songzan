@@ -16,6 +16,15 @@ class Index extends Base {
 	 */
 	public function index()
 	{
+        $data = $this->isLogin();
+        if (!empty($data)) {
+            if ($data['master_uid'] > 0) {
+                $url = site_url('Invite', 'info');
+                header('Location:' . $url);
+            }
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+        }
         $this->displayMain();
 	}
 }
