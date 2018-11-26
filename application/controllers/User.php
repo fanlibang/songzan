@@ -30,6 +30,12 @@ class User extends Base
                 $this->AjaxReturn('202', '验证码不正确');
                 exit;
             }
+
+            if(!validateIDCard($info['card_number'])) {
+                $this->AjaxReturn('202', '请填写正确身份证信息');
+                exit;
+            }
+
             $res = $this->Users->getUserInfoByPhone($info['phone']);
             $token = rand_str(32);
             $openid = get_cookie('openId');
@@ -73,6 +79,10 @@ class User extends Base
         $info = $this->input->request(null, true);
         $id = $info['id'];
         if (is_ajax_post()) {
+            if(!validateIDCard($info['card_number'])) {
+                $this->AjaxReturn('202', '请填写正确身份证信息');
+                exit;
+            }
             $res = $this->Users->getUserInfoByid($id);
             $openid = get_cookie('openId');
             $open_id = isset($openid) ? $openid : '';
