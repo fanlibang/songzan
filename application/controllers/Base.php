@@ -1,24 +1,22 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once APPPATH . 'controllers/Common.php';
+
 class Base extends Common
 {
-    const DEFAULT_PAGE_LIST     = 5;//默认分页
-    const MD5_STR_PREFIX        = 'xyzs@l#s￥m%&!*';//md5 加密前缀字符串
-    const VALIDATE_CODE         = false;
-    const SMS_LOGIN             = 3;//false 不需要 1 pc 2 mobile 3 全部
+    const DEFAULT_PAGE_LIST = 5;//默认分页
+    const MD5_STR_PREFIX = 'xyzs@l#s￥m%&!*';//md5 加密前缀字符串
+    const VALIDATE_CODE = false;
+    const SMS_LOGIN = 3;//false 不需要 1 pc 2 mobile 3 全部
 
-    public $user_info           = array();//登录用户信息 session
+    public $user_info = array();//登录用户信息 session
 
 
     /**
      * 无权限判断访问的地址设置
-     *
      * @var array
      */
-    private $free_url = array(
-
-    );
+    private $free_url = array();
 
     /**
      * 初始化
@@ -27,45 +25,45 @@ class Base extends Common
     {
         parent::__construct();
         #载入后台权限操作相关(管理员 菜单 角色)
-        $this->Users           = new \Xy\Application\Models\UserModel();
-        $this->UserWx          = new \Xy\Application\Models\UserWxModel();
+        $this->Users = new \Xy\Application\Models\UserModel();
+        $this->UserWx = new \Xy\Application\Models\UserWxModel();
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
 
-        if(!$this->isLogin()) {
-            if(is_weixin()){
-                    $this->_data['browser'] = 1; //微信浏览器
-                    $controller = ucfirst($this->router->fetch_class());
-                    if($controller != 'Publics') {
-                        $this->isOpenid();
-                    }
-            }else {
+        if (!$this->isLogin()) {
+            if (is_weixin()) {
+                $this->_data['browser'] = 1; //微信浏览器
+                $controller = ucfirst($this->router->fetch_class());
+                if ($controller != 'Publics') {
+                    $this->isOpenid();
+                }
+            } else {
                 $this->_data['browser'] = 2; //其他浏览器
             }
         }
         /**
-        //配置模板路径
-        $this->_more_view_path = PROJECT_NAME;
-        $controller = ucfirst($this->router->fetch_class());
-        if($controller != 'Publics' && $controller != 'Article') {
-           $res = $this->isLogin();
-        }
-        $this->_data['openId'] = get_cookie('openId');
-        if($controller == 'Index') {
-            if($res['status'] == '2') {
-                redirect(site_url('User', 'center'));
-            }
-        }*/
+         * //配置模板路径
+         * $this->_more_view_path = PROJECT_NAME;
+         * $controller = ucfirst($this->router->fetch_class());
+         * if($controller != 'Publics' && $controller != 'Article') {
+         * $res = $this->isLogin();
+         * }
+         * $this->_data['openId'] = get_cookie('openId');
+         * if($controller == 'Index') {
+         * if($res['status'] == '2') {
+         * redirect(site_url('User', 'center'));
+         * }
+         * }*/
 
     }
 
     /**
      * 判断是否在无权限访问
-    */
+     */
     public function isLogin()
     {
         $token = get_cookie('token');
-        if($token) {
+        if ($token) {
             $userInfo = $this->Users->getUserToken($token);
             if (!empty($userInfo)) {
                 return $userInfo;
@@ -80,25 +78,30 @@ class Base extends Common
     public function isOpenid()
     {
         $openid = get_cookie('openId');
-        if(!$openid) {
-            $this->get_openid();
-        } else {
-            $res = $this->Users->getUserInfoByOpId($openid);
-            if($res) {
-                $token = $res['token'];
-                set_cookie('token', $token);
-                $url = site_url('User', '');#Todo
-                header('Location:'.$url);
+        if (!empty($openid)) {
+            $weixinInfo = $this->UserWx->getWxInfoByOpId($openid);
+            if (!empty($weixinInfo)) {
+                $res = $this->Users->getUserInfoByOpId($openid);
+                if (!empty($res)) {
+                    $token = $res['token'];
+                    set_cookie('token', $token);
+                    if ($res['master_uid'] > 0) {
+                        $url = site_url('Invite', 'info');
+                        header('Location:' . $url);
+                    } else {
+                        $url = site_url('User', 'center');
+                        header('Location:' . $url);
+                    }
+                }
+                return true;
             }
         }
-        return true;
+        $this->get_openid();
     }
-
 
 
     /**
      * 操作跳转提示方法
-     *
      * @param null $url
      * @param null $message
      * @param null $app_id
@@ -110,7 +113,6 @@ class Base extends Common
 
     /**
      * 渲染 main 模板
-     *
      * @param array $data
      * @param null $view
      */
@@ -121,8 +123,8 @@ class Base extends Common
         } else {
             $view = $this->_more_view_path . '/' . $view;
         }
-	
-	$jsSdk = new Location(APPID, SECRET); //实例化引入文件的类，并将2个参数传进去，自己在微信公众后台看
+
+        $jsSdk = new Location(APPID, SECRET); //实例化引入文件的类，并将2个参数传进去，自己在微信公众后台看
         $signPackage = $jsSdk->GetSignPackage(); //获取jsapi_ticket，生成JS-SDK权限验证的签名。
         $data['wx'] = $signPackage;
 
@@ -134,11 +136,11 @@ class Base extends Common
 
         //统计页面访问量
         $url_info = $this->_data;
-        if(strtolower($this->router->fetch_class()) == 'article') {
+        if (strtolower($this->router->fetch_class()) == 'article') {
             $this->view_play($this->_data['openId'], $data['id']);
         }
         //$url = '/'.PROJECT_NAME.'/'.$url_info['controller'].'/'.$url_info['method'];
-	$url = '/dev/'.$url_info['controller'].'/'.$url_info['method'];
+        $url = '/dev/' . $url_info['controller'] . '/' . $url_info['method'];
         $this->view_assess($url);
         //调试页面执行时间用
         if (IS_DEBUG) {
@@ -149,13 +151,12 @@ class Base extends Common
 
     /**
      * 密码md5加密后截取
-     *
      * @param $pwd
      * @return string
      */
     public function pwdMd5($pwd)
     {
-        return substr(md5($pwd.self::MD5_STR_PREFIX), 0, 10);
+        return substr(md5($pwd . self::MD5_STR_PREFIX), 0, 10);
     }
 
 
@@ -165,7 +166,7 @@ class Base extends Common
     public function phoneSmsSendByLogin()
     {
         if (IS_GET) {
-            $iphone      = $this->input->get('iphone', true);
+            $iphone = $this->input->get('iphone', true);
             $sms_str = rand_str(6);
             $sms_notice_obj = new SendSms();
             //$sms_ret = $sms_notice_obj->send($iphone, $sms_str);
@@ -183,7 +184,6 @@ class Base extends Common
 
     /**
      * ajax返回格式
-     *
      * @param int $code
      * @param null $msg
      * @param null $rel
@@ -191,10 +191,10 @@ class Base extends Common
      */
     public function AjaxReturn($code = self::AJ_RET_SUCC, $msg = null, $rel = null, $data = null)
     {
-        $arr["code"]       = $code;
-        $arr["msg"]        = $msg;
-        $arr["forward"]    = $rel;
-        $arr["data"]       = $data;
+        $arr["code"] = $code;
+        $arr["msg"] = $msg;
+        $arr["forward"] = $rel;
+        $arr["data"] = $data;
         echo json_encode($arr);
         exit;
     }
@@ -208,10 +208,10 @@ class Base extends Common
     {
         $state = '222';
         $appid = APPID;
-        if(empty($url)) {
+        if (empty($url)) {
             $url = site_url('Publics', 'jump');
         }
-	    //echo $url;exit;
+        //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
         $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_userinfo&state=$state#wechat_redirect";
