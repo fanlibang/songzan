@@ -108,7 +108,7 @@ $(document).ready(function(){
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'referee'); ?>',
+                url:'<?php echo site_url('User', 'updateInfo'); ?>',
                 data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json},
                 dataType:'json',
                 success:function(json){
