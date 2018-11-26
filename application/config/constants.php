@@ -92,10 +92,10 @@ define('SECRET', '26d9bbf8f79be12280cada00a1353505'); //上线修改
 define('UPLOAD_FILE', '/upfile/2018/crm/ownerreferral/');
 define('WX_FILE', '/assets/wx/');
 
-define('ACTIVITY_ID', 'L462_Songzan_H5_Test'); //上线修改
+define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test'); //上线修改
 define('REPORT_MODEL_URL', 'https://api-staging.jaguar.com.cn/service/leads/collectionLeadsData'); //上线修改
 define('REQUEST_TYPE', 'TD');   //上线修改
-define('LEADS_SOURCE', 'Digital'); //上线修改
+define('LEADS_SOURCE', 'CRM'); //上线修改
 
-define('CLIENT_CODE', 'jdxHf192IB3YmZgdtU');  //上线把值改为空
-define('CLIENT_SECRET', 'E38978F00D40A3EF8A99459E5215AF09'); //上线把值改为空
+define('CLIENT_CODE', 'jdxp2ttAIZetkwl6O4');  //上线把值改为空
+define('CLIENT_SECRET', '30F8C680B880EE11E6E44FB29E2C8B62'); //上线把值改为空

@@ -874,7 +874,7 @@ if (! function_exists('site_url')) {
         foreach ((array)$params as $k => $v) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
-	 return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/l462/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+	 return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
     }
 }
 
@@ -903,7 +903,7 @@ if (! function_exists('path_site_url')) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
 	
-	return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/l462/songzan/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+	return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }

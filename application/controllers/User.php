@@ -30,12 +30,14 @@ class User extends Base
                 $this->AjaxReturn('202', '验证码不正确');
                 exit;
             }
-
+            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $info['phone'])) {
+                $this->AjaxReturn('403', '电话号码格式不正确');
+                exit;
+            }
             if(!validateIDCard($info['card_number'])) {
                 $this->AjaxReturn('202', '请填写正确身份证信息');
                 exit;
             }
-
             $res = $this->Users->getUserInfoByPhone($info['phone']);
             $token = rand_str(32);
             $openid = get_cookie('openId');
@@ -96,7 +98,7 @@ class User extends Base
             $data['card_number'] = $info['card_number'];
             $data['card_json'] = $info['card_json'];
             $this->Users->editUserUid($id, $data);
-            $this->AjaxReturn('200', '成功', $url);exit;
+            $this->AjaxReturn('200', '完善资料成功', $url);exit;
         } else {
             $data = $this->Users->getUserInfoByid($id);
             $this->displayMain($data);
