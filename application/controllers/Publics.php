@@ -53,10 +53,10 @@ class Publics extends Base
             } else {
                 $url = site_url('Index', 'index');
                 $data = [
-                    'open_id'   => $openid,
-                    'nick_name' => $userInfo['nickname'],
-                    'avatar'    => $userInfo['headimgurl'],
-                    'create_dt' => NOW_DATE_TIME,
+                    'open_id'    => $openid,
+                    'nick_name'  => $userInfo['nickname'],
+                    'avatar'     => $userInfo['headimgurl'],
+                    'created_at' => NOW_DATE_TIME,
                 ];
                 $this->UserWx->addUserOpenId($data);
             }
