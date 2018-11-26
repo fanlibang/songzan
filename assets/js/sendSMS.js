@@ -33,7 +33,7 @@ $(document).ready(function(){
             var _data = {};
             _data['iphone'] = _iphone;
             sms_times();
-            $.getJSON("/2018/l462/ownerreferral/index.php/Publics/phoneSmsSendByLogin", _data, function(json){
+            $.getJSON("/2018/crm/ownerreferral/index.php/Publics/phoneSmsSendByLogin", _data, function(json){
                 if(json.code == 1){
                     if(json.forward) {
                         window.location.href = json.rel;
