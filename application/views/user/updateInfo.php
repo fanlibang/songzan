@@ -20,8 +20,8 @@
                 <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <input type="text" id="driver_number" value="" class="input-text">
-                        <input type="hidden" id="driver_json" value="" class="input-text">
+                        <input type="text" id="driver_number" value="<?= $driver_number ?>" class="input-text">
+                        <input type="hidden" id="driver_json" value="<?= $driver_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
                         <form id="driver_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 2)); ?>" target="driver_target" enctype="multipart/form-data">
@@ -32,8 +32,8 @@
                 <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
-                        <input type="text" id="card_number" value="" class="input-text">
-                        <input type="hidden" id="card_json" value="" class="input-text">
+                        <input type="text" id="card_number" value="<?= $card_number ?>" class="input-text">
+                        <input type="hidden" id="card_json" value="<?= $card_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
                         <form id="card_form" method="post" action="<?php echo site_url('Publics', 'getImageInfo', array('type' => 1)); ?>" target="card_target" enctype="multipart/form-data">
