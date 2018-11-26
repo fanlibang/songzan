@@ -1,34 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 include_once 'Base.php';
-
-class Publics extends Base
-{
+class Publics extends Base {
 
     /**
      * 初始化
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function del()
-    {
+    public function del(){
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
-            $diary = new \Xy\Application\Models\UserDiaryModel();
+            $diary  = new \Xy\Application\Models\UserDiaryModel();
             $where['id'] = $info['item_id'];
             $diary->del($where);
-            $this->AjaxReturn('200', '删除成功', site_url('Diary', 'index'));
+            $this->AjaxReturn('200','删除成功', site_url('Diary', 'index'));
         }
     }
 
     public function jump()
     {
-        $appid = APPID;
+        $appid  = APPID;
         $secret = SECRET;
-        $code = $_GET['code'];//获取code 
+        $code = $_GET['code'];//获取code
         $type = isset($_GET['type']) ? $_GET['type'] : false;//获取code
 
         //获取参数
@@ -57,15 +53,15 @@ class Publics extends Base
                     'avatar'     => $userInfo['headimgurl'],
                     'created_at' => NOW_DATE_TIME,
                 ];
-                $this->UserWx->addUserOpenId($data);
+                $this->UserWx->addWxInfo($data);
             }
-            header('Location:' . $url);
+            header('Location:'.$url);
         }
     }
 
     public function getUserInfo()
     {
-        $appid = APPID;
+        $appid  = APPID;
         $secret = SECRET;
         $code = $_GET['code'];//获取code
         $type = $_GET['type'];
@@ -87,23 +83,22 @@ class Publics extends Base
         $userInfo = getJson($get_user_info_url);
         $user_Info = json_encode($userInfo);
         $data = [
-            'avatar'  => $userInfo['headimgurl'],
-            'wx_info' => $user_Info,
+            'avatar'    => $userInfo['headimgurl'],
+            'wx_info'   => $user_Info,
         ];
         $this->Users->editUserOpenId($this->_data['openId'], $data);
         $url = site_url('User', 'register', array('type' => $type));
-        header('Location:' . $url);
+        header('Location:'.$url);
     }
 
     //获取上传图片信息
-    public function getImageInfo()
-    {
+    public function getImageInfo() {
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         $image = file_get_contents($url);
-        if ($type == 1) {
+        if($type == 1) {
             $options = array();
             $options["detect_direction"] = "true";
             $info = $client->idcard($image, 'front', $options);
@@ -121,12 +116,11 @@ class Publics extends Base
     public function imageUpload()
     {
         //不存在当前上传文件则上传
-        if (!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'], iconv('utf-8', 'gb2312', $_FILES['upload_file']['name']));
+        if(!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'],iconv('utf-8','gb2312',$_FILES['upload_file']['name']));
         //输出图片文件<img>标签
         //echo "<textarea><img src='{$_FILES['upload_file']['name']}'/></textarea>";
-        if ($_FILES["file"]["size"] > 10485760) {
-            echo 1;
-            exit;
+        if($_FILES["file"]["size"] > 10485760) {
+            echo 1;exit;
             //$this->ajaxReturn(self::AJ_RET_FAIL, '');
         }
         $config['allowed_types'] = '*';
@@ -134,7 +128,7 @@ class Publics extends Base
         //文件名
         $config['file_name'] = $_FILES["file"]["name"];
         //文件路径
-        $config['show_path'] = UPLOAD_FILE;
+        $config['show_path']   = UPLOAD_FILE;
         $config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['show_path'];
         mkdirs($config['upload_path']);
         $config['file_ext_tolower'] = true;
@@ -153,9 +147,9 @@ class Publics extends Base
             //路径
             $file = HTTP_HOST . UPLOAD_FILE . $upload_data['file_name'];
 
-            $result['status'] = '1';
-            $result['mes'] = '上传成功~';
-            $result['file'] = $file;
+            $result['status']   = '1';
+            $result['mes']      =  '上传成功~';
+            $result['file']     = $file;
             return $file;
         }
     }
