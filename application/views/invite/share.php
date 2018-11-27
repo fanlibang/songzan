@@ -1,6 +1,7 @@
-<!--
 <div class="wrapper">
-    <div class="logo" style="pointer-events:none;"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
+    <div class="logo" style="pointer-events:none;">
+        <img src="<?= STATIC_ASSETS ?>images/logo.png" alt="">
+    </div>
     <div class="content bg-2 flex center jc" style="pointer-events:none;">
         <div>
             <div class="gift-tit ta-c">
@@ -12,25 +13,11 @@
             </div>
         </div>
     </div>
-    <div style="display: none;"><img src="<?=$img_url?>" alt=""></div>
-</div>
--->
-<div class="wrapper">
-    <div class="logo" style="pointer-events:none;"><img src="http://tjaguar-songzan.wedochina.cn/2018/crm/ownerreferral/assets/images/logo.png" alt=""></div>
-    <div class="content bg-2 flex center jc" style="pointer-events:none;">
-        <div>
-            <div class="gift-tit ta-c">
-                <div><img src="http://tjaguar-songzan.wedochina.cn/2018/crm/ownerreferral/assets/images/gift-tit.png" alt=""></div>
-                <div class="ta-c ma">1njcia</div>
-            </div>
-            <div class="code">
-                <div class="auto"><img width="144px" height="144px" src="http://api.qrserver.com/v1/create-qr-code/?size=144x144&amp;data=http://tjaguar-songzan.wedochina.cn/2018/crm/ownerreferral/index.php/Invite/index?invite_code=1njcia" alt=""></div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<div style="position: absolute;top: 0;width: 100%;height: 100%;"><img style="width: 100%;height: 100%;opacity: 0;" src="http://tjaguar-songzan.wedochina.cn/upfile/2018/crm/ownerreferral/1543292934_18_share.jpg" alt=""></div>
+<div style="position: absolute;top: 0;width: 100%;height: 100%;">
+    <img style="width: 100%;height: 100%;opacity: 0;" src="<?=$img_url?>" alt="">
+</div>
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
