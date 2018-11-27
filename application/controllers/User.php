@@ -152,10 +152,11 @@ class User extends Base
                     $url = site_url('Invite', 'index');
                 }
                 $this->Users->editUserUid($res['id'], ['token' => $token]);
+                $this->AjaxReturn('200', '成功', $url);exit;
             } else {
                 $url = site_url('User', 'referee');
+                $this->AjaxReturn('404', '没有用户信息', $url);exit;
             }
-            $this->AjaxReturn('200', '成功', $url);exit;
         }
     }
 }

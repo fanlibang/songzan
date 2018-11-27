@@ -23,18 +23,18 @@
             <div class="form-list flex center">
                 <label>手机号：</label>
                 <div class="form-box">
-                    <input type="tel" class="input-text">
+                    <input type="tel" name="phone" id="phone" value="" class="input-text">
                 </div>
             </div>
             <div class="form-list flex center">
                 <label>验证码：</label>
                 <div class="form-box">
-                    <input type="tel" class="input-text">
+                    <input type="tel" id="verify" value="" class="input-text">
                 </div>
-                <input type="button" value="发送验证码" class="sendbtn">
+                <input type="button" value="发送验证码" class="sendbtn _sms_verify">
             </div>
             <div class="form-push">
-                <input type="button" value="提     交" class="btn auto" onclick="cc('index/tyg')" >
+                <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('index/tyg')" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -47,7 +47,7 @@
                 您还未成为路虎推荐购活动推荐人，请点击“我要推荐”报名参与活动。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto">
+                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -92,6 +92,9 @@
                     if(json.code == 200){
                         alert(json.msg);
                         window.location.href=json.forward;
+                    } else if(json.code == 404) {
+                        $('#hint').removeClass('hide');
+                        $('#tj').attr('onclick', json.forward);
                     } else {
                         alert(json.msg);
                     }
