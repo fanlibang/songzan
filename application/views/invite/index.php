@@ -27,7 +27,8 @@
                     <label>意向车型：</label>
                     <div class="form-box">
                         <span>请选择车型</span>
-                        <select name="car_id">
+                        <select name="car_id" id="car_id">
+                            <option value="0" selected>请选择车型</option>
                             <?php foreach ($car_record as $value) { ?>
                                 <option value="<?=$value['id'] ?>"><?=$value['name'] ?></option>
                             <?php } ?>
@@ -101,7 +102,7 @@
             var phone = $('input[name=phone]').val();
             var name = $('input[name=name]').val();
             var invite_code = $('input[name=invite_code]').val();
-            var car_id = $('select[name=car_id]').val();
+            var car_id = $("#car_id option:selected").val();
             if(phone == '') {
                 alert('手机号不能为空'); return false;
             } else if(code == '') {
@@ -110,8 +111,6 @@
             } else if(name == '') {
                 alert('用户名不能为空');
                 return false;
-            } else if(car_id == '') {
-                alert('请选择车型'); return false;
             }
             $.ajax({
                 type:'post',

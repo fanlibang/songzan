@@ -128,6 +128,46 @@ class Invite extends Base
         $this->displayMain($result);
     }
 
+    public function editInfo()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+        }
+        if ($result['master_uid'] == 0) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+        }
+        $info = $this->input->request(null, true);
+        $carInfo = new \Xy\Application\Models\CarInfoModel();
+        if (is_ajax_post()) {
+            if (empty($info['car_id'])) {
+                $this->AjaxReturn('403', '请选择车型');
+                exit;
+            }
+
+            $carInfo = $carInfo->getCarInfoByid($info['car_id']);
+            $tempData = [
+                'kmi_id'                => $result['id'],
+                'activity_id'           => 'CRM_Owner_Referral_201812_Test',
+                'name'                  => $result['name'],
+                'mobile'                => $result['phone'],
+                'model_id'              => $carInfo['cid'],
+                'nameplate_of_interest' => $carInfo['alias'],
+                'creation_time'         => NOW_DATE_TIME,
+                'need_lms'              => 1,
+            ];
+            $push = new ReportModel();
+            $rsp = $push->reportOwner($tempData);
+            $this->Users->editUserId($result['id'], array('report_result' => $rsp, 'car_id' => $info['car_id']));
+            $this->AjaxReturn('200', '完善资料成功', site_url('Invite', 'info'));
+            exit;
+        }
+        $result['car_record'] = $carInfo->getAllCarInfo();
+        $this->displayMain($result);
+    }
+
     public function share()
     {
         $data = $this->isLogin();
