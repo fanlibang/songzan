@@ -63,36 +63,29 @@ class Publics extends Base
         }
     }
 
-    public function getUserInfo()
+    public function addOpenid()
     {
         $appid = APPID;
         $secret = SECRET;
         $code = $_GET['code'];//获取code
-        $type = $_GET['type'];
-
-        //第一步:取全局access_token
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$secret";
-        $token = getJson($url);
-
-
-        //第二步:取得openid
-        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
-        $oauth2 = getJson($oauth2Url);
-
-
-        //第三步:根据全局access_token和openid查询用户信息
-        $access_token = $token["access_token"];
-        $openid = $oauth2['openid'];
-        $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
-        $userInfo = getJson($get_user_info_url);
-        $user_Info = json_encode($userInfo);
-        $data = [
-            'avatar'  => $userInfo['headimgurl'],
-            'wx_info' => $user_Info,
-        ];
-        $this->Users->editUserOpenId($this->_data['openId'], $data);
-        $url = site_url('User', 'register', array('type' => $type));
-        header('Location:' . $url);
+        $weixin =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code");//通过code换取网页授权access_token
+        $jsondecode = json_decode($weixin); //对JSON格式的字符串进行编码
+        $array = get_object_vars($jsondecode);//转换成数组
+        $openid = $array['openid'];//输出openid
+        //输出openid
+        if (!empty($openid)) {
+            $res = $this->UserWx->getWxInfoByOpId($openid);
+            set_cookie('openId', $res['open_id']);
+            $url = site_url('Index', 'index');
+            if (empty($res)) {
+                $data = [
+                    'open_id'    => $openid,
+                    'created_at' => NOW_DATE_TIME
+                ];
+                $this->UserWx->addWxInfo($data);
+            }
+            header('Location:' . $url);
+        }
     }
 
     //获取上传图片信息
@@ -157,36 +150,6 @@ class Publics extends Base
             $result['mes'] = '上传成功~';
             $result['file'] = $file;
             return $file;
-        }
-    }
-
-    public function login()
-    {
-        $info = $this->input->request(null, true);
-        if (is_ajax_post()) {
-            if ($info['code'] != get_cookie($info['phone'])) {
-                $this->AjaxReturn('202', '验证码不正确');
-                exit;
-            }
-            $res = $this->Users->getUserInfoByPhone($info['phone']);
-            if ($res) {
-                $token = rand_str(32);
-                $openid = get_cookie('openId');
-                $open_id = isset($openid) ? $openid : '';
-                if (is_weixin() && empty($res['open_id'])) {
-                    $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
-                }
-                set_cookie('token', $token);
-                if(empty($res['from_invite_code'])) {
-                    $url = site_url('User', 'center');
-                } else {
-                    $url = site_url('Invite', 'index');
-                }
-                $this->Users->editUserUid($res['id'], ['token' => $token]);
-            } else {
-                $url = site_url('User', 'referee');
-            }
-            $this->AjaxReturn('200', '成功', $url);exit;
         }
     }
 

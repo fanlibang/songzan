@@ -48,7 +48,7 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
-                $this->AjaxReturn('200', '用户已注册跳转主页', $url);exit;
+                $this->AjaxReturn('200', '该手机已注册', $url);exit;
             }
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
@@ -78,9 +78,19 @@ class User extends Base
 
     public function updateInfo()
     {
-        $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         $id = $info['id'];
+        if (!$this->isLogin()) {
+            $url = site_url('Index', 'index');
+            header('Location:' . $url);
+        } else {
+            $userInfo = $this->isLogin();
+            if($userInfo['id'] != $id){
+                $url = site_url('Index', 'index');
+                header('Location:' . $url);
+            }
+        }
+        $url = site_url('User', 'center');
         if (is_ajax_post()) {
             if(!validateIDCard($info['card_number'])) {
                 $this->AjaxReturn('202', '请填写正确身份证信息');
@@ -117,6 +127,36 @@ class User extends Base
             header('Location:' . $url);
         }
         $this->displayMain($data);
+    }
+
+    public function login()
+    {
+        $info = $this->input->request(null, true);
+        if (is_ajax_post()) {
+            if ($info['code'] != get_cookie($info['phone'])) {
+                $this->AjaxReturn('202', '验证码不正确');
+                exit;
+            }
+            $res = $this->Users->getUserInfoByPhone($info['phone']);
+            if ($res) {
+                $token = rand_str(32);
+                $openid = get_cookie('openId');
+                $open_id = isset($openid) ? $openid : '';
+                if (is_weixin() && empty($res['open_id'])) {
+                    $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
+                }
+                set_cookie('token', $token);
+                if(empty($res['from_invite_code'])) {
+                    $url = site_url('User', 'center');
+                } else {
+                    $url = site_url('Invite', 'index');
+                }
+                $this->Users->editUserUid($res['id'], ['token' => $token]);
+            } else {
+                $url = site_url('User', 'referee');
+            }
+            $this->AjaxReturn('200', '成功', $url);exit;
+        }
     }
 }
 
