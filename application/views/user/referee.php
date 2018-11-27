@@ -60,6 +60,19 @@
         </div>
     </div>
 </div>
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -128,14 +141,26 @@ $(document).ready(function(){
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        alert(json.msg);
-                        window.location.href=json.forward;
+                        $('#title').html(json.msg);
+                        $('#tj').val('确认提交');
+                        $('#tj').attr('url', json.forward);
+                        //window.location.href=json.forward;
+                    } else if(json.code == 201) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        //window.location.href=json.forward;
                     } else {
                         alert(json.msg);
                     }
                 },
                 error:function(){}
             });
+        });
+
+        $('#tj').click(function(){
+            var url = $(this).attr('url');
+            window.location.href=url;
         });
     });
 </script>

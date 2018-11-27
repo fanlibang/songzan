@@ -48,7 +48,7 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
-                $this->AjaxReturn('200', '该手机已注册', $url);exit;
+                $this->AjaxReturn('201', '您已参与过活动，请前往个人主页查看最新状态。', $url);exit;
             }
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
@@ -66,7 +66,7 @@ class User extends Base
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=144x144&data=$invite_url";
             $this->Users->editUserUid($uid, $update);
             set_cookie('token', $token);
-            $this->AjaxReturn('200', '成功', $url);exit;
+            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。', $url);exit;
         } else {
             if ($this->isLogin()) {
                 $url = site_url('User', 'center');
