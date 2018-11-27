@@ -15,7 +15,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         wx.config({
-            debug: false,
+            debug: true,
             appId: "<?= $wx['appId']; ?>",
             timestamp: "<?= $wx['timestamp']; ?>",
             nonceStr: "<?= $wx['nonceStr']; ?>",
@@ -52,9 +52,9 @@
 
 
             var data = {
-                title: '发现隐秘之门', // 分享标题
+                title: '荐入佳境 共揽胜景', // 分享标题
                 link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'share') . '?invite_code=' . $invite_code; ?>", // 分享链接
-                desc:'路虎发现与松赞文旅邀您角逐最具号召力体验官，获取神秘大礼。',
+                desc:'您的好友正在邀请您参与路虎推荐购活动。',
                 imgUrl: "<?= $qr_code_img ?>", // 分享图标
                 success: function () {
                     //alert('操作成功');

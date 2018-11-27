@@ -78,9 +78,9 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .logo{position: absolute;top:27px;right:35px;z-index: 8;}
 .index-tit{color: #545454;line-height: 36px;padding-bottom: 25px;text-shadow: 0 0 51px rgba(255,244,208,0.75);}
 .index-btn{width: 390px;height: 82px;margin-bottom: 15px;}
-.rule-box{position: relative;margin-top: 30px;}
-.rule-box::before{content: '';height: 2px;width: 100%;top:50%;background: #a6937c;left:0;position: absolute;opacity: 0.6;}
-.rule{width: 210px;height: 42px;line-height: 42px;font-size: 22px;background: #a6937c;border-radius: 50px;color: #fff;position: relative;z-index: 1;}
+.rule-box{position: relative; padding: 15px 0;}
+/*.rule-box::before{content: '';height: 2px;width: 100%;top:50%;background: #a6937c;left:0;position: absolute;opacity: 0.6;}*/
+.rule{ display: inline-block; width: 210px;height: 42px;line-height: 42px;font-size: 22px;background: #a6937c;border-radius: 50px;color: #fff;position: relative;z-index: 1;}
 /*表单*/
 .form{ width: 580px;text-align: left;color: #333;}
 .form-tit{font-size: 34px;color: #333;padding: 120px 0 50px;font-weight: bold;position: relative;}
@@ -88,13 +88,15 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .form-list{border:1px solid #848484;}
 .form-list label{width: 110px; min-width: 110px;font-style: normal;margin-left: 20px;}
 .form-list i{width: 70px; min-width: 70px;text-align: center;}
-.form-box{width: 100%;  padding:5px 20px 5px 0;}
+.form-box{ position: relative; width: 100%;  padding:5px 20px 5px 0;}
 .input-text{width: 100%; height: 70px; line-height: 70px;color: #333; font-size: 24px;background: transparent;font-family: "labold";}
-/*.input-text::-webkit-input-placeholder{color: #0c121c;}*/
+.input-text::-webkit-input-placeholder{color: #ccc;}
 .opt label{width: 120px;min-width: 120px;}
 .opt .form-box{position: relative; background: url(../images/icon-2.png) no-repeat right center; padding-right: 65px;}
-.opt span{display: block; width: 100%; height: 70px; color: #333; line-height: 70px; overflow: hidden;font-family: "labold";}
-.opt select{position: absolute; top:0; left: 0; width: 100%; height: 100%; opacity: 0;}
+.opt span , .file span{display: block; width: 100%; height: 70px; color: #333; line-height: 70px; overflow: hidden;font-family: "labold";}
+.file span{color: #ccc;}
+.opt select , .file input{position: absolute; top:0; left: 0; width: 100%; height: 100%; opacity: 0;}
+.file input{opacity: 0;}
 .form-checkbox{position: relative; padding-left: 30px; color: #333; font-size: 20px;}
 .form-checkbox:before{position: absolute; top:2px; left: 0; width: 20px; height: 20px;  border:1px solid #0c121c;content: "";}
 .form-checkbox.active:before{background: url("../images/icon-3.png") no-repeat center center;}
@@ -103,18 +105,16 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .form-push{margin-top: 80px;}
 .btn{display: block; width: 300px; height: 80px; color: #fff; font-size: 28px; font-weight: bold; text-align: center; line-height: 80px; background: #0c121c;}
 .split .form-list{width: 48%;}
-.sendbtn{background: url("../images/send.jpg") no-repeat;width: 142px;min-width: 142px;height: 56px;color: #fff;display: inline-block;margin-right: 20px;font-size: 20px;}
+.sendbtn{background:#686f71;width: 142px;min-width: 142px;height: 56px;color: #fff;display: inline-block;margin-right: 20px;font-size: 20px;}
 .sendbtn.dis{background: #686f71;}
 .form-list.disabled{background: #e5e5e5;}
 .form-list.disabled .input-text{font-family: "labold";letter-spacing: 5px;}
-.file i{position: relative;}
-.file input[type="file"]{position: absolute;top:0;left:0;width: 100%;height:100%;opacity: 0;}
 /*.be-referee .form , .be-referee .form-tit , .be-referee .input-text , .be-referee .form-checkbox , .be-referee .form-checkbox a{color: #fff;}*/
 /*.be-referee .form-list , .be-referee .form-checkbox:before{border:1px solid #fff;}*/
 /*.be-referee .btn{color: #0c121c;background: #fff;}*/
 /*.be-referee .sendbtn{background: #6e6d6c;color: #fcfcfc;}*/
 /*弹框*/
-.bomb-wrapper{position: fixed; top:0; left: 50%;z-index: 99; width: 750px; height: 100%; margin-left: -375px; background: rgba(0,0,0,.7);padding-top: 230px;}
+.bomb-wrapper{position: fixed; top:0; left: 50%;z-index: 99; width: 750px; height: 100%; margin-left: -375px; background: rgba(0,0,0,.7);}
 .bomb-content{position: relative; width: 630px; background: #fff; border-radius: 20px;overflow: hidden;}
 .bomb-content .form{width: 500px;padding: 75px 0 110px;}
 .bomb-content .form-push{margin-top: 120px;}
@@ -139,3 +139,15 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .info-page .form-list label{margin-left: 0;}
 .info-page .form .input-text ,.info-page .form span{text-align: right;}
 /*input[disabled]{color:#333;opacity:1}*/
+
+
+/*add*/
+.hint{padding: 75px 90px;}
+.hint-word{ padding-top: 100px; color: #0c121c; font-size: 30px; line-height: 46px;}
+#rule .pop-tit{border-bottom: 0;}
+.rule-inner{padding: 45px 64px;}
+.rule-inner .form-push{margin-top: 60px;}
+.rule-word{color: #0c121c; font-size: 26px; line-height: 36px;}
+.rule-word dt{font-size: 30px; font-weight: bold;}
+.rule-word dt:not(:first-child){margin-top: 20px;}
+.ss .form-tit{padding-top: 0; }

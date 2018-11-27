@@ -25,6 +25,10 @@ $(function () {
         $('.bomb-wrapper').addClass('hide');
     });
 
+    $('.gz').on('click',function () {
+        $('#rule').removeClass('hide');
+    });
+
     window.alert = function(name){
         var iframe = document.createElement("IFRAME");
         iframe.style.display="none";
