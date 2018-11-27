@@ -90,12 +90,12 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .form-list i{width: 70px; min-width: 70px;text-align: center;}
 .form-box{ position: relative; width: 100%;  padding:5px 20px 5px 0;}
 .input-text{width: 100%; height: 70px; line-height: 70px;color: #333; font-size: 24px;background: transparent;font-family: "labold";}
-/*.input-text::-webkit-input-placeholder{color: #0c121c;}*/
+.input-text::-webkit-input-placeholder{color: #ccc;}
 .opt label{width: 120px;min-width: 120px;}
 .opt .form-box{position: relative; background: url(../images/icon-2.png) no-repeat right center; padding-right: 65px;}
-.opt span , .file span{display: block; width: 100%; height: 70px; color: #333; line-height: 70px; overflow: hidden;font-family: "labold";}
+.opt span{display: block; width: 100%; height: 70px; color: #333; line-height: 70px; overflow: hidden;font-family: "labold";}
 .file span{color: #ccc;}
-.opt select , .file input{position: absolute; top:0; left: 0; width: 100%; height: 100%; opacity: 0;}
+.opt select{position: absolute; top:0; left: 0; width: 100%; height: 100%; opacity: 0;}
 .file input{opacity: 0;}
 .form-checkbox{position: relative; padding-left: 30px; color: #333; font-size: 20px;}
 .form-checkbox:before{position: absolute; top:2px; left: 0; width: 20px; height: 20px;  border:1px solid #0c121c;content: "";}
