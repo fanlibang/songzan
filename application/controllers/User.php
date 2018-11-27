@@ -48,6 +48,8 @@ class User extends Base
                     $this->Users->editUserId($res['id'], ['open_id' => $open_id]);
                 }
                 set_cookie('token', $token);
+                $data['token'] = $token;
+                $this->Users->editUserUid($res['id'], $data);
                 $this->AjaxReturn('201', '您已参与过活动，请前往个人主页查看最新状态。', $url);exit;
             }
             $data['name'] = $info['name'];
