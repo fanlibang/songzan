@@ -18,12 +18,13 @@ $(function () {
     });
     //进度
     $('.progress').on('click',function () {
-        $('.bomb-wrapper').removeClass('hide');
+        $('#login').removeClass('hide');
     });
     //关闭弹窗
-    $('.close').on('click',function () {
-        $('.bomb-wrapper').addClass('hide');
+    $('.close,#agree').on('click',function () {
+        $(this).parents('.bomb-wrapper').addClass('hide');
     });
+
 
     $('.gz').on('click',function () {
         $('#rule').removeClass('hide');
