@@ -71,7 +71,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     //默认数据库操作
     $myip               = '180.76.114.64';
     $myuser             = 'root';
-    $mypassword         = '123456';
+    $mypassword         = 'Sz20181127*';
     $host               = $myip;
     $user               = $myuser;
     $password           = $mypassword;
@@ -89,7 +89,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     $mypassword         = 'ziyue2018ZIYUE';*/
     $myip               = '180.76.114.64';
     $myuser             = 'root';
-    $mypassword         = '12345';
+    $mypassword         = 'Sz20181127*';
     //默认数据库操作
     $rand_num           = mt_rand(0, 1);
     $host               = $myip;//'192.168.11.7'
