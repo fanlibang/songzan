@@ -6,8 +6,8 @@
             成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
             您和您的好友均可赢取至臻礼包
         </div>
-        <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tyg')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
-        <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/tyg')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
+        <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+        <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
         <div class="rule-box ta-c">
             <a href="javascript:;" class="rule gz">
                 查看活动规则
