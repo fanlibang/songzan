@@ -61,7 +61,12 @@
     </div>
 </div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        WeixinJSBridge.call('hideOptionMenu');
+    });
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
