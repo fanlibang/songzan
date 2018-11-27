@@ -53,7 +53,7 @@
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('Publics', 'login'); ?>',
+                url:'<?php echo site_url('User', 'login'); ?>',
                 data:{phone: phone, code:code},
                 dataType:'json',
                 success:function(json){
