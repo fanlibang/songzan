@@ -157,12 +157,10 @@ class Publics extends Base
         $info = $this->input->request(null, true);
         $url =  $info['url'];
         $openid = get_cookie('openId');
-        $res = false;
-        if($openid && $this->_data['browser'] == 1) {
-            $time = NOW_DATE_TIME;
-            $sql = "insert into ownerreferral_201812_button (url, openId, create_dt) values ('{$url}', '{$openid}', '{$time}');";
-            $res = $this->Users->execute($sql);
-        }
+        $open_id = isset($openid) ? $openid : '1';
+        $time = NOW_DATE_TIME;
+        $sql = "insert into ownerreferral_201812_button (url, openId, create_dt) values ('{$url}', '{$open_id}', '{$time}');";
+        $res = $this->Users->execute($sql);
         if($res) {
             $this->AjaxReturn('200','成功');
         } else {

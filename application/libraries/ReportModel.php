@@ -1568,7 +1568,7 @@ class ReportModel
             return array();
         }
 
-	$client_code = CLIENT_CODE;
+	    $client_code = CLIENT_CODE;
         $secret = CLIENT_SECRET;
         if(empty($client_code)) {
             $postData['client_code']       = $config['client_code'];
@@ -1588,7 +1588,7 @@ class ReportModel
         $postData['need_lms']          = 1;
         $postData['accept_privacy']    = 'true';
         $postData['timestamp']         = time();
-	$postData['sub_channel1']      = get_cookie('source');
+	    $postData['sub_channel1']      = get_cookie('source');
         $postData['nonce_str']         = $this->createNonceStr(12);
 
 
@@ -1620,7 +1620,7 @@ class ReportModel
         }
         $retJson = curl_exec($curl);
 
-	$retArr = json_decode($retJson, true);
+	    $retArr = json_decode($retJson, true);
         $postData['status'] = $retArr;
         if (false === $retJson) {
             $postData['status'] = $retArr;
