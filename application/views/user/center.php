@@ -46,7 +46,11 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <?php if(empty($card_number) || empty($driver_number)) { ?>
+                            <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <?php } else { ?>
+                            <span><a id="ws" onclick="cc('center/yqm')" href="javascript:;"><?= $invite_code ?></a></span>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -77,6 +81,9 @@
     $(function(){
         $('#tj').on('click',function () {
             $('#hint').addClass('hide');
+        });
+        $('#ws').on('click',function () {
+            alert('请先完善资料');
         });
     });
 </script>

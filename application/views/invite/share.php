@@ -23,7 +23,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         wx.config({
-            debug: true,
+            debug: false,
             appId: "<?= $wx['appId']; ?>",
             timestamp: "<?= $wx['timestamp']; ?>",
             nonceStr: "<?= $wx['nonceStr']; ?>",
