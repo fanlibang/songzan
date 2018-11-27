@@ -90,7 +90,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .form-list i{width: 70px; min-width: 70px;text-align: center;}
 .form-box{ position: relative; width: 100%;  padding:5px 20px 5px 0;}
 .input-text{width: 100%; height: 70px; line-height: 70px;color: #333; font-size: 24px;background: transparent;font-family: "labold";}
-.input-text::-webkit-input-placeholder{color: #ccc;}
+/*.input-text::-webkit-input-placeholder{color: #0c121c;}*/
 .opt label{width: 120px;min-width: 120px;}
 .opt .form-box{position: relative; background: url(../images/icon-2.png) no-repeat right center; padding-right: 65px;}
 .opt span , .file span{display: block; width: 100%; height: 70px; color: #333; line-height: 70px; overflow: hidden;font-family: "labold";}
@@ -109,6 +109,8 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .sendbtn.dis{background: #686f71;}
 .form-list.disabled{background: #e5e5e5;}
 .form-list.disabled .input-text{font-family: "labold";letter-spacing: 5px;}
+.file i{position: relative;}
+.file input[type="file"]{position: absolute;top:0;left:0;width: 100%;height:100%;opacity: 0;}
 /*.be-referee .form , .be-referee .form-tit , .be-referee .input-text , .be-referee .form-checkbox , .be-referee .form-checkbox a{color: #fff;}*/
 /*.be-referee .form-list , .be-referee .form-checkbox:before{border:1px solid #fff;}*/
 /*.be-referee .btn{color: #0c121c;background: #fff;}*/
