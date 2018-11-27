@@ -7,7 +7,7 @@
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
                     <?php if(empty($card_number) || empty($driver_number))  { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('center/wszl')" href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
                     <?php }?>
                 </div>
                 <div class="form-list flex center">
@@ -46,7 +46,7 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><a href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                     </div>
                 </div>
             </div>
@@ -75,8 +75,8 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $(function(){
-        $('#tj').click(function(){
-            $('hint').addClass('hide');
+        $('#tj').on('click',function () {
+            $('#hint').addClass('hide');
         });
     });
 </script>
