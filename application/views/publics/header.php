@@ -8,8 +8,8 @@
     <meta name="format-detection" content="telephone=no, email=no"/>
     <meta name="msapplication-tap-highlight" content="no">
     <title></title>
-    <link href="<?= STATIC_ASSETS ?>css/base.css" rel="stylesheet" type="text/css">
+    <link href="<?= STATIC_ASSETS ?>css/base.css?t=<?=time()?>" rel="stylesheet" type="text/css">
     <script src="<?= STATIC_ASSETS ?>js/jquery.min.js" type="text/javascript"></script>
-    <script src="<?= STATIC_ASSETS ?>js/main.js" type="text/javascript"></script>
+    <script src="<?= STATIC_ASSETS ?>js/main.js?t=<?=time()?>" type="text/javascript"></script>
 </head>
 <body>
