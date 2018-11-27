@@ -96,7 +96,7 @@ class Base extends Common
                 return true;
             }
         }
-        $this->get_openid();
+        $this->getOpenid();
     }
 
 
@@ -204,7 +204,25 @@ class Base extends Common
      *  获取用户openid，保存名片用
      * @param string $url
      */
-    public function get_openid($url = '')
+    public function getOpenid($url = '')
+    {
+        $state = rand(1,10000);
+        $appid = APPID;
+        if (empty($url)) {
+            $url = site_url('Publics', 'addOpenid');
+        }
+        //echo $url;exit;
+        $redirect_uri = urlencode($url);
+        //对url处理，此url为访问上面jump方法的url
+        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect";
+        header('Location:' . $url);
+    }
+
+    /**
+     *  获取用户openid，保存名片用
+     * @param string $url
+     */
+    public function getWxInfo($url = '')
     {
         $state = '222';
         $appid = APPID;
