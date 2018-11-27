@@ -27,7 +27,7 @@ class Base extends Common
         #载入后台权限操作相关(管理员 菜单 角色)
         $this->Users = new \Xy\Application\Models\UserModel();
         $this->UserWx = new \Xy\Application\Models\UserWxModel();
-        //set_cookie('openId', '');exit;
+        set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
 
         if (!$this->isLogin()) {
