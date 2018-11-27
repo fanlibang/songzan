@@ -1,6 +1,4 @@
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
-
-
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-1">
