@@ -40,6 +40,10 @@ class Invite extends Base
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
+            if (empty($inviteCode)) {
+                $this->AjaxReturn('403', '邀请码格式不正确');
+                exit;
+            }
             $data['name'] = $info['name'];
             $data['from_invite_code'] = $info['invite_code'];
             $data['car_id'] = $info['car_id'];
@@ -64,8 +68,12 @@ class Invite extends Base
                 if (is_weixin() && empty($havePhoneInfo['open_id']) && !empty($data['open_id'])) {
                     $this->Users->editUserId($havePhoneInfo['id'], ['open_id' => $data['open_id']]);
                 }
+                if ($havePhoneInfo['invite_code'] != $inviteCode) {
+                    $this->AjaxReturn('202', '很抱歉，目前系统不支持修改推荐人。如有疑问，可详询400-820-0187。', $url);
+                    exit;
+                }
                 set_cookie('token', $havePhoneInfo['token']);
-                $this->AjaxReturn('200', '成功', $url);
+                $this->AjaxReturn('201', '您已参与过活动，请前往个人主页查看最新状态。', $url);
                 exit;
             }
             $ret = verify_count($data['name'], 10);
@@ -91,8 +99,9 @@ class Invite extends Base
                 'need_lms'              => 1,
             ];
             $push = new ReportModel();
-            $push->reportOwner($tempData, $info['merchants']);
-            $this->AjaxReturn('200', '成功', $url);
+            $result = $push->reportOwner($tempData, $info['merchants']);
+            $this->Users->editUserId($uid, ['report_result' => $result]);
+            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发，请确保信息的准确性。您可保存此链接以便后续进入活动页面。', $url);
             exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();

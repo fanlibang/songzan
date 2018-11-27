@@ -55,20 +55,33 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc show" id="rule">
+<div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
         <div class="pop-tit ta-c">活 动 规 则</div>
         <div class="rule-inner">
             <dl class="rule-word">
                 <dt>活动介绍：</dt>
-                <dd>活动期间，路虎车主可通过活动链接推荐其亲友购车，若亲友成功购买路虎揽胜、路虎揽胜运动版，双方均可赢取丰厚大礼。</dd>
+                <dd>路虎全系车主均可报名参与活动，每人最多可推荐10位被推荐人。活动期间，若被推荐人成功购买路虎揽胜/揽胜运动版车型，则视为推荐成功，双方均可赢取丰厚大礼。</dd>
                 <dt>活动时间： </dt>
-                <dd>即日起至2019年2月28日</dd>
-                <dt>活动对象：</dt>
-                <dd>活动前通过路虎官方授权经销商购买一辆及以上路虎车辆，且目前仍然拥有该车辆的路虎车主。</dd>
+                <dd>即日起至2019年3月31日</dd>
+                <dt>…… </dt>
             </dl>
             <div class="form-push">
                 <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                您已参与过活动，请前往个人主页查看最新状态。
+            </div>
+            <div class="form-push">
+                <input type="button" value="个人主页" class="btn auto" id="tj" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -106,16 +119,32 @@
                 data:{code:code, phone: phone, name:name, invite_code:invite_code, car_id:car_id},
                 cache:false,
                 dataType:'json',
-                success:function(json){
-                    if(json.code == 200){
-                        alert(json.msg);
-                        window.location.href=json.forward;
+                success:function(json) {
+                    if(json.code == 200) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('确认提交');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 201) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 202) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else {
                         alert(json.msg);
                     }
                 },
                 error:function(){}
             });
+        });
+        $('#tj').click(function(){
+            var url = $(this).attr('url');
+            window.location.href=url;
         });
     });
 </script>
