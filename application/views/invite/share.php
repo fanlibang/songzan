@@ -56,7 +56,7 @@
                 title: '荐入佳境 共揽胜景', // 分享标题
                 link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'share') . '?invite_code=' . $invite_code; ?>", // 分享链接
                 desc:'您的好友正在邀请您参与路虎推荐购活动。',
-                imgUrl: "<?= $qr_code_img ?>", // 分享图标
+                imgUrl: "<?= HTTP_HOST ?>/2018/crm/ownerreferral/assets/images/123.jpg", // 分享图标
                 success: function () {
                     //alert('操作成功');
                     // 用户确认分享后执行的回调函数
