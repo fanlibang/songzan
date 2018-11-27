@@ -1,9 +1,11 @@
-<div class="wrapper" style="background-image: url("<?=$img_url?>");">
-    <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
-    <div class="content bg-2 flex center jc">
+<div class="wrapper">
+    <div class="logo" style="pointer-events:none;">
+        <img src="<?= STATIC_ASSETS ?>images/logo.png" alt="">
+    </div>
+    <div class="content bg-2 flex center jc" style="pointer-events:none;">
         <div>
             <div class="gift-tit ta-c">
-                <div><img" src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code">
@@ -12,6 +14,11 @@
         </div>
     </div>
 </div>
+
+<div style="position: absolute;top: 0;width: 100%;height: 100%;">
+    <img style="width: 100%;height: 100%;opacity: 0;" src="<?=$img_url?>" alt="">
+</div>
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
