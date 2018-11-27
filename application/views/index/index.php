@@ -94,7 +94,7 @@
                         window.location.href=json.forward;
                     } else if(json.code == 404) {
                         $('#hint').removeClass('hide');
-                        $('#tj').attr('onclick', json.forward);
+                        $('#tj').attr('url', json.forward);
                     } else {
                         alert(json.msg);
                     }
@@ -102,5 +102,9 @@
                 error:function(){}
             });
         });
+        $('#tj').click(function(){
+            var url = $(this).attr('url');
+            window.location.href=url;
+        }
     });
 </script>
