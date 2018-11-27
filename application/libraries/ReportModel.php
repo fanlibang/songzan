@@ -1560,7 +1560,7 @@ class ReportModel
      * @param  $postData
      * @author rootu
      */
-    public function reportOwner($postData, $signDealer)
+    public function reportOwner($postData, $signDealer = '')
     {
         # 获取配置信息
         $signDealer = trim($signDealer);
