@@ -121,7 +121,7 @@ class Invite extends Base
 
     public function share()
     {
-        $data = $this->isLogin();
+        /*$data = $this->isLogin();
         if (!$data) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
@@ -152,6 +152,7 @@ class Invite extends Base
             $this->Users->editUserId($data['id'], ['share_img' => $shareImg]);
         }
         $data['img_url'] = $shareImg;
-        $this->displayMain($data);
+        $this->displayMain($data);*/
+        $this->displayMain();
     }
 }
