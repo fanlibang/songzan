@@ -53,19 +53,21 @@
         </div>
     </div>
 </div>
-<div class="bomb-wrapper flex center jc hide" id="hint">
-    <div class="bomb-content">
-        <div class="hint auto">
-            <div class="hint-word" id="title">
-                请尽快上传身份证和行驶证信息。推荐成功后，您和您的推荐好友均可赢取丰厚大礼！
+<?php if(empty($card_number) || empty($driver_number)) { ?>
+    <div class="bomb-wrapper flex center jc" id="hint">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word" id="title">
+                    请尽快上传身份证和行驶证信息。推荐成功后，您和您的推荐好友均可赢取丰厚大礼！
+                </div>
+                <div class="form-push">
+                    <input type="button" value="完 善 资 料" class="btn auto" id="tj" >
+                </div>
             </div>
-            <div class="form-push">
-                <input type="button" value="完 善 资 料" class="btn auto" id="tj" >
-            </div>
+            <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
         </div>
-        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
-</div>
+<?php } ?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
