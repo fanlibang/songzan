@@ -85,21 +85,22 @@ class Invite extends Base
             $data['token'] = $token;
             set_cookie('token', $token);
             $uid = $this->Users->addUserOpenId($data);
-
-            $carInfo = $carInfo->getCarInfoByid($data['car_id']);
-            $tempData = [
-                'kmi_id'                => $uid,
-                'activity_id'           => 'CRM_Owner_Referral_201812_Test',
-                'name'                  => $info['name'],
-                'mobile'                => $info['phone'],
-                'model_id'              => $carInfo['cid'],
-                'nameplate_of_interest' => $carInfo['alias'],
-                'creation_time'         => NOW_DATE_TIME,
-                'need_lms'              => 1,
-            ];
-            $push = new ReportModel();
-            $result = $push->reportOwner($tempData);
-            $this->Users->editUserId($uid, ['report_result' => $result]);
+            if ($data['car_id'] > 0) {
+                $carInfo = $carInfo->getCarInfoByid($data['car_id']);
+                $tempData = [
+                    'kmi_id'                => $uid,
+                    'activity_id'           => 'CRM_Owner_Referral_201812_Test',
+                    'name'                  => $info['name'],
+                    'mobile'                => $info['phone'],
+                    'model_id'              => $carInfo['cid'],
+                    'nameplate_of_interest' => $carInfo['alias'],
+                    'creation_time'         => NOW_DATE_TIME,
+                    'need_lms'              => 1,
+                ];
+                $push = new ReportModel();
+                $result = $push->reportOwner($tempData);
+                $this->Users->editUserId($uid, ['report_result' => $result]);
+            }
             $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发，请确保信息的准确性。您可保存此链接以便后续进入活动页面。', $url);
             exit;
         }
