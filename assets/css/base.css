@@ -139,3 +139,15 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .info-page .form-list label{margin-left: 0;}
 .info-page .form .input-text ,.info-page .form span{text-align: right;}
 /*input[disabled]{color:#333;opacity:1}*/
+
+
+/*add*/
+.hint{padding: 75px 90px;}
+.hint-word{ padding-top: 100px; color: #0c121c; font-size: 30px; line-height: 46px;}
+#rule .pop-tit{border-bottom: 0;}
+.rule-inner{padding: 45px 64px;}
+.rule-inner .form-push{margin-top: 60px;}
+.rule-word{color: #0c121c; font-size: 26px; line-height: 36px;}
+.rule-word dt{font-size: 30px; font-weight: bold;}
+.rule-word dt:not(:first-child){margin-top: 20px;}
+.ss .form-tit{padding-top: 0; }
