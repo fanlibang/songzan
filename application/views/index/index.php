@@ -66,7 +66,7 @@
                 <dd>活动前通过路虎官方授权经销商购买一辆及以上路虎车辆，且目前仍然拥有该车辆的路虎车主。</dd>
             </dl>
             <div class="form-push">
-                <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
+                <input type="button" value="我 已  了 解" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
