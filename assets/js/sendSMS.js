@@ -10,13 +10,12 @@ function sms_times(){
     _times--;
     if(_times > 0){
         if(_is_sms == true){
-            //$('._sms_verify,._sms_verify1,._sms_register_verify').find('font').show();
-            $('._sms_verify').val('已发送('+_times+')');
+            $('._sms_verify,._sms_verify1,._sms_register_verify').find('font').show();
+            $('._sms_verify,._sms_verify1,._sms_register_verify').find('font').text('('+_times+')');
             setTimeout("sms_times()", 1000);
         }
     }else{
-        //$('._sms_verify,._sms_verify1,._sms_register_verify').find('font').hide();
-        $('._sms_verify').val('发送验证码');
+        $('._sms_verify,._sms_verify1,._sms_register_verify').find('font').hide();
         _is_sms = false;
         _times = 60;
     }
@@ -29,7 +28,7 @@ $(document).ready(function(){
             alert('手机号不能为空');
             return false;
         }
-        if(_is_sms == false || _times == 60){
+        if(_is_sms == true || _times == 60){
             _is_sms = true;
             var _data = {};
             _data['iphone'] = _iphone;
