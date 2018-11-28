@@ -194,11 +194,11 @@ class Invite extends Base
             $bigImg = imagecreatefromstring(file_get_contents($imgPath));
             $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
             list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
-            imagecopymerge($bigImg, $qCodeImg, 300, 950, 0, 0, $qCodeWidth, $qCodeHight, 100);
+            imagecopymerge($bigImg, $qCodeImg, 300, 1030, 0, 0, $qCodeWidth, $qCodeHight, 100);
             $white = imagecolorallocate($bigImg, 255, 255, 255);
             $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
 
-            imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
+            imagettftext($bigImg, 25, 0, 310, 515, $white, $font, $data['invite_code']);
 
             $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
             imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
