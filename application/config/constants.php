@@ -96,6 +96,7 @@ define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test'); //上线修改
 define('REPORT_MODEL_URL', 'https://api-staging.jaguar.com.cn/service/leads/collectionLeadsData'); //上线修改
 define('REQUEST_TYPE', 'TD');   //上线修改
 define('LEADS_SOURCE', 'CRM'); //上线修改
+define('CAMPAIGN_ID', 'LRFY18RROWNERREF'); //活动id上线修改
 
 define('CLIENT_CODE', 'jdxp2ttAIZetkwl6O4');  //上线把值改为空
 define('CLIENT_SECRET', '30F8C680B880EE11E6E44FB29E2C8B62'); //上线把值改为空

@@ -1581,6 +1581,7 @@ class ReportModel
         }
         $postData['leads_source'] = LEADS_SOURCE;
         $postData['request_type'] = REQUEST_TYPE;
+        $postData['campaign_id'] = CAMPAIGN_ID;
         $postData['need_lms'] = 1;
         $postData['accept_privacy'] = 'true';
         $postData['timestamp'] = time();
