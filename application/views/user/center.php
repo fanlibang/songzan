@@ -90,6 +90,20 @@
             <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
         </div>
     </div>
+<?php } else { ?>
+    <div class="bomb-wrapper flex center jc" id="hint">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word" id="title">
+                    您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
+                </div>
+                <div class="form-push">
+                    <input type="button" value="我 知 道 了" class="btn auto" id="tj" >
+                </div>
+            </div>
+            <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+        </div>
+    </div>
 <?php } ?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">

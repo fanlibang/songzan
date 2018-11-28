@@ -27,12 +27,12 @@ class User extends Base
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
             if(empty($info['name'])) {
-                $this->AjaxReturn('202', '用户名不能为空');
+                $this->AjaxReturn('401', '用户名不能为空');
                 exit;
             }
 
             if ($info['code'] != get_cookie($info['phone'])) {
-                $this->AjaxReturn('202', '验证码不正确');
+                $this->AjaxReturn('401', '验证码不正确');
                 exit;
             }
             if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $info['phone'])) {
@@ -41,7 +41,7 @@ class User extends Base
             }
 
             if(!empty($info['card_number']) && !validateIDCard($info['card_number'])) {
-                $this->AjaxReturn('202', '请填写正确身份证信息');
+                $this->AjaxReturn('401', '请填写正确身份证信息');
                 exit;
             }
             $res = $this->Users->getUserInfoByPhone($info['phone']);
@@ -55,7 +55,7 @@ class User extends Base
                 set_cookie('token', $token);
                 $data['token'] = $token;
                 $this->Users->editUserUid($res['id'], $data);
-                $this->AjaxReturn('201', '您已参与过活动，请前往个人主页查看最新状态。', $url);exit;
+                $this->AjaxReturn('201', '您已拥有推荐码，点击“推荐进度”查看。', $url);exit;
             }
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];

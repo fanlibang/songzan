@@ -69,7 +69,7 @@ class Invite extends Base
                     $this->Users->editUserId($havePhoneInfo['id'], ['open_id' => $data['open_id']]);
                 }
                 if ($havePhoneInfo['invite_code'] != $inviteCode) {
-                    $this->AjaxReturn('202', '很抱歉，目前系统不支持修改推荐人。如有疑问，可详询400-820-0187。', $url);
+                    $this->AjaxReturn('202', '很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态 ', $url);
                     exit;
                 }
                 set_cookie('token', $havePhoneInfo['token']);
@@ -78,7 +78,7 @@ class Invite extends Base
             }
             $ret = verify_count($data['name'], 10);
             if (!$ret) {
-                $this->AjaxReturn('202', '用户名长度应小于五');
+                $this->AjaxReturn('404', '用户名长度应小于五');
                 exit;
             }
             $token = rand_str(32);
@@ -101,7 +101,7 @@ class Invite extends Base
                 $result = $push->reportOwner($tempData);
                 $this->Users->editUserId($uid, ['report_result' => $result]);
             }
-            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发，请确保信息的准确性。您可保存此链接以便后续进入活动页面。', $url);
+            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。购车成功后，请尽快返回此页面，提交您的相关购车凭证。', $url);
             exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();
