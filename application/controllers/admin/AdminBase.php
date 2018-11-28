@@ -4,11 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once APPPATH . 'controllers/Common.php';
 
-class Base extends Common
+class AdminBase extends Common
 {
     /**
      * 后台公用APPID
-     * @var int
+     * @var intAdmin
      */
     protected $appId = 1;
     /**
@@ -297,7 +297,7 @@ class Base extends Common
      *
      * @return bool
      */
-    public function isLogin()
+    public function isLogins()
     {
         $cookie_admin_user_id = get_cookie('admin_user_id');
 

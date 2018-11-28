@@ -17,14 +17,11 @@ class Index extends Base {
 	public function index()
 	{
         $data = $this->isLogin();
-        var_dump($data);
         if (!empty($data)) {
             if ($data['master_uid'] > 0) {
-                echo 'aa';exit;
                 $url = site_url('Invite', 'info');
                 header('Location:' . $url);
             }
-            echo 'vv';exit;
             $url = site_url('User', 'center');
             header('Location:' . $url);
         }
