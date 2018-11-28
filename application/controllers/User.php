@@ -129,7 +129,7 @@ class User extends Base
             header('Location:' . $url);
         }
         $data = $this->isLogin();
-        if(!empty($res['from_invite_code'])) {
+        if ($data['master_uid'] > 0) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
         }
