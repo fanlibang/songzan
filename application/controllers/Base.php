@@ -31,6 +31,7 @@ class Base extends Common
         //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
 
         if (!$this->isLogin()) {
+            echo 222;exit;
             if (is_weixin()) {
                 $this->_data['browser'] = 1; //微信浏览器
                 $controller = ucfirst($this->router->fetch_class());
