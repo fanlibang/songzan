@@ -47,9 +47,9 @@
                     <label>邀请码：</label>
                     <div class="form-box">
                         <?php if(empty($card_number) || empty($driver_number)) { ?>
-                            <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
-                        <?php } else { ?>
                             <span><a id="ws" onclick="cc('center/yqm')" href="javascript:;"><?= $invite_code ?></a></span>
+                        <?php } else { ?>
+                            <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                         <?php } ?>
                     </div>
                 </div>
