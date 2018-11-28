@@ -27,7 +27,10 @@ class Invite extends Base
     {
         $url = site_url('Invite', 'info');
         $result = $this->isLogin();
-        if ($result) header('Location:' . $url);
+        if ($result) {
+            header('Location:' . $url);
+            exit;
+        }
         $info = $this->input->request(null, true);
         $inviteCode = $info['invite_code'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
@@ -118,10 +121,12 @@ class Invite extends Base
         if (!$result) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
+            exit;
         }
         if ($result['master_uid'] == 0) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
@@ -134,10 +139,12 @@ class Invite extends Base
         if (!$result) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
+            exit;
         }
         if ($result['master_uid'] == 0) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         $info = $this->input->request(null, true);
         $carInfo = new \Xy\Application\Models\CarInfoModel();
@@ -174,10 +181,12 @@ class Invite extends Base
         if (!$data) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         if ($data['master_uid'] > 0) {
             $url = site_url('Invite', 'info');
             header('Location:' . $url);
+            exit;
         }
         $shareImg = $data['share_img'];
         if (empty($data['share_img'])) {
@@ -185,11 +194,11 @@ class Invite extends Base
             $bigImg = imagecreatefromstring(file_get_contents($imgPath));
             $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
             list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
-            imagecopymerge($bigImg, $qCodeImg, 300, 950, 0, 0, $qCodeWidth, $qCodeHight, 100);
+            imagecopymerge($bigImg, $qCodeImg, 300, 1030, 0, 0, $qCodeWidth, $qCodeHight, 100);
             $white = imagecolorallocate($bigImg, 255, 255, 255);
             $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
 
-            imagettftext($bigImg, 25, 0, 300, 480, $white, $font, $data['invite_code']);
+            imagettftext($bigImg, 25, 0, 320, 515, $white, $font, $data['invite_code']);
 
             $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
             imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
