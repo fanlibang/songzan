@@ -26,6 +26,11 @@ class User extends Base
         $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
+            if(empty($info['name'])) {
+                $this->AjaxReturn('202', '用户名不能为空');
+                exit;
+            }
+
             if ($info['code'] != get_cookie($info['phone'])) {
                 $this->AjaxReturn('202', '验证码不正确');
                 exit;
