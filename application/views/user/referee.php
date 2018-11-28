@@ -13,7 +13,7 @@
                 <div class="form-list flex center">
                     <label>*手机号：</label>
                     <div class="form-box">
-                        <input type="tel" name="phone" id="phone" value="" placeholder="仅限路虎品牌" class="input-text">
+                        <input type="tel" name="phone" id="phone" value=""  class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">
@@ -26,7 +26,7 @@
                 <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <input type="text" id="driver_number" value="" class="input-text">
+                        <input type="text" id="driver_number" placeholder="仅限路虎品牌" value="" class="input-text">
                         <input type="hidden" id="driver_json" value="" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
