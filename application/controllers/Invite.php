@@ -115,6 +115,7 @@ class Invite extends Base
     public function info()
     {
         $result = $this->isLogin();
+        var_dump($result);exit;
         if (!$result) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
