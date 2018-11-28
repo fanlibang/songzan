@@ -181,7 +181,7 @@ class Invite extends Base
         }
         $shareImg = $data['share_img'];
         if (empty($data['share_img'])) {
-            $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-2.jpg';
+            $imgPath = HTTP_HOST . STATIC_ASSETS . 'images/bg-5.jpg';
             $bigImg = imagecreatefromstring(file_get_contents($imgPath));
             $qCodeImg = imagecreatefromstring(file_get_contents($data['qr_code_img']));
             list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
