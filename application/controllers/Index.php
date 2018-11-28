@@ -19,9 +19,11 @@ class Index extends Base {
         $data = $this->isLogin();
         if (!empty($data)) {
             if ($data['master_uid'] > 0) {
+                echo 11;exit;
                 $url = site_url('Invite', 'info');
                 header('Location:' . $url);
             }
+            echo 222;exit;
             $url = site_url('User', 'center');
             header('Location:' . $url);
         }
