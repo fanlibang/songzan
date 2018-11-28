@@ -7,13 +7,13 @@
                 <div class="form-list flex center">
                     <label>*姓名：</label>
                     <div class="form-box">
-                        <input type="text" id="name" value="" class="input-text">
+                        <input type="text" id="name" value="" placeholder="仅限路虎车主" class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">
                     <label>*手机号：</label>
                     <div class="form-box">
-                        <input type="tel" name="phone" id="phone" value="" class="input-text">
+                        <input type="tel" name="phone" id="phone" value="" placeholder="仅限路虎品牌" class="input-text">
                     </div>
                 </div>
                 <div class="form-list flex center">

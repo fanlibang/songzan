@@ -126,7 +126,12 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 /*礼品页*/
 .gift-tit{font-size: 36px;font-family: "labold";letter-spacing: 5px;}
 .gift-tit .ma{padding-left: 5px;}
-.code>div{width: 144px;height: 143px;margin-top: 500px;}
+.code{margin-top: 500px;line-height: 30px;}
+.code p:first-child{font-size: 22px;}
+.code p:nth-child(2){font-size: 20px;}
+.code>div{width: 117px;height: 117px;margin-top: 5px;}
+.code>div img{width: 100%;height: 100%;}
+.gift-cont{padding-top: 50px;}
 /*推荐人主页*/
 .info-page .form{width: 670px;}
 .info-page .form-list{height: 100px;line-height: 100px;border-top:0;border-left: 0;border-right: 0;}

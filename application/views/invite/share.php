@@ -5,7 +5,10 @@
     <div class="content bg-2 flex center jc" style="pointer-events:none;">
         <div>
             <div class="gift-tit ta-c">
+                <!--被推荐人文案-->
                 <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <!--推荐人文案-->
+                <div class="hide"><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code">
