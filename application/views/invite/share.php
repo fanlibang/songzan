@@ -1,9 +1,11 @@
-<div class="wrapper" style="background-image: url("<?=$img_url?>");">
-    <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
-    <div class="content bg-2 flex center jc">
+<div class="wrapper">
+    <div class="logo" style="pointer-events:none;">
+        <img src="<?= STATIC_ASSETS ?>images/logo.png" alt="">
+    </div>
+    <div class="content bg-2 flex center jc" style="pointer-events:none;">
         <div>
             <div class="gift-tit ta-c">
-                <div><img" src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code">
@@ -12,6 +14,11 @@
         </div>
     </div>
 </div>
+
+<div style="position: absolute;top: 0;width: 100%;height: 100%;">
+    <img style="width: 100%;height: 100%;opacity: 0;" src="<?=$img_url?>" alt="">
+</div>
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -53,10 +60,10 @@
 
 
             var data = {
-                title: '发现隐秘之门', // 分享标题
+                title: '荐入佳境 共揽胜景', // 分享标题
                 link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'share') . '?invite_code=' . $invite_code; ?>", // 分享链接
-                desc:'路虎发现与松赞文旅邀您角逐最具号召力体验官，获取神秘大礼。',
-                imgUrl: "<?= $qr_code_img ?>", // 分享图标
+                desc:'您的好友正在邀请您参与路虎推荐购活动。',
+                imgUrl: "<?= HTTP_HOST ?>/2018/crm/ownerreferral/assets/images/123.jpg", // 分享图标
                 success: function () {
                     //alert('操作成功');
                     // 用户确认分享后执行的回调函数

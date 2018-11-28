@@ -40,6 +40,10 @@ class Invite extends Base
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
+            if (empty($inviteCode)) {
+                $this->AjaxReturn('403', '邀请码格式不正确');
+                exit;
+            }
             $data['name'] = $info['name'];
             $data['from_invite_code'] = $info['invite_code'];
             $data['car_id'] = $info['car_id'];
@@ -64,8 +68,12 @@ class Invite extends Base
                 if (is_weixin() && empty($havePhoneInfo['open_id']) && !empty($data['open_id'])) {
                     $this->Users->editUserId($havePhoneInfo['id'], ['open_id' => $data['open_id']]);
                 }
+                if ($havePhoneInfo['invite_code'] != $inviteCode) {
+                    $this->AjaxReturn('202', '很抱歉，目前系统不支持修改推荐人。如有疑问，可详询400-820-0187。', $url);
+                    exit;
+                }
                 set_cookie('token', $havePhoneInfo['token']);
-                $this->AjaxReturn('200', '成功', $url);
+                $this->AjaxReturn('201', '您已参与过活动，请前往个人主页查看最新状态。', $url);
                 exit;
             }
             $ret = verify_count($data['name'], 10);
@@ -77,22 +85,23 @@ class Invite extends Base
             $data['token'] = $token;
             set_cookie('token', $token);
             $uid = $this->Users->addUserOpenId($data);
-
-            $carInfo = $carInfo->getCarInfoByid($data['car_id']);
-            $tempData = [
-                'kmi_id'                => $uid,
-                'name'                  => $info['name'],
-                'mobile'                => $info['phone'],
-                'model_id'              => $carInfo['cid'],
-                'nameplate_of_interest' => $info['alias'],
-                'creation_time'         => NOW_DATE_TIME,
-                'province'              => '',
-                'city'                  => '',
-                'need_lms'              => 1,
-            ];
-            $push = new ReportModel();
-            $push->reportOwner($tempData, $info['merchants']);
-            $this->AjaxReturn('200', '成功', $url);
+            if ($data['car_id'] > 0) {
+                $carInfo = $carInfo->getCarInfoByid($data['car_id']);
+                $tempData = [
+                    'kmi_id'                => $uid,
+                    'activity_id'           => 'CRM_Owner_Referral_201812_Test',
+                    'name'                  => $info['name'],
+                    'mobile'                => $info['phone'],
+                    'model_id'              => $carInfo['cid'],
+                    'nameplate_of_interest' => $carInfo['alias'],
+                    'creation_time'         => NOW_DATE_TIME,
+                    'need_lms'              => 1,
+                ];
+                $push = new ReportModel();
+                $result = $push->reportOwner($tempData);
+                $this->Users->editUserId($uid, ['report_result' => $result]);
+            }
+            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发，请确保信息的准确性。您可保存此链接以便后续进入活动页面。', $url);
             exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();
@@ -116,6 +125,46 @@ class Invite extends Base
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
+        $this->displayMain($result);
+    }
+
+    public function editInfo()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+        }
+        if ($result['master_uid'] == 0) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+        }
+        $info = $this->input->request(null, true);
+        $carInfo = new \Xy\Application\Models\CarInfoModel();
+        if (is_ajax_post()) {
+            if (empty($info['car_id'])) {
+                $this->AjaxReturn('403', '请选择车型');
+                exit;
+            }
+
+            $carInfo = $carInfo->getCarInfoByid($info['car_id']);
+            $tempData = [
+                'kmi_id'                => $result['id'],
+                'activity_id'           => 'CRM_Owner_Referral_201812_Test',
+                'name'                  => $result['name'],
+                'mobile'                => $result['phone'],
+                'model_id'              => $carInfo['cid'],
+                'nameplate_of_interest' => $carInfo['alias'],
+                'creation_time'         => NOW_DATE_TIME,
+                'need_lms'              => 1,
+            ];
+            $push = new ReportModel();
+            $rsp = $push->reportOwner($tempData);
+            $this->Users->editUserId($result['id'], array('report_result' => $rsp, 'car_id' => $info['car_id']));
+            $this->AjaxReturn('200', '完善资料成功', site_url('Invite', 'info'));
+            exit;
+        }
+        $result['car_record'] = $carInfo->getAllCarInfo();
         $this->displayMain($result);
     }
 

@@ -7,7 +7,7 @@
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
                     <?php if(empty($card_number) || empty($driver_number))  { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('center/wszl')" href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
                     <?php }?>
                 </div>
                 <div class="form-list flex center">
@@ -46,10 +46,44 @@
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><a href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <?php if(empty($card_number) || empty($driver_number)) { ?>
+                            <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <?php } else { ?>
+                            <span><a id="ws" onclick="cc('center/yqm')" href="javascript:;"><?= $invite_code ?></a></span>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php if(empty($card_number) || empty($driver_number)) { ?>
+    <div class="bomb-wrapper flex center jc" id="hint">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word" id="title">
+                    请尽快上传身份证和行驶证信息。推荐成功后，您和您的推荐好友均可赢取丰厚大礼！
+                </div>
+                <div class="form-push">
+                    <input type="button" value="完 善 资 料" class="btn auto" id="tj" >
+                </div>
+            </div>
+            <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+        </div>
+    </div>
+<?php } ?>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        WeixinJSBridge.call('hideOptionMenu');
+    });
+    $(function(){
+        $('#tj').on('click',function () {
+            $('#hint').addClass('hide');
+        });
+        $('#ws').on('click',function () {
+            alert('请先完善资料');
+        });
+    });
+</script>

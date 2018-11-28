@@ -27,7 +27,8 @@
                     <label>意向车型：</label>
                     <div class="form-box">
                         <span>请选择车型</span>
-                        <select name="car_id">
+                        <select name="car_id" id="car_id">
+                            <option value="0" selected>请选择车型</option>
                             <?php foreach ($car_record as $value) { ?>
                                 <option value="<?=$value['id'] ?>"><?=$value['name'] ?></option>
                             <?php } ?>
@@ -55,15 +56,53 @@
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc hide" id="rule">
+    <div class="bomb-content">
+        <div class="pop-tit ta-c">活 动 规 则</div>
+        <div class="rule-inner">
+            <dl class="rule-word">
+                <dt>活动介绍：</dt>
+                <dd>路虎全系车主均可报名参与活动，每人最多可推荐10位被推荐人。活动期间，若被推荐人成功购买路虎揽胜/揽胜运动版车型，则视为推荐成功，双方均可赢取丰厚大礼。</dd>
+                <dt>活动时间： </dt>
+                <dd>即日起至2019年3月31日</dd>
+                <dt>…… </dt>
+            </dl>
+            <div class="form-push">
+                <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                您已参与过活动，请前往个人主页查看最新状态。
+            </div>
+            <div class="form-push">
+                <input type="button" value="个人主页" class="btn auto" id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
-<script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API隐藏右上角按钮
+        WeixinJSBridge.call('hideOptionMenu');
+    });
     $(function(){
         $('#sub').click(function(){
             var code = $('input[name=code]').val();
             var phone = $('input[name=phone]').val();
             var name = $('input[name=name]').val();
             var invite_code = $('input[name=invite_code]').val();
-            var car_id = $('select[name=car_id]').val();
+            var car_id = $("#car_id option:selected").val();
             if(phone == '') {
                 alert('手机号不能为空'); return false;
             } else if(code == '') {
@@ -72,8 +111,6 @@
             } else if(name == '') {
                 alert('用户名不能为空');
                 return false;
-            } else if(car_id == '') {
-                alert('请选择车型'); return false;
             }
             $.ajax({
                 type:'post',
@@ -81,16 +118,32 @@
                 data:{code:code, phone: phone, name:name, invite_code:invite_code, car_id:car_id},
                 cache:false,
                 dataType:'json',
-                success:function(json){
-                    if(json.code == 200){
-                        alert(json.msg);
-                        window.location.href=json.forward;
+                success:function(json) {
+                    if(json.code == 200) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('确认提交');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 201) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 202) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else {
                         alert(json.msg);
                     }
                 },
                 error:function(){}
             });
+        });
+        $('#tj').click(function(){
+            var url = $(this).attr('url');
+            window.location.href=url;
         });
     });
 </script>
