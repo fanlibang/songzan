@@ -27,7 +27,10 @@ class Invite extends Base
     {
         $url = site_url('Invite', 'info');
         $result = $this->isLogin();
-        if ($result) header('Location:' . $url);
+        if ($result) {
+            header('Location:' . $url);
+            exit;
+        }
         $info = $this->input->request(null, true);
         $inviteCode = $info['invite_code'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
@@ -118,10 +121,12 @@ class Invite extends Base
         if (!$result) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
+            exit;
         }
         if ($result['master_uid'] == 0) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
@@ -134,10 +139,12 @@ class Invite extends Base
         if (!$result) {
             $url = site_url('Invite', 'index');
             header('Location:' . $url);
+            exit;
         }
         if ($result['master_uid'] == 0) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         $info = $this->input->request(null, true);
         $carInfo = new \Xy\Application\Models\CarInfoModel();
@@ -174,10 +181,12 @@ class Invite extends Base
         if (!$data) {
             $url = site_url('User', 'center');
             header('Location:' . $url);
+            exit;
         }
         if ($data['master_uid'] > 0) {
             $url = site_url('Invite', 'info');
             header('Location:' . $url);
+            exit;
         }
         $shareImg = $data['share_img'];
         if (empty($data['share_img'])) {
