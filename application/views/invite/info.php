@@ -54,7 +54,7 @@
                 您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
             </div>
             <div class="form-push">
-                <input type="button" value="我 知 道 了" class="btn auto close">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
