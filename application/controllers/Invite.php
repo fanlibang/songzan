@@ -84,8 +84,8 @@ class Invite extends Base
                 $this->AjaxReturn('404', '用户名长度应小于五');
                 exit;
             }
-            $info['name'] = trim($info['name']);
-            if(empty($info['name'])) {
+            $data['name'] = trim($data['name']);
+            if(empty($data['name'])) {
                 $this->AjaxReturn('401', '用户名不能为空');
                 exit;
             }
