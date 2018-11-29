@@ -95,7 +95,6 @@
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        alert(json.msg);
                         window.location.href=json.forward;
                     } else if(json.code == 404) {
                         $('#hint').removeClass('hide');

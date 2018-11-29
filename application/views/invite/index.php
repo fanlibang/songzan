@@ -59,7 +59,7 @@
 <div class="bomb-wrapper flex center jc" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
-            <div class="hint-word" id="title">
+            <div class="hint-word">
                 感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。
             </div>
             <div class="form-push">
@@ -135,18 +135,18 @@
                 success:function(json) {
                     if(json.code == 200) {
                         $('#title').html(json.msg);
-                        $('#tj').val('确认提交');
-                        $('#tj').attr('url', json.forward);
+                        $('#agree').val('确认提交');
+                        $('#agree').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 201) {
                         $('#title').html(json.msg);
-                        $('#tj').val('个人主页');
-                        $('#tj').attr('url', json.forward);
+                        $('#agree').val('个人主页');
+                        $('#agree').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
                         $('#title').html(json.msg);
-                        $('#tj').val('推荐状态');
-                        $('#tj').attr('url', json.forward);
+                        $('#agree').val('推荐状态');
+                        $('#agree').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else {
                         alert(json.msg);
@@ -155,9 +155,11 @@
                 error:function(){}
             });
         });
-        $('#tj').click(function(){
+        $('#agree').click(function(){
             var url = $(this).attr('url');
-            window.location.href=url;
+            if(url != '') {
+                window.location.href=url;
+            }
         });
     });
 </script>

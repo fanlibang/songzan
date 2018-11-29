@@ -40,17 +40,13 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span>已注册</span>
+                        <span><a onclick="cc('center/yqm')" id="ts" href="javascript:;">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <?php if(empty($card_number) || empty($driver_number)) { ?>
-                            <span><a id="ws" onclick="cc('center/yqm')" href="javascript:;"><?= $invite_code ?></a></span>
-                        <?php } else { ?>
-                            <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
-                        <?php } ?>
+                        <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                     </div>
                 </div>
             </div>
@@ -98,7 +94,7 @@
                     您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
                 </div>
                 <div class="form-push">
-                    <input type="button" value="我 知 道 了" class="btn auto" id="tj" >
+                    <input type="button" value="我 知 道 了" url="<?=site_url('User', 'updateInfo', array('id' => $id))?>" class="btn auto" id="tj" >
                 </div>
             </div>
             <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -113,10 +109,11 @@
     });
     $(function(){
         $('#tj').on('click',function () {
-            $('#hint').addClass('hide');
+            var url = $(this).attr('url');
+            window.location.href=url;
         });
-        $('#ws').on('click',function () {
-            alert('请先完善资料');
+        $('#ts').on('click',function () {
+            alert('敬请期待');
         });
     });
 </script>
