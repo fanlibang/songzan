@@ -10,8 +10,8 @@
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code ta-c">
-                <p>您的好友正在邀请您参与路虎推荐购活动</p>
-                <p>长按识别二维码参与活动</p>
+                <p></p>
+                <p></p>
                 <div class="auto"><img src="<?= $qr_code_img ?>" alt=""></div>
             </div>
         </div>

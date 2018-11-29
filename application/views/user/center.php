@@ -110,7 +110,9 @@
     $(function(){
         $('#tj').on('click',function () {
             var url = $(this).attr('url');
-            window.location.href=url;
+            if(url != "undefined") {
+                window.location.href=url;
+            }
         });
         $('#ts').on('click',function () {
             alert('敬请期待');

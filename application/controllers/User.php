@@ -45,6 +45,12 @@ class User extends Base
                 $this->AjaxReturn('401', '请填写正确身份证信息');
                 exit;
             }
+
+            if(!empty($info['driver_number']) && !preg_match('/^[0-9a-zA-Z]+$/',$info['driver_number'])) {
+                $this->AjaxReturn('401', '请填写正确身行驶证信息');
+                exit;
+            }
+
             $res = $this->Users->getUserInfoByPhone($info['phone']);
             $token = rand_str(32);
             $openid = get_cookie('openId');
