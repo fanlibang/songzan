@@ -20,7 +20,7 @@
                 <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <input type="text" id="driver_number" value="<?= $driver_number ?>" class="input-text">
+                        <input type="text" id="driver_number" placeholder="仅限路虎品牌" value="<?= $driver_number ?>" class="input-text">
                         <input type="hidden" id="driver_json" value="<?= $driver_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
