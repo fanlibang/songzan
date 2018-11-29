@@ -68,6 +68,7 @@ class Publics extends Base
         $appid = APPID;
         $secret = SECRET;
         $code = $_GET['code'];//获取code
+        $invite_code = $_GET['invite_code'];//获取invite_code
         $weixin =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code");//通过code换取网页授权access_token
         $jsondecode = json_decode($weixin); //对JSON格式的字符串进行编码
         $array = get_object_vars($jsondecode);//转换成数组
@@ -76,7 +77,11 @@ class Publics extends Base
         if (!empty($openid)) {
             $res = $this->UserWx->getWxInfoByOpId($openid);
             set_cookie('openId', $res['open_id']);
-            $url = site_url('Index', 'index');
+            if(empty($invite_code)) {
+                $url = site_url('Index', 'index');
+            } else {
+                $url = site_url('Invite', 'index');
+            }
             if (empty($res)) {
                 $data = [
                     'open_id'    => $openid,

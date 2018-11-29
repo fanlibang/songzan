@@ -209,6 +209,7 @@ class Base extends Common
      */
     public function getOpenid($url = '')
     {
+        $invite_code = $this->input->get('invite_code', true);
         $state = rand(1,10000);
         $appid = APPID;
         if (empty($url)) {
@@ -217,7 +218,7 @@ class Base extends Common
         //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
-        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect";
+        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect&invite_code=$invite_code";
         header('Location:' . $url);
     }
 
