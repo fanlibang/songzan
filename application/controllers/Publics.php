@@ -80,7 +80,7 @@ class Publics extends Base
             if(empty($invite_code)) {
                 echo $url = site_url('Index', 'index');exit;
             } else {
-                echo $url = site_url('Invite', 'index');exit;
+                echo $url = site_url('Invite', 'index',array('invite_code' => $invite_code));exit;
             }
             if (empty($res)) {
                 $data = [
