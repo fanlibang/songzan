@@ -39,10 +39,10 @@ $(document).ready(function(){
                     if(json.forward) {
                         window.location.href = json.rel;
                     }
-                    alert(json.msg);
+                    //alert(json.msg);
                 }else{
                     _times = 1;
-                    //alert(json.msg);
+                    alert(json.msg);
                     if(json.forward) {
                         window.location.href = json.rel;
                     }
