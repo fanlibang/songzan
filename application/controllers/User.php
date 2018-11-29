@@ -110,6 +110,18 @@ class User extends Base
                 $this->AjaxReturn('202', '请填写正确身份证信息');
                 exit;
             }
+
+            $info['driver_number'] = trim($info['driver_number']);
+            if(empty($info['driver_number'])) {
+                $this->AjaxReturn('401', '行驶证不能为空');
+                exit;
+            }
+
+            if(!empty($info['driver_number']) && !preg_match('/^[0-9a-zA-Z]+$/',$info['driver_number'])) {
+                $this->AjaxReturn('401', '请填写正确身行驶证信息');
+                exit;
+            }
+
             $res = $this->Users->getUserInfoByid($id);
             $openid = get_cookie('openId');
             $open_id = isset($openid) ? $openid : '';
