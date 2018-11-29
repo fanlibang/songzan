@@ -213,12 +213,12 @@ class Base extends Common
         $state = rand(1,10000);
         $appid = APPID;
         if (empty($url)) {
-            $url = site_url('Publics', 'addOpenid');
+            $url = site_url('Publics', 'addOpenid', array('invite_code', $invite_code));
         }
         //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
-        echo $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state&invite_code=$invite_code#wechat_redirect";
+        echo $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect";
         header('Location:' . $url);
     }
 
