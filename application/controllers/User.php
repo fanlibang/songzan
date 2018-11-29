@@ -26,6 +26,7 @@ class User extends Base
         $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
+            $info['name'] = trim($info['name']);
             if(empty($info['name'])) {
                 $this->AjaxReturn('401', '用户名不能为空');
                 exit;
