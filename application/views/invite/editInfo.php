@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox active">
-                        我已同意保密条款和<a href="javascript:;" class="item">隐私政策</a>
+                        我已同意保密条款和<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私政策</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
