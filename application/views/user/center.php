@@ -80,7 +80,7 @@
                     请尽快上传身份证和行驶证信息。推荐成功后，您和您的推荐好友均可赢取丰厚大礼！
                 </div>
                 <div class="form-push">
-                    <input type="button" value="完 善 资 料" class="btn auto" id="tj" >
+                    <input type="button" value="完 善 资 料" url="<?=site_url('User', 'updateInfo', array('id' => $id))?>" class="btn auto" id="tj" >
                 </div>
             </div>
             <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -94,7 +94,7 @@
                     您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
                 </div>
                 <div class="form-push">
-                    <input type="button" value="我 知 道 了" url="<?=site_url('User', 'updateInfo', array('id' => $id))?>" class="btn auto" id="tj" >
+                    <input type="button" value="我 知 道 了" class="btn auto" id="tj" >
                 </div>
             </div>
             <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
