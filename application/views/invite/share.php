@@ -1,9 +1,7 @@
 <div class="wrapper">
-    <div class="logo" style="pointer-events:none;">
-        <img src="<?= STATIC_ASSETS ?>images/logo.png" alt="">
-    </div>
-    <div class="content bg-2 flex center jc" style="pointer-events:none;">
-        <div>
+    <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
+    <div class="content bg-2 flex center jc">
+        <div class="gift-cont">
             <div class="gift-tit ta-c">
                 <!--被推荐人文案-->
                 <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
@@ -11,8 +9,10 @@
                 <div class="hide"><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
-            <div class="code">
-                <div class="auto"><img width="144px" height="144px" src="<?= $qr_code_img ?>" alt=""></div>
+            <div class="code ta-c">
+                <p>您的好友正在邀请您参与路虎推荐购活动</p>
+                <p>长按识别二维码参与活动</p>
+                <div class="auto"><img src="<?= $qr_code_img ?>" alt=""></div>
             </div>
         </div>
     </div>
