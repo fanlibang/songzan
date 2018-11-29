@@ -158,7 +158,8 @@
         });
         $('.tj').click(function(){
             var url = $(this).attr('url');
-            if(url != '') {
+            alert(url);
+            if(url) {
                 window.location.href=url;
             }
         });
