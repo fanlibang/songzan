@@ -40,7 +40,7 @@ class SendSms {
         //设置您要发送的内容：其中“【】”中括号为运营商签名符号，多签名内容前置添加提交
         $mes = '【路虎中国】尊敬的用户，您正在进行路虎活动的身份认证，验证码是：'.$msg.'5分钟内有效，请勿将此验证码泄漏给他人。';
         $result = $clapi->sendSMS($tels, $mes);
-
+        var_dump($result);
         if(!is_null(json_decode($result))){
             $output=json_decode($result,true);
 
