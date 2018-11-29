@@ -59,16 +59,31 @@
 <div class="bomb-wrapper flex center jc" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
-            <div class="hint-word">
+            <div class="hint-word" id="title">
                 感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。
             </div>
             <div class="form-push">
-                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" >
+                您已参与过活动，请前往个人主页查看最新状态。
+            </div>
+            <div class="form-push">
+                <input type="button" value="个人主页" class="btn auto" id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
@@ -82,21 +97,7 @@
                 <dt>…… </dt>
             </dl>
             <div class="form-push">
-                <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
-            </div>
-        </div>
-        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
-    </div>
-</div>
-
-<div class="bomb-wrapper flex center jc hide" id="hint">
-    <div class="bomb-content">
-        <div class="hint auto">
-            <div class="hint-word" id="title">
-                您已参与过活动，请前往个人主页查看最新状态。
-            </div>
-            <div class="form-push">
-                <input type="button" value="个人主页" class="btn auto" id="tj" >
+                <input type="button" value="我 已 阅 读" class="btn auto tj" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -135,18 +136,18 @@
                 success:function(json) {
                     if(json.code == 200) {
                         $('#title').html(json.msg);
-                        $('#agree').val('确认提交');
-                        $('#agree').attr('url', json.forward);
+                        $('.tj').val('确认提交');
+                        $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 201) {
                         $('#title').html(json.msg);
-                        $('#agree').val('个人主页');
-                        $('#agree').attr('url', json.forward);
+                        $('.tj').val('个人主页');
+                        $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
                         $('#title').html(json.msg);
-                        $('#agree').val('推荐状态');
-                        $('#agree').attr('url', json.forward);
+                        $('.tj').val('推荐状态');
+                        $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else {
                         alert(json.msg);
@@ -155,7 +156,7 @@
                 error:function(){}
             });
         });
-        $('#agree').click(function(){
+        $('.tj').click(function(){
             var url = $(this).attr('url');
             if(url != '') {
                 window.location.href=url;
