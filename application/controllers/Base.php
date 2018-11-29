@@ -87,10 +87,10 @@ class Base extends Common
                     set_cookie('token', $token);
                     if ($res['master_uid'] > 0) {
                         $url = site_url('Invite', 'info');
-                        header('Location:' . $url);
+                        header('Location:' . $url); exit;
                     } else {
                         $url = site_url('User', 'center');
-                        header('Location:' . $url);
+                        header('Location:' . $url); exit;
                     }
                 }
                 return true;
@@ -218,7 +218,7 @@ class Base extends Common
         //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
-        echo $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect";
+        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=$state#wechat_redirect";
         header('Location:' . $url);
     }
 
