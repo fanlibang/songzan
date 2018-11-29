@@ -74,7 +74,8 @@ class User extends Base
             $data['token'] = $token;
             $data['created_at'] = NOW_DATE_TIME;
             $uid = $this->Users->addUserOpenId($data);
-            $inviteCode = paserInviteCode($uid);
+            $stepModel = new \Xy\Application\Models\StepModel();
+            $inviteCode = $stepModel->genId('invite_code');
             $invite_url = site_url('Invite', 'index', array('invite_code' => $inviteCode));
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=117x117&data=$invite_url";
