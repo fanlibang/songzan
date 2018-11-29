@@ -69,8 +69,6 @@ class Publics extends Base
         $secret = SECRET;
         $code = $_GET['code'];//获取code
         $invite_code = $_GET['invite_code'];//获取invite_code
-        var_dump($_GET);
-        var_dump($invite_code);exit;
         $weixin =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code");//通过code换取网页授权access_token
         $jsondecode = json_decode($weixin); //对JSON格式的字符串进行编码
         $array = get_object_vars($jsondecode);//转换成数组
