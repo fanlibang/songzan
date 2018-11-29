@@ -20,6 +20,7 @@ $(function () {
     $('.progress').on('click',function () {
         $('#login').removeClass('hide');
     });
+
     //关闭弹窗
     $('.close,#agree').on('click',function () {
         $(this).parents('.bomb-wrapper').addClass('hide');
