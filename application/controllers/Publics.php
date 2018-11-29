@@ -78,9 +78,9 @@ class Publics extends Base
             $res = $this->UserWx->getWxInfoByOpId($openid);
             set_cookie('openId', $res['open_id']);
             if(empty($invite_code)) {
-                echo $url = site_url('Index', 'index');exit;
+                $url = site_url('Index', 'index');;
             } else {
-                echo $url = site_url('Invite', 'index',array('invite_code' => $invite_code));exit;
+                $url = site_url('Invite', 'index',array('invite_code' => $invite_code));
             }
             if (empty($res)) {
                 $data = [
