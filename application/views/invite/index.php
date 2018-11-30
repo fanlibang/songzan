@@ -23,7 +23,7 @@
                     </div>
                     <input type="button" value="发送验证码" class="sendbtn _sms_verify">
                 </div>
-                <div class="form-list flex center opt">
+                <div class="form-list flex center opt foui-win">
                     <label>*意向车型：</label>
                     <div class="form-box">
                         <span>请选择车型</span>
