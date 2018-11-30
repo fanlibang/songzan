@@ -12,7 +12,7 @@
             <div class="code ta-c">
                 <p></p>
                 <p></p>
-                <div class="auto"><img style="margin-top: 30px;" src="<?= $qr_code_img ?>" alt=""></div>
+                <div class="auto"><img style="margin-top: 20px;" src="<?= $qr_code_img ?>" alt=""></div>
             </div>
         </div>
     </div>
