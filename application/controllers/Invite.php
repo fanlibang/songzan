@@ -108,6 +108,7 @@ class Invite extends Base
                     'nameplate_of_interest' => $carInfo['alias'],
                     'creation_time'         => NOW_DATE_TIME,
                     'need_lms'              => 1,
+                    'other1'                => $masterUserInfo['phone'],
                 ];
                 $push = new ReportModel();
                 $result = $push->reportOwner($tempData);
@@ -167,6 +168,7 @@ class Invite extends Base
                 exit;
             }
             $carInfo = $carInfo->getCarInfoByid($info['car_id']);
+            $masterUserInfo = $this->Users->getUserInviteCode($result['from_invite_code']);
             $tempData = [
                 'kmi_id'                => $result['id'],
                 'activity_id'           => 'CRM_Owner_Referral_201812_Test',
@@ -176,6 +178,7 @@ class Invite extends Base
                 'nameplate_of_interest' => $carInfo['alias'],
                 'creation_time'         => NOW_DATE_TIME,
                 'need_lms'              => 1,
+                'other1'                => $masterUserInfo['phone'],
             ];
             $push = new ReportModel();
             $rsp = $push->reportOwner($tempData);
