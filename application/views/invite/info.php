@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
-    <div class="content bg-3 flex center jc info-page">
+    <div class="content bg-3 info-page">
         <div>
             <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
             <div class="form auto">
