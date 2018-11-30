@@ -84,7 +84,7 @@
             if(car_id == '') {
                 alert('请选择车型'); return false;
             }
-            if (car_id != 1 || car_id != 2) {
+            if (car_id != 1 && car_id != 2) {
                 alert('参加本次活动的车型为揽胜或揽胜运动版');
                 return false;
             }
