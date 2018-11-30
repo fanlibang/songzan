@@ -95,7 +95,7 @@
             </dl>
         </div>
         <div class="form-push">
-            <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
+            <input type="button" value="我 已 了 解" class="btn auto" id="agree">
         </div>
         <div class="close"><img src="images/icon-4.png" alt=""></div>
     </div>

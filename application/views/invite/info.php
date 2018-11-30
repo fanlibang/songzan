@@ -102,9 +102,9 @@
             </dl>
         </div>
         <div class="form-push">
-            <input type="button" value="我 已 阅 读" class="btn auto" id="agree">
+            <input type="button" value="我 已 了 解" class="btn auto" id="agree">
         </div>
-        <div class="close"><img src="images/icon-4.png" alt=""></div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
