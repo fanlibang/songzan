@@ -51,10 +51,12 @@ class Invite extends Base
                 $this->AjaxReturn('403', '请选择车型');
                 exit;
             }
+            /**
             if (!in_array($info['car_id'], [1, 2])) {
                 $this->AjaxReturn('203', '感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。');
                 exit;
             }
+             */
             $data['name'] = $info['name'];
             $data['from_invite_code'] = $info['invite_code'];
             $data['car_id'] = $info['car_id'];
