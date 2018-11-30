@@ -122,7 +122,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .bomb-wrapper{position: fixed; top:0; left: 50%;z-index: 99; width: 750px; height: 100%; margin-left: -375px; background: rgba(0,0,0,.7);}
 .bomb-content{position: relative; width: 630px; background: #fff; border-radius: 20px;overflow: hidden;}
 .bomb-content .form{width: 500px;padding: 75px 0 110px;}
-.bomb-content .form-push{margin-top: 120px;}
+.bomb-content .form-push{padding: 20px 0 80px;margin-top: 0;}
 .pop-tit{font-size: 34px;height: 90px;line-height: 90px;color: #0c121c;font-weight: bold;border: 1px solid #bfbfbf;}
 .close{position: absolute;top:35px;right:35px;}
 
