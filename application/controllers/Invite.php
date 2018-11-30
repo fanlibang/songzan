@@ -118,7 +118,7 @@ class Invite extends Base
                 $result = $push->reportOwner($tempData);
                 $this->Users->editUserId($uid, ['report_result' => $result]);
             }
-            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。购车成功后，请尽快返回此页面，提交您的相关购车凭证。', $url);
+            $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>购车成功后，请尽快返回此页面，提交您的相关购车凭证。</dd>", $url);
             exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();

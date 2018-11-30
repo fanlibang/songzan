@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="flex justify">
-                    <div class="form-checkbox active">
+                    <div class="form-checkbox">
                         我已同意保密条款和<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私政策</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
@@ -127,6 +127,7 @@
             var name = $('input[name=name]').val();
             var invite_code = $('input[name=invite_code]').val();
             var car_id = $("#car_id option:selected").val();
+            var succ = $('.form-checkbox.active').text();
             if(phone == '') {
                 alert('手机号不能为空'); return false;
             } else if(code == '') {
@@ -135,6 +136,8 @@
             } else if(name == '') {
                 alert('用户名不能为空');
                 return false;
+            } else if(succ == '') {
+                alert('您还未同意隐私条款'); return false;
             }
             if (car_id == 0) {
                 alert('请选择正确车型');

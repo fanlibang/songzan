@@ -48,7 +48,7 @@
                     </i>
                 </div>
                 <div class="flex justify">
-                    <div class="form-checkbox active">
+                    <div class="form-checkbox">
                         我已同意保密条款和<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私政策</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
@@ -140,7 +140,7 @@ $(document).ready(function(){
                 alert('用户名不能为空');
                 return false;
             } else if(succ == '') {
-                alert('请选择隐私政策'); return false;
+                alert('您还未同意隐私条款'); return false;
             }
             $.ajax({
                 type:'post',
