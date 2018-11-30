@@ -19,7 +19,7 @@
                 <div class="form-list flex center opt">
                     <label>意向车型：</label>
                     <div class="form-box">
-                        <span>请选择车型</span>
+                        <span>*请选择车型</span>
                         <select name="car_id" id="car_id">
                             <option value="0" selected>请选择车型</option>
                             <?php foreach ($car_record as $value) { ?>

@@ -47,6 +47,10 @@ class Invite extends Base
                 $this->AjaxReturn('403', '邀请码格式不正确');
                 exit;
             }
+            if (empty($info['car_id'])) {
+                $this->AjaxReturn('403', '请选择车型');
+                exit;
+            }
             if (!in_array($info['car_id'], [1, 2])) {
                 $this->AjaxReturn('404', '参加本次活动的车型为揽胜或揽胜运动版');
                 exit;
