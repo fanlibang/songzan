@@ -39,6 +39,8 @@ iframe{vertical-align: top;}
 .auto{margin-left:auto; margin-right:auto;}
 /*滚动条*/
 .scroll{position: relative; width:100%; height:100%; padding: 50px; overflow-x:hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.scroll-x{width:100%; height:100%;overflow-x:auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;}
+.scroll-y{width:100%; height:100%;overflow-x:hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 /* 单行文字溢出虚点显示*/
 .ell{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
 /*文本两端对齐*/
@@ -153,11 +155,12 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .hint{padding: 75px 90px;}
 .hint-word{ padding-top: 100px; color: #0c121c; font-size: 30px; line-height: 46px;}
 #rule .pop-tit{border-bottom: 0;}
-.rule-inner{padding: 45px 64px;}
+.rule-inner{padding: 45px 64px;height: 730px;overflow: hidden;}
 .rule-inner .form-push{margin-top: 60px;}
 .rule-word{color: #0c121c; font-size: 26px; line-height: 36px;}
 .rule-word dt{font-size: 30px; font-weight: bold;}
 .rule-word dt:not(:first-child){margin-top: 20px;}
 .ss .form-tit{padding-top: 0; }
+
 
 
