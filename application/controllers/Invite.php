@@ -201,7 +201,7 @@ class Invite extends Base
             list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($data['qr_code_img']);
             imagecopymerge($bigImg, $qCodeImg, 315, 1014, 0, 0, $qCodeWidth, $qCodeHight, 100);
             $white = imagecolorallocate($bigImg, 255, 255, 255);
-            $font = ROOTPATH . '/assets/common/font/Elephant.ttf';
+            $font = ROOTPATH . '/assets/common/font/LANDROVER-BOLD.ttf';
 
             imagettftext($bigImg, 25, 0, 320, 515, $white, $font, $data['invite_code']);
 
