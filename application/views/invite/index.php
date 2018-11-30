@@ -146,7 +146,7 @@
     $(function(){
         $('#car_id').change(function() {
             var car_id = $("#car_id option:selected").val();
-            if (car_id != 1 && car_id != 2) {
+            if (car_id != 1 && car_id != 2 && car_id != 0) {
                 $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至臻礼包。');
                 $('.tj').val('确认');
                 $('#hint').removeClass('hide');
