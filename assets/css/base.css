@@ -88,7 +88,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .form-tit{font-size: 34px;color: #333;padding: 120px 0 50px;font-weight: bold;position: relative;}
 .form > div:not(:last-child){margin-bottom: 50px;}
 .form-list{border:1px solid #848484;}
-.form-list label{width: 110px; min-width: 110px;font-style: normal;margin-left: 20px;}
+.form-list label{width: 110px; min-width: 120px;font-style: normal;margin-left: 20px;}
 .form-list i{width: 70px; min-width: 70px;text-align: center;}
 .form-box{ position: relative; width: 100%;  padding:5px 20px 5px 0;}
 .input-text{width: 100%; height: 70px; line-height: 70px;color: #333; font-size: 24px;background: transparent;font-family: "labold";}

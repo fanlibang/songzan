@@ -22,12 +22,20 @@
                         <div class="input-text" ><?= $phone; ?></div>
                     </div>
                 </div>
+                <div class="form-list flex center">
+                    <label>意向车型：</label>
+                    <div class="form-box">
+                        <div class="input-text" ><?=$car_info['name']; ?></div>
+                    </div>
+                </div>
+                <!--
                 <div class="form-list flex center opt no-border">
                     <label>意向车型：</label>
                     <div class="form-box">
                         <span><?=$car_info['name']; ?></span>
                     </div>
                 </div>
+                -->
                 <div class="referee-tit flex center justify">
                     <span>活动信息</span>
                 </div>
@@ -37,12 +45,20 @@
                         <span>已注册</span>
                     </div>
                 </div>
+                <div class="form-list flex center">
+                    <label>邀请码：</label>
+                    <div class="form-box">
+                        <div class="input-text" style="padding-right: 35px;"><?=$from_invite_code; ?></div>
+                    </div>
+                </div>
+                <!--
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
                         <span><?=$from_invite_code; ?></span>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
