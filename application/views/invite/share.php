@@ -6,7 +6,7 @@
                 <!--被推荐人文案-->
                 <div class="hide"><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
                 <!--推荐人文案-->
-                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit-2.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
             <div class="code ta-c">
