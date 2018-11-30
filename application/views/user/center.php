@@ -57,7 +57,7 @@
     <div class="bomb-content">
         <div class="pop-tit ta-c">活 动 规 则</div>
         <div class="rule-inner">
-            <dl class="rule-word">
+            <dl class="rule-word scroll-y">
                 <dt>一、活动介绍</dt>
                 <dd>活动期间，路虎车主可通过活动邀请海报或链接推荐亲友购车，若亲友成功购买路虎揽胜、路虎揽胜运动版，双方均可赢取至臻礼包。礼包数量有限，先到先得，赠完即止，敬请谅解。</dd>
                 <dt>活动时间：</dt>
@@ -96,9 +96,9 @@
                 <dd>1、Burberry礼盒</dd>
                 <dd>2、养车无忧服务（整车尊享4年/13万公里延保服务）</dd>
             </dl>
-            <div class="form-push">
-                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
-            </div>
+        </div>
+        <div class="form-push">
+            <input type="button" value="我 已 了 解" class="btn auto" id="agree">
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
