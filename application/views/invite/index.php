@@ -112,6 +112,13 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $(function(){
+        $('#car_id').change(function() {
+            var car_id = $("#car_id option:selected").val();
+            if (car_id != 1 || car_id != 2) {
+                alert('参加本次活动的车型为揽胜或揽胜运动版');
+                return false;
+            }
+        });
         $('#sub').click(function(){
             var code = $('input[name=code]').val();
             var phone = $('input[name=phone]').val();
@@ -125,6 +132,10 @@
                 return false;
             } else if(name == '') {
                 alert('用户名不能为空');
+                return false;
+            }
+            if (car_id != 1 || car_id != 2) {
+                alert('参加本次活动的车型为揽胜或揽胜运动版');
                 return false;
             }
             $.ajax({
