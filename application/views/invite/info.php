@@ -113,4 +113,7 @@
         // 通过下面这个API隐藏右上角按钮
         WeixinJSBridge.call('hideOptionMenu');
     });
+    $('#ts').on('click',function () {
+        alert('敬请期待');
+    });
 </script>
