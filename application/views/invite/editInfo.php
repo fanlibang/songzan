@@ -48,7 +48,19 @@
         </div>
     </div>
 </div>
-
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -62,7 +74,7 @@
             if (car_id != 1 & car_id != 2) {
                 alert(1);
                 $('#title').html('参加本次活动的车型为揽胜或揽胜运动版');
-                $('.tj').val('确认');
+                $('#agree').val('确认');
                 $('#hint').removeClass('hide');
                 //alert('参加本次活动的车型为揽胜或揽胜运动版');
                 return false;
@@ -85,7 +97,7 @@
                 dataType:'json',
                 success:function(json) {
                     if(json.code == 200){
-                        alert(json.msg);
+                        //alert(json.msg);
                         window.location.href=json.forward;
                     } else {
                         alert(json.msg);
