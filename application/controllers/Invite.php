@@ -210,7 +210,7 @@ class Invite extends Base
             $white = imagecolorallocate($bigImg, 255, 255, 255);
             $font = ROOTPATH . '/assets/common/font/LANDROVER-BOLD.ttf';
 
-            imagettftext($bigImg, 25, 0, 325, 513, $white, $font, $data['invite_code']);
+            imagettftext($bigImg, 25, 0, 320, 510, $white, $font, $data['invite_code']);
 
             $savePath = UPLOAD_FILE . time() . '_' . $data['id'] . '_share.jpg';
             imagejpeg($bigImg, $_SERVER['DOCUMENT_ROOT'] . $savePath);
