@@ -136,7 +136,7 @@
                 alert('用户名不能为空');
                 return false;
             }
-            if (car_id == '') {
+            if (car_id == 0) {
                 alert('请选择正确车型');
                 return false;
             }
