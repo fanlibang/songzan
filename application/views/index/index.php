@@ -34,7 +34,7 @@
                 <input type="button" value="发送验证码" class="sendbtn _sms_verify">
             </div>
             <div class="form-push">
-                <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('index/tyg')" >
+                <input type="button" value="提     交" class="btn auto" id="submit" onclick="cc('index/tyg')" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -107,7 +107,7 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $(function(){
-        $('#sub').click(function(){
+        $('#submit').click(function(){
             var phone = $('#phone').val();
             var code = $('#verify').val();
             if(phone == '') {
