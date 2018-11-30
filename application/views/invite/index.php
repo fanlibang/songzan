@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc" id="hint">
+<div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
@@ -144,7 +144,10 @@
                 return false;
             }
             if (car_id != 1 && car_id != 2) {
-                alert('参加本次活动的车型为揽胜或揽胜运动版');
+                $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。');
+                $('.tj').val('我 知 道 了');
+                $('#hint').removeClass('hide');
+                //alert('参加本次活动的车型为揽胜或揽胜运动版');
                 return false;
             }
             $.ajax({
@@ -168,6 +171,9 @@
                         $('#title').html(json.msg);
                         $('.tj').val('推荐状态');
                         $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 203) {
+                        $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
                     } else {
                         alert(json.msg);
