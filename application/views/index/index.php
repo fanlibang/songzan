@@ -9,7 +9,7 @@
         <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
         <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
         <div class="rule-box ta-c">
-            <a href="javascript:;" class="rule gz">
+            <a href="javascript:;" class="rule gz" onclick="cc('index/gz')" >
                 查看活动规则
             </a>
         </div>

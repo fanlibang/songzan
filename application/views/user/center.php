@@ -2,7 +2,7 @@
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 info-page">
         <div>
-            <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
+            <div class="form-tit ta-c">我的主页<div class="actrule gz" onclick="cc('user/zygz')">活动规则</div></div>
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
@@ -40,13 +40,13 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('center/yqm')" id="ts" href="javascript:;">已注册</a></span>
+                        <span><a onclick="cc('user/btjr')" id="ts" href="javascript:;">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <span><a onclick="cc('user/share')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                     </div>
                 </div>
             </div>

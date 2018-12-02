@@ -49,12 +49,12 @@
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox">
-                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私条款</a>
+                        我已阅读并同意相关<a onclick="cc('user/zcys')" href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私条款</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
-                    <input type="button" value="提     交" class="btn auto" id="sub">
+                    <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('user/zctj')">
                 </div>
             </div>
         </div>
