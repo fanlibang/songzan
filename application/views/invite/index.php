@@ -233,6 +233,7 @@
                     }
                 },
                 error:function(){}
+            });
         });
     });
 </script>
