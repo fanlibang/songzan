@@ -74,14 +74,14 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc hide" id="rule">
+<div class="bomb-wrapper flex center jc" id="rule">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
                 活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto " id="from_sub" >
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
