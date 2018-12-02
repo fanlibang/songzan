@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once APPPATH . 'controllers/Common.php';
 
-class AdminBase extends Common
+class Base extends Common
 {
     const DEFAULT_PAGE_LIST = 5;//默认分页
     const MD5_STR_PREFIX = 'xyzs@l#s￥m%&!*';//md5 加密前缀字符串
