@@ -81,7 +81,7 @@
                 活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。
             </div>
             <div class="form-push">
-                <input type="button" value="确 认 提 交" class="btn auto " id="aaa" >
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -164,7 +164,14 @@ $(document).ready(function(){
             window.location.href=url;
         });
 
-        $('#aaa').click(function(){
+        $('#from_sub').click(function(){
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var code = $('#verify').val();
+            var driver_number = $('#driver_number').val();
+            var driver_json = $('#driver_json').val();
+            var card_number = $('#card_number').val();
+            var card_json = $('#card_json').val();
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
