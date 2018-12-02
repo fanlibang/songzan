@@ -170,12 +170,13 @@ class Common extends MY_Controller
     /**
      * 记录页面访问信息
      * @param $url
+     * @param $source
      * @param $info
      */
-    public function view_assess($url, $info)
+    public function view_assess($url, $source, $info)
     {
         $assess_log = new \Xy\Application\Models\ViewAssessModel();
-        $log_arr = assess_info($url, $info);
+        $log_arr = assess_info($url, $source, $info);
         $assess_log->add($log_arr);
     }
 }

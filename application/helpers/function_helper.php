@@ -717,9 +717,10 @@ if (! function_exists('assess_info')) {
      * 日志信息
      * @param $url
      * @param $info
+     * @param $source
      * @return array|bool
      */
-    function assess_info($url, $info)
+    function assess_info($url, $source, $info)
     {
         if($_SERVER['REQUEST_URI'] == '/dev/') {
             return false;
@@ -730,7 +731,7 @@ if (! function_exists('assess_info')) {
                 'url'           =>  $url,
                 'path'          =>  $_SERVER['REQUEST_URI'],
                 'phone'         =>   $info ? $info['phone'] : '',
-                'source'        =>   get_cookie('source'),
+                'source'        =>   $source ? $source : 0,
                 'log_time'      =>  time()
             );
             return $data;

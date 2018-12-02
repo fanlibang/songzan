@@ -30,9 +30,9 @@ class Base extends Common
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s
         //0avPHH7yRP4MpzjM-30u0I');exit;
-        $source = $this->input->get('source', true);
+        $this->_data['source'] = $this->input->get('source', true);
         if(!get_cookie('source')) {
-            set_cookie('source', $source);
+            set_cookie('source',  $this->_data['source']);
         }
 
         if (!$this->isLogin()) {
@@ -141,12 +141,10 @@ class Base extends Common
 
         //统计页面访问量
         $url_info = $this->_data;
-        if (strtolower($this->router->fetch_class()) == 'article') {
-            $this->view_play($this->_data['openId'], $data['id']);
-        }
         //$url = '/'.PROJECT_NAME.'/'.$url_info['controller'].'/'.$url_info['method'];
         $url = '/dev/' . $url_info['controller'] . '/' . $url_info['method'];
-        $this->view_assess($url, $this->isLogin());
+        $source = $this->_data['source'];
+        $this->view_assess($url, $source, $this->isLogin());
         //调试页面执行时间用
         if (IS_DEBUG) {
             echo 'page_run_time:</br>';
