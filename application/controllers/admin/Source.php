@@ -37,23 +37,23 @@ class Source extends Base
                 $url = '/dev/'.$va;
                 $sql = "select count(*) as pv from ownerreferral_201812_view_logs where url = '{$url}' and source = '{$source}'";
                 $res = $this->Source->execute($sql);
-                $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 0;
+                $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 1;
                 if($ke == 'KV页' || $ke == '推荐人填写信息页' || $ke == '被推荐人填写信息页') {
                     $sql = "select count(distinct openId) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
-                    $arr[$k][$ke]['view']['uv'] = $res ? $res[0]['uv'] : 0;
+                    $arr[$k][$ke]['view']['uv'] = $res ? $res[0]['uv'] : 1;
                 } else {
                     $sql = "select count(distinct phone) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
-                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
+                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 1;
                 }
             }
             $sql = "select count(*) as user_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
             $res = $this->Source->execute($sql);
-            $arr[$k]['user_num'] = $res ? $res[0]['user_num'] : 0;
+            $arr[$k]['user_num'] = $res ? $res[0]['user_num'] : 1;
             $sql = "select count(*) as user_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
             $res = $this->Source->execute($sql);
-            $arr[$k]['invite_num'] = $res ? $res[0]['invite_num'] : 0;
+            $arr[$k]['invite_num'] = $res ? $res[0]['invite_num'] : 1;
         }
 
         var_dump($arr);exit;
