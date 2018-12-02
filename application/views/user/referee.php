@@ -65,7 +65,10 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
-                上传的图片不正确
+                上传出错：上传的图片不正确
+            </div>
+            <div class="form-push">
+
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
