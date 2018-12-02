@@ -33,35 +33,39 @@ class Source extends Base
         $arr = [];
         foreach($info as $k => $v) {
             $source = $v['source'];
+            $arr[$k]['id'] = $v['id'];
+            $arr[$k]['name'] = $v['name'];
+            $arr[$k]['type'] = $v['type'];
             foreach ($view as $ke => $va) {
                 $url = '/dev/'.$va;
                 $sql = "select count(*) as pv from ownerreferral_201812_view_logs where url = '{$url}' and source = '{$source}'";
                 $res = $this->Source->execute($sql);
-                $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 1;
+                $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 0;
                 if($ke == 'KV页' || $ke == '推荐人填写信息页' || $ke == '被推荐人填写信息页') {
                     $sql = "select count(distinct openId) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
-                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 1;
+                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
                 } else {
                     $sql = "select count(distinct phone) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
-                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 1;
+                    $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
+                }
+                if($ke == '被推荐人填写信息页') {
+                    $arr[$k]['share_num'] = $arr[$k]['view'][$ke]['pv'];
                 }
             }
             $sql = "select count(*) as user_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
             $res = $this->Source->execute($sql);
-            $arr[$k]['user_num'] = $res ? $res[0]['user_num'] : 1;
-            $sql = "select count(*) as user_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
+            $arr[$k]['user_num'] = $res ? $res[0]['user_num'] : 0;
+            $sql = "select count(*) as invite_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
             $res = $this->Source->execute($sql);
-            $arr[$k]['invite_num'] = $res ? $res[0]['invite_num'] : 1;
+            $arr[$k]['invite_num'] = $res ? $res[0]['invite_num'] : 0;
         }
 
-        var_dump($arr);exit;
-
         if ($export) {
-            $newLists = array('序号', '姓名', '手机号', '意向车型', '推荐码', '推荐人姓名', '推荐人手机号', '来源', '提交次数', '创建时间');
+            $newLists = array('序号', '渠道名称', '点击方式', 'KVpv', 'KVuv', '推荐人填写信息页pv', '推荐人填写信息页uv', '完善推荐人填写信息页pv', '完善推荐人填写信息页uv', '推荐人主页pv', '推荐人主页pv', '推荐人主页uv', '推荐人海报页pv', '推荐人海报页uv', '被推荐人填写信息页pv', '被推荐人填写信息页uv', '被推荐人主页pv', '被推荐人主页uv', '推荐人数', '推荐人海报被扫描次数', '被推荐人人数');
             $newList[] = $newLists;
-            foreach ($data['list'] as $ke => $va) {
+            foreach ($arr['list'] as $ke => $va) {
                 $newList[] = [
                     'id'               => $va['id'],
                     'name'             => $va['name'],
