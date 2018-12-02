@@ -142,6 +142,15 @@ $(document).ready(function(){
             } else if(succ == '') {
                 alert('您还未同意隐私条款'); return false;
             }
+
+            $('#title').html(json.msg);
+            $('#tj').val('确认提交');
+            $('#tj').addClass('from_sub');
+            //$('#tj').attr('url', json.forward);
+            $('#hint').removeClass('hide');
+        });
+
+        $('.from_sub').click(function(){
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
@@ -149,11 +158,11 @@ $(document).ready(function(){
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        $('#title').html(json.msg);
-                        $('#tj').val('确认提交');
-                        $('#tj').attr('url', json.forward);
-                        $('#hint').removeClass('hide');
-                        //window.location.href=json.forward;
+                        //('#title').html(json.msg);
+                        //$('#tj').val('确认提交');
+                        //$('#tj').attr('url', json.forward);
+                        //$('#hint').removeClass('hide');
+                        window.location.href=json.forward;
                     } else if(json.code == 201) {
                         $('#title').html(json.msg);
                         $('#tj').val('个人主页');
@@ -168,9 +177,12 @@ $(document).ready(function(){
             });
         });
 
+
         $('#tj').click(function(){
             var url = $(this).attr('url');
-            window.location.href=url;
+            if(url != "undefined") {
+                window.location.href=url;
+            }
         });
     });
 </script>
