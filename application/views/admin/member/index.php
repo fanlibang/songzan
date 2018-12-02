@@ -34,7 +34,7 @@
             <!--<li><a class="delete" href="<?php echo site_url($controller, 'del', array('id' => '{sid}')); ?>" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>-->
         </ul>
     </div>
-    <table class="list" width="100%" layoutH="110">
+    <table class="table" width="100%" layoutH="110">
         <thead>
         <tr>
             <th>ID</th>
@@ -45,7 +45,6 @@
             <th>推荐码</th>
             <th>二维码</th>
             <th>来源</th>
-            <th>提交次数</th>
             <th>创建时间</th>
             <th style="width: 120px">操作</th>
         </tr>
@@ -67,9 +66,8 @@
                     <td><?php echo $v['driver_number']; ?></td>
                     <td><?php echo $v['card_number']; ?></td>
                     <td><?php echo $v['invite_code']; ?></td>
-                    <td><img src="<?php echo $v['qr_code_img']; ?>" width="80" height="80"></td>
+                    <td><img src="<?php echo $v['qr_code_img']; ?>" width="117px" height="117px"></td>
                     <td><?php echo $v['source_name']; ?></td>
-                    <td><?php echo $v['submit_num']; ?></td>
                     <td><?php echo $v['created_at']; ?></td>
                     <td>
                         <a class="btnView" href="<?php echo site_url('Invite', 'index', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="tbBasSpsxValueNav" fresh="false" title="查看">查看被推荐人</a>
