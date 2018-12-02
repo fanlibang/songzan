@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc" id="rule">
+<div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
