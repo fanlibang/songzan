@@ -143,7 +143,7 @@ $(document).ready(function(){
                 alert('您还未同意隐私条款'); return false;
             }
 
-            $('#title').html(json.msg);
+            $('#title').html("活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。");
             $('#tj').val('确认提交');
             $('#tj').addClass("from_sub");
             //$('#tj').attr('url', json.forward);
