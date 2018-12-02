@@ -2,12 +2,12 @@
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 info-page">
         <div>
-            <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
+            <div class="form-tit ta-c">我的主页<div class="actrule gz" onclick="cc('invite/info_gz')">活动规则</div></div>
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
                     <?php if (empty($car_id)) { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('invite/info')" href="<?=site_url('Invite', 'editInfo')?>">完善信息</a></div>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('invite/info_ws')" href="<?=site_url('Invite', 'editInfo')?>">完善信息</a></div>
                     <?php } ?>
                 </div>
                 <div class="form-list flex center">
