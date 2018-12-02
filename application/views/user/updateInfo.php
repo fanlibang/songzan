@@ -55,22 +55,38 @@
         </div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc hide" id="upload">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                上传出错：上传的图片不正确
+            </div>
+            <div class="form-push">
+
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
-        console.log(data);
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").val(data);
             } else if (dataObj.image_status != 'normal'){
-                alert('上传出错:上传文图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
                 //alert('上传出错:'+dataObj.image_status);
             } else {
-                alert('上传出错:上传文图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
@@ -84,7 +100,8 @@ $(document).ready(function(){
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").val(data);
             } else {
-                alert('上传出错:上传文图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
