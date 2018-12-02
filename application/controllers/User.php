@@ -72,7 +72,7 @@ class User extends Base
             $data['card_number'] = $info['card_number'];
             $data['card_json'] = $info['card_json'];
             $data['token'] = $token;
-            $data['source'] = get_cookie('source');
+            $data['source'] = get_cookie('source') ? get_cookie('source') : 0;
             $data['created_at'] = NOW_DATE_TIME;
             $uid = $this->Users->addUserOpenId($data);
             $stepModel = new \Xy\Application\Models\StepModel();

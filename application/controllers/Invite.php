@@ -102,6 +102,7 @@ class Invite extends Base
             $token = rand_str(32);
             $data['token'] = $token;
             set_cookie('token', $token);
+            $data['source'] = get_cookie('source') ? get_cookie('source') : 0;
             $uid = $this->Users->addUserOpenId($data);
             if ($data['car_id'] > 0) {
                 $carInfo = $carInfo->getCarInfoByid($data['car_id']);
