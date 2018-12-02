@@ -66,7 +66,7 @@
                     <td><?php echo $v['driver_number']; ?></td>
                     <td><?php echo $v['card_number']; ?></td>
                     <td><?php echo $v['invite_code']; ?></td>
-                    <td><img src="<?php echo $v['qr_code_img']; ?>" width="117" height="117"></td>
+                    <td><?php echo $v['qr_code_img']; ?></td>
                     <td><?php echo $v['source_name']; ?></td>
                     <td><?php echo $v['created_at']; ?></td>
                     <td>

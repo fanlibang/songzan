@@ -43,13 +43,13 @@
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox">
-                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私条款</a>
+                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item" onclick="cc('invite/index_tk')">隐私条款</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" id="sub" value="提     交" class="btn auto">
+                    <input type="button" onclick="cc('invite/index_tj')" id="sub" value="提     交" class="btn auto" >
                 </div>
             </div>
         </div>
