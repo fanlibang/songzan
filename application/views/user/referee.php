@@ -165,6 +165,7 @@ $(document).ready(function(){
         });
 
         $('#from_sub').click(function(){
+            $('#rule').addClass('hide');
             var name = $('#name').val();
             var phone = $('#phone').val();
             var code = $('#verify').val();
