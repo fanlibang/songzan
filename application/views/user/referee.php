@@ -67,7 +67,7 @@
                 活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
+                <input type="button" value="我 要 推 荐" url='' class="btn auto" id="tj" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -181,7 +181,7 @@ $(document).ready(function(){
         $('#tj').click(function(){
             var url = $(this).attr('url');
             alert(url);
-            if(url != "undefined") {
+            if(url != "") {
                 window.location.href=url;
             }
         });
