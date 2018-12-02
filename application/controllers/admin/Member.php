@@ -97,4 +97,45 @@ class Member extends Base
         $data['end_dt'] = $end_dt;
         $this->display($data);
     }
+
+    /**
+     * 按钮点击统计
+     */
+    public function button()
+    {
+        $sql = "select url, COUNT(id) as pv, COUNT(DISTINCT openId) as openid_uv, COUNT(DISTINCT phone) as phone_uv from `ownerreferral_201812_button` GROUP BY url";
+        $record = $this->User->execute($sql);
+        $data = ['list' => []];
+        foreach ($record as $k => $v) {
+            $row = [
+                'page'      => $this->getUrlPageName($v['url']),
+                'pv'        => $v['pv'],
+                'openid_uv' => $v['openid_uv'],
+                'phone_uv'  => $v['phone_uv'],
+            ];
+            $data['list'][] = $row;
+        }
+        $this->display($data);
+    }
+
+    private function getUrlPageName($url)
+    {
+        switch ($url) {
+            case 'index/tj':
+                $name = '首页我要推荐';
+                break;
+            case 'index/jd':
+                $name = '首页推荐进度';
+                break;
+            case 'index/gz':
+                $name = '首页活动规则';
+                break;
+            case 'index/tyg':
+                $name = '首页登录提交';
+                break;
+            default:
+                $name = '';
+        }
+        return $name;
+    }
 }
