@@ -718,17 +718,19 @@ if (! function_exists('assess_info')) {
      * @param $url
      * @return array|bool
      */
-    function assess_info($url, $openId)
+    function assess_info($url)
     {
         if($_SERVER['REQUEST_URI'] == '/dev/') {
             return false;
         } else {
+            $userInfo = $this->login();
             $data = array(
                 'server_ip'     =>  return_ip(true, true),
                 'ip'            =>  return_ip(true),
                 'url'           =>  $url,
                 'path'          =>  $_SERVER['REQUEST_URI'],
-                'openId'       =>   $openId,
+                'phone'         =>   $userInfo['phone'],
+                'source'        =>   get_cookie('source'),
                 'log_time'      =>  time()
             );
             return $data;

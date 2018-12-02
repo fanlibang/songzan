@@ -194,10 +194,8 @@ class Common extends MY_Controller
     public function view_assess($url)
     {
         $assess_log = new \Xy\Application\Models\ViewAssessModel();
-        if(!empty($this->_data['openId'])) {
-            $log_arr = assess_info($url, $this->_data['openId']);
-            $assess_log->add($log_arr);
-        }
+        $log_arr = assess_info($url);
+        $assess_log->add($log_arr);
     }
 
     /**

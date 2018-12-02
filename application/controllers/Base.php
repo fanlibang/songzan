@@ -28,7 +28,12 @@ class Base extends Common
         $this->Users = new \Xy\Application\Models\UserModel();
         $this->UserWx = new \Xy\Application\Models\UserWxModel();
         //set_cookie('openId', '');exit;
-        //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
+        //set_cookie('openId', 'oRNe1s
+        //0avPHH7yRP4MpzjM-30u0I');exit;
+        $source = $this->input->get('source', true);
+        if(!get_cookie($source)) {
+            set_cookie('source', $source);
+        }
 
         if (!$this->isLogin()) {
             if (is_weixin()) {
