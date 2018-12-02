@@ -297,7 +297,7 @@ class Base extends Common
      *
      * @return bool
      */
-    public function isLogins()
+    public function isLogin()
     {
         $cookie_admin_user_id = get_cookie('admin_user_id');
 
