@@ -716,6 +716,7 @@ if (! function_exists('assess_info')) {
     /**
      * 日志信息
      * @param $url
+     * @param $info
      * @return array|bool
      */
     function assess_info($url, $info)
@@ -723,7 +724,6 @@ if (! function_exists('assess_info')) {
         if($_SERVER['REQUEST_URI'] == '/dev/') {
             return false;
         } else {
-            $userInfo = $this->isLogin();
             $data = array(
                 'server_ip'     =>  return_ip(true, true),
                 'ip'            =>  return_ip(true),
