@@ -3,12 +3,12 @@
  * Created by PhpStorm.
  * User: richard
  * Date: 2018/12/2
- * Time: 下午3:53
+ * Time: 下午4:37
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Base.php';
 
-class Invite extends Base
+class Member extends Base
 {
     /**
      * 初始化
@@ -32,8 +32,6 @@ class Invite extends Base
         $page_list = $page_list ? (int)$page_list : self::DEFAULT_PAGE_LIST;
         $iphone = $this->input->get_post('iphone', true);
         $iphone = $iphone ? $iphone : null;
-        $fromInviteCode = $this->input->get_post('from_invite_code', true);
-        $fromInviteCode = $fromInviteCode ? $fromInviteCode : null;
         $str_dt = $this->input->get_post('str_dt', true);
         $str_dt = $str_dt ? $str_dt : null;
         $end_dt = $this->input->get_post('end_dt', true);
@@ -50,52 +48,45 @@ class Invite extends Base
             $where['created_at >='] = $str_dt;
         }
 
-        if ($fromInviteCode) {
-            $where['from_invite_code ='] = $fromInviteCode;
-        }
-
         if ($end_dt) {
             $where['created_at <='] = $end_dt;
         }
-        $where['master_uid >'] = 0;
+        $where['master_uid ='] = 0;
         $data = $this->User->getPage($page, $page_list, $where, 'id asc');
 
         foreach ($data['list'] as $key => $value) {
-            $carInfo = $this->CarInfo->getCarInfoByid($value['car_id']);
-            $masterUidInfo = $this->User->getUserInfoByid($value['master_uid']);
             $sourceInfo = $this->Source->getSourceInfoByid($value['source']);
             $row = [
-                'id'               => $value['id'],
-                'name'             => $value['name'],
-                'phone'            => $value['phone'],
-                'car_name'         => $carInfo['name'],
-                'from_invite_code' => $value['from_invite_code'],
-                'master_uid'       => $value['master_uid'],
-                'master_name'      => $masterUidInfo['name'],
-                'master_phone'     => $masterUidInfo['phone'],
-                'source_name'      => $sourceInfo['name'],
-                'created_at'       => $value['created_at'],
+                'id'            => $value['id'],
+                'name'          => $value['name'],
+                'phone'         => $value['phone'],
+                'driver_number' => $value['driver_number'],
+                'card_number'   => $value['card_number'],
+                'invite_code'   => $value['invite_code'],
+                'qr_code_img'   => $value['qr_code_img'],
+                'source_name'   => $sourceInfo['name'],
+                'created_at'    => $value['created_at'],
             ];
 
             $data['list'][$key] = $row;
         }
         if ($export) {
-            $newLists = array('序号', '姓名', '手机号', '意向车型', '推荐码', '推荐人姓名', '推荐人手机号', '来源', '创建时间');
+            $newLists = array('序号', '姓名', '手机号', '行驶证', '身份证', '推荐码', '二维码', '来源', '创建时间');
             $newList[] = $newLists;
             foreach ($data['list'] as $ke => $va) {
                 $newList[] = [
-                    'id'               => $va['id'],
-                    'name'             => $va['name'],
-                    'phone'            => $va['phone'],
-                    'car_name'         => $va['car_name'],
-                    'from_invite_code' => $va['from_invite_code'],
-                    'master_name'      => $va['master_name'],
-                    'master_phone'     => $va['master_phone'],
-                    'source_name'      => $va['source_name'],
-                    'created_at'       => $va['created_at'],
+                    'id'            => $va['id'],
+                    'name'          => $va['name'],
+                    'phone'         => $va['phone'],
+                    'driver_number' => $va['driver_number'],
+                    'card_number'   => $va['card_number'],
+                    'invite_code'   => $va['invite_code'],
+                    'qr_code_img'   => $va['qr_code_img'],
+                    'source_name'   => $va['source_name'],
+                    'created_at'    => $va['created_at'],
                 ];
             }
-            $this->getExport('被推荐人数据' . time(), $newList);
+            $this->getExport('推荐人数据' . time(), $newList);
             exit;
         }
 
