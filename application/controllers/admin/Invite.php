@@ -74,13 +74,14 @@ class Invite extends Base
                 'master_name'      => $masterUidInfo['name'],
                 'master_phone'     => $masterUidInfo['phone'],
                 'source_name'      => $sourceInfo['name'],
+                'submit_num'       => $value['submit_num'],
                 'created_at'       => $value['created_at'],
             ];
 
             $data['list'][$key] = $row;
         }
         if ($export) {
-            $newLists = array('序号', '姓名', '手机号', '意向车型', '推荐码', '推荐人姓名', '推荐人手机号', '来源', '创建时间');
+            $newLists = array('序号', '姓名', '手机号', '意向车型', '推荐码', '推荐人姓名', '推荐人手机号', '来源', '提交次数', '创建时间');
             $newList[] = $newLists;
             foreach ($data['list'] as $ke => $va) {
                 $newList[] = [
@@ -92,6 +93,7 @@ class Invite extends Base
                     'master_name'      => $va['master_name'],
                     'master_phone'     => $va['master_phone'],
                     'source_name'      => $va['source_name'],
+                    'submit_num'       => $va['submit_num'],
                     'created_at'       => $va['created_at'],
                 ];
             }

@@ -45,6 +45,7 @@
             <th>推荐人姓名</th>
             <th>推荐人手机号</th>
             <th>来源</th>
+            <th>提交次数</th>
             <th>创建时间</th>
             <!--<th style="width: 120px">操作</th>-->
         </tr>
@@ -68,6 +69,7 @@
                     <td><?php echo $v['master_name']; ?></td>
                     <td><?php echo $v['master_phone']; ?></td>
                     <td><?php echo $v['source_name']; ?></td>
+                    <td><?php echo $v['submit_num']; ?></td>
                     <td><?php echo $v['created_at']; ?></td>
                     <!--<td>
                         <a class="btnView" href="<?php echo site_url($controller, 'articleView', array('id' => $v['id'])); ?>" target="dialog" mask="true"  height="650" width="960" rel="article_view" title="查看">查看</a>
