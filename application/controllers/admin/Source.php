@@ -65,7 +65,7 @@ class Source extends Base
         if ($export) {
             $newLists = array('序号', '渠道名称', '点击方式', 'KVpv', 'KVuv', '推荐人填写信息页pv', '推荐人填写信息页uv', '完善推荐人填写信息页pv', '完善推荐人填写信息页uv', '推荐人主页pv', '推荐人主页pv', '推荐人主页uv', '推荐人海报页pv', '推荐人海报页uv', '被推荐人填写信息页pv', '被推荐人填写信息页uv', '被推荐人主页pv', '被推荐人主页uv', '推荐人数', '推荐人海报被扫描次数', '被推荐人人数');
             $newList[] = $newLists;
-            foreach ($arr['list'] as $ke => $va) {
+            foreach ($arr as $ke => $va) {
                 $newList[] = [
                     'id'               => $va['id'],
                     'name'             => $va['name'],
@@ -83,10 +83,7 @@ class Source extends Base
             exit;
         }
 
-        $data['iphone'] = $iphone;
-        $data['str_dt'] = $str_dt;
-        $data['end_dt'] = $end_dt;
-        $data['from_invite_code'] = $fromInviteCode;
+        $data['list'] = $arr;
         $this->display($data);
     }
 }
