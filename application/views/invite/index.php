@@ -84,6 +84,20 @@
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc hide" id="rule">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
+                <dd>购车成功后，请尽快返回此页面，提交您的相关购车凭证。</dd>
+            </div>
+            <div class="form-push">
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
 
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
@@ -175,15 +189,7 @@
                 alert('请选择正确车型');
                 return false;
             }
-            /**
-            if (car_id != 1 && car_id != 2) {
-                $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。');
-                $('.tj').val('我 知 道 了');
-                $('#hint').removeClass('hide');
-                //alert('参加本次活动的车型为揽胜或揽胜运动版');
-                return false;
-            }
-             **/
+
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('Invite', 'index'); ?>',
@@ -221,6 +227,42 @@
             if(url) {
                 window.location.href=url;
             }
+        });
+
+        $('#from_sub').click(function(){
+            $('#rule').addClass('hide');
+            var code = $('input[name=code]').val();
+            var phone = $('input[name=phone]').val();
+            var name = $('input[name=name]').val();
+            var invite_code = $('input[name=invite_code]').val();
+            var car_id = $("#car_id option:selected").val();
+            $.ajax({
+                type:'post',
+                url:'<?php echo site_url('Invite', 'index'); ?>',
+                data:{code:code, phone: phone, name:name, invite_code:invite_code, car_id:car_id},
+                cache:false,
+                dataType:'json',
+                success:function(json) {
+                    if(json.code == 200) {
+                        window.location.href=json.forward;
+                    } else if(json.code == 201) {
+                        $('#title').html(json.msg);
+                        $('.tj').val('个人主页');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 202) {
+                        $('#title').html(json.msg);
+                        $('.tj').val('推荐状态');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 203) {
+                        $('#title').html(json.msg);
+                        $('#hint').removeClass('hide');
+                    } else {
+                        alert(json.msg);
+                    }
+                },
+                error:function(){}
         });
     });
 </script>
