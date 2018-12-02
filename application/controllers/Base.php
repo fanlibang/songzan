@@ -31,7 +31,7 @@ class Base extends Common
         //set_cookie('openId', 'oRNe1s
         //0avPHH7yRP4MpzjM-30u0I');exit;
         $source = $this->input->get('source', true);
-        if(!get_cookie($source)) {
+        if(!get_cookie('source')) {
             set_cookie('source', $source);
         }
 
