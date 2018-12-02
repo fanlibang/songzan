@@ -41,7 +41,7 @@ class Source extends Base
                 if($ke == 'KV页' || $ke == '推荐人填写信息页' || $ke == '被推荐人填写信息页') {
                     $sql = "select count(distinct openId) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
-                    $arr[$k][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
+                    $arr[$k][$ke]['view']['uv'] = $res ? $res[0]['uv'] : 0;
                 } else {
                     $sql = "select count(distinct phone) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
