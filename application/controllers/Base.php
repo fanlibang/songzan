@@ -146,7 +146,7 @@ class Base extends Common
         }
         //$url = '/'.PROJECT_NAME.'/'.$url_info['controller'].'/'.$url_info['method'];
         $url = '/dev/' . $url_info['controller'] . '/' . $url_info['method'];
-        $this->view_assess($url);
+        $this->view_assess($url, $this->isLogin());
         //调试页面执行时间用
         if (IS_DEBUG) {
             echo 'page_run_time:</br>';
