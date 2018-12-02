@@ -98,6 +98,14 @@
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
+        window.alert = function(name){
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display="none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        };
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
@@ -111,8 +119,12 @@ $(document).ready(function(){
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
+
+    });
+
+    $("#driver_target").load(function(){
+        var data = $(window.frames['driver_target'].document.body).html();
         window.alert = function(name){
-            alert(1);
             var iframe = document.createElement("IFRAME");
             iframe.style.display="none";
             iframe.setAttribute("src", 'data:text/plain,');
@@ -120,10 +132,6 @@ $(document).ready(function(){
             window.frames[0].window.alert(name);
             iframe.parentNode.removeChild(iframe);
         };
-    });
-
-    $("#driver_target").load(function(){
-        var data = $(window.frames['driver_target'].document.body).html();
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.msg == 'success') {
@@ -134,14 +142,6 @@ $(document).ready(function(){
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
-        window.alert = function(name){
-            var iframe = document.createElement("IFRAME");
-            iframe.style.display="none";
-            iframe.setAttribute("src", 'data:text/plain,');
-            document.documentElement.appendChild(iframe);
-            window.frames[0].window.alert(name);
-            iframe.parentNode.removeChild(iframe);
-        };
     });
 
     $("#card_file").change(function(){
