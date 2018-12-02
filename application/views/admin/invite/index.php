@@ -21,6 +21,9 @@
                     <td>
                         手机号：<input type="text" name="iphone" value="<?php echo $iphone; ?>"/>
                     </td>
+                    <td>
+                        推荐码：<input type="text" name="from_invite_code" value="<?php echo $from_invite_code; ?>"/>
+                    </td>
                     <td><div class="button"><div class="buttonContent"><button type="submit">搜索</button></div></div></td>
                 </tr>
             </table>

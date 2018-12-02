@@ -104,6 +104,7 @@ class Invite extends Base
         $data['iphone'] = $iphone;
         $data['str_dt'] = $str_dt;
         $data['end_dt'] = $end_dt;
+        $data['from_invite_code'] = $fromInviteCode;
         $this->display($data);
     }
 }

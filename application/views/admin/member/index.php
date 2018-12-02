@@ -72,7 +72,7 @@
                     <td><?php echo $v['submit_num']; ?></td>
                     <td><?php echo $v['created_at']; ?></td>
                     <td>
-                        <a class="btnView" href="<?php echo site_url('Invite', 'index', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="tbBasSpsxValueNav" fresh="false" title="查看">查看被推荐人</a>
+                        <a class="btnView" href="<?php echo site_url('Invite', 'index', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="tbBasSpsxValueNav" fresh="false" title="被推荐人列表">查看被推荐人</a>
                         <!--<a class="btnDel" href="<?php echo site_url($controller, 'del', array('id' => $v['id'])); ?>" target="ajaxTodo" title="确定要删除吗?">删除</a>-->
                     </td>
                 </tr>
