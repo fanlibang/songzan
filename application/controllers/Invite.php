@@ -81,6 +81,7 @@ class Invite extends Base
                 if (is_weixin() && empty($havePhoneInfo['open_id']) && !empty($data['open_id'])) {
                     $this->Users->editUserId($havePhoneInfo['id'], ['open_id' => $data['open_id']]);
                 }
+                $this->Users->incrementSubmitNum($havePhoneInfo['id']);
                 if ($havePhoneInfo['invite_code'] != $inviteCode) {
                     $this->AjaxReturn('202', '很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态 ', $url);
                     exit;
@@ -104,6 +105,7 @@ class Invite extends Base
             set_cookie('token', $token);
             $data['source'] = get_cookie('source') ? get_cookie('source') : 0;
             $uid = $this->Users->addUserOpenId($data);
+            $this->Users->incrementSubmitNum($uid);
             if ($data['car_id'] > 0) {
                 $carInfo = $carInfo->getCarInfoByid($data['car_id']);
                 $tempData = [
