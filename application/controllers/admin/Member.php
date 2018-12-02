@@ -133,6 +133,51 @@ class Member extends Base
             case 'index/tyg':
                 $name = '首页登录提交';
                 break;
+            case 'user/zcys':
+                $name = '推荐人页面隐私条款';
+                break;
+            case 'user/zctj':
+                $name = '推荐人页面提交';
+                break;
+            case 'user/zygz':
+                $name = '推荐人个人中心活动规则';
+                break;
+            case 'center/wszl':
+                $name = '推荐人个人中心完善信息';
+                break;
+            case 'user/btjr':
+                $name = '推荐人个人中心被推荐人状态';
+                break;
+            case 'user/share':
+                $name = '推荐人个人中心邀请码';
+                break;
+            case 'user/wsys':
+                $name = '推荐人完善信息隐私条款';
+                break;
+            case 'user/wstj':
+                $name = '推荐人完善信息提交';
+                break;
+            case 'invite/index_tk':
+                $name = '被推荐人首页隐私条款';
+                break;
+            case 'invite/index_tj':
+                $name = '被推荐人首页提交';
+                break;
+            case 'invite/info_gz':
+                $name = '被推荐人个人中心活动规则';
+                break;
+            case 'invite/info_ws':
+                $name = '被推荐人个人中心完善信息';
+                break;
+            case 'invite/yzc':
+                $name = '被推荐人个人中心被推荐人状态';
+                break;
+            case 'invite/info_tk':
+                $name = '被推荐人完善信息隐私条款';
+                break;
+            case 'invite/info_tj':
+                $name = '被推荐人完善信息提交';
+                break;
             default:
                 $name = '';
         }
