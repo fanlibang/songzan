@@ -84,7 +84,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc hide" id="rule">
+<div class="bomb-wrapper flex center jc hide from_sub" id="rule">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
@@ -189,39 +189,9 @@
                 alert('请选择正确车型');
                 return false;
             }
-
-            $.ajax({
-                type:'post',
-                url:'<?php echo site_url('Invite', 'index'); ?>',
-                data:{code:code, phone: phone, name:name, invite_code:invite_code, car_id:car_id},
-                cache:false,
-                dataType:'json',
-                success:function(json) {
-                    if(json.code == 200) {
-                        $('#title').html(json.msg);
-                        $('.tj').val('确认提交');
-                        $('.tj').attr('url', json.forward);
-                        $('#hint').removeClass('hide');
-                    } else if(json.code == 201) {
-                        $('#title').html(json.msg);
-                        $('.tj').val('个人主页');
-                        $('.tj').attr('url', json.forward);
-                        $('#hint').removeClass('hide');
-                    } else if(json.code == 202) {
-                        $('#title').html(json.msg);
-                        $('.tj').val('推荐状态');
-                        $('.tj').attr('url', json.forward);
-                        $('#hint').removeClass('hide');
-                    } else if(json.code == 203) {
-                        $('#title').html(json.msg);
-                        $('#hint').removeClass('hide');
-                    } else {
-                        alert(json.msg);
-                    }
-                },
-                error:function(){}
-            });
+            $('#from_sub').removeClass('hide');
         });
+        
         $('.tj').click(function(){
             var url = $(this).attr('url');
             if(url) {
