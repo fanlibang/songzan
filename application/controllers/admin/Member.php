@@ -97,4 +97,90 @@ class Member extends Base
         $data['end_dt'] = $end_dt;
         $this->display($data);
     }
+
+    /**
+     * 按钮点击统计
+     */
+    public function button()
+    {
+        $sql = "select url, COUNT(id) as pv, COUNT(DISTINCT openId) as openid_uv, COUNT(DISTINCT phone) as phone_uv from `ownerreferral_201812_button` GROUP BY url";
+        $record = $this->User->execute($sql);
+        $data = ['list' => []];
+        foreach ($record as $k => $v) {
+            $row = [
+                'page'      => $this->getUrlPageName($v['url']),
+                'pv'        => $v['pv'],
+                'openid_uv' => $v['openid_uv'],
+                'phone_uv'  => $v['phone_uv'],
+            ];
+            $data['list'][] = $row;
+        }
+        $this->display($data);
+    }
+
+    private function getUrlPageName($url)
+    {
+        switch ($url) {
+            case 'index/tj':
+                $name = '首页我要推荐';
+                break;
+            case 'index/jd':
+                $name = '首页推荐进度';
+                break;
+            case 'index/gz':
+                $name = '首页活动规则';
+                break;
+            case 'index/tyg':
+                $name = '首页登录提交';
+                break;
+            case 'user/zcys':
+                $name = '推荐人页面隐私条款';
+                break;
+            case 'user/zctj':
+                $name = '推荐人页面提交';
+                break;
+            case 'user/zygz':
+                $name = '推荐人个人中心活动规则';
+                break;
+            case 'center/wszl':
+                $name = '推荐人个人中心完善信息';
+                break;
+            case 'user/btjr':
+                $name = '推荐人个人中心被推荐人状态';
+                break;
+            case 'user/share':
+                $name = '推荐人个人中心邀请码';
+                break;
+            case 'user/wsys':
+                $name = '推荐人完善信息隐私条款';
+                break;
+            case 'user/wstj':
+                $name = '推荐人完善信息提交';
+                break;
+            case 'invite/index_tk':
+                $name = '被推荐人首页隐私条款';
+                break;
+            case 'invite/index_tj':
+                $name = '被推荐人首页提交';
+                break;
+            case 'invite/info_gz':
+                $name = '被推荐人个人中心活动规则';
+                break;
+            case 'invite/info_ws':
+                $name = '被推荐人个人中心完善信息';
+                break;
+            case 'invite/yzc':
+                $name = '被推荐人个人中心被推荐人状态';
+                break;
+            case 'invite/info_tk':
+                $name = '被推荐人完善信息隐私条款';
+                break;
+            case 'invite/info_tj':
+                $name = '被推荐人完善信息提交';
+                break;
+            default:
+                $name = '';
+        }
+        return $name;
+    }
 }
