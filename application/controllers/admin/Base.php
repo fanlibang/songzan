@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once APPPATH . 'controllers/Common.php';
 
-class AdminBase extends Common
+class Base extends Common
 {
     /**
      * 后台公用APPID
