@@ -60,6 +60,18 @@
         </div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc hide" id="upload">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                上传的图片不正确
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
@@ -112,10 +124,12 @@ $(document).ready(function(){
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").val(data);
             } else if (dataObj.image_status != 'normal'){
-                alert('上传的图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj.image_status);
             } else {
-                alert('上传的图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
@@ -138,7 +152,8 @@ $(document).ready(function(){
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").val(data);
             } else {
-                alert('上传的图片不正确');
+                $('#upload').removeClass('hide');
+                //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
