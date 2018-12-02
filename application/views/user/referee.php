@@ -150,7 +150,7 @@ $(document).ready(function(){
             $('#hint').removeClass('hide');
         });
 
-        $('.from_sub').on('click',function () {
+        $('.from_sub').click(function(){
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
