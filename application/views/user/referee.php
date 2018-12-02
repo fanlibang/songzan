@@ -81,7 +81,7 @@
                 活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto " id="agree" >
+                <input type="button" value="我 要 推 荐" class="btn auto " id="from_sub" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -134,33 +134,6 @@ $(document).ready(function(){
     $("#driver_file").change(function(){
         if($("#driver_file").val() != '') $("#driver_form").submit();
     });
-
-    $('#agree').click(function(){
-        $.ajax({
-            type:'post',
-            url:'<?php echo site_url('User', 'referee'); ?>',
-            data:{name:name, phone: phone, code:code, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json },
-            dataType:'json',
-            success:function(json){
-                if(json.code == 200){
-                    //('#title').html(json.msg);
-                    //$('#tj').val('确认提交');
-                    //$('#tj').attr('url', json.forward);
-                    //$('#hint').removeClass('hide');
-                    window.location.href=json.forward;
-                } else if(json.code == 201) {
-                    $('#title').html(json.msg);
-                    $('#tj').val('个人主页');
-                    $('#tj').attr('url', json.forward);
-                    $('#hint').removeClass('hide');
-                    //window.location.href=json.forward;
-                } else {
-                    alert(json.msg);
-                }
-            },
-            error:function(){}
-        });
-    });
 });
     $(function(){
         $('#sub').click(function(){
@@ -186,6 +159,32 @@ $(document).ready(function(){
             $('#rule').removeClass('hide');
         });
 
+        $('#from_sub').click(function(){
+            $.ajax({
+                type:'post',
+                url:'<?php echo site_url('User', 'referee'); ?>',
+                data:{name:name, phone: phone, code:code, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json },
+                dataType:'json',
+                success:function(json){
+                    if(json.code == 200){
+                        //('#title').html(json.msg);
+                        //$('#tj').val('确认提交');
+                        //$('#tj').attr('url', json.forward);
+                        //$('#hint').removeClass('hide');
+                        window.location.href=json.forward;
+                    } else if(json.code == 201) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
+                    } else {
+                        alert(json.msg);
+                    }
+                },
+                error:function(){}
+            });
+        });
 
         $('#tj').click(function(){
             var url = $(this).attr('url');
