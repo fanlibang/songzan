@@ -65,13 +65,14 @@ class Member extends Base
                 'invite_code'   => $value['invite_code'],
                 'qr_code_img'   => $value['qr_code_img'],
                 'source_name'   => $sourceInfo['name'],
+                'submit_num'    => $value['submit_num'],
                 'created_at'    => $value['created_at'],
             ];
 
             $data['list'][$key] = $row;
         }
         if ($export) {
-            $newLists = array('序号', '姓名', '手机号', '行驶证', '身份证', '推荐码', '二维码', '来源', '创建时间');
+            $newLists = array('序号', '姓名', '手机号', '行驶证', '身份证', '推荐码', '二维码', '来源', '提交次数', '创建时间');
             $newList[] = $newLists;
             foreach ($data['list'] as $ke => $va) {
                 $newList[] = [
@@ -83,6 +84,7 @@ class Member extends Base
                     'invite_code'   => $va['invite_code'],
                     'qr_code_img'   => $va['qr_code_img'],
                     'source_name'   => $va['source_name'],
+                    'submit_num'    => $va['submit_num'],
                     'created_at'    => $va['created_at'],
                 ];
             }
