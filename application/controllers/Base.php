@@ -30,9 +30,11 @@ class Base extends Common
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s
         //0avPHH7yRP4MpzjM-30u0I');exit;
-        $this->_data['source'] = $this->input->get('source', true);
         if(!get_cookie('source')) {
+            $this->_data['source'] = $this->input->get('source', true);
             set_cookie('source',  $this->_data['source']);
+        } else {
+            $this->_data['source'] = get_cookie('source');
         }
 
         if (!$this->isLogin()) {
