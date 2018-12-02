@@ -39,11 +39,11 @@ class Source extends Base
                 $res = $this->Source->execute($sql);
                 $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 0;
                 if($ke == 'KV页' || $ke == '推荐人填写信息页' || $ke == '被推荐人填写信息页') {
-                    $sql = "select count(distinct openId) as uv from l462_18songzan_button where url = '{$v}' and source = '{$source}'";
+                    $sql = "select count(distinct openId) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
                     $arr[$k][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
                 } else {
-                    $sql = "select count(distinct phone) as uv from l462_18songzan_button where url = '{$v}' and source = '{$source}'";
+                    $sql = "select count(distinct phone) as uv from ownerreferral_201812_view_logs where url = '{$v}' and source = '{$source}'";
                     $res = $this->Source->execute($sql);
                     $arr[$k]['view'][$ke]['uv'] = $res ? $res[0]['uv'] : 0;
                 }
