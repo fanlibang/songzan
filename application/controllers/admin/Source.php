@@ -32,7 +32,7 @@ class Source extends Base
         $info = $this->Source->getAllSource();
         $arr = [];
         foreach($info as $k => $v) {
-            $source = $v['source'];
+            $source = $v['id'];
             $arr[$k]['id'] = $v['id'];
             $arr[$k]['name'] = $v['name'];
             $arr[$k]['type'] = $v['type'];
@@ -57,7 +57,7 @@ class Source extends Base
             $sql = "select count(*) as user_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
             $res = $this->Source->execute($sql);
             $arr[$k]['user_num'] = $res ? $res[0]['user_num'] : 0;
-            $sql = "select count(*) as invite_num from ownerreferral_201812_user where source = '{$source}' and master_uid = 0";
+            $sql = "select count(*) as invite_num from ownerreferral_201812_user where source = '{$source}' and master_uid > 0";
             $res = $this->Source->execute($sql);
             $arr[$k]['invite_num'] = $res ? $res[0]['invite_num'] : 0;
         }
