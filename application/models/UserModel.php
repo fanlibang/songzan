@@ -79,4 +79,11 @@ class UserModel extends BaseModel
         $ret = $this->getOne($where);
         return $ret;
     }
+
+    public function incrementSubmitNum($id)
+    {
+        $sql = "update ownerreferral_201812_user set submit_num = submit_num + 1 where id = '{$id}'";
+        $res = $this->_db_obj->execute($sql);
+        return $res;
+    }
 }

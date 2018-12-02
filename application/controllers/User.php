@@ -62,6 +62,7 @@ class User extends Base
                 set_cookie('token', $token);
                 $data['token'] = $token;
                 $this->Users->editUserUid($res['id'], $data);
+                $this->Users->incrementSubmitNum($res['id']);
                 $this->AjaxReturn('201', '您已拥有推荐码，点击“推荐进度”查看。', $url);exit;
             }
             $data['name'] = $info['name'];
@@ -81,6 +82,7 @@ class User extends Base
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=117x117&data=$invite_url";
             $this->Users->editUserUid($uid, $update);
+            $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
             $url = site_url('Invite', 'share');
             $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。', $url);exit;
