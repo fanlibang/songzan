@@ -137,7 +137,7 @@ $(document).ready(function(){
 
 
     $('#from_sub').click(function(){
-        alert(1);
+        alert('1');
         $.ajax({
             type:'post',
             url:'<?php echo site_url('User', 'referee'); ?>',
