@@ -98,17 +98,16 @@
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
-        console.log(data);
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").val(data);
             } else if (dataObj.image_status != 'normal'){
-                alert('上传出错:上传文图片不正确');
+                alert('上传出错:上传图片不正确');
                 //alert('上传出错:'+dataObj.image_status);
             } else {
-                alert('上传出错:上传文图片不正确');
+                alert('上传出错:上传图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
@@ -122,7 +121,7 @@ $(document).ready(function(){
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").val(data);
             } else {
-                alert('上传出错:上传文图片不正确');
+                alert('上传出错:上传图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
