@@ -166,7 +166,7 @@ class Publics extends Base
         $phone = $info ? $info['phone'] : '';
         $openId = get_cookie('openId') ? get_cookie('openId') : 0;
         $source = get_cookie('source') ? get_cookie('source') : 0;
-        $sql = "insert into ownerreferral_201812_button (url, phone, source, openId, create_dt) values ('{$url}', '{$phone}', '{$source}', '{$openId}', {$time}');";
+        $sql = "insert into ownerreferral_201812_button (url, phone, source, openId, create_dt) values ('{$url}', '{$phone}', '{$source}', '{$openId}', '{$time}');";
         $res = $this->Users->execute($sql);
         if($res) {
             $this->AjaxReturn('200','成功');
