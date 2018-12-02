@@ -181,7 +181,7 @@ $(document).ready(function(){
 
         $('#tj').click(function(){
             var url = $(this).attr('url');
-            alert(url);
+            alert(2);
             if(url != "undefined") {
                 window.location.href=url;
             }
