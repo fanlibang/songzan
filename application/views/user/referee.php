@@ -98,15 +98,15 @@
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
-        window.alert = function(name){
-            var iframe = document.createElement("IFRAME");
-            iframe.style.display="none";
-            iframe.setAttribute("src", 'data:text/plain,');
-            document.documentElement.appendChild(iframe);
-            window.frames[0].window.alert(name);
-            iframe.parentNode.removeChild(iframe);
-        };
         if(data != null){
+            window.alert = function(name){
+                var iframe = document.createElement("IFRAME");
+                iframe.style.display="none";
+                iframe.setAttribute("src", 'data:text/plain,');
+                document.documentElement.appendChild(iframe);
+                window.frames[0].window.alert(name);
+                iframe.parentNode.removeChild(iframe);
+            };
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
@@ -124,15 +124,15 @@ $(document).ready(function(){
 
     $("#driver_target").load(function(){
         var data = $(window.frames['driver_target'].document.body).html();
-        window.alert = function(name){
-            var iframe = document.createElement("IFRAME");
-            iframe.style.display="none";
-            iframe.setAttribute("src", 'data:text/plain,');
-            document.documentElement.appendChild(iframe);
-            window.frames[0].window.alert(name);
-            iframe.parentNode.removeChild(iframe);
-        };
         if(data != null){
+            window.alert = function(name){
+                var iframe = document.createElement("IFRAME");
+                iframe.style.display="none";
+                iframe.setAttribute("src", 'data:text/plain,');
+                document.documentElement.appendChild(iframe);
+                window.frames[0].window.alert(name);
+                iframe.parentNode.removeChild(iframe);
+            };
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.msg == 'success') {
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
