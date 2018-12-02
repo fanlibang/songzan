@@ -111,6 +111,14 @@ $(document).ready(function(){
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
+        window.alert = function(name){
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display="none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        };
     });
 
     $("#driver_target").load(function(){
@@ -125,6 +133,14 @@ $(document).ready(function(){
                 //alert('上传出错:'+dataObj['error_code']);
             }
         }
+        window.alert = function(name){
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display="none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            window.frames[0].window.alert(name);
+            iframe.parentNode.removeChild(iframe);
+        };
     });
 
     $("#card_file").change(function(){
@@ -133,15 +149,6 @@ $(document).ready(function(){
     $("#driver_file").change(function(){
         if($("#driver_file").val() != '') $("#driver_form").submit();
     });
-
-    window.alert = function(name){
-        var iframe = document.createElement("IFRAME");
-        iframe.style.display="none";
-        iframe.setAttribute("src", 'data:text/plain,');
-        document.documentElement.appendChild(iframe);
-        window.frames[0].window.alert(name);
-        iframe.parentNode.removeChild(iframe);
-    };
 });
     $(function(){
         $('#sub').click(function(){
