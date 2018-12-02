@@ -731,6 +731,7 @@ if (! function_exists('assess_info')) {
                 'url'           =>  $url,
                 'path'          =>  $_SERVER['REQUEST_URI'],
                 'phone'         =>   $info ? $info['phone'] : '',
+                'openId'        =>   get_cookie('openId'),
                 'source'        =>   $source ? $source : 0,
                 'log_time'      =>  time()
             );
