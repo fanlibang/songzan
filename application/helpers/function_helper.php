@@ -721,6 +721,7 @@ if (! function_exists('assess_info')) {
      */
     function assess_info($url, $info)
     {
+        var_dump($info);exit;
         if($_SERVER['REQUEST_URI'] == '/dev/') {
             return false;
         } else {
