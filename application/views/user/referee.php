@@ -151,7 +151,7 @@ $(document).ready(function(){
         });
 
         $('.from_sub').on('click',function () {
-            alert();
+            alert(1);
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('User', 'referee'); ?>',
@@ -181,6 +181,7 @@ $(document).ready(function(){
 
         $('#tj').click(function(){
             var url = $(this).attr('url');
+            alert(url);
             if(url != "undefined") {
                 window.location.href=url;
             }
