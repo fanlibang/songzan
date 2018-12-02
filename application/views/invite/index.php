@@ -189,9 +189,9 @@
                 alert('请选择正确车型');
                 return false;
             }
-            $('#from_sub').removeClass('hide');
+            $('.from_sub').removeClass('hide');
         });
-        
+
         $('.tj').click(function(){
             var url = $(this).attr('url');
             if(url) {
