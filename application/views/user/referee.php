@@ -145,7 +145,7 @@ $(document).ready(function(){
 
             $('#title').html(json.msg);
             $('#tj').val('确认提交');
-            $('#tj').addClass('from_sub');
+            $('#tj').addClass("from_sub");
             //$('#tj').attr('url', json.forward);
             $('#hint').removeClass('hide');
         });
