@@ -112,6 +112,7 @@ $(document).ready(function(){
             }
         }
         window.alert = function(name){
+            alert(1);
             var iframe = document.createElement("IFRAME");
             iframe.style.display="none";
             iframe.setAttribute("src", 'data:text/plain,');
