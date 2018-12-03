@@ -151,7 +151,7 @@ class Invite extends Base
             exit;
         }
         $result['invite_diff'] = 0;
-        if($result['master_uid'] != $invite_code) {
+        if($result['from_invite_code'] != $invite_code) {
             $result['invite_diff'] = 1;
         }
         echo $result['master_uid'];
