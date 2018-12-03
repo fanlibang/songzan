@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<div class="bomb-wrapper flex center jc hide" id="hint">
+<div class="bomb-wrapper flex center jc <?php if($invite_diff > 0) { echo 'hide'; } ?>" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="zc">
