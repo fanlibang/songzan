@@ -162,7 +162,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .rule-inner .form-push{margin-top: 60px;}
 .rule-word{color: #0c121c; font-size: 26px; line-height: 36px;}
 .rule-word dt{font-size: 30px; font-weight: bold;}
-.rule-word dt:not(:first-child){margin-top: 20px;}
+.rule-word dt:not(:first-child){margin-top: 40px;}
 .ss .form-tit{padding-top: 0; }
 
 .inner{ position: relative; width: 100%; padding-top: 580px;}
