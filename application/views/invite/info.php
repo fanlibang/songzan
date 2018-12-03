@@ -137,7 +137,7 @@
     });
     $('#ts').on('click',function () {
         $('#zc').html('您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待');
-        $('.agree').val('我知道了');
+        $('.agree').val('我 知 道 了');
         $('#hint').removeClass('hide');
         //alert('敬请期待');
     });
