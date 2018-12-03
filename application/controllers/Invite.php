@@ -151,7 +151,7 @@ class Invite extends Base
             exit;
         }
         $result['invite_diff'] = 0;
-        if($result['from_invite_code'] != $invite_code) {
+        if($invite_code > 0 && $result['from_invite_code'] != $invite_code) {
             $result['invite_diff'] = 1;
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
