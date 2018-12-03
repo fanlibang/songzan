@@ -2,16 +2,18 @@
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-1">
-        <div class="index-tit ta-c">
-            成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
-            您和您的好友均可赢取至臻礼包
-        </div>
-        <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
-        <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
-        <div class="rule-box ta-c">
-            <a href="javascript:;" class="rule gz" onclick="cc('index/gz')" >
-                查看活动规则
-            </a>
+        <div class="inner">
+            <div class="index-tit ta-c">
+                成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
+                您和您的好友均可赢取至臻礼包
+            </div>
+            <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+            <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
+            <div class="rule-box ta-c">
+                <a href="javascript:;" class="rule gz" onclick="cc('index/gz')" >
+                    查看活动规则
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -90,7 +92,7 @@
                 <dd>•捷豹路虎中国在法律允许范围内保留对该活动的最终解释权；</dd>
                 <dd>•若您对活动有任何疑问，可随时拨打路虎贵宾专线400-820-0187。</dd>
 
-                <dt>四、礼品内容</dt></dt>
+                <dt>四、礼品内容</dt>
                 <dd>通过审核后，推荐人与被推荐人可分别获得一份至臻礼包，具体内容和使用范围详见礼品细则。</dd>
                 <dd>以下礼遇可二选一，若车辆不符合使用整车尊享4年/13万公里延保服务条件，活动方有权更改礼包选项，敬请理解。礼包数量有限，先到先得（以完整资料提供时间顺序为准）：</dd>
                 <dd>1、Burberry礼盒</dd>

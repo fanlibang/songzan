@@ -73,16 +73,19 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 }
 .wrapper{position: relative;height: 100%; overflow-x:hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .content{position: relative; min-height: 100%;}
-.bg-1{background: url("../images/bg-1.jpg") no-repeat center top;padding-top: 765px;}
+/**.bg-1{background: url("../images/bg-1.jpg") no-repeat center top;padding-top: 765px;} **/
+.bg-1{background: url("../images/bg-1.jpg") no-repeat center;}
 .bg-2{background: url("../images/bg-2.jpg") #070a0f no-repeat center center;}
 .bg-3{background: url("../images/bg-3.jpg") #fff no-repeat center bottom;}
 .bg-4{background: url("../images/bg-4.jpg") #0b0a06 no-repeat center top;}
 .logo{position: absolute;top:27px;right:35px;z-index: 8;}
-.index-tit{color: #545454;line-height: 36px;padding-bottom: 25px;text-shadow: 0 0 51px rgba(255,244,208,0.75);}
+/**.index-tit{color: #545454;line-height: 36px;padding-bottom: 25px;text-shadow: 0 0 51px rgba(255,244,208,0.75);}**/
+.index-tit{color: #fff; font-size: 24px; line-height: 36px;padding-bottom: 25px;text-shadow: 0 0 51px rgba(255,244,208,0.75);}
 .index-btn{width: 390px;height: 82px;margin-bottom: 15px;}
 .rule-box{position: relative; padding: 15px 0;}
 /*.rule-box::before{content: '';height: 2px;width: 100%;top:50%;background: #a6937c;left:0;position: absolute;opacity: 0.6;}*/
-.rule{ display: inline-block; width: 210px;height: 42px;line-height: 42px;font-size: 22px;background: #a6937c;border-radius: 50px;color: #fff;position: relative;z-index: 1;}
+/**.rule{ display: inline-block; width: 210px;height: 42px;line-height: 42px;font-size: 22px;background: #a6937c;border-radius: 50px;color: #fff;position: relative;z-index: 1;}**/
+.rule{ display: inline-block; width: 250px;height: 50px;line-height: 50px;font-size: 26px;background: #a6937c;border-radius: 25px;color: #fff;position: relative;z-index: 1;}
 /*表单*/
 .form{ width: 580px;text-align: left;color: #333;}
 .form-tit{font-size: 34px;color: #333;padding: 120px 0 50px;font-weight: bold;position: relative;}
@@ -161,6 +164,9 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .rule-word dt{font-size: 30px; font-weight: bold;}
 .rule-word dt:not(:first-child){margin-top: 20px;}
 .ss .form-tit{padding-top: 0; }
+
+添加
+.inner{ position: relative; width: 100%; padding-top: 580px;}
 
 
 

@@ -92,7 +92,8 @@ define('SECRET', '26d9bbf8f79be12280cada00a1353505'); //上线修改
 define('UPLOAD_FILE', '/upfile/2018/crm/ownerreferral/');
 define('WX_FILE', '/assets/wx/');
 
-define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test'); //上线修改
+define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test');
+//define('ACTIVITY_ID', 'LRFY18NOV123001001'); //上线修改
 define('REPORT_MODEL_URL', 'https://api-staging.jaguar.com.cn/service/leads/collectionLeadsData'); //上线修改
 define('REQUEST_TYPE', 'TD');   //上线修改
 define('LEADS_SOURCE', 'CRM'); //上线修改
