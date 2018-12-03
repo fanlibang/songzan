@@ -154,6 +154,9 @@ class Invite extends Base
         if($result['master_uid'] != $invite_code) {
             $result['invite_diff'] = 1;
         }
+        echo $result['master_uid'];
+        echo $invite_code;
+        echo $result['invite_diff'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
         $this->displayMain($result);
