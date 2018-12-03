@@ -70,7 +70,7 @@
                 很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态
             </div>
             <div class="form-push">
-                <input type="button" value="推荐状态" class="btn auto agree" id="agree">
+                <input type="button" value="推 荐 状 态" class="btn auto agree" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -118,7 +118,7 @@
                 <dt >&nbsp;</dt>
                 <dt>四、礼品内容</dt>
                 <dd>通过审核后，推荐人与被推荐人可分别获得一份至臻礼包，具体内容和使用范围详见礼品细则。</dd>
-                <dd>以下礼遇可二选一，若车辆不符合使用整车尊享4年/13万公里延保服务条件，活动方有权更改礼包选项，敬请理解。礼包数量有限，先到先得（以完整资料提供时间顺序为准）：</dd>
+                <dd>以下礼遇可二选一，若车辆不符合使用整车尊享4年/13万公里延保服务条件，活动方有权更改礼包选项，敬请理解。礼包数量有限，先到先得（以提交完整资料的时间顺序为准）：</dd>
                 <dd>1、Burberry礼盒</dd>
                 <dd>2、养车无忧服务（整车尊享4年/13万公里延保服务）</dd>
             </dl>
