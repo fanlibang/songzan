@@ -1,7 +1,7 @@
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
-    <div class="content bg-1">
+    <div class="content bg-1 flex center jc">
         <div class="inner">
             <div class="index-tit ta-c">
                 成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
