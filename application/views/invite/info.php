@@ -136,7 +136,7 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $('#ts').on('click',function () {
-        $('#zc').val('您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待');
+        $('#zc').html('您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待');
         $('.agree').val('我知道了');
         $('#hint').removeClass('hide');
         //alert('敬请期待');
