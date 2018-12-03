@@ -66,11 +66,11 @@
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
-            <div class="hint-word" id="title">
-                您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待
+            <div class="hint-word" id="zc">
+                很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态
             </div>
             <div class="form-push">
-                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+                <input type="button" value="推荐状态" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -133,6 +133,8 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $('#ts').on('click',function () {
+        $('#zc').val('您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待');
+        $('#agree').val('我知道了');
         $('#hint').removeClass('hide');
         //alert('敬请期待');
     });

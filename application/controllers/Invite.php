@@ -25,14 +25,15 @@ class Invite extends Base
      */
     public function index()
     {
-        $url = site_url('Invite', 'info');
+        $info = $this->input->request(null, true);
+        $inviteCode = $info['invite_code'] ? $info['invite_code'] : '';
+
+        $url = site_url('Invite', 'info', array('invite_code' => $inviteCode));
         $result = $this->isLogin();
         if ($result) {
             header('Location:' . $url);
             exit;
         }
-        $info = $this->input->request(null, true);
-        $inviteCode = $info['invite_code'];
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         if (is_ajax_post()) {
             $openId = get_cookie('openId');
@@ -136,6 +137,8 @@ class Invite extends Base
      */
     public function info()
     {
+        $info = $this->input->request(null, true);
+        $invite_code = $info['invite_code'] ? $info['invite_code'] : '';
         $result = $this->isLogin();
         if (!$result) {
             $url = site_url('Invite', 'index');
@@ -146,6 +149,10 @@ class Invite extends Base
             $url = site_url('User', 'center');
             header('Location:' . $url);
             exit;
+        }
+        $result['invite_diff'] = 0;
+        if($result['master_uid'] != $invite_code) {
+            $result['invite_diff'] = 1;
         }
         $carInfo = new \Xy\Application\Models\CarInfoModel();
         $result['car_info'] = $carInfo->getCarInfoByid($result['car_id']);
