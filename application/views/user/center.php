@@ -2,7 +2,7 @@
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 info-page">
         <div>
-            <div class="form-tit ta-c">我的主页<div class="actrule gz" onclick="cc('user/zygz')">活动规则</div></div>
+            <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
@@ -40,13 +40,13 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('user/btjr')" id="ts" href="javascript:;">已注册</a></span>
+                        <span><a onclick="cc('center/yqm')" id="ts" href="javascript:;">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>邀请码：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('user/share')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
+                        <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 <dd>•推荐人最多可推荐10人购车，累计叠加活动礼包，但最多不超过2份；</dd>
                 <dd>•活动参与者需保证所提交的信息/材料真实有效，若路虎中国对参与者提交信息/材料存疑，有权要求参与者提供补充材料或取消活动资格；</dd>
                 <dd>•整个活动中，活动参与者的身份有且只能有一个（推荐人或被推荐人），且必须以首次参与活动的身份为准；</dd>
-                <dd>•活动参与者同意并勾选活动首页的隐私条款（https://www.landrover.com.cn/cookie-and-privacy-policy.html ），将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
+                <dd>•活动参与者同意并勾选活动首页的<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html">隐私条款</a>，将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
                 <dd>•凡活动参与者所提交的信息及资料（包括身份证、行驶证等）均仅用于本次活动；</dd>
                 <dd>•批售及其他特殊类型销售不得参与此活动；</dd>
                 <dd>•营运性质的车辆不得参与此活动；</dd>
@@ -104,7 +104,7 @@
     </div>
 </div>
 <?php if(empty($card_number) || empty($driver_number)) { ?>
-    <div class="bomb-wrapper flex center jc" id="hint">
+    <div class="bomb-wrapper flex center jc hide" id="hint">
         <div class="bomb-content">
             <div class="hint auto">
                 <div class="hint-word" id="title">
@@ -118,11 +118,11 @@
         </div>
     </div>
 <?php } else { ?>
-    <div class="bomb-wrapper flex center jc" id="hint">
+    <div class="bomb-wrapper flex center jc hide" id="hint">
         <div class="bomb-content">
             <div class="hint auto">
                 <div class="hint-word" id="title">
-                    您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦。
+                    您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待。
                 </div>
                 <div class="form-push">
                     <input type="button" value="我 知 道 了" class="btn auto" id="agree" >
@@ -146,7 +146,8 @@
             }
         });
         $('#ts').on('click',function () {
-            alert('敬请期待');
+            $('#hint').removeClass('hide');
+            //alert('敬请期待');
         });
     });
 </script>

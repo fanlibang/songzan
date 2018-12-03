@@ -43,13 +43,13 @@
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox">
-                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item" onclick="cc('invite/index_tk')">隐私条款</a>
+                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私条款</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" onclick="cc('invite/index_tj')" id="sub" value="提     交" class="btn auto" >
+                    <input type="button" id="sub" value="提     交" class="btn auto">
                 </div>
             </div>
         </div>
@@ -84,20 +84,6 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc hide from_sub" id="rule">
-    <div class="bomb-content">
-        <div class="hint auto">
-            <div class="hint-word">
-                活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
-                <dd>购车成功后，请尽快返回此页面，提交您的相关购车凭证。</dd>
-            </div>
-            <div class="form-push">
-                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
-            </div>
-        </div>
-        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
-    </div>
-</div>
 
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
@@ -128,7 +114,7 @@
                 <dd>•推荐人最多可推荐10人购车，累计叠加活动礼包，但最多不超过2份；</dd>
                 <dd>•活动参与者需保证所提交的信息/材料真实有效，若路虎中国对参与者提交信息/材料存疑，有权要求参与者提供补充材料或取消活动资格；</dd>
                 <dd>•整个活动中，活动参与者的身份有且只能有一个（推荐人或被推荐人），且必须以首次参与活动的身份为准；</dd>
-                <dd>•活动参与者同意并勾选活动首页的隐私条款（https://www.landrover.com.cn/cookie-and-privacy-policy.html ），将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
+                <dd>•活动参与者同意并勾选活动首页的<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html">隐私条款</a>，将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
                 <dd>•凡活动参与者所提交的信息及资料（包括身份证、行驶证等）均仅用于本次活动；</dd>
                 <dd>•批售及其他特殊类型销售不得参与此活动；</dd>
                 <dd>•营运性质的车辆不得参与此活动；</dd>
@@ -189,23 +175,15 @@
                 alert('请选择正确车型');
                 return false;
             }
-            $('.from_sub').removeClass('hide');
-        });
-
-        $('.tj').click(function(){
-            var url = $(this).attr('url');
-            if(url) {
-                window.location.href=url;
+            /**
+            if (car_id != 1 && car_id != 2) {
+                $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。');
+                $('.tj').val('我 知 道 了');
+                $('#hint').removeClass('hide');
+                //alert('参加本次活动的车型为揽胜或揽胜运动版');
+                return false;
             }
-        });
-
-        $('#from_sub').click(function(){
-            $('#rule').addClass('hide');
-            var code = $('input[name=code]').val();
-            var phone = $('input[name=phone]').val();
-            var name = $('input[name=name]').val();
-            var invite_code = $('input[name=invite_code]').val();
-            var car_id = $("#car_id option:selected").val();
+             **/
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('Invite', 'index'); ?>',
@@ -214,7 +192,10 @@
                 dataType:'json',
                 success:function(json) {
                     if(json.code == 200) {
-                        window.location.href=json.forward;
+                        $('#title').html(json.msg);
+                        $('.tj').val('确认提交');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else if(json.code == 201) {
                         $('#title').html(json.msg);
                         $('.tj').val('个人主页');
@@ -234,6 +215,12 @@
                 },
                 error:function(){}
             });
+        });
+        $('.tj').click(function(){
+            var url = $(this).attr('url');
+            if(url) {
+                window.location.href=url;
+            }
         });
     });
 </script>

@@ -2,12 +2,12 @@
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 info-page">
         <div>
-            <div class="form-tit ta-c">我的主页<div class="actrule gz" onclick="cc('invite/info_gz')">活动规则</div></div>
+            <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
                     <?php if (empty($car_id)) { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('invite/info_ws')" href="<?=site_url('Invite', 'editInfo')?>">完善信息</a></div>
+                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('invite/info')" href="<?=site_url('Invite', 'editInfo')?>">完善信息</a></div>
                     <?php } ?>
                 </div>
                 <div class="form-list flex center">
@@ -42,7 +42,7 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('invite/yzc')" id="ts" href="javascript:;">已注册</a></span>
+                        <span><a onclick="cc('info/yzc')" id="ts" href="javascript:;">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center">
@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<div class="bomb-wrapper flex center jc" id="hint">
+<div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
@@ -105,7 +105,7 @@
                 <dd>•推荐人最多可推荐10人购车，累计叠加活动礼包，但最多不超过2份；</dd>
                 <dd>•活动参与者需保证所提交的信息/材料真实有效，若路虎中国对参与者提交信息/材料存疑，有权要求参与者提供补充材料或取消活动资格；</dd>
                 <dd>•整个活动中，活动参与者的身份有且只能有一个（推荐人或被推荐人），且必须以首次参与活动的身份为准；</dd>
-                <dd>•活动参与者同意并勾选活动首页的隐私条款（https://www.landrover.com.cn/cookie-and-privacy-policy.html ），将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
+                <dd>•活动参与者同意并勾选活动首页的<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html">隐私条款</a>，将视为允许用户信息在遵守适用的法律法规的基础上，被用于路虎中国相关产品销售、服务及调查统计中；</dd>
                 <dd>•凡活动参与者所提交的信息及资料（包括身份证、行驶证等）均仅用于本次活动；</dd>
                 <dd>•批售及其他特殊类型销售不得参与此活动；</dd>
                 <dd>•营运性质的车辆不得参与此活动；</dd>
@@ -133,6 +133,7 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
     $('#ts').on('click',function () {
-        alert('敬请期待');
+        $('#hint').removeClass('hide');
+        //alert('敬请期待');
     });
 </script>
