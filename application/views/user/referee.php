@@ -19,7 +19,7 @@
                 <div class="form-list flex center">
                     <label>*验证码：</label>
                     <div class="form-box">
-                        <input type="text" value="" id="verify" class="input-text">
+                        <input type="text" value="" id="verify" maxlength="6" class="input-text">
                     </div>
                     <input type="button" value="获取验证码" id="code" name="code" class="sendbtn _sms_verify">
                 </div>
