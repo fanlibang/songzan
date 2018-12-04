@@ -122,7 +122,7 @@ $(document).ready(function(){
                 window.frames[0].window.alert(name);
                 iframe.parentNode.removeChild(iframe);
             };
-            $('#driver_number').attr('disabled',false);
+            $('#card_number').attr('disabled',false);
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
@@ -153,7 +153,7 @@ $(document).ready(function(){
                 window.frames[0].window.alert(name);
                 iframe.parentNode.removeChild(iframe);
             };
-            $('#card_number').attr('disabled',false);
+            $('#driver_number').attr('disabled',false);
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.msg == 'success') {
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
