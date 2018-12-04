@@ -129,10 +129,12 @@ $(document).ready(function(){
                 $("#card_json").val(data);
             } else if (dataObj.image_status != 'normal'){
                 $('#upload').removeClass('hide');
+                $("#card_json").val(data);
                 //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj.image_status);
             } else {
                 $('#upload').removeClass('hide');
+                $("#card_json").val(data);
                 //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
@@ -158,6 +160,7 @@ $(document).ready(function(){
                 $("#driver_json").val(data);
             } else {
                 $('#upload').removeClass('hide');
+                $("#card_json").val(data);
                 //alert('上传的图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
             }
