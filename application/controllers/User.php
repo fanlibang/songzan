@@ -85,7 +85,7 @@ class User extends Base
             $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
             $url = site_url('Invite', 'share');
-            $this->AjaxReturn('200', '活动礼遇将根据您所提交的信息进行审核派发。确认提交前，请确保信息的准确性。', $url);exit;
+            $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
         } else {
             if ($this->isLogin()) {
                 $url = site_url('User', 'center');
