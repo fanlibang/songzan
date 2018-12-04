@@ -15,6 +15,11 @@ class Test extends Base
     }
 
     public function index(){
+
+        $sms_notice_obj = new SendSms();
+        $sms_ret = $sms_notice_obj->send('18116270122');
+        var_dump($sms_ret);
+        exit;
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         $options = array();
         $options["detect_direction"] = "true";
