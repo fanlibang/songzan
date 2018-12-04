@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
-                    <label>邀请码：</label>
+                    <label>邀请海报：</label>
                     <div class="form-box">
                         <span><a onclick="cc('center/yqm')" href="<?=site_url('Invite', 'share')?>"><?= $invite_code ?></a></span>
                     </div>
