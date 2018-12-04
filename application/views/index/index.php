@@ -31,9 +31,9 @@
             <div class="form-list flex center">
                 <label>验证码：</label>
                 <div class="form-box" style="padding:  5px 160px 5px 0;">
-                    <input type="tel" id="verify" value="" class="input-text">
+                    <input type="tel" id="verify" maxlength="6" value="" class="input-text">
                 </div>
-                <input type="button" value="发送验证码" maxlength="6" style="position:  absolute;right: 58px;" class="sendbtn _sms_verify">
+                <input type="button" value="发送验证码"  style="position:  absolute;right: 58px;" class="sendbtn _sms_verify">
             </div>
             <div class="form-push">
                 <input type="button" value="提     交" class="btn auto" id="submit" onclick="cc('index/tyg')" >
