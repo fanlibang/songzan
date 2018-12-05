@@ -89,8 +89,8 @@ class User extends Base
             //生成短连接
             $update['short_url'] = getSinaShortUrl('1555751977',$invite_url);
             $sms_notice_obj = new SendSms();
-            $res = $sms_notice_obj->send($data['phone'], $update['short_url'], 2);
-            $update['report_result'] = $res;
+            $ret = $sms_notice_obj->send($data['phone'], $update['short_url'], 2);
+            $update['report_result'] = $ret;
             $this->Users->editUserUid($uid, $update);
             $wb_openid = get_cookie('wb_openId');
             $wb_openid = isset($wb_openid) ? $wb_openid : '';
