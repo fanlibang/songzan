@@ -41,9 +41,11 @@ class User extends Base
                 exit;
             }
 
-            $res = $this->Users->getUserInfoByDriver($info['driver_number']);
-            if($res) {
-                $this->AjaxReturn('401', '当前行驶证已参加过活动');exit;
+            if(!empty($info['driver_number'])) {
+                $res = $this->Users->getUserInfoByDriver($info['driver_number']);
+                if($res) {
+                    $this->AjaxReturn('401', '当前行驶证已参加过活动');exit;
+                }
             }
 
             if(!empty($info['card_number']) && !validateIDCard($info['card_number'])) {
