@@ -64,8 +64,9 @@
                     <td><?php echo $v['uid']; ?></td>
                     <td><?php echo $v['image']; ?></td>
                     <td><?php echo $v['status'] == 1 ? '成功' : '失败'; ?></td>
-                    <td><?php echo $v['mgs']; ?></td>
-                    <td><?php echo $v['created_at']; ?></td>
+                    <td><?php echo $v['status'] != 1 ? '图片不正确' : ''; ?></td>
+                    <td><?php echo $v['create_dt']; ?></td>
+                    <input type="hidden" value="<?php echo $v['content']; ?>" />
                 </tr>
                 <?php
             }
