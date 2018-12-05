@@ -36,7 +36,7 @@ class User extends Base
                 $this->AjaxReturn('401', '验证码不正确');
                 exit;
             }
-            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $info['phone'])) {
+            if (!preg_match("/^1[3-9]\d{9}$/", $info['phone'])) {
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
