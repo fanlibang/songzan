@@ -42,7 +42,7 @@ class User extends Base
             }
 
             $res = $this->Users->getUserInfoByDriver($info['driver_number']);
-            if(!$res) {
+            if($res) {
                 $this->AjaxReturn('401', '当前行驶证已参加过活动');exit;
             }
 
@@ -89,7 +89,7 @@ class User extends Base
             //生成短连接
             $update['short_url'] = getSinaShortUrl('1555751977',$invite_url);
             $sms_notice_obj = new SendSms();
-            $sms_notice_obj->send($data['phone'], $update['short_url'], $type = 2);
+            $sms_notice_obj->send($data['phone'], $update['short_url'], 2);
             $this->Users->editUserUid($uid, $update);
             $wb_openid = get_cookie('wb_openId');
             $wb_openid = isset($wb_openid) ? $wb_openid : '';

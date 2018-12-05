@@ -91,6 +91,6 @@ class UserModel extends BaseModel
     {
         $where['driver_number'] = $number;
         $ret = $this->getOne($where);
-        return $ret ? true : false;
+        return $ret ? $ret : false;
     }
 }
