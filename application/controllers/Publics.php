@@ -193,27 +193,4 @@ class Publics extends Base
         }
         exit;
     }
-
-    public function bdUrlAPI($url)
-    {
-        $data = array('url' => $url);
-        $headers = array('Content-Type:application/json', 'Token:f6223ba49a39a7a9d308588eb1ccfb9d');
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://dwz.cn/admin/v2/create');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $tmpInfo = curl_exec($ch);
-        if (curl_errno($ch)) {
-            return false;
-        }
-        dump($tmpInfo);
-        exit;
-    }
 }
