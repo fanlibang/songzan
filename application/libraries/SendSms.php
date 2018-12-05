@@ -37,12 +37,13 @@ class SendSms {
             return array('code' => 202, 'msg' => '短信内容不能为空');
         }
 
-        $clapi  = new ChuanglanSmsApi();
         //设置您要发送的内容：其中“【】”中括号为运营商签名符号，多签名内容前置添加提交
         if($type == 1){
             $mes = '【路虎中国】尊敬的用户，您正在进行路虎活动的身份认证，验证码是：'.$msg.'。5分钟内有效，请勿将此验证码泄漏给他人。';
+            $clapi  = new ChuanglanSmsApi();
         } else {
-            $mes = '【路虎中国】亲爱的车主，您已成功参与路虎推荐购活动！分享您的专属链接'.$msg.',邀请好友，共揽胜景，共赢好礼！退订回T';
+            $mes = '【路虎中国】亲爱的车主，您已成功参与路虎推荐购活动！分享您的专属链接'.$msg.' ,邀请好友，共揽胜景，共赢好礼！退订回T';
+            $clapi  = new ChuanglanUrlApi();
         }
 
         $result = $clapi->sendSMS($tels, $mes);
