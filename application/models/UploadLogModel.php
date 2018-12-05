@@ -15,7 +15,7 @@ class UploadLogModel extends BaseModel
     public function __construct()
     {
         parent::__construct();
-        $this->_db_obj          = new \Xy\Application\Models\DB\ViewAssessDB();
+        $this->_db_obj          = new \Xy\Application\Models\DB\UploadLogDB();
     }
 
     public function addUploadInfo($data)
