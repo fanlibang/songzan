@@ -20,7 +20,7 @@
                 <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <input type="text" id="driver_number" placeholder="仅限路虎品牌" value="<?= $driver_number ?>" class="input-text">
+                        <input type="text" id="driver_number" disabled="true" placeholder="仅限路虎品牌" value="<?= $driver_number ?>" class="input-text">
                         <input type="hidden" id="driver_json" value="<?= $driver_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
@@ -32,7 +32,7 @@
                 <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
-                        <input type="text" id="card_number" value="<?= $card_number ?>" class="input-text">
+                        <input type="text" id="card_number" disabled="true" value="<?= $card_number ?>" class="input-text">
                         <input type="hidden" id="card_json" value="<?= $card_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
@@ -76,6 +76,7 @@ $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
         if(data != null){
+            $('#card_number').attr('disabled',false);
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
@@ -96,6 +97,7 @@ $(document).ready(function(){
         var data = $(window.frames['driver_target'].document.body).html();
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
+            $('#driver_number').attr('disabled',false);
             if(dataObj.words_result) {
                 $("#driver_number").val(dataObj.words_result['发动机号码'].words);
                 $("#driver_json").val(data);
