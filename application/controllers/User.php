@@ -87,7 +87,7 @@ class User extends Base
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=117x117&data=$invite_url";
             //生成短连接
-            $update['short_url'] = getSinaShortUrl('134569235',$invite_url);
+            $update['short_url'] = getSinaShortUrl('1555751977',$invite_url);
             $sms_notice_obj = new SendSms();
             $sms_notice_obj->send($data['phone'], $update['short_url'], $type = 2);
             $this->Users->editUserUid($uid, $update);
