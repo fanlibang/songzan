@@ -13,6 +13,7 @@
         <div class="searchBar">
             <table class="searchContent">
                 <tr>
+                    <!--
                     <td>创建时间：
                         <input type="text" name="str_dt" class="date"  onchange="onchangeValue(this);" openChange="true" value="<?=isset($str_dt) ? $str_dt:''?>" dateFmt="yyyy-MM-dd HH:mm:ss"/>
                         -
@@ -22,6 +23,7 @@
                         手机号：<input type="text" name="iphone" value="<?php echo $iphone; ?>"/>
                     </td>
                     <td><div class="button"><div class="buttonContent"><button type="submit">搜索</button></div></div></td>
+                    -->
                 </tr>
             </table>
         </div>
@@ -30,23 +32,20 @@
 <div class="pageContent">
     <div class="panelBar">
         <ul class="toolBar">
-            <li><a target="_blank" href="<?php echo site_url($controller, $method, array('str_dt'=> $str_dt, 'end_dt'=> $end_dt, 'iphone'=> $iphone, 'export' => true)); ?>" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
-            <!--<li><a class="delete" href="<?php echo site_url($controller, 'del', array('id' => '{sid}')); ?>" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>-->
+            <!--<li><li><a target="_blank" href="<?php echo site_url($controller, $method, array('str_dt'=> $str_dt, 'end_dt'=> $end_dt, 'iphone'=> $iphone, 'export' => true)); ?>" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+           <a class="delete" href="<?php echo site_url($controller, 'del', array('id' => '{sid}')); ?>" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>-->
         </ul>
     </div>
     <table class="list" width="100%" layoutH="110">
         <thead>
         <tr>
             <th>ID</th>
-            <th>姓名</th>
-            <th>手机号</th>
-            <th>行驶证</th>
-            <th>身份证</th>
-            <th>推荐码</th>
-            <th>二维码</th>
-            <th>来源</th>
+            <th>类型</th>
+            <th>uid</th>
+            <th>图片地址</th>
+            <th>上传结果</th>
+            <th>上传返回</th>
             <th>创建时间</th>
-            <th style="width: 120px">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -61,18 +60,12 @@
                 ?>
                 <tr target="sid" rel="<?php echo $v['id']; ?>">
                     <td><?php echo $v['id']; ?></td>
-                    <td><?php echo $v['name']; ?></td>
-                    <td><?php echo $v['phone']; ?></td>
-                    <td><?php echo $v['driver_number']; ?></td>
-                    <td><?php echo $v['card_number']; ?></td>
-                    <td><?php echo $v['invite_code']; ?></td>
-                    <td><?php echo $v['qr_code_img']; ?></td>
-                    <td><?php echo $v['source_name']; ?></td>
+                    <td><?php echo $v['title']; ?></td>
+                    <td><?php echo $v['uid']; ?></td>
+                    <td><?php echo $v['image']; ?></td>
+                    <td><?php echo $v['status'] == 1 ? '成功' : '失败'; ?></td>
+                    <td><?php echo $v['mgs']; ?></td>
                     <td><?php echo $v['created_at']; ?></td>
-                    <td>
-                        <a class="" href="<?php echo site_url('Invite', 'index', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="tbBasSpsxValueNav" fresh="false" title="被推荐人列表">被推荐人列表</a>
-                        <!--<a class="btnDel" href="<?php echo site_url($controller, 'del', array('id' => $v['id'])); ?>" target="ajaxTodo" title="确定要删除吗?">删除</a>-->
-                    </td>
                 </tr>
                 <?php
             }

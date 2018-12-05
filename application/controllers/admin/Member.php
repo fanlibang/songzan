@@ -111,11 +111,15 @@ class Member extends Base
 
         $where['uid !='] = 0;
         $data = $this->Upload->getPage($page, $page_list, $where, 'id asc');
-        var_dump($data['list']);
         foreach ($data['list'] as $key => $value) {
-
+            if($value['type'] == 1) {
+                $data['list'][$key]['title'] = '身份证';
+            } else {
+                $data['list'][$key]['title'] = '行驶证';
+            }
+            $data['list'][$key]['mgs'] = json_decode($value['content'],true);
         }
-      
+
         $this->display($data);
     }
 
