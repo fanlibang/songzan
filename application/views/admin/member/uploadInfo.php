@@ -36,7 +36,7 @@
            <a class="delete" href="<?php echo site_url($controller, 'del', array('id' => '{sid}')); ?>" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>-->
         </ul>
     </div>
-    <table class="list" width="100%" layoutH="110">
+    <table class="list" width="100%" layoutH="90">
         <thead>
         <tr>
             <th>ID</th>
