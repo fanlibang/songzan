@@ -86,4 +86,11 @@ class UserModel extends BaseModel
         $res = $this->_db_obj->execute($sql);
         return $res;
     }
+
+    public function getUserInfoByDriver($number)
+    {
+        $where['driver_number'] = $number;
+        $ret = $this->getOne($where);
+        return $ret ? true : false;
+    }
 }

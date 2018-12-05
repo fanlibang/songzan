@@ -101,18 +101,38 @@ class Publics extends Base
         $url = $this->imageUpload();
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         $image = file_get_contents($url);
+        $status = 0;
         if ($type == 1) {
             $options = array();
             $options["detect_direction"] = "true";
             $info = $client->idcard($image, 'front', $options);
+            if($info['image_status'] == 'normal') {
+                $status = 1;
+            }
         } else {
             // 如果有可选参数
             $options = array();
             $options["detect_direction"] = "true";
             // 带参数调用行驶证识别
             $info = $client->vehicleLicense($image, $options);
+            if($info['msg'] == 'success') {
+                $status = 1;
+            }
         }
         $info = json_encode($info);
+        $uploadModel = (new \Xy\Application\Models\UploadLogModel());
+        $userInfo = $this->isLogin();
+        $uid = $userInfo['id'];
+        $data = [
+            'uid'       => $uid,
+            'type'      => $type,
+            'image'     => $image,
+            'content'   => $info,
+            'status'    => $status,
+            'create_dt' => NOW_DATE_TIME
+        ];
+        $uploadModel->addUploadInfo($data);
+
         echo $info;
     }
 
