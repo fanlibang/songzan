@@ -34,7 +34,6 @@ class UploadLogModel extends BaseModel
 
     public function editUploadInfo($id, $openid, $wb_openid)
     {
-        $where['id'] = $id;
         if(empty($openid)) {
             $where['open_id'] = $wb_openid;
         } else {
