@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no, email=no"/>
     <meta name="msapplication-tap-highlight" content="no">
-    <meta property="og:image" content="<?= STATIC_ASSETS ?>images/logo.png">
+    <meta property="og:image" content="http://tjaguar-songzan.syswechat.com/2018/crm/ownerreferral/assets/images/logo.png">
     <title>荐入佳境 共揽胜景</title>
     <link href="<?= STATIC_ASSETS ?>css/base.css?t=<?=time()?>" rel="stylesheet" type="text/css">
     <script src="<?= STATIC_ASSETS ?>js/jquery.min.js" type="text/javascript"></script>
