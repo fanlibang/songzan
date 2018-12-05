@@ -19,6 +19,7 @@ class Member extends Base
         $this->User = new \Xy\Application\Models\UserModel();
         $this->CarInfo = new \Xy\Application\Models\CarInfoModel();
         $this->Source = new \Xy\Application\Models\SourceModel();
+        $this->Upload = new \Xy\Application\Models\UploadLogModel();
     }
 
     /**
@@ -95,6 +96,26 @@ class Member extends Base
         $data['iphone'] = $iphone;
         $data['str_dt'] = $str_dt;
         $data['end_dt'] = $end_dt;
+        $this->display($data);
+    }
+
+    /**
+     * 被推荐人列表
+     */
+    public function uploadInfo()
+    {
+        $page = $this->input->get_post('pageNum', true);
+        $page = $page ? (int)$page : 1;
+        $page_list = $this->input->get_post('numPerPage', true);
+        $page_list = $page_list ? (int)$page_list : self::DEFAULT_PAGE_LIST;
+
+        $where['uid !='] = 0;
+        $data = $this->Upload->getPage($page, $page_list, $where, 'id asc');
+        var_dump($data['list']);
+        foreach ($data['list'] as $key => $value) {
+
+        }
+      
         $this->display($data);
     }
 
