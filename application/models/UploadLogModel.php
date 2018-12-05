@@ -31,4 +31,17 @@ class UploadLogModel extends BaseModel
         $ret = $this->getOne($where);
         return $ret;
     }
+
+    public function editUploadInfo($id, $openid, $wb_openid)
+    {
+        $where['id'] = $id;
+        if(empty($openid)) {
+            $where['open_id'] = $wb_openid;
+        } else {
+            $where['open_id'] = $openid;
+        }
+        $data = ['uid'=>$id];
+        $ret = $this->edit($data, $where);
+        return $ret;
+    }
 }

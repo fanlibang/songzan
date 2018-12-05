@@ -87,6 +87,10 @@ class User extends Base
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=117x117&data=$invite_url";
             $this->Users->editUserUid($uid, $update);
+            $wb_openid = get_cookie('wb_openId');
+            $wb_openid = isset($wb_openid) ? $wb_openid : '';
+            $uploadModel = (new \Xy\Application\Models\UploadLogModel());
+            $uploadModel->editUploadInfo($uid, $openid, $wb_openid);
             $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
             $url = site_url('Invite', 'share');

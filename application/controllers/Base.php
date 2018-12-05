@@ -45,6 +45,9 @@ class Base extends Common
                     $this->isOpenid();
                 }
             } else {
+                if(!get_cookie('wb_openId')) {
+                    set_cookie('wb_openId', uniqid());
+                }
                 $this->_data['browser'] = 2; //其他浏览器
             }
         }
