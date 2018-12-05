@@ -121,12 +121,10 @@ class Publics extends Base
         }
         $info = json_encode($info);
         $uploadModel = (new \Xy\Application\Models\UploadLogModel());
-        $userInfo = $this->isLogin();
-        $uid = $userInfo['id'];
         $data = [
-            'uid'       => $uid,
+            'open_id'   => get_cookie('openId') ? get_cookie('openId') : '',
             'type'      => $type,
-            'image'     => $image,
+            'image'     => $url,
             'content'   => $info,
             'status'    => $status,
             'create_dt' => NOW_DATE_TIME
