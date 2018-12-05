@@ -40,7 +40,7 @@ class Invite extends Base
             $data['open_id'] = isset($openId) ? $openId : '';
             $code = $info['code'];
             $data['phone'] = $info['phone'];
-            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $data['phone'])) {
+            if (!preg_match("/^1[345789]{1}[0-9]{1}[0-9]{8}$/", $data['phone'])) {
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
