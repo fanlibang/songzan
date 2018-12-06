@@ -175,7 +175,7 @@ $(document).ready(function(){
                 success:function(json){
                     if(json.code == 200){
                         //alert(json.msg);
-                        $('#titles').html('    完善资料成功');
+                        $('#titles').html('提交提示：完善资料成功');
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                         //window.location.href=json.forward;
