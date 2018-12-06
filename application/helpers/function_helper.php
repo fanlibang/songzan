@@ -878,7 +878,11 @@ if (! function_exists('site_url')) {
         foreach ((array)$params as $k => $v) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
-	 return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+        if(is_https()){
+            return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+        } else {
+            return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+        }
     }
 }
 
@@ -906,8 +910,8 @@ if (! function_exists('path_site_url')) {
         foreach ((array)$params as $k => $v) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
-	
-	return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+        
+	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }
@@ -1878,5 +1882,16 @@ function getSinaShortUrl($source, $url_long){
 
     return $result[0]['url_short'];
 
+}
+
+function is_https() {
+    if ( !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
+        return true;
+    } elseif ( isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+        return true;
+    } elseif ( !empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
+        return true;
+    }
+    return false;
 }
 
