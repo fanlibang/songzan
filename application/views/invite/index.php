@@ -153,7 +153,7 @@
     </div>
 </div>
 
-<script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
+<script src="<?= STATIC_ASSETS ?>js/sendSMS.js?v_<?= time();?>" type="text/javascript"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
