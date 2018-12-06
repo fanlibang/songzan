@@ -90,10 +90,10 @@ class User extends Base
             $update['invite_code'] = $inviteCode;
             $update['qr_code_img'] = "http://api.qrserver.com/v1/create-qr-code/?size=117x117&data=$invite_url";
             //生成短连接
-            $invite_url = site_url('Invite', 'index', array('invite_code' => $inviteCode, 'utm_source' => $data['source']));
-            $update['short_url'] = getSinaShortUrl('1555751977',$invite_url);
+            $long_url = site_url('Invite', 'index', array('invite_code' => $inviteCode, 'utm_source' => $data['source']));
+            $update['short_url'] = getSinaShortUrl('1555751977',$long_url);
             $sms_notice_obj = new SendSms();
-            $ret = $sms_notice_obj->send($data['phone'], urlencode($update['short_url']), 2);
+            $ret = $sms_notice_obj->send($data['phone'], $update['short_url'], 2);
             $update['report_result'] = json_encode($ret);
             $this->Users->editUserUid($uid, $update);
             $wb_openid = get_cookie('wb_openId');
