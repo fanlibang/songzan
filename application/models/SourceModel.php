@@ -26,7 +26,7 @@ class SourceModel extends BaseModel
 
     public function getSourceInfoByid($id)
     {
-        $where['id'] = $id;
+        $where['title'] = $id;
         $ret = $this->getOne($where);
         return $ret;
     }
