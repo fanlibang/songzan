@@ -205,10 +205,11 @@
                         $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
-                        $('#title').html(json.msg);
-                        $('.tj').val('推荐状态');
-                        $('.tj').attr('url', json.forward);
-                        $('#hint').removeClass('hide');
+                        //$('#title').html(json.msg);
+                        //$('.tj').val('推荐状态');
+                        //$('.tj').attr('url', json.forward);
+                        //$('#hint').removeClass('hide');
+                        window.location.href=json.forward;
                     } else if(json.code == 203) {
                         $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
