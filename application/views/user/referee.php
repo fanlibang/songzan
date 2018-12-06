@@ -210,7 +210,7 @@ $(document).ready(function(){
                     window.frames[0].window.alert(name);
                     iframe.parentNode.removeChild(iframe);
                 };
-                $('#mgs').html('您还未同意隐私条款');
+                $('#mgs').html('提交提示：您还未同意隐私条款');
                 $('#upload').removeClass('hide'); return false;
                 //alert('您还未同意隐私条款'); return false;
             }
