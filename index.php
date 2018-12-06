@@ -2,7 +2,7 @@
 //设置时区
 date_default_timezone_set("Asia/Shanghai");
 if(strpos($_SERVER['SERVER_NAME'], 'admin') !== false || strpos($_SERVER['REQUEST_URI'], 'admin') !== false){
-    define('PROJECT_NAME', 'admin/');
+    define('PROJECT_NAME', 'admin');
 }elseif(strpos($_SERVER['SERVER_NAME'], 'test') !== false){
     define('PROJECT_NAME', 'test');
 }else{
