@@ -879,9 +879,9 @@ if (! function_exists('site_url')) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
         if(is_https()){
-            return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&c='.$action.$url_str;
+            return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&m='.$action.$url_str;
         } else {
-            return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&c='.$action.$url_str;
+            return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&m='.$action.$url_str;
         }
     }
 }
@@ -911,7 +911,7 @@ if (! function_exists('path_site_url')) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
 
-	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&c='.$action.$url_str;
+	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?a='.$controller.'&m='.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }
