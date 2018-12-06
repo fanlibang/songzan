@@ -94,12 +94,12 @@ class Common extends MY_Controller
     public function display($data = array(), $view = null, $return_content = false)
     {
         if ($view == null) {
-            $view = $this->_more_view_path . strtolower($this->router->fetch_class()) . '/' . $this->router->fetch_method();
+            $view = $this->_more_view_path .'/'. strtolower($this->router->fetch_class()) . '/' . $this->router->fetch_method();
         } else {
             //strripos('/', $view);
             $array = explode('/', $view);
             if (count($array) <= 1) {
-                $view = $this->_more_view_path  . strtolower($this->router->fetch_class()) . '/' . $view;
+                $view = $this->_more_view_path .'/'. strtolower($this->router->fetch_class()) . '/' . $view;
             } else {
                 $view = 'dev/' . $view;
             }
