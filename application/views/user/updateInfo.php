@@ -89,8 +89,8 @@ $(document).ready(function(){
                 $('#upload').removeClass('hide');
                 //alert('上传出错:上传文图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
+                return false;
             }
-            return false;
         }
     });
 
@@ -106,8 +106,8 @@ $(document).ready(function(){
                 $('#upload').removeClass('hide');
                 //alert('上传出错:上传文图片不正确');
                 //alert('上传出错:'+dataObj['error_code']);
+                return false;
             }
-            return false;
         }
     });
 
