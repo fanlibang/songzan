@@ -220,7 +220,7 @@ class Base extends Common
         if (empty($url)) {
             $url = site_url('Publics', 'addOpenid', array('invite_code'=>$invite_code));
         }
-        echo $url;exit;
+        
         //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url
