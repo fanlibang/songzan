@@ -70,6 +70,35 @@
     </div>
 </div>
 
+
+<div class="bomb-wrapper flex center jc hide" id="upload">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                上传出错：上传的图片不正确
+            </div>
+            <div class="form-push">
+
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="titles">
+                活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+            </div>
+            <div class="form-push">
+                <input type="button" value=" 确 定 " class="btn auto " id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -145,8 +174,11 @@ $(document).ready(function(){
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        alert(json.msg);
-                        window.location.href=json.forward;
+                        //alert(json.msg);
+                        $('#titles').html('    完善资料成功');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
                     } else {
                         alert(json.msg);
                     }
@@ -154,6 +186,11 @@ $(document).ready(function(){
                 error:function(){}
             });
         });
+    });
+
+    $('#tj').click(function(){
+        var url = $(this).attr('url');
+        window.location.href=url;
     });
 </script>
 
