@@ -201,7 +201,7 @@
                 return false;
             }
              **/
-            $('#rule').removeClass('hide');
+            $('#rule').removeClass('hides');
         });
 
         $('#from_sub').click(function(){
