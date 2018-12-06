@@ -84,10 +84,7 @@ class Invite extends Base
                 }
                 $this->Users->incrementSubmitNum($havePhoneInfo['id']);
                 if ($havePhoneInfo['invite_code'] != $inviteCode) {
-                    $token = rand_str(32);
-                    $data['token'] = $token;
-                    set_cookie('token', $token);
-                    $this->Users->editUserId($havePhoneInfo['id'], $data);
+                    set_cookie('token', $havePhoneInfo['token']);
                     $this->AjaxReturn('202', '很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态 ', $url);
                     exit;
                 }
