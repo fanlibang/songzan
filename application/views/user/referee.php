@@ -64,7 +64,7 @@
 <div class="bomb-wrapper flex center jc hide" id="upload">
     <div class="bomb-content">
         <div class="hint auto">
-            <div class="hint-word" id="title">
+            <div class="hint-word" id="mgs">
                 上传出错：上传的图片不正确
             </div>
             <div class="form-push">
@@ -210,7 +210,9 @@ $(document).ready(function(){
                     window.frames[0].window.alert(name);
                     iframe.parentNode.removeChild(iframe);
                 };
-                alert('您还未同意隐私条款'); return false;
+                $('#mgs').html('您还未同意隐私条款');
+                $('#upload').removeClass('hide'); return false;
+                //alert('您还未同意隐私条款'); return false;
             }
             $('#rule').removeClass('hide');
         });
