@@ -869,14 +869,14 @@ if (! function_exists('site_url')) {
     {
         $url_str = '';
         if(PROJECT_NAME == 'admin'){
-            $url_str = '?v='.time();
+            $url_str = '&v='.time();
         }
 
         $controller = $controller ? $controller : 'Index';
         $action     = $action ? $action : 'index';
 
         foreach ((array)$params as $k => $v) {
-            $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
+            $url_str .= ($url_str ? '&' : '&').$k.'='.$v;
         }
         if(is_https()){
             return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;

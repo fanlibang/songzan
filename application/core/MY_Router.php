@@ -1,5 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
+
+echo 'bbbb';exit;
 /**
  * 自定义路由类
  *
