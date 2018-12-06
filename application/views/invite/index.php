@@ -84,6 +84,20 @@
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc hide" id="rules">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
+                <dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>
+            </div>
+            <div class="form-push">
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
 
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
@@ -187,6 +201,16 @@
                 return false;
             }
              **/
+            $('#rule').removeClass('hide');
+        });
+
+        $('#from_sub').click(function(){
+            $('#rules').addClass('hide');
+            var code = $('input[name=code]').val();
+            var phone = $('input[name=phone]').val();
+            var name = $('input[name=name]').val();
+            var invite_code = $('input[name=invite_code]').val();
+            var car_id = $("#car_id option:selected").val();
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url('Invite', 'index'); ?>',
@@ -205,10 +229,6 @@
                         $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
-                        //$('#title').html(json.msg);
-                        //$('.tj').val('推荐状态');
-                        //$('.tj').attr('url', json.forward);
-                        //$('#hint').removeClass('hide');
                         window.location.href=json.forward;
                     } else if(json.code == 203) {
                         $('#title').html(json.msg);
@@ -220,6 +240,7 @@
                 error:function(){}
             });
         });
+
         $('.tj').click(function(){
             var url = $(this).attr('url');
             if(url) {
