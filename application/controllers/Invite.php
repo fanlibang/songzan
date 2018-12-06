@@ -40,7 +40,7 @@ class Invite extends Base
             $data['open_id'] = isset($openId) ? $openId : '';
             $code = $info['code'];
             $data['phone'] = $info['phone'];
-            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $data['phone'])) {
+            if (!preg_match("/^1[3-9]\d{9}$/", $data['phone'])) {
                 $this->AjaxReturn('403', '电话号码格式不正确');
                 exit;
             }
@@ -124,7 +124,7 @@ class Invite extends Base
                 $result = $push->reportOwner($tempData);
                 $this->Users->editUserId($uid, ['report_result' => $result]);
             }
-            $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>购车成功后，请尽快返回此页面，提交您的相关购车凭证。</dd>", $url);
+            $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>", $url);
             exit;
         }
         $data['car_record'] = $carInfo->getAllCarInfo();

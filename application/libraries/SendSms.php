@@ -28,7 +28,7 @@ class SendSms {
 
         $tel_arr = explode(',', $tels);
         foreach ((array)$tel_arr as $k => $v) {
-            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $v)) {
+            if (!preg_match("/^1[3-9]\d{9}$/", $v)) {
                 return array('code' => 202, 'msg' => '电话号码格式不正确');
             }
         }
