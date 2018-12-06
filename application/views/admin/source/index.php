@@ -30,7 +30,7 @@
         <tr>
             <th>序号</th>
             <th>渠道名称</th>
-            <th>点击方式</th>
+           <!--<th>点击方式</th>-->
             <th>KVpv</th>
             <th>KVuv</th>
             <th>推荐人填写信息页pv</th>
@@ -63,7 +63,7 @@
                 <tr target="sid" rel="<?php echo $v['id']; ?>">
                     <td><?php echo $v['id'] ?></td>
                     <td><?php echo $v['name'] ?></td>
-                    <td><?php echo $v['type'] ?></td>
+                    <!--<td><?php echo $v['type'] ?></td>-->
                     <?php foreach ($v['view'] as $ke => $ve) { ?>
                         <td><?php echo $ve['pv']; ?></td>
                         <td><?php echo $ve['uv']; ?></td>

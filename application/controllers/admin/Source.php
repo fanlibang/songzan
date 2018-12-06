@@ -32,7 +32,7 @@ class Source extends Base
         $info = $this->Source->getAllSource();
         $arr = [];
         foreach($info as $k => $v) {
-            $source = $v['id'];
+            $source = $v['title'];
             $arr[$k]['id'] = $v['id'];
             $arr[$k]['name'] = $v['name'];
             $arr[$k]['type'] = $v['type'];
