@@ -84,9 +84,6 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
 
     $database           = 'ownerreferral';
 } else {
-    /*$myip               = 'rm-m5e82evpj4666mdq38o.mysql.rds.aliyuncs.com';
-    $myuser             = 'root';
-    $mypassword         = 'ziyue2018ZIYUE';*/
     $myip               = '180.76.114.64';
     $myuser             = 'root';
     $mypassword         = 'Sz20181127*';
@@ -102,7 +99,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     $password_w         = $mypassword;
     $port_w             = '3306';
 
-    $database           = 'ownerreferral';
+    $database           = 'ownerreferral';  //库名
 
 }
 
