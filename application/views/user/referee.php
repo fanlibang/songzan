@@ -202,6 +202,14 @@ $(document).ready(function(){
                 alert('用户名不能为空');
                 return false;
             } else if(succ == '') {
+                window.alert = function(name){
+                    var iframe = document.createElement("IFRAME");
+                    iframe.style.display="none";
+                    iframe.setAttribute("src", 'data:text/plain,');
+                    document.documentElement.appendChild(iframe);
+                    window.frames[0].window.alert(name);
+                    iframe.parentNode.removeChild(iframe);
+                };
                 alert('您还未同意隐私条款'); return false;
             }
             $('#rule').removeClass('hide');
