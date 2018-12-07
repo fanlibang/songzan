@@ -209,9 +209,11 @@ class Invite extends Base
 
     public function share()
     {
+        $info = $this->input->request(null, true);
+        $inviteCode = $info['invite_code'] ? $info['invite_code'] : '';
         $data = $this->isLogin();
         if (!$data) {
-            $url = site_url('Invite', 'index');
+            $url = site_url('Invite', 'index', array('invite_code' => $inviteCode));
             header('Location:' . $url);
             exit;
         }
