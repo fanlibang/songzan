@@ -165,7 +165,7 @@ $(document).ready(function(){
                     window.frames[0].window.alert(name);
                     iframe.parentNode.removeChild(iframe);
                 };
-                alert('请选择隐私政策'); return false;
+                alert('请选择隐私条款'); return false;
             }
             $.ajax({
                 type:'post',
