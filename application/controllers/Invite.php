@@ -75,7 +75,7 @@ class Invite extends Base
 
             $havePhoneInfo = $this->Users->getUserInfoByPhone($data['phone']);
             if ($havePhoneInfo['invite_code'] == $inviteCode) {
-                $this->AjaxReturn('403', '自己不能直接邀请自己');
+                $this->AjaxReturn('403', '活动参与者不可同时注册推荐人和被推荐人，以首次参与活动的身份为准。');
                 exit;
             }
             if (!empty($havePhoneInfo)) {
