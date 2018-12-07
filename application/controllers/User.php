@@ -102,7 +102,7 @@ class User extends Base
             $uploadModel->editUploadInfo($uid, $openid, $wb_openid);
             $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
-            $url = site_url('Invite', 'share');
+            $url = site_url('Invite', 'share', array('invite_code' => $inviteCode));
             $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
         } else {
             if ($this->isLogin()) {

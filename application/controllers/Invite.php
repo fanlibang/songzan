@@ -211,7 +211,7 @@ class Invite extends Base
     {
         $data = $this->isLogin();
         if (!$data) {
-            $url = site_url('User', 'center');
+            $url = site_url('Invite', 'index');
             header('Location:' . $url);
             exit;
         }
