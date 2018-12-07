@@ -74,7 +74,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .wrapper{position: relative;height: 100%; overflow-x:hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .content{position: relative; min-height: 100%;}
 /**.bg-1{background: url("../images/bg-1.jpg") no-repeat center top;padding-top: 765px;} **/
-.bg-1{background: url("../images/bg-1.jpg") no-repeat center;}
+.bg-1{background: url("../images/bg-1.jpg") no-repeat top;}
 .bg-2{background: url("../images/bg-2.jpg") #070a0f no-repeat center center;}
 .bg-3{background: url("../images/bg-3.jpg") #fff no-repeat center bottom;}
 .bg-4{background: url("../images/bg-4.jpg") #0b0a06 no-repeat center top;}
