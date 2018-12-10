@@ -22,7 +22,7 @@
     <img style="width: 100%;height: 100%;opacity: 0;" src="<?=$img_url?>" alt="">
 </div>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         wx.config({
