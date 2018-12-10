@@ -882,15 +882,15 @@ if (! function_exists('site_url')) {
 
         if(is_https()){
             if(PROJECT_NAME == 'admin') {
-                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
             } else {
-                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
             }
         } else {
             if(PROJECT_NAME == 'admin') {
-                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
             } else {
-                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
             }
         }
         return $url;
@@ -922,7 +922,7 @@ if (! function_exists('path_site_url')) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
 
-	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+	    return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }

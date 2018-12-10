@@ -33,7 +33,7 @@ define('IS_GET',            REQUEST_METHOD =='GET' ? true : false);
 define('IS_POST',           REQUEST_METHOD =='POST' ? true : false);
 
 //host
-define('HTTP_HOST',         'http://' . $_SERVER['HTTP_HOST']);
+define('HTTP_HOST',         '//' . $_SERVER['HTTP_HOST']);
 
 define('ENVIRONMENT',       isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 define('ROOTPATH',          dirname(__FILE__));
