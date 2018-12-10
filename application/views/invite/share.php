@@ -64,7 +64,7 @@
 
             var data = {
                 title: '荐入佳境 共揽胜景', // 分享标题
-                link: '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code="+<?= $invite_code?>+"&utm_source="+<?= $source ?>', // 分享链接
+                link: '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code="<?= $invite_code?>"&utm_source="<?= $source ?>', // 分享链接
                 desc:'您的好友正在邀请您参与路虎推荐购活动。',
                 imgUrl: "/2018/crm/ownerreferral/assets/images/123.jpg", // 分享图标
                 success: function () {
