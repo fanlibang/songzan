@@ -213,7 +213,7 @@
             var car_id = $("#car_id option:selected").val();
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('Invite', 'index'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=Invite&m=Invite',
                 data:{code:code, phone: phone, name:name, invite_code:invite_code, car_id:car_id},
                 cache:false,
                 dataType:'json',

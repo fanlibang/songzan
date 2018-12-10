@@ -169,7 +169,7 @@ $(document).ready(function(){
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'updateInfo'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=User&m=updateInfo',
                 data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json},
                 dataType:'json',
                 success:function(json){

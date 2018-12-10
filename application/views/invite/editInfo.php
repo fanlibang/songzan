@@ -90,7 +90,7 @@
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('Invite', 'editInfo'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=Invite&m=editInfo',
                 data:{car_id:car_id},
                 cache:false,
                 dataType:'json',

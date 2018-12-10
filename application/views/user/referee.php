@@ -235,7 +235,7 @@ $(document).ready(function(){
             var card_json = $('#card_json').val();
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'referee'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=User&m=referee',
                 data:{name:name, phone: phone, code:code, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json },
                 dataType:'json',
                 success:function(json){
