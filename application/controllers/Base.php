@@ -218,7 +218,8 @@ class Base extends Common
         $state = rand(1,10000);
         $appid = APPID;
         if (empty($url)) {
-            $url = site_url('Publics', 'addOpenid', array('invite_code'=>$invite_code));
+            //$url = site_url('Publics', 'addOpenid', array('invite_code'=>$invite_code));
+            $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c=Publics&m=addOpenid&invite_code=>'.$invite_code;
         }
         echo $url;exit;
 
