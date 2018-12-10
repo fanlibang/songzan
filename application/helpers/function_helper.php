@@ -879,21 +879,39 @@ if (! function_exists('site_url')) {
             $url_str .= ($url_str ? '&' : '&').$k.'='.$v;
         }
 
-
-        if(is_https()){
+        if(is_SSL()){
             if(PROJECT_NAME == 'admin') {
-                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
             } else {
-                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
             }
         } else {
             if(PROJECT_NAME == 'admin') {
-                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
             } else {
-                $url = '//'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
             }
         }
         return $url;
+    }
+}
+
+if (! function_exists('site_url')) {
+    /**
+    * 检测链接是否是SSL连接
+    * @return bool
+    */
+    function is_SSL(){
+        if(!isset($_SERVER['HTTPS']))
+            return FALSE;
+        if($_SERVER['HTTPS'] === 1){  //Apache
+            return TRUE;
+        }elseif($_SERVER['HTTPS'] === 'on'){ //IIS
+            return TRUE;
+        }elseif($_SERVER['SERVER_PORT'] == 443){ //其他
+            return TRUE;
+        }
+        return FALSE;
     }
 }
 
