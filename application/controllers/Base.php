@@ -221,7 +221,7 @@ class Base extends Common
             //$url = site_url('Publics', 'addOpenid', array('invite_code'=>$invite_code));
             $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c=Publics&m=addOpenid&invite_code='.$invite_code;
         }
-        echo $url;exit;
+        //echo $url;exit;
 
         //echo $url;exit;
         $redirect_uri = urlencode($url);
