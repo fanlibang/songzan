@@ -108,7 +108,7 @@
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
-<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         // 通过下面这个API隐藏右上角按钮
@@ -126,7 +126,7 @@
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'login'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=User&m=login',
                 data:{phone: phone, code:code},
                 dataType:'json',
                 success:function(json){

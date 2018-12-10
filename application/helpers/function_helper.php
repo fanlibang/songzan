@@ -879,7 +879,8 @@ if (! function_exists('site_url')) {
             $url_str .= ($url_str ? '&' : '&').$k.'='.$v;
         }
 
-        if(is_SSL()){
+
+        if(is_https()){
             if(PROJECT_NAME == 'admin') {
                 $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
             } else {
@@ -893,25 +894,6 @@ if (! function_exists('site_url')) {
             }
         }
         return $url;
-    }
-}
-
-if (! function_exists('site_url')) {
-    /**
-    * 检测链接是否是SSL连接
-    * @return bool
-    */
-    function is_SSL(){
-        if(!isset($_SERVER['HTTPS']))
-            return FALSE;
-        if($_SERVER['HTTPS'] === 1){  //Apache
-            return TRUE;
-        }elseif($_SERVER['HTTPS'] === 'on'){ //IIS
-            return TRUE;
-        }elseif($_SERVER['SERVER_PORT'] == 443){ //其他
-            return TRUE;
-        }
-        return FALSE;
     }
 }
 
@@ -940,7 +922,7 @@ if (! function_exists('path_site_url')) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
 
-	    return 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }
