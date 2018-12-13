@@ -195,7 +195,7 @@ class Invite extends Base
                 'nameplate_of_interest' => $carInfo['alias'],
                 'creation_time'         => NOW_DATE_TIME,
                 'need_lms'              => 1,
-                'other1'                => $masterUserInfo['phone'],
+                'other1'                => $masterUserInfo['phone'].'+'.$result['name'],
             ];
             $push = new ReportModel();
             $rsp = $push->reportOwner($tempData);
