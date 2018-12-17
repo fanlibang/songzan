@@ -19,13 +19,13 @@
                            <a onclick="cc('state/sczl')" href="<?=site_url('Invite', 'shopCar', array('car_id'=> $car_id))?>" >上传购车凭证</a>
                         </div>
                     </li>
-                    <li <?php if($state == 2)  { echo 'class="active"'; } ?> >
+                    <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
                         <div class="flex center">
                             <i>03</i>
                             <span>审核成功</span>
                         </div>
                     </li>
-                    <li <?php if($state == 2)  { echo 'class="active"'; } ?> >
+                    <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
                         <div class="flex center">
                             <i>04</i>
                             <a onclick="cc('state/xzlp')" href="#">选择礼遇</a>
