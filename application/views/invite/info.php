@@ -42,7 +42,7 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('info/yzc')" id="ts" href="javascript:;">已注册</a></span>
+                        <span><a onclick="cc('info/yzc')" id="ts" href="<?=site_url('Invite', 'state')?>">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center">

@@ -59,9 +59,9 @@ class AdminCatesDB extends BaseDB
         if ($cate_info) {
             $v_width = $cate_info['right_value'] - $cate_info['left_value'] + 1;
 
-            $dsql = 'DELETE FROM admin_cates WHERE left_value BETWEEN '.$cate_info['left_value'].' AND '.$cate_info['right_value'];
-            $lsql = 'UPDATE admin_cates SET left_value = left_value - '.$v_width.' WHERE left_value > '.$cate_info['right_value'];
-            $rsql = 'UPDATE admin_cates SET right_value = right_value - '.$v_width.' WHERE right_value > '.$cate_info['right_value'];
+            $dsql = 'DELETE FROM ownerreferral_201812_admin_cates WHERE left_value BETWEEN '.$cate_info['left_value'].' AND '.$cate_info['right_value'];
+            $lsql = 'UPDATE ownerreferral_201812_admin_cates SET left_value = left_value - '.$v_width.' WHERE left_value > '.$cate_info['right_value'];
+            $rsql = 'UPDATE ownerreferral_201812_admin_cates SET right_value = right_value - '.$v_width.' WHERE right_value > '.$cate_info['right_value'];
             $this->execute($dsql);
             $this->execute($lsql);
             $this->execute($rsql);
@@ -79,7 +79,7 @@ class AdminCatesDB extends BaseDB
      */
     public function getMaxRightValue()
     {
-        $sql = 'select max(right_value) as max_right_value from admin_cates';
+        $sql = 'select max(right_value) as max_right_value from ownerreferral_201812_admin_cates';
         $ret = $this->execute($sql);
 
         return $ret[0]['max_right_value'] ? $ret[0]['max_right_value'] : 0;
@@ -94,8 +94,8 @@ class AdminCatesDB extends BaseDB
      */
     public function refreshCateTree($right_value, $span = '+2')
     {
-        $lsql = 'UPDATE admin_cates SET left_value=left_value'.$span.' WHERE left_value > '.$right_value;
-        $rsql = 'UPDATE admin_cates SET right_value=right_value'.$span.' WHERE right_value >= '.$right_value;
+        $lsql = 'UPDATE ownerreferral_201812_admin_cates SET left_value=left_value'.$span.' WHERE left_value > '.$right_value;
+        $rsql = 'UPDATE ownerreferral_201812_admin_cates SET right_value=right_value'.$span.' WHERE right_value >= '.$right_value;
         $this->execute($lsql);
         $this->execute($rsql);
         return true;
@@ -108,7 +108,7 @@ class AdminCatesDB extends BaseDB
      */
     public function getMaxRank()
     {
-        $sql = 'select max(rank) as max_rank from admin_cates';
+        $sql = 'select max(rank) as max_rank from ownerreferral_201812_admin_cates';
         $ret = $this->execute($sql);
 
         return ($ret[0]['max_rank'] ? $ret[0]['max_rank'] : 0)+1;
@@ -169,19 +169,19 @@ class AdminCatesDB extends BaseDB
         }
 
         if ($pright_value > $right_value) {
-            $this->execute('UPDATE admin_cates SET left_value = left_value - '.$value.' - 1 WHERE left_value > '.$right_value.' and right_value <= '.$pright_value);
+            $this->execute('UPDATE ownerreferral_201812_admin_cates SET left_value = left_value - '.$value.' - 1 WHERE left_value > '.$right_value.' and right_value <= '.$pright_value);
 
-            $this->execute('UPDATE admin_cates SET right_value = right_value - '.$value.' - 1 WHERE right_value >  '.$right_value.' and right_value < '.$pright_value);
+            $this->execute('UPDATE ownerreferral_201812_admin_cates SET right_value = right_value - '.$value.' - 1 WHERE right_value >  '.$right_value.' and right_value < '.$pright_value);
 
             $tem_value  =   $pright_value-$right_value-1;
-            $this->execute('UPDATE admin_cates SET left_value = left_value + '.$tem_value.', right_value = right_value + '.$tem_value.' WHERE id IN('.$in_ids.')');
+            $this->execute('UPDATE ownerreferral_201812_admin_cates SET left_value = left_value + '.$tem_value.', right_value = right_value + '.$tem_value.' WHERE id IN('.$in_ids.')');
         } else {
-            $this->execute('UPDATE admin_cates SET left_value = left_value + '.$value.' + 1 WHERE left_value > '.$pright_value.' and left_value < '.$left_value);
+            $this->execute('UPDATE ownerreferral_201812_admin_cates SET left_value = left_value + '.$value.' + 1 WHERE left_value > '.$pright_value.' and left_value < '.$left_value);
 
-            $this->execute('UPDATE admin_cates SET right_value = right_value + '.$value.' + 1 WHERE right_value >= '.$pright_value.' and right_value < '.$left_value);
+            $this->execute('UPDATE ownerreferral_201812_admin_cates SET right_value = right_value + '.$value.' + 1 WHERE right_value >= '.$pright_value.' and right_value < '.$left_value);
 
             $tem_value  =   $left_value-$pright_value;
-            $this->execute('UPDATE  admin_cates SET left_value = left_value - '.$tem_value.', right_value = right_value - '.$tem_value.' WHERE id IN('.$in_ids.')');
+            $this->execute('UPDATE  ownerreferral_201812_admin_cates SET left_value = left_value - '.$tem_value.', right_value = right_value - '.$tem_value.' WHERE id IN('.$in_ids.')');
         }
 
         return true;

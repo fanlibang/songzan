@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: richard
- * Date: 2018/11/24
+ * Date: 2018/12/17
  * Time: 下午3:46
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -245,5 +245,62 @@ class Invite extends Base
         }
         $data['img_url'] = $shareImg;
         $this->displayMain($data);
+    }
+
+    public function state()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] == 0) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+            exit;
+        }
+        $shopCarInfo = new \Xy\Application\Models\ShopCarModel();
+        $carInfo = $shopCarInfo->getCarInfoByUid($result['id']);
+        $result['car_id']   = isset($carInfo['id']) ? $carInfo['id'] : '';
+        $result['state']    = isset($carInfo['state']) ? $carInfo['state'] : '';
+        $this->displayMain($result);
+    }
+
+    public function shopCar()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] == 0) {
+            $url = site_url('User', 'center');
+            header('Location:' . $url);
+            exit;
+        }
+        $info = $this->input->request(null, true);
+        $car_id = $info['car_id'];
+        $shopCarInfo = new \Xy\Application\Models\ShopCarModel();
+        if (is_ajax_post()) {
+            $data['card_front'] = $info['card_front'];
+            $data['car_img'] = $info['car_img'];
+            $data['other'] = $info['other'];
+            if(empty($car_id)) {
+                $data['uid'] = $result['id'];
+                $data['create_dt'] = NOW_DATE_TIME;
+                $res = $shopCarInfo->addUserCar($data);
+            } else {
+                $res = $shopCarInfo->editUserCar($car_id, $data);
+            }
+            if($res) {
+                $this->AjaxReturn('200', '保存资料成功', site_url('Invite', 'state'));
+            } else {
+                $this->AjaxReturn('404', '提交资料失败');
+            }
+        }
+        $result['car_id'] = $car_id;
+        $this->displayMain($result);
     }
 }
