@@ -30,7 +30,7 @@
                             <span>审核成功</span>
                         </div>
                     </li>
-                    <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
+                    <li <?php if($reward_count > 0)   echo 'class="active"'; ?> >
                         <div class="flex center">
                             <i>04</i>
                             <?php if($reward_count > 0)  { ?>
