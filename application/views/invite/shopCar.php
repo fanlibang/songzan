@@ -152,7 +152,7 @@
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else{
-                        $('#mgs').html('提交提示：系统出错提交失败');
+                        $('#mgs').html('提交提示：'+json.msg);
                         $('#upload').removeClass('hide'); return false;
                     }
                 },
