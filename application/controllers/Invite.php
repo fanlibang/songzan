@@ -293,13 +293,14 @@ class Invite extends Base
             if(empty($car_id)) {
                 $data['uid'] = $result['id'];
                 $data['create_dt'] = NOW_DATE_TIME;
-                $res = $shopCarInfo->addUserCar($data);
+                //$res = $shopCarInfo->addUserCar($data);
             } else {
                 $data['state'] = 1;
                 $res = $shopCarInfo->editUserCar($car_id, $data);
             }
-            if($res) {
+            if($res = 1) {
                 $info = $this->Users->getUserInfoByid($result['master_uid']);
+                var_dump($info);exit;
                 if($info['card_number'] || $info['driver_number']) {
                     //生成短连接
                     $long_url = site_url('User', 'center');
