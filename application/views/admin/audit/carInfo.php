@@ -19,12 +19,15 @@
 
 
             <div class="unit">
-                <label>审核状态：</label>
+                <label>审核操作：</label>
                 <ul class="pub_status">
-                    <?php if($state != 3) { ?>
-                        <li style="background-color:green; "><a style="color:#ffffff;" href="javascript:;" class="result" state="3" >审核成功</a></li>
-                    <?php } else { ?>
-                        <li style="background-color:red; "><a style="color:#ffffff;" href="javascript:;" class="result" state="2" >审核失败</a></li>
+                    <?php if($state == 2) { ?>
+                        <li style="background-color:red; "><a style="color:#ffffff;" href="javascript:;" class="result" state="3" >审核成功</a></li>
+                    <?php } elseif($state == 1) { ?>
+                        <li style="background-color:green; "><a style="color:#ffffff;" href="javascript:;" class="result" state="2" >审核失败</a></li>
+                        <li style="background-color:red; "><a style="color:#ffffff;" href="javascript:;" class="result" state="3" >审核成功</a></li>
+                    <?php }elseif($state == 3)  { ?>
+                        <li style="background-color:green; "><a style="color:#ffffff;" href="javascript:;" class="result" state="2" >审核失败</a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -33,6 +36,7 @@
         <div class="formBar">
             <ul>
                 <input type="hidden" id="id" name="id" value="<?= $id; ?>" >
+                <input type="hidden" id="uid" name="uid" value="<?= $uid; ?>" >
                 <li><div class="button"><div class="buttonContent"><button class="close" type="button">取消</button></div></div></li>
             </ul>
         </div>
@@ -45,10 +49,11 @@
         $('.result').click(function(){
             var _state = $(this).attr('state');
             var _id = $('#id').val();
+            var _uid = $('#uid').val();
             $.ajax({
                 type:'post',
                 url:'<?php echo site_url($controller, 'carInfo'); ?>',
-                data:{state: _state, id:_id},
+                data:{state: _state, id:_id, uid:_uid},
                 cache:false,
                 dataType:'json',
                 success:function(json){

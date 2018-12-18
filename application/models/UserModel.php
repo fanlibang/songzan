@@ -93,4 +93,19 @@ class UserModel extends BaseModel
         $ret = $this->getOne($where);
         return $ret ? $ret : false;
     }
+
+    public function getInviteInfoByUid($uid)
+    {
+        $where['master_uid'] = $uid;
+        $ret = $this->getAll($where, 'created_at', 10);
+        return $ret;
+    }
+
+    public function getInviteSuccByUid($uid)
+    {
+        $where['master_uid'] = $uid;
+        $where['status'] = 3;
+        $ret = $this->getAll($where, 'created_at', 2);
+        return $ret;
+    }
 }

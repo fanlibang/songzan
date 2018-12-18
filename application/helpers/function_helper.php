@@ -726,8 +726,8 @@ if (! function_exists('assess_info')) {
             return false;
         } else {
             $data = array(
-                'server_ip'     =>  return_ip(true, true),
-                'ip'            =>  return_ip(true),
+                'server_ip'     =>  1,
+                'ip'            =>  2,
                 'url'           =>  $url,
                 'path'          =>  $_SERVER['REQUEST_URI'],
                 'phone'         =>   $info ? $info['phone'] : '',

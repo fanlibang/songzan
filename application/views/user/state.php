@@ -1,81 +1,110 @@
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
-    <div class="content bg-3 info-page">
-        <div>
-            <div class="form-tit ta-c">我的主页<div class="actrule gz">活动规则</div></div>
-            <div class="form auto">
-                <div class="referee-tit flex center justify">
-                    <span>个人信息</span>
-                    <?php if (empty($car_id)) { ?>
-                        <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('invite/info')" href="<?=site_url('Invite', 'editInfo')?>">完善信息</a></div>
-                    <?php } ?>
-                </div>
-                <div class="form-list flex center">
-                    <label>姓名：</label>
-                    <div class="form-box">
-                        <div class="input-text" ><?= $name; ?></div>
+    <div class="content flex center jc">
+        <div class="new-inner">
+            <div class="new-title ta-c">
+                我的推荐状态
+                <div class="actrule gz">活动规则</div>
+            </div>
+            <div class="state">
+                <div class="state-item">
+                    <div class="state-bt">这些朋友接受了我的推荐</div>
+                    <div class="state-list">
+                        <ul class="flex flow">
+                            <?php for($i = 0; $i < 10; $i++) { ?>
+                                <?php if(isset($invite_info[$i]))  { ?>
+                                    <li class="on info" state=<?= $invite_info[$i]['state']; ?> reward=<?= $invite_info[$i]['reward_count']; ?> >
+                                        <p><?= $invite_info[$i]['name']; ?></p>
+                                    </li>
+                                <?php } else { ?>
+                                    <li><p></p></li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
                     </div>
                 </div>
-                <div class="form-list flex center">
-                    <label>手机号：</label>
-                    <div class="form-box">
-                        <div class="input-text" ><?= $phone; ?></div>
+                <div class="state-item">
+                    <div class="state-bt">我的礼盒</div>
+                    <div class="state-package">
+                        <ul class="flex">
+                            <?php if($reward_count >= 1) { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <img src="<?= STATIC_ASSETS ?>images/new-12.png" alt="">
+                                    </div>
+                                    <p><?= $reward_user[0]['name']; ?></p>
+                                </li>
+                            <?php } elseif($success_count >= 1) { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <a href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
+                                    </div>
+                                </li>
+                            <?php } else { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <img src="<?= STATIC_ASSETS ?>images/new-13.png" alt="">
+                                    </div>
+                                </li>
+                            <?php } ?>
+
+                            <?php if($reward_count == 2) { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <img src="<?= STATIC_ASSETS ?>images/new-12.png" alt="">
+                                    </div>
+                                    <p><?= $reward_user[1]['name']; ?></p>
+                                </li>
+                            <?php } elseif($success_count == 2) { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <a href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
+                                    </div>
+                                </li>
+                            <?php } else { ?>
+                                <li>
+                                    <div class="package-pic flex end jc">
+                                        <img src="<?= STATIC_ASSETS ?>images/new-13.png" alt="">
+                                    </div>
+                                </li>
+                            <?php } ?>
+                        </ul>
                     </div>
                 </div>
-                <div class="form-list flex center">
-                    <label>意向车型：</label>
-                    <div class="form-box">
-                        <div class="input-text" ><?=$car_info['name']; ?></div>
-                    </div>
-                </div>
-                <!--
-                <div class="form-list flex center opt no-border">
-                    <label>意向车型：</label>
-                    <div class="form-box">
-                        <span><?=$car_info['name']; ?></span>
-                    </div>
-                </div>
-                -->
-                <div class="referee-tit flex center justify">
-                    <span>活动信息</span>
-                </div>
-                <div class="form-list flex center opt state rotate">
-                    <label>被推荐人状态：</label>
-                    <div class="form-box">
-                        <span><a onclick="cc('info/yzc')" href="<?=site_url('Invite', 'state')?>">已注册</a></span>
-                    </div>
-                </div>
-                <div class="form-list flex center">
-                    <label>邀请码：</label>
-                    <div class="form-box">
-                        <div class="input-text" style="padding-right: 35px;"><?=$from_invite_code; ?></div>
-                    </div>
-                </div>
-                <!--
-                <div class="form-list flex center opt rotate">
-                    <label>邀请码：</label>
-                    <div class="form-box">
-                        <span><?=$from_invite_code; ?></span>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </div>
 </div>
-<div class="bomb-wrapper flex center jc <?php if($invite_diff == 0) { echo 'hide'; } ?>" id="hint">
+
+<div class="bomb-wrapper flex center jc hide" id="progress">
     <div class="bomb-content">
-        <div class="hint auto">
-            <div class="hint-word" id="zc">
-                很抱歉，您已有推荐人，如有疑问，可致电400-820-0187。点击下方按钮，查看推荐状态
-            </div>
-            <div class="form-push">
-                <input type="button" value="推 荐 状 态" class="btn auto agree" id="agree">
-            </div>
+        <div class="pop-tit ta-c">活 动 进 度</div>
+        <div class="plan auto">
+            <ul>
+                <li class="active">
+                    <div class="flex center">
+                        <i>01</i>
+                        <span>已注册</span>
+                    </div>
+                </li>
+                <li id="sh">
+                    <div class="flex center">
+                        <i>02</i>
+                        <span>审核成功</span>
+                    </div>
+                </li>
+                <li id="wc">
+                    <div class="flex center">
+                        <i>03</i>
+                        <span>已完成</span>
+                    </div>
+                </li>
+            </ul>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
         <div class="pop-tit ta-c">活 动 规 则</div>
@@ -129,16 +158,47 @@
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc <?php if($state != 2) echo  'hide'; ?>" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                资料暂未审核通过，请您重新上传购车凭证哦！<?= $state ?>
+            </div>
+            <div class="form-push">
+                <input type="button" value="重新上传" url="<?= site_url('Invite', 'shopCar', array('car_id'=> $car_id)) ?>" class="btn auto " id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         // 通过下面这个API隐藏右上角按钮
         WeixinJSBridge.call('hideOptionMenu');
     });
-    $('#ts').on('click',function () {
-        $('#zc').html('您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待。');
-        $('.agree').val('我 知 道 了');
-        $('#hint').removeClass('hide');
-        //alert('敬请期待');
+
+    $(function () {
+        $('.state-list li').on('click',function () {
+            if($(this).hasClass('on')){
+                var state        = $(this).attr('state');
+                var reward        = $(this).attr('reward');
+                if(state == 3) {
+                    $("#sh").addClass('active');
+                }
+                if(reward > 0) {
+                    $("#wc").addClass('active');
+                }
+                $('#progress').removeClass('hide');
+            }
+        })
+    });
+
+
+    $('#tj').click(function(){
+        var url = $(this).attr('url');
+        window.location.href=url;
     });
 </script>
