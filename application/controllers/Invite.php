@@ -299,6 +299,16 @@ class Invite extends Base
                 $res = $shopCarInfo->editUserCar($car_id, $data);
             }
             if($res) {
+                $info = $this->Users->getUserInfoByid($result['master_uid']);
+                if($info['card_number'] || $info['driver_number']) {
+                    //生成短连接
+                    $long_url = site_url('User', 'center');
+                    $short_url = getSinaShortUrl('1555751977',$long_url);
+                    $sms_notice_obj = new SendSms();
+                    $mgs[0] = $result['name'];
+                    $mgs[1] = $short_url;
+                    echo $sms_notice_obj->send($data['phone'], $mgs, 2);
+                }
                 $this->AjaxReturn('200', '您的资料我们已收到，我们将在7个工作日内完成审核，及时关注【路虎中国】的短信，获取最新审核状态。', site_url('Invite', 'state'));
             } else {
                 $this->AjaxReturn('404', '提交资料失败');

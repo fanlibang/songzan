@@ -332,7 +332,7 @@ class User extends Base
                 } else {
                     $title = '您已成功提交收货信息，工作人员将在14个工作日之内（新年期间可能延迟）寄送礼品。如有疑问，可致电400-820-0187。';
                 }
-                $this->AjaxReturn('200', $title, site_url('Invite', 'state'));
+                $this->AjaxReturn('200', $title, site_url('User', 'state'));
             } else {
                 $this->AjaxReturn('404', '选择礼物失败');
             }
@@ -345,7 +345,6 @@ class User extends Base
             foreach($info as $val) {
                 $city_arr[$v['city_name']][] = $val['city_name'];
             }
-
         }
         //var_dump($city_arr);exit;
         $result['city_arr'] = json_encode($city_arr);
