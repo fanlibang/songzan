@@ -285,7 +285,6 @@ class Invite extends Base
         }
         $info = $this->input->request(null, true);
         $car_id = $info['car_id'];
-        exit;
         $shopCarInfo = new \Xy\Application\Models\ShopCarModel();
         if (is_ajax_post()) {
             $data['card_front'] = $info['card_front'];
