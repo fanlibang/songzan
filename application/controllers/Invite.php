@@ -293,7 +293,7 @@ class Invite extends Base
             if(empty($car_id)) {
                 $data['uid'] = $result['id'];
                 $data['create_dt'] = NOW_DATE_TIME;
-                //$res = $shopCarInfo->addUserCar($data);
+                $res = $shopCarInfo->addUserCar($data);
             } else {
                 $data['state'] = 1;
                 $res = $shopCarInfo->editUserCar($car_id, $data);
