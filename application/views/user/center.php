@@ -40,12 +40,7 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <?php if(empty($card_number) || empty($driver_number)) { ?>
-                            <span><a id="ts" onclick="cc('info/yzc')" href="javascript:;">已注册</a></span>
-                        <?php } else { ?>
-                            <span><a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>">已注册</a></span>
-                        <?php } ?>
-
+                        <span><a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>">已注册</a></span>
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
