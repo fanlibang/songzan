@@ -304,6 +304,13 @@ class User extends Base
             if($rewardCount > 1) {
                 $this->AjaxReturn('403', '你已经领取过奖励了');exit;
             }
+
+            $info['site_name'] = trim($info['site_name']);
+            if(empty($info['name'])) {
+                $this->AjaxReturn('401', '用户名不能为空');
+                exit;
+            }
+
             $data['site_name']  = $info['site_name'];
             $data['site_phone'] = $info['site_phone'];
             if (!preg_match("/^1[3-9]\d{9}$/", $data['site_phone'])) {

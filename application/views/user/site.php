@@ -78,7 +78,7 @@
                 <input type="button" value="我 知 道 了" class="btn auto " id="tj" >
             </div>
         </div>
-        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+        <!--<div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
     </div>
 </div>
 
@@ -142,7 +142,7 @@
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else{
-                        $('#mgs').html('提交提示：系统出错提交失败');
+                        $('#mgs').html('提交提示：'+json.msg);
                         $('#upload').removeClass('hide'); return false;
                     }
                 },

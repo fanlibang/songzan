@@ -362,11 +362,20 @@ class Invite extends Base
             if($rewardCount > 0) {
                 $this->AjaxReturn('403', '你已经领取过奖励了');exit;
             }
+
+            $info['site'] = trim($info['site']);
+            if(empty($info['site'])) {
+                $this->AjaxReturn('401', '收货地址不能为空');
+                exit;
+            }
+
             $data['site_name']  = $info['site_name'];
             $data['site_phone'] = $info['site_phone'];
             if (!preg_match("/^1[3-9]\d{9}$/", $data['site_phone'])) {
                 $this->AjaxReturn('403', '电话号码格式不正确');exit;
             }
+
+            $info['site'] = trim($info['site']);
             $data['province']   = $info['province'];
             $data['city']       = $info['city'];
             $data['site']       = $info['site'];
