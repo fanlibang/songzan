@@ -13,7 +13,7 @@
                             <span>已注册</span>
                         </div>
                     </li>
-                    <li class="active">
+                    <li class="<?php if($state > 0 ) echo 'active'; ?>">
                         <div class="flex center">
                             <i>02</i>
                             <?php if($state == 3)  { ?>
