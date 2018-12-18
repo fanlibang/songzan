@@ -300,7 +300,7 @@ class Invite extends Base
             }
             if($res = 1) {
                 $info = $this->Users->getUserInfoByid($result['master_uid']);
-                if($info['card_number'] || $info['driver_number']) {
+                if(empty($info['card_number']) || empty($info['driver_number'])) {
                     echo '111';
                     //生成短连接
                     $long_url = site_url('User', 'center');
