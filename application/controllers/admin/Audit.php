@@ -108,6 +108,7 @@ class Audit extends Base
             $id     = $this->input->get_post('id', true);
             $res = $this->Car->editUserCar($id, ['state' => $state]);
             if ($res) {
+                $this->User->editUserId($uid, ['status' => $state]);
                 $this->dwzAjaxReturn(200, '操作成功');
             } else {
                 $this->dwzAjaxReturn(201, '操作失败');

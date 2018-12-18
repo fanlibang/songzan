@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="form-push">
-                <input type="hidden" name="car_id" value="<?= $car_id?>" >
+                <input type="hidden" name="car_id" id="car_id" value="<?= $car_id?>" >
                 <input type="button" value="提  交" onclick="cc('image/tj')" class="btn auto" id="sub">
             </div>
         </div>
@@ -58,6 +58,20 @@
             </div>
             <div class="form-push">
 
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                您的资料我们已收到，我们将在7个工作日内完成审核，及时关注【路虎中国】的短信，获取最新审核状态。
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto " id="tj" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -134,15 +148,21 @@
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        window.location.href=json.forward;
+                        //window.location.href=json.forward;
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else{
-                        $('#mgs').html('提交提示：您还未同意隐私条款');
+                        $('#mgs').html('提交提示：'+json.msg);
                         $('#upload').removeClass('hide'); return false;
                     }
                 },
                 error:function(){}
             });
         });
+    });
+    $('#tj').click(function(){
+        var url = $(this).attr('url');
+        window.location.href=url;
     });
 </script>
 

@@ -213,5 +213,143 @@ class User extends Base
             }
         }
     }
+
+    public function state()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('User', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] > 0) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        $uid = $result['id'];
+        $info = $this->Users->getInviteInfoByUid($uid);
+        $shopCarInfo    = new \Xy\Application\Models\ShopCarModel();
+        $Reward         = new \Xy\Application\Models\RewardModel();
+        $success = 0;
+        foreach($info as &$v) {
+            $carInfo        = $shopCarInfo->getCarInfoByUid($v['id']);
+            $rewardCount    = $Reward->getRewardInfoCount($v['id']);
+            $v['state']            = isset($carInfo['state']) ? $carInfo['state'] : '';
+            if($v['state'] == 3) {
+                $success += 1;
+            }
+            $v['reward_count']     = $rewardCount;
+        }
+        $result['invite_info']   = $info;
+        $result['success_count'] = $success;
+        $result['reward_count']  = $Reward->getCarInfoCount($result['id']);
+        if($result['reward_count'] > 0) {
+            $result['reward_user'] = $this->Users->getInviteSuccByUid($result['id']);
+        }
+        $this->displayMain($result);
+    }
+
+    public function reward()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('User', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] > 0) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+
+        $this->displayMain($result);
+    }
+
+    public function mgs()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('User', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] > 0) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        $this->displayMain($result);
+    }
+
+    public function site()
+    {
+        $result = $this->isLogin();
+        if (!$result) {
+            $url = site_url('User', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        if ($result['master_uid'] > 0) {
+            $url = site_url('Invite', 'index');
+            header('Location:' . $url);
+            exit;
+        }
+        $info = $this->input->request(null, true);
+        $type = $info['type'];
+        if (is_ajax_post()) {
+            $Reward         = new \Xy\Application\Models\RewardModel();
+            $rewardCount    = $Reward->getRewardInfoCount($result['id']);
+            if($rewardCount > 1) {
+                $this->AjaxReturn('403', '你已经领取过奖励了');exit;
+            }
+
+            $info['site_name'] = trim($info['site_name']);
+            if(empty($info['name'])) {
+                $this->AjaxReturn('401', '用户名不能为空');
+                exit;
+            }
+
+            $data['site_name']  = $info['site_name'];
+            $data['site_phone'] = $info['site_phone'];
+            if (!preg_match("/^1[3-9]\d{9}$/", $data['site_phone'])) {
+                $this->AjaxReturn('403', '电话号码格式不正确');exit;
+            }
+            $data['province']   = $info['province'];
+            $data['city']       = $info['city'];
+            $data['site']       = $info['site'];
+            $data['type']       = $type;
+            $data['uid']        = $result['id'];
+            $info = $this->Users->getInviteSuccByUid($result['id']);
+            $data['reward_uid'] = $info[$rewardCount]['id'];
+            $data['create_dt'] = NOW_DATE_TIME;
+            $Reward = new \Xy\Application\Models\RewardModel();
+            $res = $Reward->addUserReward($data);
+            if($res) {
+                if($type == 3) {
+                    $title = '您已选择养车无忧尊享礼包，工作人员将在10个工作日之内联系您。如有疑问，可致电400-820-0187。';
+                } else {
+                    $title = '您已成功提交收货信息，工作人员将在14个工作日之内（新年期间可能延迟）寄送礼品。如有疑问，可致电400-820-0187。';
+                }
+                $this->AjaxReturn('200', $title, site_url('User', 'state'));
+            } else {
+                $this->AjaxReturn('404', '选择礼物失败');
+            }
+        }
+        $city = new \Xy\Application\Models\CityModel();
+        $province = $city->getCityInfo(0);
+        $city_arr = [];
+        foreach($province as &$v) {
+            $info = $city->getCityInfoByCity($v['city_id']);
+            foreach($info as $val) {
+                $city_arr[$v['city_name']][] = $val['city_name'];
+            }
+        }
+        //var_dump($city_arr);exit;
+        $result['city_arr'] = json_encode($city_arr);
+        $result['type'] = $type;
+        $this->displayMain($result);
+    }
 }
 

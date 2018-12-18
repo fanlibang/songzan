@@ -176,7 +176,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .new-title p{color: #999; font-size: 22px; padding: 10px 18px 0 0;letter-spacing:0; line-height: 34px;}
 .new-title .actrule{color: #005a2b;position: absolute;bottom: 55px;left: 35px;font-size: 24px;font-weight: normal;text-decoration: underline;letter-spacing:0;}
 .plan{width: 540px;}
-.plan li{position: relative; margin-top: 50px; height: 98px; padding-right: 100px; background: url(../images/new-01.png) no-repeat; pointer-events: none;}
+.plan li{position: relative; margin-top: 50px; height: 98px; padding-right: 100px; background: url(../images/new-01.png) no-repeat;}
 .plan li > div{height: 100%;}
 .plan li i{ width: 106px; min-width: 106px; margin-right: 25px; color: #666;font-family: "labold"; font-size: 54px; font-style: initial; text-align: center;}
 .plan li span{color: #333; font-size: 28px;}

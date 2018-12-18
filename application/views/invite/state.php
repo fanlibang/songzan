@@ -13,10 +13,15 @@
                             <span>已注册</span>
                         </div>
                     </li>
-                    <li class="active">
+                    <li class="<?php if($state > 0 ) echo 'active'; ?>">
                         <div class="flex center">
                             <i>02</i>
-                           <a onclick="cc('state/sczl')" href="<?=site_url('Invite', 'shopCar', array('car_id'=> $car_id))?>" >上传购车凭证</a>
+                            <?php if($state == 3 || $state == 1)  { ?>
+                                <a href="javascript:;" >上传购车凭证</a>
+                            <?php } else { ?>
+                                <a onclick="cc('state/sczl')" href="<?=site_url('Invite', 'shopCar', array('car_id'=> $car_id))?>" >上传购车凭证</a>
+                            <?php } ?>
+
                         </div>
                     </li>
                     <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
@@ -25,13 +30,17 @@
                             <span>审核成功</span>
                         </div>
                     </li>
-                    <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
+                    <li <?php if($reward_count > 0)   echo 'class="active"'; ?> >
                         <div class="flex center">
                             <i>04</i>
-                            <a onclick="cc('state/xzlp')" href="#">选择礼遇</a>
+                            <?php if($reward_count > 0)  { ?>
+                                <a href="avascript:;">选择礼遇</a>
+                            <?php } else { ?>
+                                <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >选择礼遇</a>
+                            <?php } ?>
                         </div>
                     </li>
-                    <li>
+                    <li <?php if($reward_count > 0)  { echo 'class="active"'; } ?>>
                         <div class="flex center">
                             <i>05</i>
                             <span>已完成</span>
@@ -42,10 +51,29 @@
         </div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc <?php if($state != 2) echo  'hide'; ?>" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                资料暂未审核通过，请您重新上传购车凭证哦！<?= $state ?>
+            </div>
+            <div class="form-push">
+                <input type="button" value="重新上传" url="<?= site_url('Invite', 'shopCar', array('car_id'=> $car_id)) ?>" class="btn auto " id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         // 通过下面这个API隐藏右上角按钮
         WeixinJSBridge.call('hideOptionMenu');
+    });
+    $('#tj').click(function(){
+        var url = $(this).attr('url');
+        window.location.href=url;
     });
 </script>

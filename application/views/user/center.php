@@ -40,7 +40,12 @@
                 <div class="form-list flex center opt state rotate">
                     <label>被推荐人状态：</label>
                     <div class="form-box">
-                        <span><a onclick="cc('center/yqm')" id="ts" href="javascript:;">已注册</a></span>
+                        <?php if(empty($card_number) || empty($driver_number)) { ?>
+                            <span><a id="ts" onclick="cc('info/yzc')" href="javascript:;">已注册</a></span>
+                        <?php } else { ?>
+                            <span><a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>">已注册</a></span>
+                        <?php } ?>
+
                     </div>
                 </div>
                 <div class="form-list flex center opt rotate">
@@ -148,7 +153,7 @@
             }
         });
         $('#ts').on('click',function () {
-            $('#zc').removeClass('hide');
+            $('#hint').removeClass('hide');
             //alert('敬请期待');
         });
     });
