@@ -125,6 +125,10 @@
                 $('#mgs').html('提交提示：请选择收货人省份');
                 $('#upload').removeClass('hide'); return false;
                 //alert('您还未同意隐私条款'); return false;
+            } else if(city == '') {
+                $('#mgs').html('提交提示：请选择收货人城市');
+                $('#upload').removeClass('hide'); return false;
+                //alert('您还未同意隐私条款'); return false;
             } else if(site == '') {
                 $('#mgs').html('提交提示：请填写收货人地址');
                 $('#upload').removeClass('hide'); return false;
