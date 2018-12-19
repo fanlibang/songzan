@@ -6,9 +6,12 @@
             <div class="form auto">
                 <div class="referee-tit flex center justify">
                     <span>个人信息</span>
+                    <!--
                     <?php if(empty($card_number) || empty($driver_number))  { ?>
                         <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('center/wszl')" href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
                     <?php }?>
+                    -->
+                    <div class="perfect"><i><img src="<?= STATIC_ASSETS ?>images/icon-5.png" alt=""></i><a onclick="cc('center/wszl')" href="<?=site_url('User', 'updateInfo', array('id' => $id))?>">完善信息</a></div>
                 </div>
                 <div class="form-list flex center">
                     <label>姓名：</label>

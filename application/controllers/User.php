@@ -82,6 +82,9 @@ class User extends Base
             $data['token'] = $token;
             $data['source'] = get_cookie('source') ? get_cookie('source') : 0;
             $data['created_at'] = NOW_DATE_TIME;
+            if(!empty($info['driver_number']) && !empty($info['card_number'])) {
+                $data['status'] = 1;
+            }
             $uid = $this->Users->addUserOpenId($data);
             $stepModel = new \Xy\Application\Models\StepModel();
             $inviteCode = $stepModel->genId('invite_code');
@@ -162,6 +165,7 @@ class User extends Base
             $data['driver_json'] = $info['driver_json'];
             $data['card_number'] = $info['card_number'];
             $data['card_json'] = $info['card_json'];
+            $data['status'] = 1;
             $this->Users->editUserUid($id, $data);
             $this->AjaxReturn('200', '完善资料成功', $url);exit;
         } else {
