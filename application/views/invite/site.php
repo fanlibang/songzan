@@ -82,6 +82,20 @@
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                因礼品库存波动，请及时提交收货地址，提交成功后，才可视为礼品选择成功。
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+            </div>
+        </div>
+        <!--<div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
+    </div>
+</div>
+
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {

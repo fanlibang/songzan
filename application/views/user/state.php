@@ -90,13 +90,13 @@
                 <li id="sh">
                     <div class="flex center">
                         <i>02</i>
-                        <span>审核成功</span>
+                        <span>已上传购车凭证</span>
                     </div>
                 </li>
                 <li id="wc">
                     <div class="flex center">
                         <i>03</i>
-                        <span>已完成</span>
+                        <span>审核成功</span>
                     </div>
                 </li>
             </ul>
@@ -172,6 +172,38 @@
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
+<?php if($success_count < 0) { ?>
+    <div class="bomb-wrapper flex center jc">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word">
+                    提醒您的好友尽快上传购车凭证，您现在还暂时没有推荐购成功。
+                </div>
+                <div class="form-push">
+                    <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+                </div>
+            </div>
+            <!--<div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
+        </div>
+    </div>
+<?php } else if($success_count == 1){ ?>
+    <div class="bomb-wrapper flex center jc">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word">
+                    您已成功获得一个礼盒，还有一次获得礼盒的机会哦。快去提醒您的其他亲友来参加推荐购活动吧~
+                </div>
+                <div class="form-push">
+                    <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+                </div>
+            </div>
+            <!--<div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
+        </div>
+    </div>
+<?php } ?>
+
+
 
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">

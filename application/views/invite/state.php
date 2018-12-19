@@ -34,16 +34,16 @@
                         <div class="flex center">
                             <i>04</i>
                             <?php if($state == 3 && $status == 3 && $reward_count < 1)  { ?>
-                                <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >选择礼遇</a>
+                                <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >专属礼遇</a>
                             <?php } else { ?>
-                                <a href="javascript:;">选择礼遇</a>
+                                <a href="javascript:;">专属礼遇</a>
                             <?php } ?>
                         </div>
                     </li>
                     <li <?php if($reward_count > 0)  { echo 'class="active"'; } ?>>
                         <div class="flex center">
                             <i>05</i>
-                            <span>已完成</span>
+                            <span>已选择礼遇</span>
                         </div>
                     </li>
                 </ul>

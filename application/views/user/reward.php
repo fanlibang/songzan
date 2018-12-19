@@ -19,13 +19,13 @@
                     </div>
                     <div class="courtesy-bt">英伦绅士尊享礼盒</div>
                 </div>
-                <div class="courtesy-item <?php if($item1 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 2)) ?>">
+                <div class="courtesy-item <?php if($item2 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 2)) ?>">
                     <div class="courtesy-nr">
                         <img src="<?= STATIC_ASSETS ?>images/new-07.png" alt="">
                     </div>
                     <div class="courtesy-bt">英伦女士尊享礼盒</div>
                 </div>
-                <div class="courtesy-item special <?php if($item1 == 0) echo 'disable' ?>" url="<?= site_url('User', 'mgs') ?>">
+                <div class="courtesy-item special <?php if($item3 == 0) echo 'disable' ?>" url="<?= site_url('User', 'mgs') ?>">
                     <div class="courtesy-nr">
                         <img src="<?= STATIC_ASSETS ?>images/new-08.png" alt="">
                     </div>
