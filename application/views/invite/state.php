@@ -33,10 +33,10 @@
                     <li <?php if($reward_count > 0)   echo 'class="active"'; ?> >
                         <div class="flex center">
                             <i>04</i>
-                            <?php if($reward_count > 0)  { ?>
-                                <a href="avascript:;">选择礼遇</a>
-                            <?php } else { ?>
+                            <?php if($state == 3 && $status == 3)  { ?>
                                 <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >选择礼遇</a>
+                            <?php } else { ?>
+                                <a href="javascript:;">选择礼遇</a>
                             <?php } ?>
                         </div>
                     </li>
@@ -56,7 +56,7 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
-                资料暂未审核通过，请您重新上传购车凭证哦！<?= $state ?>
+                资料暂未审核通过，请您重新上传购车凭证哦
             </div>
             <div class="form-push">
                 <input type="button" value="重新上传" url="<?= site_url('Invite', 'shopCar', array('car_id'=> $car_id)) ?>" class="btn auto " id="tj" >

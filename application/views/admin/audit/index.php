@@ -49,6 +49,9 @@
             <th>ID</th>
             <th>姓名</th>
             <th>手机号</th>
+            <th>推荐人id</th>
+            <th>推荐人姓名</th>
+            <th>推荐人手机号</th>
             <th>状态</th>
             <th>创建时间</th>
             <th style="width: 120px">操作</th>
@@ -68,6 +71,9 @@
                     <td><?php echo $v['id']; ?></td>
                     <td><?php echo $v['name']; ?></td>
                     <td><?php echo $v['phone']; ?></td>
+                    <td><?php echo $v['invite_id']; ?></td>
+                    <td><?php echo $v['invite_name']; ?></td>
+                    <td><?php echo $v['invite_phone']; ?></td>
                     <td><?php echo $v['state_name']; ?></td>
                     <td><?php echo $v['create_dt']; ?></td>
                     <td><a class="btnView" href="<?php echo site_url($controller, 'carInfo', array('uid' => $v['uid'])); ?>" target="dialog" mask="true"  height="800" width="960" rel="car_info" title="查看">查看</a></td>

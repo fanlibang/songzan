@@ -243,6 +243,8 @@ class User extends Base
             if($v['state'] == 3 && $result['status'] == 3) {
                 $success += 1;
                 $v['state'] = 3;
+            } else {
+                $v['state'] = 1;
             }
             $v['reward_count']     = $rewardCount;
         }

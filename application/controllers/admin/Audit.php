@@ -60,9 +60,14 @@ class Audit extends Base
         $data = $this->Car->getPage($page, $page_list, $where, 'id desc');
 
         foreach ($data['list'] as &$value) {
-            $masterUidInfo = $this->User->getUserInfoByid($value['uid']);
-            $value['name'] = $masterUidInfo['name'];
-            $value['phone'] = $masterUidInfo['phone'];
+            $Info = $this->User->getUserInfoByid($value['uid']);
+            $value['name'] = $Info['name'];
+            $value['phone'] = $Info['phone'];
+            $invite_id = $Info['master_uid'];
+            $inviteInfo = $this->User->getUserInfoByid($invite_id);
+            $value['invite_name'] = $inviteInfo['name'];
+            $value['invite_phone'] = $inviteInfo['phone'];
+            $value['invite_id'] = $invite_id;
             if($value['state'] == 1) {
                 $value['state_name'] = '审核中';
             }  elseif($value['state'] == 2) {
@@ -73,13 +78,16 @@ class Audit extends Base
         }
 
         if ($export) {
-            $newLists = array('用户id', '姓名', '手机号', '身份证地址', '购车发票', '其他资料', '状态', '创建时间');
+            $newLists = array('用户id', '姓名', '手机号', '推荐人id', '推荐人姓名', '推荐人手机号', '身份证地址', '购车发票', '其他资料', '状态', '创建时间');
             $newList[] = $newLists;
             foreach ($data['list'] as $ke => $va) {
                 $newList[] = [
                     'uid'              => $va['uid'],
                     'name'             => $va['name'],
                     'phone'            => $va['phone'],
+                    'invite_id'        => $va['invite_id'],
+                    'invite_name'      => $va['invite_name'],
+                    'invite_phone'     => $va['invite_phone'],
                     'card_front'       => $va['card_front'],
                     'car_img'          => $va['car_img'],
                     'other'            => $va['other'],
