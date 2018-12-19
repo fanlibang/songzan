@@ -40,11 +40,13 @@
                 <div class="referee-tit flex center justify">
                     <span>活动信息</span>
                 </div>
-                <div class="form-list flex center opt state rotate">
+                <div class="form-list flex center opt rotate">
                     <label>被推荐人状态：</label>
+                    <a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>">
                     <div class="form-box">
                         <span><a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>"></a></span>
                     </div>
+                    </a>
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>邀请海报：</label>
@@ -98,9 +100,9 @@
                 <dt >&nbsp;</dt>
                 <dt>四、礼品内容</dt>
                 <dd>通过审核后，推荐人与被推荐人可分别获得一份至臻礼包，具体内容和使用范围详见礼品细则。</dd>
-                <dd>以下礼遇可二选一，若车辆不符合使用整车尊护4年/13万公里延保服务条件，活动方有权更改礼包选项，敬请理解。礼包数量有限，先到先得（以提交完整资料的时间顺序为准）：</dd>
+                <dd>以下礼遇可二选一，若车辆不符合使用整车尊享4年/13万公里延保服务条件，活动方有权更改礼包选项，敬请理解。礼包数量有限，先到先得（以提交完整资料的时间顺序为准）：</dd>
                 <dd>1、Burberry礼盒；</dd>
-                <dd>2、养车无忧服务（整车尊护4年/13万公里延保服务）。</dd>
+                <dd>2、养车无忧服务（整车尊享4年/13万公里延保服务）。</dd>
             </dl>
         </div>
         <div class="form-push">

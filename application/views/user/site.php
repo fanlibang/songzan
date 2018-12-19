@@ -113,12 +113,13 @@
             }
             $("#province").change(function(){
                 var now_province=$(this).val();
-                console.log(now_province);
-                $("#citys").html('请选择城市');
                 $("#city").html('');
                 for(var k in city_obj[now_province])
                 {
                     var now_city=city_obj[now_province][k];
+                    if(k == 0) {
+                        $("#citys").html(now_city);
+                    }
                     $("#city").append('<option value="'+now_city+'">'+now_city+'</option>');
                 }
             });

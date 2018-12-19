@@ -32,7 +32,7 @@
                 <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
-                        <input type="text" id="card_number" disabled="true" value="<?= $card_number ?>" class="input-text">
+                        <input type="text" id="card_number" disabled="true" placeholder="请先上传图片" value="<?= $card_number ?>" class="input-text">
                         <input type="hidden" id="card_json" value="<?= $card_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
