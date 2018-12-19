@@ -32,9 +32,9 @@
                     <div class="form-list flex center opt">
                         <label>城市：</label>
                         <div class="form-box">
-                            <span></span>
+                            <span id="citys"></span>
                             <select name="city" id="city">
-                                <option value="">请选择城市</option>
+                                <!--<option value="">请选择城市</option>-->
                             </select>
                         </div>
                     </div>
@@ -100,7 +100,8 @@
             $("#province").change(function(){
                 var now_province=$(this).val();
                 console.log(now_province);
-                $("#city").html('<option value="">请选择城市</option>');
+                //$("#city").html('<option value="">请选择城市</option>');
+                $("#citys").html('请选择城市');
                 for(var k in city_obj[now_province])
                 {
                     var now_city=city_obj[now_province][k];
