@@ -74,7 +74,7 @@
                 <input type="button" value="我 知 道 了" class="btn auto " id="tj" >
             </div>
         </div>
-        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+       <!-- <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
     </div>
 </div>
 
