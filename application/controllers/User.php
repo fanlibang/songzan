@@ -313,8 +313,14 @@ class User extends Base
             }
 
             $info['site_name'] = trim($info['site_name']);
-            if(empty($info['name'])) {
+            if(empty($info['site_name'])) {
                 $this->AjaxReturn('401', '用户名不能为空');
+                exit;
+            }
+
+            $info['site'] = trim($info['site']);
+            if(empty($info['site'])) {
+                $this->AjaxReturn('401', '收货地址不能为空');
                 exit;
             }
 
