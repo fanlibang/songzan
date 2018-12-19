@@ -24,7 +24,7 @@
 
                         </div>
                     </li>
-                    <li <?php if($state == 3)  { echo 'class="active"'; } ?> >
+                    <li <?php if($state == 3 && $status == 3)  { echo 'class="active"'; } ?> >
                         <div class="flex center">
                             <i>03</i>
                             <span>审核成功</span>

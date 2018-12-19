@@ -5,7 +5,7 @@
     <input type="hidden" name="str_dt" value="<?php echo $str_dt; ?>" />
     <input type="hidden" name="iphone" value="<?php echo $iphone; ?>" />
     <input type="hidden" name="end_dt" value="<?php echo $end_dt; ?>" />
-    <input type="hidden" name="state" value="<?php echo $state; ?>" />
+    <input type="hidden" name="state" value="<?php echo $status; ?>" />
 </form>
 
 
@@ -23,11 +23,11 @@
                         手机号：<input type="text" name="iphone" value="<?php echo $iphone; ?>"/>
                     </td>
                     <td>
-                        <select class="combox" name="state">
+                        <select class="combox" name="status">
                             <option value="">状态</option>
-                            <option value="1" <?= isset($state) && $state == 1 ? 'selected' : ''; ?> >审核中</option>
-                            <option value="2" <?= isset($state) && $state == 2 ? 'selected' : ''; ?> >审核失败</option>
-                            <option value="3" <?= isset($state) && $state == 3 ? 'selected' : ''; ?> >审核通过</option>
+                            <option value="1" <?= isset($status) && $status == 1 ? 'selected' : ''; ?> >审核中</option>
+                            <option value="2" <?= isset($status) && $status == 2 ? 'selected' : ''; ?> >审核失败</option>
+                            <option value="3" <?= isset($status) && $status == 3 ? 'selected' : ''; ?> >审核通过</option>
                         </select>
                     </td>
                     <td><div class="button"><div class="buttonContent"><button type="submit">搜索</button></div></div></td>
@@ -49,6 +49,8 @@
             <th>ID</th>
             <th>姓名</th>
             <th>手机号</th>
+            <th>身份证</th>
+            <th>行驶证</th>
             <th>状态</th>
             <th>创建时间</th>
             <th style="width: 120px">操作</th>
@@ -68,9 +70,16 @@
                     <td><?php echo $v['id']; ?></td>
                     <td><?php echo $v['name']; ?></td>
                     <td><?php echo $v['phone']; ?></td>
+                    <td><?php echo $v['card_number']; ?></td>
+                    <td><?php echo $v['driver_number']; ?></td>
                     <td><?php echo $v['state_name']; ?></td>
-                    <td><?php echo $v['create_dt']; ?></td>
-                    <td><a class="btnView" href="<?php echo site_url($controller, 'carInfo', array('uid' => $v['uid'])); ?>" target="dialog" mask="true"  height="800" width="960" rel="car_info" title="查看">查看</a></td>
+                    <td><?php echo $v['created_at']; ?></td>
+                    <td>
+                        <a style="color: <?php echo $v['status'] == 3 ? 'blue' : 'red'; ?>" target="ajaxTodo"
+                           href="<?php echo site_url($controller, 'updateStatus', array('uid' => $v['id'], 'status'=>($v['status'] == 3 ? '2' : '3'))); ?>"
+                           title="确定要<?php echo $v['status'] == 3 ? '审核失败' : '审核通过'; ?>吗?"><?php echo ($v['status']
+                            == 3 ? '审核失败' : '审核通过'); ?></a>
+                    </td>
                     <!--<td>
                         <a class="btnView" href="<?php echo site_url($controller, 'articleView', array('id' => $v['id'])); ?>" target="dialog" mask="true"  height="650" width="960" rel="article_view" title="查看">查看</a>
                         <a class="btnDel" href="<?php echo site_url($controller, 'del', array('id' => $v['id'])); ?>" target="ajaxTodo" title="确定要删除吗?">删除</a>

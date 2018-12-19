@@ -8,7 +8,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 include_once 'Base.php';
 
-class Audit extends Base
+class UserAudit extends Base
 {
     /**
      * 初始化
@@ -36,8 +36,8 @@ class Audit extends Base
         $str_dt = $str_dt ? $str_dt : null;
         $end_dt = $this->input->get_post('end_dt', true);
         $end_dt = $end_dt ? $end_dt : null;
-        $state = $this->input->get_post('state', true);
-        $state = $state ? $state : '';
+        $status = $this->input->get_post('status', true);
+        $status = $status ? $status : '';
         $export = $this->input->get_post('export', '');
 
         $where = array();
@@ -54,9 +54,14 @@ class Audit extends Base
             $where['created_at <='] = $end_dt;
         }
 
-        if ($state) {
-            $where['status ='] = 2;
+        if ($status) {
+            $where['status ='] = $status;
+        } else {
+            $where['status >'] = 0;
         }
+
+        $where['master_uid <'] = 1;
+
         $data = $this->User->getPage($page, $page_list, $where, 'id desc');
 
         foreach ($data['list'] as &$value) {
@@ -77,9 +82,8 @@ class Audit extends Base
                     'uid'              => $va['uid'],
                     'name'             => $va['name'],
                     'phone'            => $va['phone'],
-                    'card_front'       => $va['card_front'],
-                    'car_img'          => $va['car_img'],
-                    'other'            => $va['other'],
+                    'card_front'       => $va['card_number'],
+                    'car_img'          => $va['driver_number'],
                     'state_name'       => $va['state_name'],
                     'create_dt'        => $va['created_at'],
                 ];
@@ -91,7 +95,7 @@ class Audit extends Base
         $data['iphone'] = $iphone;
         $data['str_dt'] = $str_dt;
         $data['end_dt'] = $end_dt;
-        $data['status']  = $state;
+        $data['status']  = $status;
         $this->display($data);
     }
 
@@ -114,5 +118,14 @@ class Audit extends Base
             $data = $this->Car->getCarInfoByUid($uid);
             $this->display($data);
         }
+    }
+
+    //审核精选状态
+    public function updateStatus()
+    {
+        $uid    = $this->input->get_post('uid');
+        $status = $this->input->get_post('status');
+        $this->User->editUserId($uid, ['status' => $status]);
+        $this->dwzAjaxReturn(self::AJ_RET_SUCC, '修改成功', '', null, 'no');
     }
 }

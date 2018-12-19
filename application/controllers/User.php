@@ -240,7 +240,7 @@ class User extends Base
             $carInfo        = $shopCarInfo->getCarInfoByUid($v['id']);
             $rewardCount    = $Reward->getRewardInfoCount($v['id']);
             $v['state']            = isset($carInfo['state']) ? $carInfo['state'] : '';
-            if($v['state'] == 3) {
+            if($v['state'] == 3 && $result['status'] == 3) {
                 $success += 1;
             }
             $v['reward_count']     = $rewardCount;

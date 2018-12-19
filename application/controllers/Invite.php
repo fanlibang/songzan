@@ -264,8 +264,10 @@ class Invite extends Base
         $Reward         = new \Xy\Application\Models\RewardModel();
         $carInfo        = $shopCarInfo->getCarInfoByUid($result['id']);
         $rewardCount    = $Reward->getRewardInfoCount($result['id']);
+        $invite_info    = $this->Users->getUserInfoByid($result['master_uid']);
         $result['car_id']           = isset($carInfo['id']) ? $carInfo['id'] : '';
         $result['state']            = isset($carInfo['state']) ? $carInfo['state'] : '';
+        $result['status']            = isset($invite_info['status']) ? $invite_info['status'] : '';
         $result['reward_count']     = $rewardCount;
         $this->displayMain($result);
     }
