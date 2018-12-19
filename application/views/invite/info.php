@@ -39,11 +39,13 @@
                 <div class="referee-tit flex center justify">
                     <span>活动信息</span>
                 </div>
-                <div class="form-list flex center opt state rotate">
+                <div class="form-list flex center opt rotate">
                     <label>被推荐人状态：</label>
-                    <div class="form-box">
-                        <span><a onclick="cc('info/yzc')" href="<?=site_url('Invite', 'state')?>">已注册</a></span>
-                    </div>
+                    <a onclick="cc('invite/yzc')" href="<?=site_url('Invite', 'state')?>">
+                        <div class="form-box">
+                            <span><a onclick="cc('invite/yzc')" href="<?=site_url('Invite', 'state')?>"></a></span>
+                        </div>
+                    </a>
                 </div>
                 <div class="form-list flex center">
                     <label>邀请码：</label>
