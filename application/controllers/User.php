@@ -239,9 +239,10 @@ class User extends Base
         foreach($info as &$v) {
             $carInfo        = $shopCarInfo->getCarInfoByUid($v['id']);
             $rewardCount    = $Reward->getRewardInfoCount($v['id']);
-            $v['state']            = isset($carInfo['state']) ? $carInfo['state'] : '';
+            $v['state']     = isset($carInfo['state']) ? $carInfo['state'] : '';
             if($v['state'] == 3 && $result['status'] == 3) {
                 $success += 1;
+                $v['state'] = 3;
             }
             $v['reward_count']     = $rewardCount;
         }
