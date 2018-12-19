@@ -33,7 +33,7 @@
                     <li <?php if($reward_count > 0)   echo 'class="active"'; ?> >
                         <div class="flex center">
                             <i>04</i>
-                            <?php if($state == 3 && $status == 3)  { ?>
+                            <?php if($state == 3 && $status == 3 && $reward_count < 1)  { ?>
                                 <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >选择礼遇</a>
                             <?php } else { ?>
                                 <a href="javascript:;">选择礼遇</a>
