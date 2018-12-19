@@ -43,7 +43,7 @@ class Audit extends Base
         $where = array();
         if (!empty($iphone)) {
             $user_info = $this->User->getUserInfoByPhone($iphone);
-            $where['id'] = $user_info['id'];
+            $where['uid'] = $user_info['id'];
         }
 
         if ($str_dt) {
