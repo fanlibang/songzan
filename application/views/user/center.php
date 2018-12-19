@@ -42,9 +42,9 @@
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>被推荐人状态：</label>
-                    <a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>">
+                    <a onclick="cc('center/yzc')" href="<?=site_url('User', 'state')?>">
                     <div class="form-box">
-                        <span><a onclick="cc('info/yzc')" href="<?=site_url('User', 'state')?>"></a></span>
+                        <span><a onclick="cc('center/yzc')" href="<?=site_url('User', 'state')?>"></a></span>
                     </div>
                     </a>
                 </div>

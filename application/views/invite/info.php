@@ -41,9 +41,9 @@
                 </div>
                 <div class="form-list flex center opt rotate">
                     <label>被推荐人状态：</label>
-                    <a onclick="cc('invite/yzc')" href="<?=site_url('Invite', 'state')?>">
+                    <a onclick="cc('info/yzc')" href="<?=site_url('Invite', 'state')?>">
                         <div class="form-box">
-                            <span><a onclick="cc('invite/yzc')" href="<?=site_url('Invite', 'state')?>"></a></span>
+                            <span><a onclick="cc('info/yzc')" href="<?=site_url('Invite', 'state')?>"></a></span>
                         </div>
                     </a>
                 </div>
