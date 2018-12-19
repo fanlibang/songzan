@@ -25,6 +25,12 @@ class ItemModel extends BaseModel
         return $ret;
     }
 
+    public function getItemAllInfo()
+    {
+        $ret = $this->getAll();
+        return $ret;
+    }
+
     public function editNum($id, $data)
     {
         $where['id'] = $id;

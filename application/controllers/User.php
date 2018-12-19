@@ -270,7 +270,11 @@ class User extends Base
             header('Location:' . $url);
             exit;
         }
-
+        $Item         = new \Xy\Application\Models\ItemModel();
+        $item = $Item->getItemAllInfo();
+        $result['item1'] = $item[0]['num'];
+        $result['item2'] = $item[1]['num'];
+        $result['item3'] = $item[2]['num'];
         $this->displayMain($result);
     }
 
