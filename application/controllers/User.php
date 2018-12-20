@@ -251,8 +251,14 @@ class User extends Base
         $result['invite_info']   = $info;
         $result['success_count'] = $success;
         $result['reward_count']  = $Reward->getCarInfoCount($result['id']);
+        $reward_info = $Reward->getAllUserRewardInfo($result['id']);
+        $result['reward_count']  = count($reward_info);
         if($result['reward_count'] > 0) {
-            $result['reward_user'] = $this->Users->getInviteSuccByUid($result['id']);
+            $Item         = new \Xy\Application\Models\ItemModel();
+            foreach($reward_info as $k => $v){
+                $info = $Item->getItemInfoByType($v['type']);
+                $result['reward_user'][$k]['name'] = $info['name'];
+            }
         }
         $this->displayMain($result);
     }
@@ -349,6 +355,8 @@ class User extends Base
                 } else {
                     $title = '您已成功提交收货信息，工作人员将在14个工作日之内（新年期间可能延迟）寄送礼品。如有疑问，可致电400-820-0187。';
                 }
+                $sql = 'UPDATE ownerreferral_201812_items SET num = `num` - 1 WHERE item_id = '.$type;
+                $Reward->execute($sql);
                 $this->AjaxReturn('200', $title, site_url('User', 'state'));
             } else {
                 $this->AjaxReturn('404', '选择礼物失败');

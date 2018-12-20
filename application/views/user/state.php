@@ -42,8 +42,8 @@
                                 </li>
                             <?php } else { ?>
                                 <li>
-                                    <div class="package-pic flex end jc">
-                                        <img src="<?= STATIC_ASSETS ?>images/new-13.png" alt="">
+                                    <div class="package-pic flex end jc" >
+                                        <a href="javascript:;" class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } ?>
@@ -63,8 +63,8 @@
                                 </li>
                             <?php } else { ?>
                                 <li>
-                                    <div class="package-pic flex end jc">
-                                        <img src="<?= STATIC_ASSETS ?>images/new-13.png" alt="">
+                                    <div class="package-pic flex end jc reward" id="reward">
+                                        <a class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } ?>
@@ -173,8 +173,8 @@
     </div>
 </div>
 
-<?php if($success_count < 0) { ?>
-    <div class="bomb-wrapper flex center jc">
+<?php if($success_count < 1) { ?>
+    <div class="bomb-wrapper flex center jc hide" id="hz" >
         <div class="bomb-content">
             <div class="hint auto">
                 <div class="hint-word">
@@ -188,7 +188,7 @@
         </div>
     </div>
 <?php } else if($success_count == 1){ ?>
-    <div class="bomb-wrapper flex center jc">
+    <div class="bomb-wrapper flex center jc hide" id="hz">
         <div class="bomb-content">
             <div class="hint auto">
                 <div class="hint-word">
@@ -232,5 +232,9 @@
     $('#tj').click(function(){
         var url = $(this).attr('url');
         window.location.href=url;
+    });
+
+    $('.reward').click(function(){
+        $('#hz').removeClass('hide');
     });
 </script>

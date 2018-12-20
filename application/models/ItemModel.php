@@ -25,6 +25,13 @@ class ItemModel extends BaseModel
         return $ret;
     }
 
+    public function getItemInfoByType($type)
+    {
+        $where['id'] = $type;
+        $ret = $this->getOne($where);
+        return $ret;
+    }
+
     public function getItemAllInfo()
     {
         $ret = $this->getAll();

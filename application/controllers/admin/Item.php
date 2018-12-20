@@ -33,7 +33,7 @@ class Item extends Base
         $data = $this->Item->getPage($page, $page_list, $where, 'id');
 
         foreach ($data['list'] as &$value) {
-            $value['name'] = '礼品'.$value['item_id'];
+            $value['title'] = '礼品'.$value['item_id'];
         }
         $this->display($data);
     }

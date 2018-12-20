@@ -416,6 +416,8 @@ class Invite extends Base
                 } else {
                     $title = '您已成功提交收货信息，工作人员将在14个工作日之内（新年期间可能延迟）寄送礼品。如有疑问，可致电400-820-0187。';
                 }
+                $sql = 'UPDATE ownerreferral_201812_items SET num = `num` - 1 WHERE item_id = '.$type;
+                $Reward->execute($sql);
                 $this->AjaxReturn('200', $title, site_url('Invite', 'state'));
             } else {
                 $this->AjaxReturn('404', '选择礼物失败');

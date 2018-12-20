@@ -17,7 +17,7 @@
                         <div class="flex center">
                             <i>02</i>
                             <?php if($state == 3 || $state == 1)  { ?>
-                                <a href="javascript:;" >上传购车凭证</a>
+                                <a style="text-decoration:none" href="javascript:;">上传购车凭证</a>
                             <?php } else { ?>
                                 <a onclick="cc('state/sczl')" href="<?=site_url('Invite', 'shopCar', array('car_id'=> $car_id))?>" >上传购车凭证</a>
                             <?php } ?>
@@ -34,9 +34,9 @@
                         <div class="flex center">
                             <i>04</i>
                             <?php if($state == 3 && $status == 3 && $reward_count < 1)  { ?>
-                                <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >专属礼遇</a>
+                                <a onclick="cc('state/xzlp')" href="<?=site_url('Invite', 'reward')?>" >选择专属礼遇</a>
                             <?php } else { ?>
-                                <a href="javascript:;">专属礼遇</a>
+                                <a style="text-decoration:none" href="javascript:;">选择专属礼遇</a>
                             <?php } ?>
                         </div>
                     </li>

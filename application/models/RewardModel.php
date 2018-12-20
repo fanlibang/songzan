@@ -39,6 +39,13 @@ class RewardModel extends BaseModel
         return $ret;
     }
 
+    public function getAllUserRewardInfo($uid)
+    {
+        $where['uid'] = $uid;
+        $ret = $this->getAll($where);
+        return $ret ? $ret : [];
+    }
+
     public function getAllRewardInfo()
     {
         $ret = $this->getAll();

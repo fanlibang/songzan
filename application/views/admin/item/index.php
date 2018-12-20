@@ -51,6 +51,7 @@
         <tr>
             <th>ID</th>
             <th>名称</th>
+            <th>物品</th>
             <th>库存数</th>
             <th style="width: 120px">操作</th>
         </tr>
@@ -67,6 +68,7 @@
                 ?>
                 <tr target="sid" rel="<?php echo $v['id']; ?>">
                     <td><?php echo $v['id']; ?></td>
+                    <td><?php echo $v['title']; ?></td>
                     <td><?php echo $v['name']; ?></td>
                     <td><?php echo $v['num']; ?></td>
                     <td><a class="btnView" href="<?php echo site_url($controller, 'editNum', array('id' => $v['id'])); ?>" target="dialog" mask="true"  height="300" width="400" rel="car_info" title="修改">修改</a></td>
