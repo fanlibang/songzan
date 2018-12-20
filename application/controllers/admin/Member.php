@@ -209,6 +209,33 @@ class Member extends Base
             case 'info/yzc':
                 $name = '被推荐人个人中心已注册';
                 break;
+            case 'state/hdgz':
+                $name = '推荐状态活动规则';
+                break;
+            case 'state/lhdj':
+                $name = '推荐人礼盒点击';
+                break;
+            case 'reward/tj':
+                $name = '礼盒页提交';
+                break;
+            case 'mgs/tj':
+                $name = '礼盒页提交';
+                break;
+            case 'site/tj':
+                $name = '礼盒页提交';
+                break;
+            case 'state/sczl':
+                $name = '上传购车凭证按钮';
+                break;
+            case 'state/xzlp':
+                $name = '选择礼遇';
+                break;
+            case 'image/yszc':
+                $name = '上传购车页隐私';
+                break;
+            case 'image/tj':
+                $name = '上传购车页提交';
+                break;
             default:
                 $name = '';
         }
