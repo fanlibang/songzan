@@ -28,7 +28,7 @@ class Source extends Base
     {
 
         $export     = $this->input->get_post('export', '');
-        $view = array('KV页' => 'Index/index', '推荐人填写信息页' => 'User/referee', '完善推荐人填写信息页' => 'User/updateInfo', '推荐人主页' => 'User/updateInfo', '推荐人海报页' => 'Invite/share', '被推荐人填写信息页' => 'Invite/index', '被推荐人主页' => 'Invite/info');
+        $view = array('KV页' => 'Index/index', '推荐人填写信息页' => 'User/referee', '完善推荐人填写信息页' => 'User/updateInfo', '推荐人主页' => 'User/updateInfo', '推荐人进度页' => 'User/state', '推荐人海报页' => 'Invite/share', '被推荐人填写信息页' => 'Invite/index', '被推荐人主页' => 'Invite/info', '被推荐人进度页' => 'Invite/state', '上传购车图片页' => 'Invite/state', '选择奖励页' => 'reward', '查看延保条款页' => 'mgs', '填写物流信息页' => 'site');
         $info = $this->Source->getAllSource();
         $arr = [];
         foreach($info as $k => $v) {
@@ -38,7 +38,11 @@ class Source extends Base
             $arr[$k]['type'] = $v['type'];
             foreach ($view as $ke => $va) {
                 $url = '/dev/'.$va;
-                $sql = "select count(*) as pv from ownerreferral_201812_view_logs where url = '{$url}' and source = '{$source}'";
+                if($va == 'reward' || $va == 'mgs'|| $va == 'site') {
+                    $sql = "select count(*) as pv from ownerreferral_201812_view_logs where url like '%$url' and source = '{$source}'";
+                } else {
+                    $sql = "select count(*) as pv from ownerreferral_201812_view_logs where url = '{$url}' and source = '{$source}'";
+                }
                 $res = $this->Source->execute($sql);
                 $arr[$k]['view'][$ke]['pv'] = $res ? $res[0]['pv'] : 0;
                 if($ke == 'KV页' || $ke == '推荐人填写信息页' || $ke == '被推荐人填写信息页') {
