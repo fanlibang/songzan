@@ -4,7 +4,7 @@
         <div class="new-inner">
             <div class="new-title ta-c">
                 我的推荐状态
-                <div class="actrule gz">活动规则</div>
+                <div class="actrule gz" onclick="cc('state/hdgz')" >活动规则</div>
             </div>
             <div class="state">
                 <div class="state-item">
@@ -37,13 +37,13 @@
                             <?php } elseif($success_count >= 1) { ?>
                                 <li>
                                     <div class="package-pic flex end jc">
-                                        <a href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
+                                        <a onclick="cc('state/lhdj')" href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } else { ?>
                                 <li>
                                     <div class="package-pic flex end jc" >
-                                        <a href="javascript:;" class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
+                                        <a onclick="cc('state/lhdj')" href="javascript:;" class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } ?>
@@ -58,13 +58,13 @@
                             <?php } elseif($success_count == 2) { ?>
                                 <li>
                                     <div class="package-pic flex end jc">
-                                        <a href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
+                                        <a onclick="cc('state/lhdj')" href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } else { ?>
                                 <li>
                                     <div class="package-pic flex end jc reward" id="reward">
-                                        <a class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
+                                        <a onclick="cc('state/lhdj')" class="reward"><img src="<?= STATIC_ASSETS ?>images/new-13.png" alt=""></a>
                                     </div>
                                 </li>
                             <?php } ?>

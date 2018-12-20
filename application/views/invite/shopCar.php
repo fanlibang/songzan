@@ -39,7 +39,7 @@
             </div>
             <div class="flex jc">
                 <div class="form-checkbox">
-                    我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私政策</a>
+                    我已阅读并同意相关<a onclick="cc('image/yszc')" href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item">隐私政策</a>
                 </div>
             </div>
             <div class="form-push">

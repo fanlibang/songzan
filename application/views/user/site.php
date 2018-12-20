@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-push">
                     <input type="hidden" id="type" value="<?= $type; ?>" class="input-text">
-                    <input type="button" value="提  交" class="btn auto" id="sub">
+                    <input type="button" value="提  交" onclick="cc('site/tj')" class="btn auto" id="sub">
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="ta-c">
-                <input type="button" value="提  交" class="btn auto" id="sub">
+                <input type="button" value="提  交" onclick="cc('reward/tj')" class="btn auto" id="sub">
             </div>
         </div>
     </div>

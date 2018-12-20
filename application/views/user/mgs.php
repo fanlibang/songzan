@@ -148,7 +148,7 @@
                 </div>
             </div>
             <div class="footer">
-                <input type="button" value="我已同意此条款" class="btn auto" id="sub" url="<?= site_url('User', 'site', array('type'=> 3)) ?>">
+                <input type="button" value="我已同意此条款" class="btn auto" id="sub" onclick="cc('mgs/tj')" url="<?= site_url('User', 'site', array('type'=> 3)) ?>">
             </div>
         </div>
     </div>
