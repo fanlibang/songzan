@@ -170,8 +170,11 @@ class Member extends Base
             case 'center/wszl':
                 $name = '推荐人个人中心完善信息';
                 break;
-            case 'center/yqm':
+            case 'center/yzc':
                 $name = '推荐人个人中心已注册';
+                break;
+            case 'center/yqm':
+                $name = '推荐人个人中心邀请码';
                 break;
             case 'user/btjr':
                 $name = '推荐人个人中心被推荐人状态';
