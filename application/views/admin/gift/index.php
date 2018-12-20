@@ -41,6 +41,7 @@
             <th>用户id</th>
             <th>姓名</th>
             <th>手机号</th>
+            <th>礼品名称</th>
             <th>收货人姓名</th>
             <th>收货人手机</th>
             <th>省份</th>
@@ -62,6 +63,7 @@
                     <td><?php echo $v['uid']; ?></td>
                     <td><?php echo $v['name']; ?></td>
                     <td><?php echo $v['phone']; ?></td>
+                    <td><?php echo $v['title']; ?></td>
                     <td><?php echo $v['site_name']; ?></td>
                     <td><?php echo $v['site_phone']; ?></td>
                     <td><?php echo $v['province']; ?></td>
