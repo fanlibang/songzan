@@ -64,6 +64,19 @@
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc hide" id="image">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="mgs">
+                上传提示：图片上传中请耐心等待
+            </div>
+            <div class="form-push">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
@@ -87,9 +100,11 @@
     $(document).ready(function(){
         $("#card_target").load(function(){
             var data = $(window.frames['card_target'].document.body).html();
+            $("#card_front").attr('src', '');
             if(data != null){
                 $("#card_front").attr('src', data);
                 $("#card_front").attr('height', '155px');
+                $("#image").addClass('hide');
                 return false;
             }
         });
@@ -114,7 +129,7 @@
             }
         });
         $("#card_file").change(function(){
-            if($("#card_file").val() != '') $("#cart_form").submit();
+            if($("#card_file").val() != '') $("#image").removeClass('hide'); $("#cart_form").submit();
         });
 
         $("#car_file").change(function(){
