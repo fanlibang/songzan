@@ -217,10 +217,10 @@
             if($(this).hasClass('on')){
                 var state        = $(this).attr('state');
                 var reward        = $(this).attr('reward');
-                if(state == 3) {
+                if(state > 0) {
                     $("#sh").addClass('active');
                 }
-                if(reward > 0) {
+                if(state == 3) {
                     $("#wc").addClass('active');
                 }
                 $('#progress').removeClass('hide');
