@@ -361,9 +361,9 @@ class User extends Base
             $res = $Reward->addUserReward($data);
             if($res) {
                 if($type == 3) {
-                    $title = '您已选择养车无忧尊享礼包，工作人员将在10个工作日之内联系您。如有疑问，可致电400-820-0187。';
+                    $title = '您已选择延保服务，工作人员将在10个工作日之内联系您确认延保服务具体事宜。如有疑问，可致电400-820-0187。';
                 } else {
-                    $title = '您已成功提交收货信息，工作人员将在14个工作日之内（新年期间可能延迟）寄送礼品。如有疑问，可致电400-820-0187。';
+                    $title = '您已成功提交收货信息，工作人员将在14个工作日之内（春节期间可能延迟哦）寄送礼品。如有疑问，可致电400-820-0187。';
                 }
                 $sql = 'UPDATE ownerreferral_201812_items SET num = `num` - 1 WHERE item_id = '.$type;
                 $Reward->execute($sql);
