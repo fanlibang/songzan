@@ -219,9 +219,13 @@
                 var reward        = $(this).attr('reward');
                 if(state > 0) {
                     $("#sh").addClass('active');
+                } else {
+                    $("#sh").removeClass('active');
                 }
                 if(state == 3) {
                     $("#wc").addClass('active');
+                } else {
+                    $("#wc").removeClass('active');
                 }
                 $('#progress').removeClass('hide');
             }

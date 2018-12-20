@@ -236,18 +236,20 @@ class User extends Base
         $shopCarInfo    = new \Xy\Application\Models\ShopCarModel();
         $Reward         = new \Xy\Application\Models\RewardModel();
         $success = 0;
-        foreach($info as &$v) {
+        foreach($info as $k => $v) {
             $carInfo        = $shopCarInfo->getCarInfoByUid($v['id']);
             $rewardCount    = $Reward->getRewardInfoCount($v['id']);
-            $v['state']     = isset($carInfo['state']) ? $carInfo['state'] : '';
-            if($v['state'] == 3 && $result['status'] == 3) {
+            $state          = isset($carInfo['state']) ? $carInfo['state'] : '';
+            if($state == 3 && $result['status'] == 3) {
                 $success += 1;
-                $v['state'] = 3;
+                $info[$k]['state'] = 3;
             } else {
-                $v['state'] = 1;
+                $info[$k]['state'] = $state;
             }
-            $v['reward_count']     = $rewardCount;
+            $info[$k]['reward_count']     = $rewardCount;
         }
+
+        //var_dump($info);
         $result['invite_info']   = $info;
         $result['success_count'] = $success;
         $result['reward_count']  = $Reward->getCarInfoCount($result['id']);
@@ -256,8 +258,8 @@ class User extends Base
         if($result['reward_count'] > 0) {
             $Item         = new \Xy\Application\Models\ItemModel();
             foreach($reward_info as $k => $v){
-                $info = $Item->getItemInfoByType($v['type']);
-                $result['reward_user'][$k]['name'] = $info['name'];
+                $ret = $Item->getItemInfoByType($v['type']);
+                $result['reward_user'][$k]['name'] = $ret['name'];
             }
         }
         $this->displayMain($result);
