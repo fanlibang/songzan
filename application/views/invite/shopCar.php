@@ -114,6 +114,7 @@
             if(data != null){
                 if(data != null){
                     $("#car_img").attr('src', data);
+                    $("#image").addClass('hide');
                     return false;
                 }
             }
@@ -124,6 +125,7 @@
             if(data != null){
                 if(data != null){
                     $("#other").attr('src', data);
+                    $("#image").addClass('hide');
                     return false;
                 }
             }
@@ -133,11 +135,11 @@
         });
 
         $("#car_file").change(function(){
-            if($("#car_file").val() != '') $("#car_form").submit();
+            if($("#car_file").val() != '') $("#image").removeClass('hide');$("#car_form").submit();
         });
 
         $("#other_file").change(function(){
-            if($("#other_file").val() != '') $("#other_form").submit();
+            if($("#other_file").val() != '') $("#image").removeClass('hide'); $("#other_form").submit();
         });
 
         $('#sub').click(function(){
