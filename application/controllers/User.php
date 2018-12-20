@@ -317,6 +317,11 @@ class User extends Base
         $type = $info['type'];
         if (is_ajax_post()) {
             $Reward         = new \Xy\Application\Models\RewardModel();
+            $Item           = new \Xy\Application\Models\ItemModel();
+            $res = $Item->getItemInfoByType($type);
+            if($res['num'] == 0) {
+                $this->AjaxReturn('403', '当前礼品已领完请选择其他礼品');exit;
+            }
             $rewardCount    = $Reward->getRewardInfoCount($result['id']);
             if($rewardCount > 1) {
                 $this->AjaxReturn('403', '你已经领取过奖励了');exit;
@@ -345,6 +350,9 @@ class User extends Base
             $data['type']       = $type;
             $data['uid']        = $result['id'];
             $info = $this->Users->getInviteSuccByUid($result['id']);
+            if(!isset($info[$rewardCount]['id'])) {
+                $this->AjaxReturn('403', '你已经领取过奖励了');exit;
+            }
             $data['reward_uid'] = $info[$rewardCount]['id'];
             $data['create_dt'] = NOW_DATE_TIME;
             $Reward = new \Xy\Application\Models\RewardModel();

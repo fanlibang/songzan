@@ -73,7 +73,7 @@ class Audit extends Base
             }  elseif($value['state'] == 2) {
                 $value['state_name'] = '审核失败';
             } elseif($value['state'] == 3) {
-                $value['state_name'] = '邀请成功';
+                $value['state_name'] = '审核成功';
             }
         }
 
