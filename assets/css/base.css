@@ -222,6 +222,12 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .state-list li p{color: #333; font-size: 28px;}
 .state-package li{width: 50%; text-align: center;}
 .state-package li p{color: #333; font-size: 28px; padding-top: 10px;}
-.package-pic{height: 240px;}
+.package-pic{height: 200px;}
 
 #progress .plan{padding: 50px 0 136px;}
+
+.twinkle{animation: dh1 1s alternate infinite;}
+@keyframes dh1 {
+    0%{opacity: 1}
+    100%{opacity: .4}
+}
