@@ -39,12 +39,24 @@
             <th>完善推荐人填写信息页uv</th>
             <th>推荐人主页pv</th>
             <th>推荐人主页uv</th>
+            <th>推荐人进度页pv</th>
+            <th>推荐人进度页uv</th>
             <th>推荐人海报页pv</th>
             <th>推荐人海报页uv</th>
             <th>被推荐人填写信息页pv</th>
             <th>被推荐人填写信息页uv</th>
             <th>被推荐人主页pv</th>
             <th>被推荐人主页uv</th>
+            <th>被推荐人进度页pv</th>
+            <th>被推荐人进度页uv</th>
+            <th>上传购车图片页pv</th>
+            <th>上传购车图片页uv</th>
+            <th>选择奖励页pv</th>
+            <th>选择奖励页uv</th>
+            <th>查看延保条款页pv</th>
+            <th>查看延保条款页uv</th>
+            <th>填写物流信息页pv</th>
+            <th>填写物流信息页uv</th>
             <th>推荐人数</th>
             <th>推荐人海报被扫描次数</th>
             <th>被推荐人人数</th>
