@@ -9,7 +9,7 @@
                 <div class="upload-item">
                     <div class="upload-bt">*购车人身份证</div>
                     <div class="upload-nr">
-                        <img width="254px;" height="185px;" src="<?= STATIC_ASSETS ?>images/new-03.png" alt="" id="card_front">
+                        <img width="254px;" height="155px;" src="<?= STATIC_ASSETS ?>images/new-03.png" alt="" id="card_front">
                         <form id="cart_form" method="post" action="<?php echo site_url('Publics', 'uploadImage'); ?>" target="card_target" enctype="multipart/form-data">
                             <input type="file" name="file" id="card_file">
                         </form>
@@ -103,7 +103,6 @@
             $("#card_front").attr('src', '');
             if(data != null){
                 $("#card_front").attr('src', data);
-                $("#card_front").attr('height', '155px');
                 $("#image").addClass('hide');
                 return false;
             }
