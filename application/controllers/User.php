@@ -222,7 +222,7 @@ class User extends Base
     {
         $result = $this->isLogin();
         if (!$result) {
-            $url = site_url('User', 'index');
+            $url = site_url('User', 'referee');
             header('Location:' . $url);
             exit;
         }
@@ -269,7 +269,7 @@ class User extends Base
     {
         $result = $this->isLogin();
         if (!$result) {
-            $url = site_url('User', 'index');
+            $url = site_url('User', 'referee');
             header('Location:' . $url);
             exit;
         }
@@ -290,7 +290,7 @@ class User extends Base
     {
         $result = $this->isLogin();
         if (!$result) {
-            $url = site_url('User', 'index');
+            $url = site_url('User', 'referee');
             header('Location:' . $url);
             exit;
         }
@@ -306,7 +306,7 @@ class User extends Base
     {
         $result = $this->isLogin();
         if (!$result) {
-            $url = site_url('User', 'index');
+            $url = site_url('User', 'referee');
             header('Location:' . $url);
             exit;
         }
