@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
+<div class="bomb-wrapper flex center jc invite <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
@@ -171,6 +171,10 @@
             }
         });
         $('#sub').click(function(){
+            var num = <?= $invite_count; ?>;
+            if(num >= 10) {
+                $('.invite').removeClass('hide'); return false;
+            }
             var code = $('input[name=code]').val();
             var phone = $('input[name=phone]').val();
             var name = $('input[name=name]').val();
