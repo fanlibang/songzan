@@ -244,7 +244,7 @@ class User extends Base
                 $success += 1;
                 $info[$k]['state'] = 3;
             } else {
-                $info[$k]['state'] = 1;
+                $info[$k]['state'] = $state > 0 ? 1 : 0;
             }
             $info[$k]['reward_count']     = $rewardCount;
         }
