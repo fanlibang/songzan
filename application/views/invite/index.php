@@ -1,4 +1,4 @@
-<div class="wrapper">
+﻿<div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content bg-3 ">
         <div>
@@ -60,7 +60,7 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
-                感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。
+                该推荐码已达推荐上限，建议您通过其他推荐码参与，如有疑问，可致电400-820-0187。
             </div>
             <div class="form-push">
                 <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
@@ -70,14 +70,14 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc hide" id="hint">
+<div class="bomb-wrapper flex center jc <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" >
                 您已参与过活动，请前往个人主页查看最新状态。
             </div>
             <div class="form-push">
-                <input type="button" value="个人主页" class="btn auto" id="tj" >
+                <input type="button" value="我 知 道 了" class="btn auto" id="tj" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -228,6 +228,9 @@
                     } else if(json.code == 202) {
                         window.location.href=json.forward;
                     } else if(json.code == 203) {
+                        $('#title').html(json.msg);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 301) {
                         $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
                     } else {

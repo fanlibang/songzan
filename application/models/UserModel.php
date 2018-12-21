@@ -108,4 +108,11 @@ class UserModel extends BaseModel
         $ret = $this->getAll($where, 'created_at', 2);
         return $ret;
     }
+
+    public function getUserInviteCounts($code)
+    {
+        $where['from_invite_code'] = $code;
+        $ret = $this->counts($where);
+        return $ret;
+    }
 }
