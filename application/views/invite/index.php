@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc hide" id="hint">
+<div class="bomb-wrapper flex center jc <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<div class="bomb-wrapper flex center jc <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
+<div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" >
