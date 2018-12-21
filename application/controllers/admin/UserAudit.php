@@ -128,10 +128,10 @@ class UserAudit extends Base
         $status = $this->input->get_post('status');
         $res = $this->User->editUserId($uid, ['status' => $status]);
         if($res) {
-            $reward_info = $this->Reward->getAllUserRewardInfo($uid);
-            if($reward_info > 0) {
+            $reward_info = $this->User->getInviteSuccByUid($uid);
+            if($reward_info && $status == 3) {
                 //生成短连接
-                $user_info      = $this->User->getUserInfoByid($reward_info[0]['uid']);
+                $user_info      = $this->User->getUserInfoByid($reward_info[0]['id']);
                 $invite_info    = $this->User->getUserInfoByid($uid);
                 $long_url = site_url('User', 'center');
                 $short_url = getSinaShortUrl('1555751977',$long_url);
