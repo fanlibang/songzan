@@ -117,17 +117,6 @@ class Audit extends Base
             $res = $this->Car->editUserCar($id, ['state' => $state]);
             if ($res) {
                 $this->User->editUserId($uid, ['status' => $state]);
-                //生成短连接
-                $user_info = $this->User->getUserInfoByid($uid);
-                $invite_info = $this->User->getUserInfoByid($user_info['master_uid']);
-                $long_url = site_url('User', 'center');
-                $short_url = getSinaShortUrl('1555751977',$long_url);
-                $sms_notice_obj = new SendSms();
-                $mgs[0] = $user_info['name'];
-                $mgs[1] = $short_url;
-                $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
-                $update['content'] = json_encode($ret);
-                $this->Car->editUserCar($id, $update);
                 $this->dwzAjaxReturn(200, '操作成功');
             } else {
                 $this->dwzAjaxReturn(201, '操作失败');
