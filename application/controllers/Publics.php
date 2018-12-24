@@ -96,7 +96,7 @@ class Publics extends Base
     //获取上传图片信息
     public function getImageInfo()
     {
-        $user_info = $this->isLogin()
+        $user_info = $this->isLogin();
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
