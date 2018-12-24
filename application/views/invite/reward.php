@@ -65,7 +65,7 @@
                 </dl>
             </div>
             <div class="form-push">
-                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -85,7 +85,7 @@
                 </dl>
             </div>
             <div class="form-push">
-                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
