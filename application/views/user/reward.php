@@ -99,6 +99,18 @@
         WeixinJSBridge.call('hideOptionMenu');
     });
 
+    $(function () {
+        $('.courtesy-item').on('click',function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var type = $(this).attr('type');
+            if(type == 1) {
+                $('#type1').removeClass('hide'); return false;
+            } else if(type == 2) {
+                $('#type2').removeClass('hide'); return false;
+            }
+        })
+    });
+
     //完善信息
     $('#sub').on('click',function () {
         var url        = $('.courtesy-item.active').attr('url');
