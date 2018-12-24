@@ -82,7 +82,7 @@
                             == 3 ? '审核失败' : '审核通过'); ?></a>
                     </td>
                     <td>
-                        <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="upload_info" fresh="false" title="上传信息">上传信息</a>
+                        <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('uid' => $v['id'])); ?>" target="navTab" rel="upload_info" fresh="false" title="上传信息">上传信息</a>
                     </td>
                     <!--<td>
                         <a class="btnView" href="<?php echo site_url($controller, 'articleView', array('id' => $v['id'])); ?>" target="dialog" mask="true"  height="650" width="960" rel="article_view" title="查看">查看</a>

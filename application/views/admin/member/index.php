@@ -71,7 +71,7 @@
                     <td><?php echo $v['created_at']; ?></td>
                     <td>
                         <a class="" href="<?php echo site_url('Invite', 'index', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="tbBasSpsxValueNav" fresh="false" title="被推荐人列表">被推荐人列表</a>
-                        <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('from_invite_code' => $v['invite_code'])); ?>" target="navTab" rel="upload_info" fresh="false" title="被推荐人列表">上传信息</a>
+                        <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('uid' => $v['id'])); ?>" target="navTab" rel="upload_info" fresh="false" title="被推荐人列表">上传信息</a>
                         <!--<a class="btnDel" href="<?php echo site_url($controller, 'del', array('id' => $v['id'])); ?>" target="ajaxTodo" title="确定要删除吗?">删除</a>-->
                     </td>
                 </tr>

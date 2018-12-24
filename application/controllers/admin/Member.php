@@ -108,8 +108,10 @@ class Member extends Base
         $page = $page ? (int)$page : 1;
         $page_list = $this->input->get_post('numPerPage', true);
         $page_list = $page_list ? (int)$page_list : self::DEFAULT_PAGE_LIST;
+        $uid = $this->input->get_post('uid', true);
+        $uid = $uid ? $uid : null;
 
-        $where['uid !='] = 0;
+        $where['uid ='] = $uid;
         $data = $this->Upload->getPage($page, $page_list, $where, 'id asc');
         foreach ($data['list'] as $key => $value) {
             if($value['type'] == 1) {
