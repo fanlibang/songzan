@@ -87,7 +87,7 @@
                 <input type="button" value="我 知 道 了" class="btn auto " id="tj" >
             </div>
         </div>
-       <!-- <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
+        <!-- <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>-->
     </div>
 </div>
 
@@ -97,11 +97,27 @@
         // 通过下面这个API隐藏右上角按钮
         WeixinJSBridge.call('hideOptionMenu');
     });
+
+
+
+    $("#card_file").change(function(){
+        if($("#card_file").val() != '') $("#image").removeClass('hide'); $("#cart_form").submit();
+    });
+
+    $("#car_file").change(function(){
+        if($("#car_file").val() != '') $("#image").removeClass('hide');$("#car_form").submit();
+    });
+
+    $("#other_file").change(function(){
+        if($("#other_file").val() != '') $("#image").removeClass('hide'); $("#other_form").submit();
+    });
+
     $(document).ready(function(){
         $("#card_target").load(function(){
             var data = $(window.frames['card_target'].document.body).html();
-            $("#card_front").attr('src', '');
-            if(data != null){
+            var len = data.length;
+            if(data != null && len > 0){
+                $("#card_front").attr('src', '');
                 $("#card_front").attr('src', data);
                 $("#image").addClass('hide');
                 return false;
@@ -110,7 +126,8 @@
 
         $("#car_target").load(function(){
             var data = $(window.frames['car_target'].document.body).html();
-            if(data != null){
+            var len = data.length;
+            if(data != null && len > 0){
                 if(data != null){
                     $("#car_img").attr('src', data);
                     $("#image").addClass('hide');
@@ -121,7 +138,8 @@
 
         $("#other_target").load(function(){
             var data = $(window.frames['other_target'].document.body).html();
-            if(data != null){
+            var len = data.length;
+            if(data != null && len > 0){
                 if(data != null){
                     $("#other").attr('src', data);
                     $("#image").addClass('hide');
@@ -129,18 +147,6 @@
                 }
             }
         });
-        $("#card_file").change(function(){
-            if($("#card_file").val() != '') $("#image").removeClass('hide'); $("#cart_form").submit();
-        });
-
-        $("#car_file").change(function(){
-            if($("#car_file").val() != '') $("#image").removeClass('hide');$("#car_form").submit();
-        });
-
-        $("#other_file").change(function(){
-            if($("#other_file").val() != '') $("#image").removeClass('hide'); $("#other_form").submit();
-        });
-
         $('#sub').click(function(){
             var card_front  = $('#card_front').attr('src');
             var car_img     = $('#car_img').attr('src');
