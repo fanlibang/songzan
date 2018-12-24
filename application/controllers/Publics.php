@@ -96,6 +96,7 @@ class Publics extends Base
     //获取上传图片信息
     public function getImageInfo()
     {
+        $user_info = $this->isLogin()
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
@@ -123,6 +124,7 @@ class Publics extends Base
         $uploadModel = (new \Xy\Application\Models\UploadLogModel());
         $data = [
             'open_id'   => get_cookie('openId') ? get_cookie('openId') : get_cookie('wb_openId'),
+            'uid'       => isset($user_info['id']) ?  $user_info['id'] : '',
             'type'      => $type,
             'image'     => $url,
             'content'   => $info,
