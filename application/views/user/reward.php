@@ -1,10 +1,3 @@
-<script type="text/javascript">
-    $(function () {
-        $('.courtesy-item').on('click',function () {
-            $(this).addClass('active').siblings().removeClass('active');
-        })
-    })
-</script>
 <div class="wrapper">
     <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
     <div class="content flex center jc">
@@ -13,13 +6,13 @@
                 选择专属礼遇
             </div>
             <div class="courtesy flex justify flow">
-                <div class="courtesy-item <?php if($item1 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 1)); ?>">
+                <div type="1" class="courtesy-item <?php if($item1 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 1)); ?>">
                     <div class="courtesy-nr">
                         <img src="<?= STATIC_ASSETS ?>images/new-06.png" alt="">
                     </div>
                     <div class="courtesy-bt">英伦绅士尊享礼盒</div>
                 </div>
-                <div class="courtesy-item <?php if($item2 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 2)) ?>">
+                <div type="2" class="courtesy-item <?php if($item2 == 0) echo 'disable' ?>" url="<?= site_url('User', 'site', array('type'=> 2)) ?>">
                     <div class="courtesy-nr">
                         <img src="<?= STATIC_ASSETS ?>images/new-07.png" alt="">
                     </div>
@@ -53,6 +46,46 @@
             </div>
             <div class="form-push">
 
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="type1">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="mgs">
+                <dl class="rule-word scroll-y">
+                    <dd>Burberry绅士礼盒中包含：</dd>
+                    <dd>-钱夹1只</dd>
+                    <dd>-香水1瓶</dd>
+                    <dd>-围巾1条</dd>
+                    <dd>因礼品库存波动，具体以收到实物为准</dd>
+                </dl>
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="type2">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="mgs">
+                <dl class="rule-word scroll-y">
+                    <dd>Burberry女士礼盒中包含：</dd>
+                    <dd>-钱夹1只</dd>
+                    <dd>-香水1瓶</dd>
+                    <dd>-围巾1条</dd>
+                    <dd>因礼品库存波动，具体以收到实物为准</dd>
+                </dl>
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
