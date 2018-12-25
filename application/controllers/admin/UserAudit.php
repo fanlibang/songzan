@@ -133,7 +133,8 @@ class UserAudit extends Base
                 //生成短连接
                 $user_info      = $this->User->getUserInfoByid($reward_info[0]['id']);
                 $invite_info    = $this->User->getUserInfoByid($uid);
-                $long_url = site_url('User', 'center');
+                //$long_url = site_url('User', 'center');
+                $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=User&m=center';
                 $short_url = getSinaShortUrl('1555751977',$long_url);
                 $sms_notice_obj = new SendSms();
                 $mgs[0] = $user_info['name'];
