@@ -1585,7 +1585,7 @@ class ReportModel
         $postData['need_lms'] = 1;
         $postData['accept_privacy'] = 'true';
         $postData['timestamp'] = time();
-        $postData['sub_channel1'] = get_cookie('source');
+        $postData['sub_channel'] = get_cookie('source');
         $postData['nonce_str'] = $this->createNonceStr(12);
 
 
