@@ -86,7 +86,7 @@
                         <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('uid' => $v['id'])); ?>" target="navTab" rel="upload_info" fresh="false" title="上传信息">上传信息</a>
                     </td>
                     <td>
-                        <?php if($v['driver_img'] = 1) { ?>
+                        <?php if($v['driver_img'] == 1) { ?>
                             已更新
                         <?php } else { ?>
                             未更新
