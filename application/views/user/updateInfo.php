@@ -49,6 +49,7 @@
                 </div>
                 <div class="form-push">
                     <input type="hidden" id="id" value="<?= $id ?>" class="input-text">
+                    <input type="hidden" id="status" value="<?= $status ?>" class="input-text">
                     <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('user/wstj')">
                 </div>
             </div>
@@ -155,6 +156,7 @@ $(document).ready(function(){
             var driver_json = $('#driver_json').val();
             var card_number = $('#card_number').val();
             var card_json = $('#card_json').val();
+            var status = $('#status').val();
             var succ = $('.form-checkbox.active').text();
             if(succ == '') {
                 window.alert = function(name){
@@ -170,7 +172,7 @@ $(document).ready(function(){
             $.ajax({
                 type:'post',
                 url:'/2018/crm/ownerreferral/index.php?c=User&m=updateInfo',
-                data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json},
+                data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json, status:status},
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){

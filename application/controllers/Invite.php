@@ -42,7 +42,7 @@ class Invite extends Base
             $code = $info['code'];
             $data['phone'] = $info['phone'];
 
-            if($invite_count >= 2) {
+            if($invite_count >= 10) {
                 $this->AjaxReturn('301', '该推荐码已达推荐上限，建议您通过其他推荐码参与，如有疑问，可致电400-820-0187。');
                 exit;
             }
