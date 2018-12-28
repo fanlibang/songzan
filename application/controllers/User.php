@@ -167,6 +167,8 @@ class User extends Base
             $data['card_json'] = $info['card_json'];
             if($info['status'] != 3) {
                 $data['status'] = 1;
+            } else {
+                $data['driver_img'] = 1;
             }
             $this->Users->editUserUid($id, $data);
             $this->AjaxReturn('200', '完善资料成功', $url);exit;
