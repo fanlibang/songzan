@@ -55,6 +55,7 @@
             <th>创建时间</th>
             <th style="width: 120px">操作</th>
             <th style="width: 120px">查看</th>
+            <th style="width: 120px">更新信息</th>
         </tr>
         </thead>
         <tbody>
@@ -83,6 +84,13 @@
                     </td>
                     <td>
                         <a class="" href="<?php echo site_url('Member', 'uploadInfo', array('uid' => $v['id'])); ?>" target="navTab" rel="upload_info" fresh="false" title="上传信息">上传信息</a>
+                    </td>
+                    <td>
+                        <?php if($v['driver_img'] = 1) { ?>
+                            已更新
+                        <?php } else { ?>
+                            未更新
+                        <?php  } ?>
                     </td>
                     <!--<td>
                         <a class="btnView" href="<?php echo site_url($controller, 'articleView', array('id' => $v['id'])); ?>" target="dialog" mask="true"  height="650" width="960" rel="article_view" title="查看">查看</a>
