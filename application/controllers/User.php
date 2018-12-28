@@ -137,16 +137,17 @@ class User extends Base
                 exit;
             }
 
-            $res = $this->Users->getUserInfoByDriver($info['driver_number']);
-            if($res && $res['id'] != $id) {
-                $this->AjaxReturn('401', '当前行驶证已参加过活动');exit;
-            }
-
             $info['driver_number'] = trim($info['driver_number']);
             if(empty($info['driver_number'])) {
                 $this->AjaxReturn('401', '行驶证不能为空');
                 exit;
             }
+
+            $res = $this->Users->getUserInfoByDriver($info['driver_number']);
+            if($res && $res['id'] != $id) {
+                $this->AjaxReturn('401', '当前行驶证已参加过活动');exit;
+            }
+
 
             if(!empty($info['driver_number']) && !preg_match('/^[0-9a-zA-Z]+$/',$info['driver_number'])) {
                 $this->AjaxReturn('401', '请填写正确身行驶证信息');
