@@ -69,7 +69,7 @@ $dev_config_arr = array(
 
 if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
     //默认数据库操作
-    $myip               = '180.76.114.64';
+    $myip               = '47.110.87.108';
     $myuser             = 'root';
     $mypassword         = 'Sz20181127*';
     $host               = $myip;
@@ -84,7 +84,7 @@ if(ip_filter($_SERVER['SERVER_ADDR'], $dev_config_arr)){
 
     $database           = 'ownerreferral';
 } else {
-    $myip               = '180.76.114.64';
+    $myip               = '47.110.87.108';
     $myuser             = 'root';
     $mypassword         = 'Sz20181127*';
     //默认数据库操作
