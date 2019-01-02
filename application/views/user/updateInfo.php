@@ -130,7 +130,7 @@ $(document).ready(function(){
             var dataObj=eval("("+data+")");//转换为json对象
             $('#driver_number').attr('disabled',false);
             if(dataObj.words_result) {
-                $("#driver_number").val(dataObj.words_result['发动机号码'].words);
+                $("#driver_number").val(dataObj.words_result['车辆识别代号'].words);
                 $("#driver_json").val(data);
             } else {
                 $('#upload').removeClass('hide');
