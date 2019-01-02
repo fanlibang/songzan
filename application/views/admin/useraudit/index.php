@@ -47,6 +47,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>推荐码</th>
             <th>姓名</th>
             <th>手机号</th>
             <th>身份证</th>
@@ -70,6 +71,7 @@
                 ?>
                 <tr target="sid" rel="<?php echo $v['id']; ?>">
                     <td><?php echo $v['id']; ?></td>
+                    <td><?php echo $v['invite_code']; ?></td>
                     <td><?php echo $v['name']; ?></td>
                     <td><?php echo $v['phone']; ?></td>
                     <td><?php echo $v['card_number']; ?></td>
