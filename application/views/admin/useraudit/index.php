@@ -6,6 +6,7 @@
     <input type="hidden" name="iphone" value="<?php echo $iphone; ?>" />
     <input type="hidden" name="end_dt" value="<?php echo $end_dt; ?>" />
     <input type="hidden" name="state" value="<?php echo $status; ?>" />
+    <input type="hidden" name="invite_code" value="<?php echo $invite_code; ?>" />
 </form>
 
 
@@ -21,6 +22,9 @@
                     </td>
                     <td>
                         手机号：<input type="text" name="iphone" value="<?php echo $iphone; ?>"/>
+                    </td>
+                    <td>
+                        推荐码：<input type="text" name="invite_code" value="<?php echo $invite_code; ?>"/>
                     </td>
                     <td>
                         <select class="combox" name="status">
@@ -39,7 +43,7 @@
 <div class="pageContent">
     <div class="panelBar">
         <ul class="toolBar">
-            <li><a target="_blank" href="<?php echo site_url($controller, $method, array('str_dt'=> $str_dt, 'end_dt'=> $end_dt, 'iphone'=> $iphone, 'state'=> $state, 'page' => $page, 'export' => true)); ?>" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+            <li><a target="_blank" href="<?php echo site_url($controller, $method, array('str_dt'=> $str_dt, 'end_dt'=> $end_dt, 'iphone'=> $iphone, 'state'=> $state, 'page' => $page, 'invite_code' => $invite_code, 'export' => true)); ?>" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
             <!--<li><a class="delete" href="<?php echo site_url($controller, 'del', array('id' => '{sid}')); ?>" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>-->
         </ul>
     </div>

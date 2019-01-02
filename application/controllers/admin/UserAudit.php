@@ -39,6 +39,8 @@ class UserAudit extends Base
         $end_dt = $end_dt ? $end_dt : null;
         $status = $this->input->get_post('status', true);
         $status = $status ? $status : '';
+        $invite_code = $this->input->get_post('invite_code', true);
+        $invite_code = $invite_code ? $invite_code : '';
         $export = $this->input->get_post('export', '');
 
         $where = array();
@@ -59,6 +61,10 @@ class UserAudit extends Base
             $where['status ='] = $status;
         } else {
             $where['status >'] = 0;
+        }
+
+        if ($invite_code) {
+            $where['invite_code ='] = $invite_code;
         }
 
         $where['master_uid <'] = 1;
@@ -97,6 +103,7 @@ class UserAudit extends Base
         $data['str_dt'] = $str_dt;
         $data['end_dt'] = $end_dt;
         $data['status']  = $status;
+        $data['invite_code']  = $invite_code;
         $this->display($data);
     }
 
