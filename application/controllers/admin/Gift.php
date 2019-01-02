@@ -60,11 +60,11 @@ class Gift extends Base
         }
 
         $data = $this->Raware->getPage($page, $page_list, $where, 'id');
+        $Item           = new \Xy\Application\Models\ItemModel();
         foreach($data['list'] as &$val) {
             $userInfo = $this->User->getUserInfoByid($val['uid']);
             $val['name']    = $userInfo['name'];
             $val['phone']   = $userInfo['phone'];
-            $Item           = new \Xy\Application\Models\ItemModel();
             $ret            = $Item->getItemInfoByType($val['type']);
             $val['title']   = $ret['name'];
         }
