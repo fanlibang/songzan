@@ -109,11 +109,18 @@ class UserModel extends BaseModel
         return $ret;
     }
 
+    public function getUserInviteCounts($code)
+    {
+        $where['from_invite_code'] = $code;
+        $ret = $this->counts($where);
+        return $ret;
+    }
+
     public function getInviteSuccNum($uid)
     {
         $where['master_uid'] = $uid;
         $where['status'] = 3;
-        $ret = $this->counts();
+        $ret = $this->counts($where);
         return $ret;
     }
 }
