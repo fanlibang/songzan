@@ -120,8 +120,8 @@ class Audit extends Base
                 if($state == 3) {
                     //生成短连接
                     $invite_info    = $this->User->getUserInfoByid($uid);
-                    if($invite_info['status'] == 3) {
-                        $user_info      = $this->User->getUserInfoByid($invite_info['master_uid']);
+                    $user_info      = $this->User->getUserInfoByid($invite_info['master_uid']);
+                    if($user_info['status'] == 3) {
                         //$long_url = site_url('User', 'center');
                         $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code='.$invite_info['from_invite_code'];
                         $short_url = getSinaShortUrl('1555751977',$long_url);
