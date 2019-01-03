@@ -11,7 +11,7 @@
     <div class="panelBar">
 
     </div>
-    <table class="list" width="100%" layoutH="110">
+    <table class="table" width="100%" layoutH="110">
         <thead>
         <tr>
             <th>页面</th>
