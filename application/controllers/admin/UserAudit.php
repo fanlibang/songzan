@@ -89,7 +89,7 @@ class UserAudit extends Base
                     'uid'              => $va['uid'],
                     'name'             => $va['name'],
                     'phone'            => $va['phone'],
-                    'card_front'       => $va['card_number'],
+                    'card_front'       => "'".$va['card_number']."''",
                     'car_img'          => $va['driver_number'],
                     'state_name'       => $va['state_name'],
                     'create_dt'        => $va['created_at'],
