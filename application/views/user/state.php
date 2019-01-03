@@ -55,7 +55,7 @@
                                     </div>
                                     <p><?= $reward_user[1]['name']; ?></p>
                                 </li>
-                            <?php } elseif($success_count == 2) { ?>
+                            <?php } elseif($success_count >= 2) { ?>
                                 <li>
                                     <div class="package-pic flex end jc twinkle">
                                         <a onclick="cc('state/lhdj')" href="<?=site_url('User', 'reward')?>"><img src="<?= STATIC_ASSETS ?>images/new-11.png" alt=""></a>
