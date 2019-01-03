@@ -135,6 +135,7 @@ class UserAudit extends Base
         $status = $this->input->get_post('status');
         $res = $this->User->editUserId($uid, ['status' => $status]);
         if($res) {
+            /**
             $reward_info = $this->User->getInviteSuccByUid($uid);
             if($reward_info && $status == 3) {
                 //生成短连接
@@ -150,6 +151,7 @@ class UserAudit extends Base
                 $update['content'] = json_encode($ret);
                 $this->Car->editUserCarUid($reward_info[0]['uid'], $update);
             }
+             */
             $this->dwzAjaxReturn(200, '操作成功', '', null, 'no');
         } else {
             $this->dwzAjaxReturn(202, '操作失败', '', null, 'no');

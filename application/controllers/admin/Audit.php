@@ -114,6 +114,13 @@ class Audit extends Base
         if (is_ajax('post')) {
             $state  = $this->input->get_post('state', true);
             $id     = $this->input->get_post('id', true);
+            if($state == 3) {
+                $invite_info    = $this->User->getUserInfoByid($uid);
+                $user_info      = $this->User->getUserInfoByid($invite_info['master_uid']);
+                if($user_info['status'] != 3) {
+                    $this->dwzAjaxReturn(201, '推荐人必须审核通过才能通过，请先审核推荐人'); exit;
+                }
+            }
             $res = $this->Car->editUserCar($id, ['state' => $state]);
             if ($res) {
                 $this->User->editUserId($uid, ['status' => $state]);
@@ -121,17 +128,27 @@ class Audit extends Base
                     //生成短连接
                     $invite_info    = $this->User->getUserInfoByid($uid);
                     $user_info      = $this->User->getUserInfoByid($invite_info['master_uid']);
-                    if($user_info['status'] == 3) {
-                        //$long_url = site_url('User', 'center');
-                        $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code='.$invite_info['from_invite_code'];
+                    //$long_url = site_url('User', 'center');
+                    $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code='.$invite_info['from_invite_code'];
+                    $short_url = getSinaShortUrl('1555751977',$long_url);
+                    $sms_notice_obj = new SendSms();
+                    $mgs[0] = $user_info['name'];
+                    $mgs[1] = $short_url;
+                    $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
+                    $mes = json_encode($ret);
+
+                    $count = $this->User->getInviteSuccNum($invite_info['master_uid']);
+                    if($count < 2) {
+                        $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=User&m=center';
                         $short_url = getSinaShortUrl('1555751977',$long_url);
                         $sms_notice_obj = new SendSms();
-                        $mgs[0] = $user_info['name'];
+                        $mgs[0] = $invite_info['name'];
                         $mgs[1] = $short_url;
-                        $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
-                        $update['content'] = json_encode($ret);
-                        $this->Car->editUserCarUid($uid, $update);
+                        $ret = $sms_notice_obj->send($user_info['phone'], $mgs, 4);
+                        $update['content'] = $mes.json_encode($ret);
                     }
+                    $update['content'] = $mes;
+                    $this->Car->editUserCarUid($uid, $update);
                 }
                 $this->dwzAjaxReturn(200, '操作成功');
             } else {
