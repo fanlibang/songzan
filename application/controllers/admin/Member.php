@@ -81,7 +81,7 @@ class Member extends Base
                     'name'          => $va['name'],
                     'phone'         => $va['phone'],
                     'driver_number' => $va['driver_number'],
-                    'card_number'   => "'".$va['card_number']."''",
+                    'card_number'   => "'".$va['card_number']."'",
                     'invite_code'   => $va['invite_code'],
                     'qr_code_img'   => $va['qr_code_img'],
                     'source_name'   => $va['source_name'],
