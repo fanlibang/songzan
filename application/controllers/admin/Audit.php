@@ -122,7 +122,7 @@ class Audit extends Base
                     $invite_info    = $this->User->getUserInfoByid($uid);
                     $user_info      = $this->User->getUserInfoByid($invite_info['master_uid']);
                     //$long_url = site_url('User', 'center');
-                    $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=Invite&m=index';
+                    $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=Invite&m=index&invite_code='.$invite_info['from_invite_code'];
                     $short_url = getSinaShortUrl('1555751977',$long_url);
                     $sms_notice_obj = new SendSms();
                     $mgs[0] = $user_info['name'];
