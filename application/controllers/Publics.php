@@ -124,7 +124,7 @@ class Publics extends Base
         $uploadModel = (new \Xy\Application\Models\UploadLogModel());
         $data = [
             'open_id'   => get_cookie('openId') ? get_cookie('openId') : get_cookie('wb_openId'),
-            'uid'       => isset($user_info['id']) ?  $user_info['id'] : '',
+            'uid'       => isset($user_info['id']) ?  $user_info['id'] : 'system',
             'type'      => $type,
             'image'     => $url,
             'content'   => $info,
