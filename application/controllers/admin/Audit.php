@@ -130,7 +130,7 @@ class Audit extends Base
                         $mgs[1] = $short_url;
                         $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
                         $update['content'] = json_encode($ret);
-                        $this->Car->editUserCar($uid, $update);
+                        $this->Car->editUserCarUid($uid, $update);
                     }
                 }
                 $this->dwzAjaxReturn(200, '操作成功');

@@ -31,6 +31,13 @@ class ShopCarModel extends BaseModel
         return $ret;
     }
 
+    public function editUserCarUid($uid, $data)
+    {
+        $where['uid'] = $uid;
+        $ret = $this->edit($data, $where);
+        return $ret;
+    }
+
 
     public function getCarInfoByUid($uid)
     {
