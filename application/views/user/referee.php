@@ -252,7 +252,8 @@ $(document).ready(function(){
                         $('#hint').removeClass('hide');
                         //window.location.href=json.forward;
                     } else {
-                        alert(json.msg);
+                        $('#upload').removeClass('hide');
+                        $('#mgs').val('提交提示：'+json.msg);
                     }
                 },
                 error:function(){}
