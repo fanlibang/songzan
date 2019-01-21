@@ -209,7 +209,7 @@ class Base extends Common
 
 
     /**
-     *  获取用户openid，保存名片用
+     *  获取用户openid，  保存名片用
      * @param string $url
      */
     public function getOpenid($url = '')
