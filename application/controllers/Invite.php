@@ -132,7 +132,14 @@ class Invite extends Base
                 $result = $push->reportOwner($tempData);
                 $this->Users->editUserId($uid, ['report_result' => $result]);
             }
-            $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>", $url);
+            $sql = "select * from `ownerreferral_201812_data`";
+            $info = $this->Users->execute($sql);
+            $data = $info[0];
+            if(date('Y-m-d H:i:s') > $data['time']) {
+                $this->AjaxReturn('200', '感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止', $url);
+            } else {
+                $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>", $url);
+            }
             exit;
         }
 
