@@ -88,12 +88,8 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
-                <?php if(date('Y-m-d H:i:s') > $time) { ?>
-                    感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止
-                <?php } else { ?>
                     活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
                     <dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>
-                <?php } ?>
             </div>
             <div class="form-push">
                 <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
