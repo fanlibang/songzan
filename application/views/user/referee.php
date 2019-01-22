@@ -251,6 +251,12 @@ $(document).ready(function(){
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                         //window.location.href=json.forward;
+                    } else if(json.code == 202) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('我已了解');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
                     } else {
                         $('#upload').removeClass('hide');
                         $('#mgs').val('提交提示：'+json.msg);

@@ -229,6 +229,11 @@
                         $('.tj').val('个人主页');
                         $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
+                    } else if(json.code == 204) {
+                        $('#title').html(json.msg);
+                        $('.tj').val('我已了解');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
                         window.location.href=json.forward;
                     } else if(json.code == 203) {

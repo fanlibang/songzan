@@ -110,7 +110,7 @@ class User extends Base
             $info = $this->Users->execute($sql);
             $time = $info[0]['time'];
             if(date('Y-m-d H:i:s') > $time) {
-                $this->AjaxReturn('201', ' 感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止', $url);exit;
+                $this->AjaxReturn('202', ' 感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止', $url);exit;
             } else {
                 $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
             }
