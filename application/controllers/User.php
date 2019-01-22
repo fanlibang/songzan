@@ -112,10 +112,7 @@ class User extends Base
                 $url = site_url('User', 'center');
                 header('Location:' . $url);
             }
-            $sql = "select * from `ownerreferral_201812_data`";
-            $info = $this->Users->execute($sql);
-            $data = $info[0];
-            $this->displayMain($data);
+            $this->displayMain();
         }
     }
 
