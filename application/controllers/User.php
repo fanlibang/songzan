@@ -106,23 +106,16 @@ class User extends Base
             $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
             $url = site_url('Invite', 'share', array('invite_code' => $inviteCode));
-
-            $sql = "select * from `ownerreferral_201812_data`";
-            $info = $this->Users->execute($sql);
-            $data = $info[0];
-            echo date('Y-m-d H:i:s');
-            echo $data['time'];exit;
-            if(date('Y-m-d H:i:s') > $data['time']) {
-                $this->AjaxReturn('200', '感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止', $url);exit;
-            } else {
-                $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
-            }
+            $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
         } else {
             if ($this->isLogin()) {
                 $url = site_url('User', 'center');
                 header('Location:' . $url);
             }
-            $this->displayMain();
+            $sql = "select * from `ownerreferral_201812_data`";
+            $info = $this->Users->execute($sql);
+            $data = $info[0];
+            $this->displayMain($data);
         }
     }
 

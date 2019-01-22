@@ -79,7 +79,12 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
-                活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+                <?php if(date('Y-m-d H:i:s') > $time) { ?>
+                    感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止
+                <?php } else { ?>
+                    活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+                <?php } ?>
+
             </div>
             <div class="form-push">
                 <input type="button" value="我 要 推 荐" class="btn auto " id="tj" >
