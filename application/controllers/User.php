@@ -110,6 +110,8 @@ class User extends Base
             $sql = "select * from `ownerreferral_201812_data`";
             $info = $this->Users->execute($sql);
             $data = $info[0];
+            echo date('Y-m-d H:i:s');
+            echo $data['time'];exit;
             if(date('Y-m-d H:i:s') > $data['time']) {
                 $this->AjaxReturn('200', '感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止', $url);exit;
             } else {
