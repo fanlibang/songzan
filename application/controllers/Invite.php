@@ -146,6 +146,9 @@ class Invite extends Base
         $data['invite_count'] = $invite_count;
         $data['car_record'] = $carInfo->getAllCarInfo();
         $data['invite_code'] = $inviteCode;
+        $sql = "select * from `ownerreferral_201812_data`";
+        $info = $this->Users->execute($sql);
+        $data['time'] = $info[0]['time'];
         $this->displayMain($data);
     }
 
