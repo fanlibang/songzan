@@ -61,10 +61,10 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
-                该推荐码已达推荐上限，建议您通过其他推荐码参与，如有疑问，可致电400-820-0187。
+                目前活动已进入最终倒计时阶段，购车后请尽快上传购车凭证，我们将按照完整资料的上传顺序进行审核，通过者可选择专属礼遇。礼品数量有限，先到先得，选完即止。感谢您的支持与参与！
             </div>
             <div class="form-push">
-                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
+                <input type="button" value="我 已 了 解" class="btn auto" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
