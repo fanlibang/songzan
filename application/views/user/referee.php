@@ -61,6 +61,22 @@
     </div>
 </div>
 
+<?php if(date('Y-m-d H:i:s') > $time) { ?>
+    <div class="bomb-wrapper flex center">
+        <div class="bomb-content">
+            <div class="hint auto">
+                <div class="hint-word">
+                    感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止
+                </div>
+                <div class="form-push">
+                    <input type="button" value="我 已 了 解" class="btn auto " id="agree" >
+                </div>
+            </div>
+            <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+        </div>
+    </div>
+<?php } ?>
+
 <div class="bomb-wrapper flex center jc hide" id="upload">
     <div class="bomb-content">
         <div class="hint auto">
