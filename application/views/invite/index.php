@@ -57,7 +57,7 @@
 </div>
 
 <?php if(date('Y-m-d H:i:s') > $time) { ?>
-<div class="bomb-wrapper flex center" id="hint">
+<div class="bomb-wrapper flex center jc invite" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word" id="title">
