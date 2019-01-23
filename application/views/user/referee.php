@@ -66,7 +66,7 @@
         <div class="bomb-content">
             <div class="hint auto">
                 <div class="hint-word">
-                    感谢您参与路虎推荐活动，活动已进入倒计时，目前您依旧可以留资并购车，但礼品数量有限，先到先得，选完即止
+                    目前活动已进入最终倒计时阶段，请您尽快完善信息并提醒受邀人上传购车凭证，我们将按照完整资料的上传顺序进行审核，通过者可选择专属礼遇。但礼品数量有限，先到先得，选完即止。感谢您的支持与参与！
                 </div>
                 <div class="form-push">
                     <input type="button" value="我 已 了 解" class="btn auto " id="agree" >
