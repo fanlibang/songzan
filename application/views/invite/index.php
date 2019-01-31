@@ -60,7 +60,7 @@
 <div class="bomb-wrapper flex center jc invite" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
-            <div class="hint-word" id="title">
+            <div class="hint-word">
                 感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
             </div>
             <div class="form-push">
@@ -259,7 +259,7 @@
                         $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
                     } else {
-                        alert(json.msg);
+                        $('#mgs').html('提交提示：'+json.msg);
                     }
                 },
                 error:function(){}
