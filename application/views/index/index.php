@@ -48,7 +48,7 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
-                目前活动已进入最终倒计时阶段，请您尽快完善信息并提醒受邀人上传购车凭证，我们将按照完整资料的上传顺序进行审核，通过者可选择专属礼遇。但礼品数量有限，先到先得，选完即止。感谢您的支持与参与！
+                感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
             </div>
             <div class="form-push">
                 <input type="button" value="我 知 道 了" class="btn auto" id="agree" >
@@ -67,7 +67,7 @@
                 您还未成为路虎推荐购活动推荐人，请点击“我要推荐”报名参与活动。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
+                <input type="button" value="我 要 推 荐" class="btn auto" id="" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>

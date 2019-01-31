@@ -109,6 +109,7 @@ class Invite extends Base
                 $this->AjaxReturn('401', '用户名不能为空');
                 exit;
             }
+            $this->AjaxReturn('401', ' 感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！');exit;
             $token = rand_str(32);
             $data['token'] = $token;
             set_cookie('token', $token);

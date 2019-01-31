@@ -157,7 +157,7 @@ class Publics extends Base
         $config['allowed_types'] = '*';
         $config['overwrite'] = 'true';
         //文件名
-        $config['file_name'] = $_FILES["file"]["name"];
+        $config['file_name'] = time().$_FILES["file"]["name"];
         //文件路径
         $config['show_path'] = UPLOAD_FILE;
         $config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['show_path'];
