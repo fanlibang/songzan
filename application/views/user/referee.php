@@ -70,7 +70,7 @@
                 上传出错：上传的图片不正确
             </div>
             <div class="form-push">
-
+                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
