@@ -54,7 +54,7 @@
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
-                    <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('user/zctj')">
+                    <input type="button" value="提     交" class="btn auto" id="from_sub" onclick="cc('user/zctj')">
                 </div>
             </div>
         </div>

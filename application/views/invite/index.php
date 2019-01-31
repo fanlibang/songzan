@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" id="sub" value="提     交" class="btn auto">
+                    <input type="button" id="from_sub" value="提     交" class="btn auto">
                 </div>
             </div>
         </div>
