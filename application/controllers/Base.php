@@ -70,7 +70,6 @@ class Base extends Common
          * redirect(site_url('User', 'center'));
          * }
          * }*/
-
     }
 
     /**
