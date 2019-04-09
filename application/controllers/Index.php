@@ -21,9 +21,10 @@ class Index extends Base {
             if ($data['master_uid'] > 0) {
                 $url = site_url('Invite', 'info');
                 header('Location:' . $url);
+            } else {
+                $url = site_url('User', 'center');
+                header('Location:' . $url);
             }
-            $url = site_url('User', 'center');
-            header('Location:' . $url);
         }
         $this->displayMain();
 	}

@@ -68,6 +68,7 @@ class Publics extends Base
         $appid = APPID;
         $secret = SECRET;
         $code = $_GET['code'];//获取code
+        $invite_code = $_GET['invite_code'];//获取invite_code
         $weixin =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code");//通过code换取网页授权access_token
         $jsondecode = json_decode($weixin); //对JSON格式的字符串进行编码
         $array = get_object_vars($jsondecode);//转换成数组
@@ -76,7 +77,11 @@ class Publics extends Base
         if (!empty($openid)) {
             $res = $this->UserWx->getWxInfoByOpId($openid);
             set_cookie('openId', $res['open_id']);
-            $url = site_url('Index', 'index');
+            if(empty($invite_code)) {
+                $url = site_url('Index', 'index');
+            } else {
+                $url = site_url('Invite', 'index', array('invite_code' => $invite_code));
+            }
             if (empty($res)) {
                 $data = [
                     'open_id'    => $openid,
@@ -91,30 +96,57 @@ class Publics extends Base
     //获取上传图片信息
     public function getImageInfo()
     {
+        $user_info = $this->isLogin();
         $info = $this->input->request();
         $type = $info['type'] ? $info['type'] : 1; //1身份证2行驶证
         $url = $this->imageUpload();
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         $image = file_get_contents($url);
+        $status = 0;
         if ($type == 1) {
             $options = array();
             $options["detect_direction"] = "true";
             $info = $client->idcard($image, 'front', $options);
+            if($info['image_status'] == 'normal') {
+                $status = 1;
+            }
         } else {
             // 如果有可选参数
             $options = array();
             $options["detect_direction"] = "true";
             // 带参数调用行驶证识别
             $info = $client->vehicleLicense($image, $options);
+            if($info['msg'] == 'success') {
+                $status = 1;
+            }
         }
         $info = json_encode($info);
+        $uploadModel = (new \Xy\Application\Models\UploadLogModel());
+        $data = [
+            'open_id'   => get_cookie('openId') ? get_cookie('openId') : get_cookie('wb_openId'),
+            'uid'       => isset($user_info['id']) ?  $user_info['id'] : 0,
+            'type'      => $type,
+            'image'     => $url,
+            'content'   => $info,
+            'status'    => $status,
+            'create_dt' => NOW_DATE_TIME
+        ];
+        $uploadModel->addUploadInfo($data);
+
         echo $info;
     }
+
+    public function uploadImage()
+    {
+        $url = $this->imageUpload();
+        echo $url;
+    }
+
 
     public function imageUpload()
     {
         //不存在当前上传文件则上传
-        if (!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'], iconv('utf-8', 'gb2312', $_FILES['upload_file']['name']));
+        //if (!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'], iconv('utf-8', 'gb2312', $_FILES['upload_file']['name']));
         //输出图片文件<img>标签
         //echo "<textarea><img src='{$_FILES['upload_file']['name']}'/></textarea>";
         if ($_FILES["file"]["size"] > 10485760) {
@@ -125,7 +157,7 @@ class Publics extends Base
         $config['allowed_types'] = '*';
         $config['overwrite'] = 'true';
         //文件名
-        $config['file_name'] = $_FILES["file"]["name"];
+        $config['file_name'] = time().$_FILES["file"]["name"];
         //文件路径
         $config['show_path'] = UPLOAD_FILE;
         $config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['show_path'];
@@ -156,10 +188,12 @@ class Publics extends Base
     public function button(){
         $info = $this->input->request(null, true);
         $url =  $info['url'];
-        $openid = get_cookie('openId');
-        $open_id = isset($openid) ? $openid : '1';
         $time = NOW_DATE_TIME;
-        $sql = "insert into ownerreferral_201812_button (url, openId, create_dt) values ('{$url}', '{$open_id}', '{$time}');";
+        $info = $this->isLogin();
+        $phone = $info ? $info['phone'] : '';
+        $openId = get_cookie('openId') ? get_cookie('openId') : 0;
+        $source = get_cookie('source') ? get_cookie('source') : 0;
+        $sql = "insert into ownerreferral_201812_button (url, phone, source, openId, create_dt) values ('{$url}', '{$phone}', '{$source}', '{$openId}', '{$time}');";
         $res = $this->Users->execute($sql);
         if($res) {
             $this->AjaxReturn('200','成功');
@@ -168,6 +202,4 @@ class Publics extends Base
         }
         exit;
     }
-
-
 }

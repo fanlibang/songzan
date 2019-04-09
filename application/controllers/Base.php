@@ -28,7 +28,14 @@ class Base extends Common
         $this->Users = new \Xy\Application\Models\UserModel();
         $this->UserWx = new \Xy\Application\Models\UserWxModel();
         //set_cookie('openId', '');exit;
-        //set_cookie('openId', 'oRNe1s0avPHH7yRP4MpzjM-30u0I');exit;
+        //set_cookie('openId', 'oRNe1s
+        //0avPHH7yRP4MpzjM-30u0I');exit;
+        if(!get_cookie('source')) {
+            $this->_data['source'] = $this->input->get('utm_source', true);
+            set_cookie('source',  $this->_data['source']);
+        } else {
+            $this->_data['source'] = get_cookie('source');
+        }
 
         if (!$this->isLogin()) {
             if (is_weixin()) {
@@ -38,6 +45,9 @@ class Base extends Common
                     $this->isOpenid();
                 }
             } else {
+                if(!get_cookie('wb_openId')) {
+                    set_cookie('wb_openId', uniqid());
+                }
                 $this->_data['browser'] = 2; //其他浏览器
             }
         }
@@ -87,10 +97,10 @@ class Base extends Common
                     set_cookie('token', $token);
                     if ($res['master_uid'] > 0) {
                         $url = site_url('Invite', 'info');
-                        header('Location:' . $url);
+                        header('Location:' . $url); exit;
                     } else {
                         $url = site_url('User', 'center');
-                        header('Location:' . $url);
+                        header('Location:' . $url); exit;
                     }
                 }
                 return true;
@@ -128,6 +138,9 @@ class Base extends Common
         $signPackage = $jsSdk->GetSignPackage(); //获取jsapi_ticket，生成JS-SDK权限验证的签名。
         $data['wx'] = $signPackage;
 
+        $sql = "select * from `ownerreferral_201812_data`";
+        $info = $this->Users->execute($sql);
+        $data['time'] = $info[0]['time'];
         $data = array_merge($this->_data, $data);
 
         $data['main_html'] = $this->load->view($view, $data, true);
@@ -136,12 +149,10 @@ class Base extends Common
 
         //统计页面访问量
         $url_info = $this->_data;
-        if (strtolower($this->router->fetch_class()) == 'article') {
-            $this->view_play($this->_data['openId'], $data['id']);
-        }
         //$url = '/'.PROJECT_NAME.'/'.$url_info['controller'].'/'.$url_info['method'];
         $url = '/dev/' . $url_info['controller'] . '/' . $url_info['method'];
-        $this->view_assess($url);
+        $source = $this->_data['source'];
+        $this->view_assess($url, $source, $this->isLogin());
         //调试页面执行时间用
         if (IS_DEBUG) {
             echo 'page_run_time:</br>';
@@ -167,9 +178,6 @@ class Base extends Common
     {
         if (IS_GET) {
             $iphone = $this->input->get('iphone', true);
-
-            //set_cookie($iphone, 123456);
-            //$this->AjaxReturn(self::AJ_RET_SUCC, '获取短信成功,5分钟内有效#');exit;
             $sms_str = rand_str(6);
             $sms_notice_obj = new SendSms();
             $sms_ret = $sms_notice_obj->send($iphone, $sms_str);
@@ -209,11 +217,13 @@ class Base extends Common
      */
     public function getOpenid($url = '')
     {
+        $invite_code = $this->input->get('invite_code', true);
         $state = rand(1,10000);
         $appid = APPID;
         if (empty($url)) {
-            $url = site_url('Publics', 'addOpenid');
+            $url = site_url('Publics', 'addOpenid', array('invite_code'=>$invite_code));
         }
+
         //echo $url;exit;
         $redirect_uri = urlencode($url);
         //对url处理，此url为访问上面jump方法的url

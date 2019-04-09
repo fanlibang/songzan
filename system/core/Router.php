@@ -290,8 +290,10 @@ class CI_Router {
 	 */
 	protected function _set_default_controller()
 	{
+        $this->default_controller = 'Index/index';
 		if (empty($this->default_controller))
 		{
+
 			show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
 		}
 

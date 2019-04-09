@@ -9,7 +9,7 @@ namespace Xy\Application\Models\DB;
 
 class AdminUsersDB extends BaseDB
 {
-    public $_table_obj = 'admin_users';
+    public $_table_obj = 'ownerreferral_201812_admin_users';
 
     /**
      * 初始化

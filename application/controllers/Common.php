@@ -94,12 +94,12 @@ class Common extends MY_Controller
     public function display($data = array(), $view = null, $return_content = false)
     {
         if ($view == null) {
-            $view = $this->_more_view_path . strtolower($this->router->fetch_class()) . '/' . $this->router->fetch_method();
+            $view = $this->_more_view_path .'/'. strtolower($this->router->fetch_class()) . '/' . $this->router->fetch_method();
         } else {
             //strripos('/', $view);
             $array = explode('/', $view);
             if (count($array) <= 1) {
-                $view = $this->_more_view_path  . strtolower($this->router->fetch_class()) . '/' . $view;
+                $view = $this->_more_view_path .'/'. strtolower($this->router->fetch_class()) . '/' . $view;
             } else {
                 $view = 'dev/' . $view;
             }
@@ -168,163 +168,15 @@ class Common extends MY_Controller
     }
 
     /**
-     * 求两个日期之间相差的天数
-     * (针对1970年1月1日之后，求之前可以采用泰勒公式)
-     * @param string $day1
-     * @param string $day2
-     * @return number
-     */
-    public function diffBetweenTwoDays ($day1, $day2)
-    {
-        $second1 = strtotime($day1);
-        $second2 = strtotime($day2);
-
-        if ($second1 < $second2) {
-            $tmp = $second2;
-            $second2 = $second1;
-            $second1 = $tmp;
-        }
-        return ($second1 - $second2) / 86400;
-    }
-
-    /**
      * 记录页面访问信息
      * @param $url
+     * @param $source
+     * @param $info
      */
-    public function view_assess($url)
+    public function view_assess($url, $source, $info)
     {
         $assess_log = new \Xy\Application\Models\ViewAssessModel();
-        if(!empty($this->_data['openId'])) {
-            $log_arr = assess_info($url, $this->_data['openId']);
-            $assess_log->add($log_arr);
-        }
-    }
-
-    /**
-     * 记录页面访问信息
-     * @param $openId
-     * @param $id
-     */
-    public function view_play($openId, $id)
-    {
-        $option = new \Xy\Application\Models\UserOptionModel();
-        $res = $option->addUserOption($openId, $id);
-        if($res) {
-            $userDiary           = new \Xy\Application\Models\UserDiaryModel();
-            $userDiary->updatePlay($id);
-        }
-    }
-
-    /**
-     * 本地文件上传
-     *
-     * @return array
-     */
-    public function localUploadFile(){
-        $data       = $this->input->request(null, true);
-        $config     = array();
-        if (isset($data['upload_flag'])) {
-            $config = $this->local_upload_config[$data['upload_flag']];
-        }
-        $result = array();
-        if (empty($config)) {
-            $mes = '上传失败#没有对应配置信息~' . $data['upload_flag'] . return_ip(false, true);
-            $this->ajaxReturn(self::AJ_RET_FAIL, $mes);
-        }
-
-        $num = count($_FILES["file"]['name']);
-        $j=0;
-        $info = $_FILES;
-        $upload_path = $config['upload_path'];
-        for($i=0; $i<$num; $i++) {
-            $_FILES["file"]['name'] = $info["file"]['name'][$i];
-            $_FILES["file"]['type'] = $info["file"]['type'][$i];
-            $_FILES["file"]['tmp_name'] = $info["file"]['tmp_name'][$i];
-            $_FILES["file"]['error'] = $info["file"]['error'][$i];
-            $_FILES["file"]['size'] = $info["file"]['size'][$i];
-            //文件名
-            $file_name  = $_FILES["file"]["name"];
-            //判断包的类型
-            $flie_type = pathinfo($file_name, PATHINFO_EXTENSION);
-            //文件名
-            $config['file_name'] = $file_name;
-            //$config['file_name']=iconv("UTF-8","gb2312", $config['file_name']);
-            //文件路径
-            $config['show_path']   = $upload_path;
-            $config['upload_path'] = ROOTPATH . $config['show_path'];
-            mkdirs($config['upload_path']);
-            $config['file_ext_tolower'] = true;
-            $this->load->library('upload', $config);
-            $this->upload->set_allowed_types('*');
-            $this->upload->initialize($config);
-//        return $config;
-            if (!$this->upload->do_upload('file')) {
-                $error = $this->upload->display_errors();
-                $result['status'] = -1;
-                $result['mes'] = '上传失败~' . return_ip(false, true) . $error;
-                $this->ajaxReturn(self::AJ_RET_FAIL, $result['mes']);
-                //return $result;
-            } else {
-                $upload_data = $this->upload->data();
-                //大小
-                $size = round($_FILES["file"]["size"][$i]/(1024*1024), 2);
-                //路径
-                $file = HTTP_HOST . $config['show_path'] . $upload_data['file_name'];
-                //安装包目录
-                $appDir = $config['upload_path'] . $upload_data['file_name'];
-
-                $result['status']   = '1';
-                $result['mes']      =  '上传成功~';
-                $result['data']     = array(
-                    'app_id'        => $data['app_id'],
-                    'size'          => $size,
-                    'appDir'        => $appDir,
-                    'file'          => $file,
-                    'upload_flag'   => $data['upload_flag'],
-                    'id'            => $data['id'],
-                );
-                //$this->ajaxReturn(self::AJ_RET_SUCC, '上传成功');
-                $j++;
-            }
-        }
-        if($num==$j){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * * 获取接口信息
-     * @param $query
-     * @param $path
-     * @param $last_time
-     * @param $new_time
-     * @param int $size
-     * @return array
-     */
-    public function getMonitorInfo($query, $path, $last_time, $new_time, $size = 20)
-    {
-        $query = sprintf($query, $last_time, $new_time, $size);
-        $data = curl_request($path, $query, 'POST' , 0, 5, 5);
-        if($data == false) {
-            echo '没有获取到数据2'; exit;
-        }
-        $data = json_decode($data, true);
-
-        if(isset($data['aggregations'])) {
-            $res  = $data['aggregations']['monitor']['buckets'];
-        } else {
-            echo '数据错误'; exit;
-        }
-        $info = array();
-        if(!empty($res)) {
-            foreach($res as $k => $v) {
-                $info[$v['key']]['key'] = $v['key'];
-                $info[$v['key']]['val'] = $v['val']['value'];
-                $info[$v['key']]['count'] = $v['doc_count'];
-            }
-        }
-        return $info;
+        $log_arr = assess_info($url, $source, $info);
+        $assess_log->add($log_arr);
     }
 }

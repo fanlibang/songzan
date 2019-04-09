@@ -86,16 +86,21 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define('APPID', 'wxf1f0fdca621f9f38'); //上线修改
-define('SECRET', '26d9bbf8f79be12280cada00a1353505'); //上线修改
+//define('APPID', 'wxf1f0fdca621f9f38'); //上线修改
+//define('SECRET', '26d9bbf8f79be12280cada00a1353505'); //上线修改
+
+define('APPID', 'wx7bdad9e43b090725'); //上线修改
+define('SECRET', '603c47db12e1a57e98c5ff45fac2048d'); //上线修改
 
 define('UPLOAD_FILE', '/upfile/2018/crm/ownerreferral/');
 define('WX_FILE', '/assets/wx/');
 
-define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test'); //上线修改
+define('ACTIVITY_ID', 'CRM_Owner_Referral_201812_Test');
+//define('ACTIVITY_ID', 'LRFY18NOV123001001'); //上线修改
 define('REPORT_MODEL_URL', 'https://api-staging.jaguar.com.cn/service/leads/collectionLeadsData'); //上线修改
 define('REQUEST_TYPE', 'TD');   //上线修改
 define('LEADS_SOURCE', 'CRM'); //上线修改
+define('CAMPAIGN_ID', 'LRFY18RROWNERREF'); //活动id上线修改
 
 define('CLIENT_CODE', 'jdxp2ttAIZetkwl6O4');  //上线把值改为空
 define('CLIENT_SECRET', '30F8C680B880EE11E6E44FB29E2C8B62'); //上线把值改为空

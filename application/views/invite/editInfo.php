@@ -16,8 +16,8 @@
                         <input type="tel" name="phone" class="input-text" disabled="disabled" value="<?= $phone; ?>">
                     </div>
                 </div>
-                <div class="form-list flex center opt">
-                    <label>意向车型：</label>
+                <div class="form-list flex center opt foui-win">
+                    <label>*意向车型：</label>
                     <div class="form-box">
                         <span>请选择车型</span>
                         <select name="car_id" id="car_id">
@@ -36,41 +36,67 @@
                 </div>
                 <div class="flex justify">
                     <div class="form-checkbox active">
-                        我已同意保密条款和<a href="javascript:;" class="item">隐私政策</a>
+                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" class="item" onclick="cc('invite/info_tk')">隐私条款</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" id="sub" value="提     交" class="btn auto">
+                    <input type="button" id="sub" value="提     交" onclick="cc('invite/info_tj')" class="btn auto">
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                您已成功填写个人基本信息，后续功能页面正在开发中，敬请期待哦！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         // 通过下面这个API隐藏右上角按钮
         WeixinJSBridge.call('hideOptionMenu');
     });
     $(function(){
+        $('#car_id').change(function() {
+            var car_id = $("#car_id option:selected").val();
+            if (car_id != 1 && car_id != 2 && car_id != 0) {
+                $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至臻礼包。');
+                $('#agree').val('确认');
+                $('#hint').removeClass('hide');
+                //alert('参加本次活动的车型为揽胜或揽胜运动版');
+                return false;
+            }
+        });
         $('#sub').click(function(){
             var car_id = $("#car_id option:selected").val();
             if(car_id == '') {
                 alert('请选择车型'); return false;
             }
+            if (car_id != 1 && car_id != 2) {
+                alert('参加本次活动的车型为揽胜或揽胜运动版');
+                return false;
+            }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('Invite', 'editInfo'); ?>',
+                url:'/2018/crm/ownerreferral/index.php?c=Invite&m=editInfo',
                 data:{car_id:car_id},
                 cache:false,
                 dataType:'json',
                 success:function(json) {
                     if(json.code == 200){
-                        alert(json.msg);
+                        //alert(json.msg);
                         window.location.href=json.forward;
                     } else {
                         alert(json.msg);

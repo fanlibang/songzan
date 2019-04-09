@@ -9,7 +9,7 @@ namespace Xy\Application\Models\DB;
 
 class ViewAssessDB extends BaseDB
 {
-    public $_table_obj = 'L462_18songzan_view_logs';
+    public $_table_obj = 'ownerreferral_201812_view_logs';
     /**
      * 初始化
      */

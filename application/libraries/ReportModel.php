@@ -1581,10 +1581,11 @@ class ReportModel
         }
         $postData['leads_source'] = LEADS_SOURCE;
         $postData['request_type'] = REQUEST_TYPE;
+        $postData['campaign_id'] = CAMPAIGN_ID;
         $postData['need_lms'] = 1;
         $postData['accept_privacy'] = 'true';
         $postData['timestamp'] = time();
-        $postData['sub_channel1'] = get_cookie('source');
+        $postData['sub_channel'] = get_cookie('source');
         $postData['nonce_str'] = $this->createNonceStr(12);
 
 

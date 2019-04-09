@@ -15,6 +15,16 @@ class Test extends Base
     }
 
     public function index(){
+        $a = [['2321'=>[0=>['222' => 333, '3333'=>4444]],'aaaa' => [0=>['222' => 333, '3333'=>4444]]]];
+        echo json_encode($a);
+
+        $b = '{"3":[{"222":333,"3333":4444}],"5":[{"222":333,"3333":4444}]}';
+        var_dump(json_decode($b, true));
+        echo '1111';exit;
+        $sms_notice_obj = new SendSms();
+        $sms_ret = $sms_notice_obj->send('18116270122');
+        var_dump($sms_ret);
+        exit;
         $client = new AipOcr('14897920', '7eDaRmySnE4mFHvys8B9H48E', 'LniOpofpOHOyWVYG7mmRuxGiT7oo2dL9');
         $options = array();
         $options["detect_direction"] = "true";

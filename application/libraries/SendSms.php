@@ -18,16 +18,17 @@ class SendSms {
      *
      * @param null $tels
      * @param null $msg
+     * @param int $type
      * @return array
      */
-    public function send($tels = null, $msg = null){
+    public function send($tels = null, $msg = null, $type = 1){
         if (empty($tels)) {
             return array('code' => 202, 'msg' => '电话号码不能为空');
         }
 
         $tel_arr = explode(',', $tels);
         foreach ((array)$tel_arr as $k => $v) {
-            if (!preg_match("/^1[34578]{1}[0-9]{1}[0-9]{8}$/", $v)) {
+            if (!preg_match("/^1[3-9]\d{9}$/", $v)) {
                 return array('code' => 202, 'msg' => '电话号码格式不正确');
             }
         }
@@ -36,11 +37,23 @@ class SendSms {
             return array('code' => 202, 'msg' => '短信内容不能为空');
         }
 
-        $clapi  = new ChuanglanSmsApi();
         //设置您要发送的内容：其中“【】”中括号为运营商签名符号，多签名内容前置添加提交
-        $mes = '【路虎发现隐秘之门】您好，您的验证码'.$msg;
-        $result = $clapi->sendSMS($tels, $mes);
+        if($type == 1){
+            $mes = '【路虎中国】尊敬的用户，您正在进行路虎活动的身份认证，验证码是：'.$msg.'。5分钟内有效，请勿将此验证码泄漏给他人。';
+            $clapi  = new ChuanglanSmsApi();
+        } elseif($type == 2) {
+            //$mes = '【路虎中国】亲爱的车主，您已成功参与路虎推荐购活动！分享您的专属链接'.$msg.' ，邀请好友，共揽胜景，共赢好礼！退订回T';
+            $mes = '【路虎中国】亲爱的车主，您已成功参与路虎推荐购活动！分享您的专属链接'.$msg.'，邀请好友，共揽胜景，共赢好礼！退订回T';
+            $clapi  = new ChuanglanUrlApi();
+        } elseif($type == 3) {
+            $mes = '【路虎中国】感谢您成功参与路虎推荐购活动，您的好友'.$msg[0].'已成功上传购车凭证，请您点击'.$msg[1].'，及时完善行驶证及身份证信息，领取万元至臻礼包。退订回T';
+            $clapi  = new ChuanglanUrlApi();
+        } elseif($type == 4) {
+            $mes = '【路虎中国】感谢您成功参与路虎推荐购活动，您和好友'.$msg[0].'已通过信息审核，请您点击'.$msg[1].'，及时领取万元至臻礼包！退订回T';
+            $clapi  = new ChuanglanUrlApi();
+        }
 
+        $result = $clapi->sendSMS($tels, $mes);
         if(!is_null(json_decode($result))){
             $output=json_decode($result,true);
 

@@ -716,19 +716,23 @@ if (! function_exists('assess_info')) {
     /**
      * 日志信息
      * @param $url
+     * @param $info
+     * @param $source
      * @return array|bool
      */
-    function assess_info($url, $openId)
+    function assess_info($url, $source, $info)
     {
         if($_SERVER['REQUEST_URI'] == '/dev/') {
             return false;
         } else {
             $data = array(
-                'server_ip'     =>  return_ip(true, true),
-                'ip'            =>  return_ip(true),
+                'server_ip'     =>  1,
+                'ip'            =>  2,
                 'url'           =>  $url,
                 'path'          =>  $_SERVER['REQUEST_URI'],
-                'openId'       =>   $openId,
+                'phone'         =>   $info ? $info['phone'] : '',
+                'openId'        =>   get_cookie('openId'),
+                'source'        =>   $source ? $source : 0,
                 'log_time'      =>  time()
             );
             return $data;
@@ -865,16 +869,31 @@ if (! function_exists('site_url')) {
     {
         $url_str = '';
         if(PROJECT_NAME == 'admin'){
-            $url_str = '?v='.time();
+            $url_str = '&v='.time();
         }
 
         $controller = $controller ? $controller : 'Index';
         $action     = $action ? $action : 'index';
 
         foreach ((array)$params as $k => $v) {
-            $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
+            $url_str .= ($url_str ? '&' : '&').$k.'='.$v;
         }
-	 return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+
+
+        if(is_https()){
+            if(PROJECT_NAME == 'admin') {
+                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+            } else {
+                $url = 'https://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+            }
+        } else {
+            if(PROJECT_NAME == 'admin') {
+                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
+            } else {
+                $url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php'.PROJECT_NAME.'?c='.$controller.'&m='.$action.$url_str;
+            }
+        }
+        return $url;
     }
 }
 
@@ -902,8 +921,8 @@ if (! function_exists('path_site_url')) {
         foreach ((array)$params as $k => $v) {
             $url_str .= ($url_str ? '&' : '?').$k.'='.$v;
         }
-	
-	return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php/'.PROJECT_NAME.$controller.'/'.$action.$url_str;
+
+	    return 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?d='.PROJECT_NAME.'&c='.$controller.'&m='.$action.$url_str;
         //return 'http://'.$_SERVER['HTTP_HOST'] . '/'.PROJECT_NAME.'/'.$controller.'/'.$action.$url_str;
     }
 }
@@ -1825,5 +1844,54 @@ function check18IDCard($IDCard) {
     } else {
         return true;
     }
+}
+
+/**
+ * 调用新浪接口将长链接转为短链接
+ * @param  string        $source    申请应用的AppKey
+ * @param  array|string  $url_long  长链接，支持多个转换（需要先执行urlencode)
+ * @return array
+ */
+function getSinaShortUrl($source, $url_long){
+
+    // 参数检查
+    if(empty($source) || !$url_long){
+        return false;
+    }
+
+    // 参数处理，字符串转为数组
+    if(!is_array($url_long)){
+        $url_long = array($url_long);
+    }
+
+    // 拼接url_long参数请求格式
+    $url_param = array_map(function($value){
+        return '&url_long='.urlencode($value);
+    }, $url_long);
+
+    $url_param = implode('', $url_param);
+
+    // 新浪生成短链接接口
+    $api = 'http://api.t.sina.com.cn/short_url/shorten.json';
+
+    // 请求url
+    $request_url = sprintf($api.'?source=%s%s', $source, $url_param);
+
+    $result = array();
+
+    // 执行请求
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $request_url);
+    $data = curl_exec($ch);
+    if($error=curl_errno($ch)){
+        return false;
+    }
+    curl_close($ch);
+
+    $result = json_decode($data, true);
+
+    return $result[0]['url_short'];
+
 }
 

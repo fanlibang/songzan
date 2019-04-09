@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
 include_once APPPATH . 'controllers/Common.php';
 
 class Base extends Common
 {
     /**
      * 后台公用APPID
-     * @var int
+     * @var intAdmin
      */
     protected $appId = 1;
     /**
@@ -899,7 +898,7 @@ class Base extends Common
         $rel = is_string($rel) && (strpos($rel, "/") !== false || strpos($rel, "_") !== false) ? $rel :dwz_rel($rel);
 
         $data["navTabId"] = $rel;
-        $data["rel"] = $rel;
+        $data["rel"] = $data['flag'];
 
         switch ($callback) {
             case "forward"://刷新指定窗口

@@ -20,9 +20,9 @@ class ChuanglanSmsApi {
 	
 	const API_BALANCE_QUERY_URL='https://XXXX/msg/balance/json';//创蓝短信余额查询接口URL
 	
-	const API_ACCOUNT= 'N0057610'; // 创蓝API账号
+	const API_ACCOUNT= 'N603555_N0057610'; // 创蓝API账号
 	
-	const API_PASSWORD= '8lLaUvhsiOe11a';// 创蓝API密码
+	const API_PASSWORD= 'XepJM98bFC2449';// 创蓝API密码
 	
 
 

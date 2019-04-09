@@ -1,7 +1,7 @@
 </body>
 <script type="text/javascript">
     function cc(str){
-        var url = "<?php echo site_url('Publics', 'button') ?>" + '?url='+str;
+        var url = '/2018/crm/ownerreferral/index.php?c=Publics&m=button&url='+str;
         $.get(url, function(result){
             console.log(result);
         });

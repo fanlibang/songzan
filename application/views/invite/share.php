@@ -1,15 +1,18 @@
 <div class="wrapper">
-    <div class="logo" style="pointer-events:none;">
-        <img src="<?= STATIC_ASSETS ?>images/logo.png" alt="">
-    </div>
-    <div class="content bg-2 flex center jc" style="pointer-events:none;">
-        <div>
+    <div class="logo"><img src="<?= STATIC_ASSETS ?>images/logo.png" alt=""></div>
+    <div class="content bg-2 flex center jc">
+        <div class="gift-cont">
             <div class="gift-tit ta-c">
-                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <!--被推荐人文案-->
+                <div class="hide"><img src="<?= STATIC_ASSETS ?>images/gift-tit.png" alt=""></div>
+                <!--推荐人文案-->
+                <div><img src="<?= STATIC_ASSETS ?>images/gift-tit-2.png" alt=""></div>
                 <div class="ta-c ma"><?=$invite_code?></div>
             </div>
-            <div class="code">
-                <div class="auto"><img width="144px" height="144px" src="<?= $qr_code_img ?>" alt=""></div>
+            <div class="code ta-c">
+                <p></p>
+                <p></p>
+                <div class="auto"><img style="margin-top: 20px;" src="<?= $qr_code_img ?>" alt=""></div>
             </div>
         </div>
     </div>
@@ -19,7 +22,7 @@
     <img style="width: 100%;height: 100%;opacity: 0;" src="<?=$img_url?>" alt="">
 </div>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         wx.config({
@@ -61,7 +64,7 @@
 
             var data = {
                 title: '荐入佳境 共揽胜景', // 分享标题
-                link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'share') . '?invite_code=' . $invite_code; ?>", // 分享链接
+                link: "<?php echo isset($wx_url) ? $wx_url : site_url('Invite', 'index', array('invite_code' => $invite_code, 'utm_source' => $source)); ?>", // 分享链接
                 desc:'您的好友正在邀请您参与路虎推荐购活动。',
                 imgUrl: "<?= HTTP_HOST ?>/2018/crm/ownerreferral/assets/images/123.jpg", // 分享图标
                 success: function () {

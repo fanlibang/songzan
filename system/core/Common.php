@@ -650,7 +650,7 @@ if ( ! function_exists('_exception_handler'))
 	function _exception_handler($exception)
 	{
 		$_error =& load_class('Exceptions', 'core');
-		//var_Dump($exception);
+		var_Dump($exception);
 		//exit;
 		$_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
 

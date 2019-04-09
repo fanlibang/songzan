@@ -79,4 +79,48 @@ class UserModel extends BaseModel
         $ret = $this->getOne($where);
         return $ret;
     }
+
+    public function incrementSubmitNum($id)
+    {
+        $sql = "update ownerreferral_201812_user set submit_num = submit_num + 1 where id = '{$id}'";
+        $res = $this->_db_obj->execute($sql);
+        return $res;
+    }
+
+    public function getUserInfoByDriver($number)
+    {
+        $where['driver_number'] = $number;
+        $ret = $this->getOne($where);
+        return $ret ? $ret : false;
+    }
+
+    public function getInviteInfoByUid($uid)
+    {
+        $where['master_uid'] = $uid;
+        $ret = $this->getAll($where, 'created_at', 10);
+        return $ret;
+    }
+
+    public function getInviteSuccByUid($uid)
+    {
+        $where['master_uid'] = $uid;
+        $where['status'] = 3;
+        $ret = $this->getAll($where, 'created_at', 2);
+        return $ret;
+    }
+
+    public function getUserInviteCounts($code)
+    {
+        $where['from_invite_code'] = $code;
+        $ret = $this->counts($where);
+        return $ret;
+    }
+
+    public function getInviteSuccNum($uid)
+    {
+        $where['master_uid'] = $uid;
+        $where['status'] = 3;
+        $ret = $this->counts($where);
+        return $ret;
+    }
 }

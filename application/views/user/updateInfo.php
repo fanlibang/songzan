@@ -20,7 +20,7 @@
                 <div class="form-list flex center file">
                     <label>行驶证：</label>
                     <div class="form-box">
-                        <input type="text" id="driver_number" value="<?= $driver_number ?>" class="input-text">
+                        <input type="text" id="driver_number" disabled="true" placeholder="仅限路虎品牌" value="<?= $driver_number ?>" class="input-text">
                         <input type="hidden" id="driver_json" value="<?= $driver_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
@@ -32,7 +32,7 @@
                 <div class="form-list flex center file">
                     <label>身份证：</label>
                     <div class="form-box">
-                        <input type="text" id="card_number" value="<?= $card_number ?>" class="input-text">
+                        <input type="text" id="card_number" disabled="true" placeholder="请先上传图片" value="<?= $card_number ?>" class="input-text">
                         <input type="hidden" id="card_json" value="<?= $card_json ?>" class="input-text">
                     </div>
                     <i><img src="<?= STATIC_ASSETS ?>images/icon-1.png" alt="">
@@ -42,34 +42,84 @@
                     </i>
                 </div>
                 <div class="flex justify">
-                    <div class="form-checkbox active">
-                        我已同意保密条款和<a href="javascript:;" class="item">隐私政策</a>
+                    <div class="form-checkbox">
+                        我已阅读并同意相关<a href="https://www.landrover.com.cn/cookie-and-privacy-policy.html" onclick="cc('user/wsys')" class="item">隐私条款</a>
                     </div>
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
                     <input type="hidden" id="id" value="<?= $id ?>" class="input-text">
-                    <input type="button" value="提     交" class="btn auto" id="sub">
+                    <input type="hidden" id="status" value="<?= $status ?>" class="input-text">
+                    <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('user/wstj')">
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="bomb-wrapper flex center jc hide" id="upload">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                上传出错：上传的图片不正确
+            </div>
+            <div class="form-push">
+
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+
+<div class="bomb-wrapper flex center jc hide" id="upload">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="title">
+                上传出错：上传的图片不正确
+            </div>
+            <div class="form-push">
+
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<div class="bomb-wrapper flex center jc hide" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word" id="titles">
+                活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+            </div>
+            <div class="form-push">
+                <input type="button" value=" 确 定 " class="btn auto " id="tj" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#card_target").load(function(){
         var data = $(window.frames['card_target'].document.body).html();
-        console.log(data);
         if(data != null){
+            $('#card_number').attr('disabled',false);
             var dataObj=eval("("+data+")");//转换为json对象
             if(dataObj.image_status == 'normal') {
                 $("#card_number").val(dataObj.words_result['公民身份号码'].words);
                 $("#card_json").val(data);
             } else if (dataObj.image_status != 'normal'){
-                alert('上传出错:'+dataObj.image_status);
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
+                //alert('上传出错:'+dataObj.image_status);
             } else {
-                alert('上传出错:'+dataObj['error_code']);
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
+                //alert('上传出错:'+dataObj['error_code']);
+                return false;
             }
         }
     });
@@ -78,11 +128,15 @@ $(document).ready(function(){
         var data = $(window.frames['driver_target'].document.body).html();
         if(data != null){
             var dataObj=eval("("+data+")");//转换为json对象
-            if(dataObj.msg == 'success') {
-                $("#driver_number").val(dataObj.words_result['发动机号码'].words);
+            $('#driver_number').attr('disabled',false);
+            if(dataObj.words_result) {
+                $("#driver_number").val(dataObj.words_result['车辆识别代号'].words);
                 $("#driver_json").val(data);
             } else {
-                alert('上传出错:'+dataObj['error_code']);
+                $('#upload').removeClass('hide');
+                //alert('上传出错:上传文图片不正确');
+                //alert('上传出错:'+dataObj['error_code']);
+                return false;
             }
         }
     });
@@ -102,19 +156,31 @@ $(document).ready(function(){
             var driver_json = $('#driver_json').val();
             var card_number = $('#card_number').val();
             var card_json = $('#card_json').val();
+            var status = $('#status').val();
             var succ = $('.form-checkbox.active').text();
             if(succ == '') {
-                alert('请选择隐私政策'); return false;
+                window.alert = function(name){
+                    var iframe = document.createElement("IFRAME");
+                    iframe.style.display="none";
+                    iframe.setAttribute("src", 'data:text/plain,');
+                    document.documentElement.appendChild(iframe);
+                    window.frames[0].window.alert(name);
+                    iframe.parentNode.removeChild(iframe);
+                };
+                alert('请选择隐私条款'); return false;
             }
             $.ajax({
                 type:'post',
-                url:'<?php echo site_url('User', 'updateInfo'); ?>',
-                data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json},
+                url:'/2018/crm/ownerreferral/index.php?c=User&m=updateInfo',
+                data:{id:id, driver_number:driver_number, driver_json:driver_json, card_number:card_number, card_json:card_json, status:status},
                 dataType:'json',
                 success:function(json){
                     if(json.code == 200){
-                        alert(json.msg);
-                        window.location.href=json.forward;
+                        //alert(json.msg);
+                        $('#titles').html('提交提示：完善资料成功');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
                     } else {
                         alert(json.msg);
                     }
@@ -122,6 +188,11 @@ $(document).ready(function(){
                 error:function(){}
             });
         });
+    });
+
+    $('#tj').click(function(){
+        var url = $(this).attr('url');
+        window.location.href=url;
     });
 </script>
 
