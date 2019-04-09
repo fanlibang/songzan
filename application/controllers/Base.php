@@ -83,7 +83,8 @@ class Base extends Common
                 return $userInfo;
             }
         }
-        return false;
+        //return false;
+        return true;
     }
 
     /**
