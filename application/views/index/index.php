@@ -24,13 +24,18 @@
                 成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
                 您和您的好友均可赢取至臻礼包
             </div>
+<<<<<<< HEAD
             <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+=======
+            <div class="index-btn auto"><a href="javascript:;" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
             <div class="rule-box ta-c">
                 <a href="javascript:;" class="rule gz" onclick="cc('index/gz')" >
                     查看活动规则
                 </a>
             </div>
+<<<<<<< HEAD
         </div>
     </div>
 </div>
@@ -64,6 +69,8 @@
                 </div>
                 <div class="swiper-scrollbar rule-scrollbar"></div>
             </div>
+=======
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
         </div>
     </div>
 </div>
@@ -85,6 +92,11 @@
                     <input type="tel" id="verify" maxlength="6" value="" class="input-text">
                 </div>
                 <input type="button" value="发送验证码"  style="position:  absolute;right: 58px;" class="sendbtn _sms_verify">
+<<<<<<< HEAD
+            </div>
+            <div class="form-push">
+                <input type="button" value="提     交" class="btn auto" id="submit" onclick="cc('index/tyg')" >
+=======
             </div>
             <div class="form-push">
                 <input type="button" value="提     交" class="btn auto" id="submit" onclick="cc('index/tyg')" >
@@ -93,6 +105,25 @@
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
+<?php if(date('Y-m-d H:i:s') > $time) { ?>
+<div class="bomb-wrapper flex center jc" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree" >
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+<?php } ?>
+
+
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
@@ -100,7 +131,7 @@
                 您还未成为路虎推荐购活动推荐人，请点击“我要推荐”报名参与活动。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
+                <input type="button" value="我 要 推 荐" class="btn auto" id="" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>

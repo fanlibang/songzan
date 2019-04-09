@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" id="sub" value="提     交" class="btn auto">
+                    <input type="button" id="from_sub" value="提     交" class="btn auto">
                 </div>
             </div>
         </div>
@@ -57,6 +57,7 @@
 </div>
 
 <?php if(date('Y-m-d H:i:s') > $time) { ?>
+<<<<<<< HEAD
     <div class="bomb-wrapper flex center jc invite" id="hint">
         <div class="bomb-content">
             <div class="hint auto">
@@ -80,6 +81,33 @@
             </div>
             <div class="form-push">
                 <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
+=======
+<div class="bomb-wrapper flex center jc invite" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+<?php } ?>
+
+<div class="bomb-wrapper flex center jc invite <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+<<<<<<< HEAD
+=======
+            <div class="hint-word" id="title">
+                该推荐码已达推荐上限，建议您通过其他推荐码参与，如有疑问，可致电400-820-0187。
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -89,17 +117,37 @@
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             <div class="hint-word" >
                 您已参与过活动，请前往个人主页查看最新状态。
             </div>
             <div class="form-push">
                 <input type="button" value="我 知 道 了" class="btn auto" id="tj" >
+<<<<<<< HEAD
+=======
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
 
+<div class="bomb-wrapper flex center jc hide" id="rules">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                    活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
+                    <dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>
+            </div>
+            <div class="form-push">
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+<<<<<<< HEAD
 <div class="bomb-wrapper flex center jc hide" id="rules">
     <div class="bomb-content">
         <div class="hint auto">
@@ -115,6 +163,8 @@
     </div>
 </div>
 
+=======
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
 <div class="bomb-wrapper flex center jc hide" id="rule">
     <div class="bomb-content">
         <div class="pop-tit ta-c">活 动 规 则</div>
@@ -211,6 +261,7 @@
             if (car_id == 0) {
                 alert('请选择正确车型');
                 return false;
+<<<<<<< HEAD
             }
             /**
             if (car_id != 1 && car_id != 2) {
@@ -220,6 +271,17 @@
                 //alert('参加本次活动的车型为揽胜或揽胜运动版');
                 return false;
             }
+=======
+            }
+            /**
+            if (car_id != 1 && car_id != 2) {
+                $('#title').html('感谢您的选择，此次活动需在成功购买路虎揽胜、路虎揽胜运动版后，方可赢取至瑧礼包。');
+                $('.tj').val('我 知 道 了');
+                $('#hint').removeClass('hide');
+                //alert('参加本次活动的车型为揽胜或揽胜运动版');
+                return false;
+            }
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
              **/
             $('#rules').removeClass('hide');
         });
@@ -241,8 +303,18 @@
                     if(json.code == 200) {
                         window.location.href=json.forward;
                     } else if(json.code == 201) {
+<<<<<<< HEAD
                         $('#title').html(json.msg);
                         $('.tj').val('个人主页');
+=======
+                        $('#title').html(json.msg);
+                        $('.tj').val('个人主页');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                    } else if(json.code == 204) {
+                        $('#title').html(json.msg);
+                        $('.tj').val('我已了解');
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
                         $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
@@ -254,7 +326,7 @@
                         $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
                     } else {
-                        alert(json.msg);
+                        $('#mgs').html('提交提示：'+json.msg);
                     }
                 },
                 error:function(){}

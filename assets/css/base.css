@@ -230,6 +230,7 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 @keyframes dh1 {
     0%{opacity: 1}
     100%{opacity: .4}
+<<<<<<< HEAD
 }
 
 /*20190409add*/
@@ -245,3 +246,6 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 .data-list li span:first-child{display: inline-block;width: 160px;padding-right: 20px;text-align: right;}
 #rule.swiper-container-vertical > .swiper-scrollbar{width: 4px;background: rgba(133,133,133,0.2);}
 #rule .swiper-scrollbar-drag{left: -1px;width: 6px;background: #000;}
+=======
+}
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d

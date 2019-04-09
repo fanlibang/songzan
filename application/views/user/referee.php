@@ -61,6 +61,11 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
 <div class="bomb-wrapper flex center jc hide" id="upload">
     <div class="bomb-content">
         <div class="hint auto">
@@ -68,7 +73,11 @@
                 上传出错：上传的图片不正确
             </div>
             <div class="form-push">
+<<<<<<< HEAD
 
+=======
+                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -80,6 +89,7 @@
         <div class="hint auto">
             <div class="hint-word" id="title">
                 活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+<<<<<<< HEAD
             </div>
             <div class="form-push">
                 <input type="button" value="我 要 推 荐" class="btn auto " id="tj" >
@@ -97,12 +107,34 @@
             </div>
             <div class="form-push">
                 <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
+=======
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 要 推 荐" class="btn auto " id="tj" >
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+<div class="bomb-wrapper flex center jc hide" id="rule">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                    活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+            </div>
+            <div class="form-push">
+                <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
 <script src="<?= STATIC_ASSETS ?>js/sendSMS.js" type="text/javascript"></script>
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -225,7 +257,11 @@ $(document).ready(function(){
         });
 
         $('#from_sub').click(function(){
+<<<<<<< HEAD
             $('#rule').addClass('hide');
+=======
+            //$('#rule').addClass('hide');
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             var name = $('#name').val();
             var phone = $('#phone').val();
             var code = $('#verify').val();
@@ -246,8 +282,17 @@ $(document).ready(function(){
                         //$('#hint').removeClass('hide');
                         window.location.href=json.forward;
                     } else if(json.code == 201) {
+<<<<<<< HEAD
+=======
                         $('#title').html(json.msg);
                         $('#tj').val('个人主页');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
+                    } else if(json.code == 202) {
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
+                        $('#title').html(json.msg);
+                        $('#tj').val('我已了解');
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                         //window.location.href=json.forward;

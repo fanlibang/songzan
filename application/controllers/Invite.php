@@ -109,6 +109,7 @@ class Invite extends Base
                 $this->AjaxReturn('401', '用户名不能为空');
                 exit;
             }
+            $this->AjaxReturn('301', ' 感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！');exit;
             $token = rand_str(32);
             $data['token'] = $token;
             set_cookie('token', $token);
@@ -133,12 +134,19 @@ class Invite extends Base
                 $this->Users->editUserId($uid, ['report_result' => $result]);
             }
             $this->AjaxReturn('200', "活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。<dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>", $url);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             exit;
         }
 
         $data['invite_count'] = $invite_count;
         $data['car_record'] = $carInfo->getAllCarInfo();
         $data['invite_code'] = $inviteCode;
+        $sql = "select * from `ownerreferral_201812_data`";
+        $info = $this->Users->execute($sql);
+        $data['time'] = $info[0]['time'];
         $this->displayMain($data);
     }
 

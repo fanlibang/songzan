@@ -65,6 +65,10 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
 <div class="bomb-wrapper flex center jc <?php if($invite_diff == 0) { echo 'hide'; } ?>" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
