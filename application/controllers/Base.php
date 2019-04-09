@@ -36,8 +36,6 @@ class Base extends Common
         } else {
             $this->_data['source'] = get_cookie('source');
         }
-        $url = site_url('Index', 'index');
-        header('Location:' . $url); exit;
 
         if (!$this->isLogin()) {
             if (is_weixin()) {

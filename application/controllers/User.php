@@ -26,10 +26,7 @@ class User extends Base
         $url = site_url('User', 'center');
         $info = $this->input->request(null, true);
         if (is_ajax_post()) {
-<<<<<<< HEAD
             $this->AjaxReturn('401', ' 感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！'); exit;
-=======
->>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             $info['name'] = trim($info['name']);
             if(empty($info['name'])) {
                 $this->AjaxReturn('401', '用户名不能为空');
@@ -113,7 +110,6 @@ class User extends Base
             $this->Users->incrementSubmitNum($uid);
             set_cookie('token', $token);
             $url = site_url('Invite', 'share', array('invite_code' => $inviteCode));
-<<<<<<< HEAD
             $sql = "select * from `ownerreferral_201812_data`";
             $info = $this->Users->execute($sql);
             $data = $info[0];
@@ -122,9 +118,6 @@ class User extends Base
             } else {
                 $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
             }
-=======
-            $this->AjaxReturn('200', '活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。', $url);exit;
->>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
         } else {
             if ($this->isLogin()) {
                 $url = site_url('User', 'center');
