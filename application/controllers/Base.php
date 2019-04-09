@@ -30,6 +30,10 @@ class Base extends Common
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s
         //0avPHH7yRP4MpzjM-30u0I');exit;
+        if($this->_data['controller'] != 'Index') {
+            $url = site_url('Index', 'index');
+            header('Location:' . $url); exit;
+        }
         if(!get_cookie('source')) {
             $this->_data['source'] = $this->input->get('utm_source', true);
             set_cookie('source',  $this->_data['source']);
