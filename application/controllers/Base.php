@@ -42,6 +42,7 @@ class Base extends Common
         }
 
         if (!$this->isLogin()) {
+            /**
             if (is_weixin()) {
                 $this->_data['browser'] = 1; //微信浏览器
                 $controller = ucfirst($this->router->fetch_class());
@@ -54,6 +55,7 @@ class Base extends Common
                 }
                 $this->_data['browser'] = 2; //其他浏览器
             }
+             **/
         }
         /**
          * //配置模板路径
