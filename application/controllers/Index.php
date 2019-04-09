@@ -16,6 +16,7 @@ class Index extends Base {
 	 */
 	public function index()
 	{
+        /**
         $data = $this->isLogin();
         if (!empty($data)) {
             if ($data['master_uid'] > 0) {
@@ -26,6 +27,7 @@ class Index extends Base {
                 header('Location:' . $url);
             }
         }
+        **/
         $this->displayMain();
 	}
 }
