@@ -38,7 +38,10 @@ class ShopCarModel extends BaseModel
         return $ret;
     }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
     public function getCarInfoByUid($uid)
     {
         $where['uid'] = $uid;

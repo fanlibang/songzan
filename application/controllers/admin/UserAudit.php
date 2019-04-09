@@ -138,6 +138,20 @@ class UserAudit extends Base
             /**
             $reward_info = $this->User->getInviteSuccByUid($uid);
             if($reward_info && $status == 3) {
+<<<<<<< HEAD
+            //生成短连接
+            $user_info      = $this->User->getUserInfoByid($reward_info[0]['id']);
+            $invite_info    = $this->User->getUserInfoByid($uid);
+            //$long_url = site_url('User', 'center');
+            $long_url = 'http://'.$_SERVER['HTTP_HOST'] . '/2018/crm/ownerreferral/index.php?c=User&m=center';
+            $short_url = getSinaShortUrl('1555751977',$long_url);
+            $sms_notice_obj = new SendSms();
+            $mgs[0] = $user_info['name'];
+            $mgs[1] = $short_url;
+            $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
+            $update['content'] = json_encode($ret);
+            $this->Car->editUserCarUid($reward_info[0]['uid'], $update);
+=======
                 //生成短连接
                 $user_info      = $this->User->getUserInfoByid($reward_info[0]['id']);
                 $invite_info    = $this->User->getUserInfoByid($uid);
@@ -150,6 +164,7 @@ class UserAudit extends Base
                 $ret = $sms_notice_obj->send($invite_info['phone'], $mgs, 4);
                 $update['content'] = json_encode($ret);
                 $this->Car->editUserCarUid($reward_info[0]['uid'], $update);
+>>>>>>> 4a363b83ea601bc0cdf403428e8d6601904d353d
             }
              */
             $this->dwzAjaxReturn(200, '操作成功', '', null, 'no');
