@@ -83,8 +83,7 @@ class Base extends Common
                 return $userInfo;
             }
         }
-        //return false;
-        return true;
+        return false;
     }
 
     /**
@@ -157,7 +156,7 @@ class Base extends Common
         //$url = '/'.PROJECT_NAME.'/'.$url_info['controller'].'/'.$url_info['method'];
         $url = '/dev/' . $url_info['controller'] . '/' . $url_info['method'];
         $source = $this->_data['source'];
-        $this->view_assess($url, $source, $this->isLogin());
+        //$this->view_assess($url, $source, $this->isLogin());
         //调试页面执行时间用
         if (IS_DEBUG) {
             echo 'page_run_time:</br>';
