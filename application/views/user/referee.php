@@ -54,12 +54,14 @@
                     <div class="form-tip">标*为必填</div>
                 </div>
                 <div class="form-push">
-                    <input type="button" value="提     交" class="btn auto" id="sub" onclick="cc('user/zctj')">
+                    <input type="button" value="提     交" class="btn auto" id="from_sub" onclick="cc('user/zctj')">
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <div class="bomb-wrapper flex center jc hide" id="upload">
     <div class="bomb-content">
@@ -68,7 +70,7 @@
                 上传出错：上传的图片不正确
             </div>
             <div class="form-push">
-
+                <input type="button" value="我 知 道 了" class="btn auto tj" id="agree">
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
@@ -93,7 +95,7 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
-                活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
+                    活动礼遇将在信息审核通过后进行寄送。确认提交前，请确保信息的准确性。
             </div>
             <div class="form-push">
                 <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
@@ -225,7 +227,7 @@ $(document).ready(function(){
         });
 
         $('#from_sub').click(function(){
-            $('#rule').addClass('hide');
+            //$('#rule').addClass('hide');
             var name = $('#name').val();
             var phone = $('#phone').val();
             var code = $('#verify').val();
@@ -251,9 +253,15 @@ $(document).ready(function(){
                         $('#tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
                         //window.location.href=json.forward;
+                    } else if(json.code == 202) {
+                        $('#title').html(json.msg);
+                        $('#tj').val('我已了解');
+                        $('#tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
+                        //window.location.href=json.forward;
                     } else {
                         $('#upload').removeClass('hide');
-                        $('#mgs').val('提交提示：'+json.msg);
+                        $('#mgs').html('提交提示：'+json.msg);
                     }
                 },
                 error:function(){}

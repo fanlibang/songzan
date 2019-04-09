@@ -138,6 +138,9 @@ class Base extends Common
         $signPackage = $jsSdk->GetSignPackage(); //获取jsapi_ticket，生成JS-SDK权限验证的签名。
         $data['wx'] = $signPackage;
 
+        $sql = "select * from `ownerreferral_201812_data`";
+        $info = $this->Users->execute($sql);
+        $data['time'] = $info[0]['time'];
         $data = array_merge($this->_data, $data);
 
         $data['main_html'] = $this->load->view($view, $data, true);

@@ -72,6 +72,9 @@ class User extends Base
                 $this->Users->incrementSubmitNum($res['id']);
                 $this->AjaxReturn('201', '您已拥有推荐码，点击“推荐进度”查看。', $url);exit;
             }
+
+            $this->AjaxReturn('401', ' 感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！'); exit;
+
             $data['name'] = $info['name'];
             $data['phone'] = $info['phone'];
             $data['open_id'] = $open_id;

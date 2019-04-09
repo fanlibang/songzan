@@ -7,7 +7,7 @@
                 成功推荐好友购买路虎揽胜、路虎揽胜运动版<br>
                 您和您的好友均可赢取至臻礼包
             </div>
-            <div class="index-btn auto"><a href="<?php echo site_url('User', 'referee'); ?>" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
+            <div class="index-btn auto"><a href="javascript:;" onclick="cc('index/tj')" ><img src="<?= STATIC_ASSETS ?>images/btn-1.png" alt=""></a> </div>
             <div class="index-btn auto progress"><a href="javascript:;" onclick="cc('index/jd')"><img src="<?= STATIC_ASSETS ?>images/btn-2.png" alt=""></a> </div>
             <div class="rule-box ta-c">
                 <a href="javascript:;" class="rule gz" onclick="cc('index/gz')" >
@@ -42,6 +42,24 @@
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
     </div>
 </div>
+
+<?php if(date('Y-m-d H:i:s') > $time) { ?>
+<div class="bomb-wrapper flex center jc" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree" >
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+<?php } ?>
+
+
 <div class="bomb-wrapper flex center jc hide" id="hint">
     <div class="bomb-content">
         <div class="hint auto">
@@ -49,7 +67,7 @@
                 您还未成为路虎推荐购活动推荐人，请点击“我要推荐”报名参与活动。
             </div>
             <div class="form-push">
-                <input type="button" value="我 要 推 荐" class="btn auto" id="tj" >
+                <input type="button" value="我 要 推 荐" class="btn auto" id="" >
             </div>
         </div>
         <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>

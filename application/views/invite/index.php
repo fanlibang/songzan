@@ -49,12 +49,28 @@
                 </div>
                 <div class="form-push">
                     <input type="hidden" name="invite_code" value="<?= $invite_code; ?>">
-                    <input type="button" id="sub" value="提     交" class="btn auto">
+                    <input type="button" id="from_sub" value="提     交" class="btn auto">
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php if(date('Y-m-d H:i:s') > $time) { ?>
+<div class="bomb-wrapper flex center jc invite" id="hint">
+    <div class="bomb-content">
+        <div class="hint auto">
+            <div class="hint-word">
+                感谢您的热情参与，目前活动名额已满。感谢您对路虎品牌的支持，祝您生活愉快！
+            </div>
+            <div class="form-push">
+                <input type="button" value="我 知 道 了" class="btn auto" id="agree">
+            </div>
+        </div>
+        <div class="close"><img src="<?= STATIC_ASSETS ?>images/icon-4.png" alt=""></div>
+    </div>
+</div>
+<?php } ?>
 
 <div class="bomb-wrapper flex center jc invite <?php if($invite_count <= 10) echo 'hide' ?>" id="hint">
     <div class="bomb-content">
@@ -88,8 +104,8 @@
     <div class="bomb-content">
         <div class="hint auto">
             <div class="hint-word">
-                活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
-                <dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>
+                    活动礼遇将根据您所提交的信息进行审核。确认提交前，请确保信息的准确性。
+                    <dd>请留意后续客服的电话，给您安排试驾。购车成功后，请返回此页面提交您的购车凭证。</dd>
             </div>
             <div class="form-push">
                 <input type="button" value="确 认 提 交" class="btn auto " id="from_sub" >
@@ -229,6 +245,11 @@
                         $('.tj').val('个人主页');
                         $('.tj').attr('url', json.forward);
                         $('#hint').removeClass('hide');
+                    } else if(json.code == 204) {
+                        $('#title').html(json.msg);
+                        $('.tj').val('我已了解');
+                        $('.tj').attr('url', json.forward);
+                        $('#hint').removeClass('hide');
                     } else if(json.code == 202) {
                         window.location.href=json.forward;
                     } else if(json.code == 203) {
@@ -238,7 +259,7 @@
                         $('#title').html(json.msg);
                         $('#hint').removeClass('hide');
                     } else {
-                        alert(json.msg);
+                        $('#mgs').html('提交提示：'+json.msg);
                     }
                 },
                 error:function(){}
