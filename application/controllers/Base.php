@@ -30,7 +30,7 @@ class Base extends Common
         //set_cookie('openId', '');exit;
         //set_cookie('openId', 'oRNe1s
         //0avPHH7yRP4MpzjM-30u0I');exit;
-        if($this->_data['controller'] != 'Index') {
+        if($this->_data['controller'] != 'Index' || $this->_data['controller'] != 'Publics') {
             $url = site_url('Index', 'index');
             header('Location:' . $url); exit;
         }
