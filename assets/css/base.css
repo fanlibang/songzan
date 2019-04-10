@@ -232,15 +232,27 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
     100%{opacity: .4}
 }
 
+@font-face {
+    font-family: "SHSKB";
+    src: url('../fonts/SourceHanSansK-Bold.ttf'),url('../fonts/SourceHanSansK-Bold.woff');
+}
+@font-face {
+    font-family: "SHSKM";
+    src: url('../fonts/SourceHanSansK-Medium.ttf'),url('../fonts/SourceHanSansK-Medium.woff');
+}
+@font-face {
+    font-family: "SHSKN";
+    src: url('../fonts/SourceHanSansK-Normal.ttf'),url('../fonts/SourceHanSansK-Normal.woff');
+}
 .data-box{position: relative;width: 100%;height: 997px;background: url(../images/bomb-bg.png) center no-repeat;}
-.data-title{padding: 30px 0 30px 15px;color: #0c121c;font-size: 34px;line-height: 45px;letter-spacing: 15px;font-weight: bold;}
-.data-title2{padding: 50px 0 20px;color: #0c121c;font-size: 34px;line-height: 45px;font-weight: bold;}
-.data-title3{padding: 0 0 15px 70px;color: #3e3e3e;font-size: 30px;}
+.data-title{font-family: "SHSKB";padding: 30px 0 30px 15px;color: #0c121c;font-size: 34px;line-height: 45px;letter-spacing: 15px;}
+.data-title2{font-family: "SHSKB";padding: 50px 0 20px;color: #0c121c;font-size: 34px;line-height: 45px;}
+.data-title3{font-family: "SHSKM";padding: 0 0 15px 120px;color: #3e3e3e;font-size: 30px;}
 .data-content{position: relative;padding: 0 120px;}
 #roster{width: 100%;height: 430px;}
 #roster .swiper-slide{height: auto;}
-.data-container{padding-right: 60px;}
-.data-list{color: #7c7c7c;font-size:26px;line-height: 44px;text-align: center;}
-.data-list li span:first-child{display: inline-block;width: 120px;text-align: left;}
+.data-container{padding-right: 100px;}
+.data-list{font-family: "SHSKN";color: #7c7c7c;font-size:26px;line-height: 44px;text-align: center;}
+.data-list li span:first-child{display: inline-block;width: 160px;padding-right: 20px;text-align: right;}
 #roster.swiper-container-vertical > .swiper-scrollbar{width: 4px;background: rgba(133,133,133,0.2);}
 #roster .swiper-scrollbar-drag{left: -1px;width: 6px;background: #000;}
