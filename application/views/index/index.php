@@ -46,18 +46,18 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="data-container">
-                            <div class="ta-c data-title3">受邀人：</div>
-                            <ul class="data-list" id="data1">
-                                <li v-for="service in services">
-                                    <span>{{service.name}}</span>
-                                    <span>{{service.phone}}</span>
-                                </li>
-                            </ul>
                             <div class="ta-c data-title3">推荐人：</div>
                             <ul class="data-list" id="data2">
                                 <li v-for="info in infos">
                                     <span>{{info.name}}</span>
                                     <span>{{info.phone}}</span>
+                                </li>
+                            </ul>
+                            <div class="ta-c data-title3">受邀人：</div>
+                            <ul class="data-list" id="data1">
+                                <li v-for="service in services">
+                                    <span>{{service.name}}</span>
+                                    <span>{{service.phone}}</span>
                                 </li>
                             </ul>
                         </div>
