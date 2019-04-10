@@ -39,8 +39,8 @@
 <!-- 弹框 -->
 <div class="bomb-wrapper flex center">
     <div class="data-box">
-        <div class="ta-c data-title">本次活动已结束</div>
-        <div class="ta-c data-title2">获奖名单：</div>
+        <div class="ta-c data-title"><img src="<?= STATIC_ASSETS ?>images/title-01.png" alt=""></div>
+        <div class="ta-c data-title2"><img src="<?= STATIC_ASSETS ?>images/title-02.png" alt=""></div>
         <div class="data-content">
             <div class="swiper-container" id="roster">
                 <div class="swiper-wrapper">

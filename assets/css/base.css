@@ -233,10 +233,6 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
 }
 
 @font-face {
-    font-family: "SHSKB";
-    src: url('../fonts/SourceHanSansK-Bold.ttf'),url('../fonts/SourceHanSansK-Bold.woff');
-}
-@font-face {
     font-family: "SHSKM";
     src: url('../fonts/SourceHanSansK-Medium.ttf'),url('../fonts/SourceHanSansK-Medium.woff');
 }
@@ -245,8 +241,8 @@ html, body{width: 750px; height: 100%; margin: 0 auto; overflow: hidden;font-siz
     src: url('../fonts/SourceHanSansK-Normal.ttf'),url('../fonts/SourceHanSansK-Normal.woff');
 }
 .data-box{position: relative;width: 100%;height: 997px;background: url(../images/bomb-bg.png) center no-repeat;}
-.data-title{font-family: "SHSKB";padding: 30px 0 30px 15px;color: #0c121c;font-size: 34px;line-height: 45px;letter-spacing: 15px;}
-.data-title2{font-family: "SHSKB";padding: 50px 0 20px;color: #0c121c;font-size: 34px;line-height: 45px;}
+.data-title{padding: 30px 0 30px 15px;color: #0c121c;font-size: 34px;line-height: 45px;letter-spacing: 15px;}
+.data-title2{padding: 50px 0 20px;color: #0c121c;font-size: 34px;line-height: 45px;}
 .data-title3{font-family: "SHSKM";padding: 0 0 15px 120px;color: #3e3e3e;font-size: 30px;}
 .data-content{position: relative;padding: 0 120px;}
 #roster{width: 100%;height: 430px;}
